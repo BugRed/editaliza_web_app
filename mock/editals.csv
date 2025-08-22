@@ -1,0 +1,3 @@
+id,title,description,publishDate,endDate,status,inscriptionLink,completeEditalLink,imgCoverUrl,proposer_id
+1,Edital de Pintura Urbana,Chamada para artistas urbanos criarem murais.,2025-08-01T10:00:00Z,2025-09-30T23:59:59Z,ABERTO,http://link.para.inscricao,http://link.para.edital,http://link.para.imagem1.com,2
+2,Festival de Música Independente,Concurso para novas bandas e músicos,2025-09-10T10:00:00Z,2025-10-15T23:59:59Z,FECHADO,http://link.para.inscricao2,http://link.para.edital2,http://link.para.imagem2.com,4

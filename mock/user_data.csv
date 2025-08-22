@@ -1,0 +1,6 @@
+id,password,name,email,user_type
+1,pass123,Maria Silva,maria.silva@email.com,ARTIST
+2,pass456,João Souza,joao.souza@email.com,PROPOSER
+3,pass789,Ana Oliveira,ana.oliveira@email.com,ARTIST
+4,passabc,Cultura Ativa Ltda,cultura.ativa@email.com,PROPOSER
+5,passdef,Felipe Costa,felipe.costa@email.com,ARTIST
