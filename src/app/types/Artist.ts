@@ -1,6 +1,6 @@
 
 import { TagData } from "./TagData";
-import UserData, { IUserData } from "./Userdata";
+import UserData, { IUserData } from "./UserData";
 
 // Interface para dados específicos do Artist
 export interface IArtist extends IUserData {

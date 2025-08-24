@@ -1,3 +1,4 @@
-id,title,description,publishDate,endDate,status,inscriptionLink,completeEditalLink,imgCoverUrl,proposer_id
-1,Edital de Pintura Urbana,Chamada para artistas urbanos criarem murais.,2025-08-01T10:00:00Z,2025-09-30T23:59:59Z,ABERTO,http://link.para.inscricao,http://link.para.edital,http://link.para.imagem1.com,2
-2,Festival de Música Independente,Concurso para novas bandas e músicos,2025-09-10T10:00:00Z,2025-10-15T23:59:59Z,FECHADO,http://link.para.inscricao2,http://link.para.edital2,http://link.para.imagem2.com,4
+id,title,description,publishDate,endDate,status,inscriptionLink,completeEditalLink,imgCoverUrl,createdAt,updatedAt,proposer,listTags,listComment
+301,Concurso de Pintura Jovem,Edital para artistas emergentes em pintura.,2024-08-01T00:00:00Z,2024-09-30T23:59:59Z,OPEN,https://link.com/inscricao-pintura,https://link.com/edital-pintura.pdf,https://exemplo.com/capa_pintura.jpg,2024-07-25T10:00:00Z,2024-08-01T00:00:00Z,101,"[{"id": 1, "name": "Pintura"}]","[]"
+302,Festival de Música Popular,Chamada para bandas e músicos independentes.,2024-09-01T00:00:00Z,,PUBLISHED,,https://link.com/edital-musica.pdf,https://exemplo.com/capa_musica.jpg,2024-08-20T14:30:00Z,2024-08-20T14:30:00Z,102,"[{"id": 2, "name": "Música"}]","[]"
+303,Ocupação de Espaço Cultural,Edital para propostas de performance e instalações.,,2024-12-31T23:59:59Z,DRAFT,,,,https://exemplo.com/capa_espaco.jpg,2024-08-15T09:00:00Z,2024-08-15T09:00:00Z,103,"[{"id": 3, "name": "Escultura"}, {"id": 5, "name": "Performance"}]","[]"

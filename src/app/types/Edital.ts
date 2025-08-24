@@ -1,6 +1,6 @@
 import { TagData } from "./TagData";
-import { Comment } from "./Comment";
-import UserData from "./Userdata";
+import { CommentData } from "./CommentData";
+import UserData from "./UserData";
 
 // Enum para status do edital
 export enum EditalStatus {
@@ -26,7 +26,7 @@ export interface IEdital {
   updatedAt: Date;
   proposer: UserData;
   listTags: TagData[];
-  listComment: Comment[];
+  listComment: CommentData[];
 }
 
 // Classe Edital para Next.js
@@ -44,7 +44,7 @@ export class Edital implements IEdital {
   updatedAt!: Date;
   proposer!: UserData;
   listTags!: TagData[];
-  listComment!: Comment[];
+  listComment!: CommentData[];
 
   constructor(
     title?: string,
@@ -118,7 +118,7 @@ export class Edital implements IEdital {
   }
 
   // Método para adicionar comentário
-  addComment(comment: Comment): void {
+  addComment(comment: CommentData): void {
     if (!this.listComment.includes(comment)) {
       this.listComment.push(comment);
       this.updateTimestamp();

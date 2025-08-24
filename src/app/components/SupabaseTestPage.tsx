@@ -7,15 +7,12 @@ import UserData from '@/app/types/Userdata';
 import { GetStaticProps, NextPage } from 'next';
 
 
-// ---
-
-// Defina uma interface para as props da sua página
 interface SupabaseTestPageProps {
   userData: UserData[];
   artists: Artist[];
   proposers: Proposer[];
   editals: Edital[];
-  tags: TagData[]; // Lembre-se de criar o type TagData se ainda não o fez
+  tags: TagData[];
   error: string | null;
 }
 

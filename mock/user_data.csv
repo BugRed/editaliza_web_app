@@ -1,6 +1,5 @@
-id,password,name,email,user_type
-1,pass123,Maria Silva,maria.silva@email.com,ARTIST
-2,pass456,João Souza,joao.souza@email.com,PROPOSER
-3,pass789,Ana Oliveira,ana.oliveira@email.com,ARTIST
-4,passabc,Cultura Ativa Ltda,cultura.ativa@email.com,PROPOSER
-5,passdef,Felipe Costa,felipe.costa@email.com,ARTIST
+id,password,name,email,imgUrl,createdAt,updatedAt,userType,listComment
+1,"senha_segura_1","João Silva","joao.silva@email.com","https://exemplo.com/img/joao.jpg","2023-01-15T10:00:00Z","2023-01-15T10:00:00Z","Admin","[]"
+2,"senha_segura_2","Maria Oliveira","maria.oliveira@email.com","https://exemplo.com/img/maria.png","2023-02-20T14:30:00Z","2023-02-20T14:30:00Z","User","[]"
+3,"senha_segura_3","Pedro Souza","pedro.souza@email.com","","2023-03-10T08:45:00Z","2023-03-10T08:45:00Z","User","[]"
+4,"senha_segura_4","Ana Costa","ana.costa@email.com","https://exemplo.com/img/ana.gif","2023-04-05T18:20:00Z","2023-04-05T18:20:00Z","Editor","[]"

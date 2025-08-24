@@ -1,4 +1,4 @@
-user_id,cpf
-1,111.222.333-44
-3,555.666.777-88
-5,999.000.111-22
+id,password,name,email,imgUrl,createdAt,updatedAt,userType,listComment,cpf,listTags
+201,senha_artist_1,Ricardo Pintor,ricardo.pintor@email.com,https://exemplo.com/img/ricardo.jpg,2024-04-22T10:00:00Z,2024-04-22T10:00:00Z,ARTIST,"[]",11122233344,,"[{"id": 1, "name": "Pintura"}, {"id": 2, "name": "Arte Moderna"}]"
+202,senha_artist_2,Mariana Escultora,mariana.escultora@email.com,https://exemplo.com/img/marina.gif,2024-05-18T14:30:00Z,2024-05-18T14:30:00Z,ARTIST,"[]",55566677788,"[{"id": 3, "name": "Escultura"}]"
+203,senha_artist_3,Carlos Músico,carlos.musico@email.com,https://exemplo.com/img/carlos.gif,2024-06-03T08:45:00Z,2024-06-03T08:45:00Z,ARTIST,"[]",99988877766,"[{"id": 4, "name": "Música"}]"

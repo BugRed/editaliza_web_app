@@ -1,4 +1,4 @@
-import { Comment } from "./Comment";
+import { Comment } from "./CommentData";
 
 // Interface base para dados do usuário
 export interface IUserData {

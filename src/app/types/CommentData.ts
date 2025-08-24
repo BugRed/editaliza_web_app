@@ -1,5 +1,5 @@
 import Edital from "./Edital";
-import UserData from "./Userdata";
+import UserData from "./UserData";
 
 
 // Enum para status dos comentários
@@ -12,7 +12,7 @@ export enum CommentStatus {
 }
 
 // Interface para dados do comentário
-export interface IComment {
+export interface ICommentData {
   id: number;
   authorName: string;
   content: string;
@@ -25,7 +25,7 @@ export interface IComment {
 }
 
 // Classe Comment para Next.js
-export class Comment implements IComment {
+export class CommentData implements ICommentData {
   id!: number;
   authorName!: string;
   content!: string;
@@ -167,7 +167,7 @@ export class Comment implements IComment {
   }
 
   // Método para converter para objeto plano
-  toJSON(): IComment {
+  toJSON(): ICommentData {
     return {
       id: this.id,
       authorName: this.authorName,
@@ -182,7 +182,7 @@ export class Comment implements IComment {
   }
 
   // Método estático para criar instância a partir de dados
-  static fromData(data: Partial<IComment>): Comment {
+  static fromData(data: Partial<ICommentData>): Comment {
     const instance = new Comment();
     Object.assign(instance, data);
     return instance;
@@ -206,7 +206,7 @@ export interface UpdateCommentData {
 }
 
 // Tipo para resposta da API
-export interface CommentResponse extends IComment {}
+export interface CommentResponse extends ICommentData {}
 
 // Tipo para comentário público (sem dados sensíveis)
 export interface PublicCommentData {

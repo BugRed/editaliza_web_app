@@ -1,4 +1,3 @@
-// lib/supabase.ts
 import { createClient } from '@supabase/supabase-js';
 
 // Verifique se as variáveis de ambiente estão definidas

@@ -1,5 +1,5 @@
 import { Edital } from "./Edital";
-import UserData, { IUserData } from "./Userdata";
+import UserData, { IUserData } from "./UserData";
 
 // Interface para dados específicos do Proposer
 export interface IProposer extends IUserData {

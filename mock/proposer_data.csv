@@ -1,3 +1,4 @@
-user_id,cnpj
-2,12.345.678/0001-90
-4,98.765.432/0001-21
+id,password,name,email,imgUrl,createdAt,updatedAt,userType,listComment,cnpj,listEdital
+101,senha_proposer_1,Empresa A Propostas,empresa.a@email.com,https://exemplo.com/img/empresaA.jpg,2024-05-10T11:00:00Z,2024-05-10T11:00:00Z,PROPOSER,"[]",11222333000144,"[]"
+102,senha_proposer_2,Instituição B Projetos,instituicao.b@email.com,,2024-06-15T15:30:00Z,2024-06-15T15:30:00Z,PROPOSER,"[]",22333444000155,"[]"
+103,senha_proposer_3,Startup C Cultural,startup.c@email.com,https://exemplo.com/img/startupC.png,2024-07-01T09:45:00Z,2024-07-01T09:45:00Z,PROPOSER,"[]",33444555000166,"[]"

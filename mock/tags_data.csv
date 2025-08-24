@@ -1,6 +1,6 @@
-id,name,description,color
-1,Pintura,Obras em tela ou outras superfícies,Azul
-2,Música,Performances e composições musicais,Vermelho
-3,Escultura,Criações tridimensionais,Verde
-4,Fotografia,Arte visual com câmeras,Amarelo
-5,Teatro,Espetáculos e performances cênicas,Roxo
+id,name,description,color,createdAt,updatedAt
+1,Pintura,Obras feitas com tintas sobre tela,#FF5733,2024-01-01T00:00:00Z,2024-01-01T00:00:00Z
+2,Música,Projetos musicais,#3366FF,2024-01-02T00:00:00Z,2024-01-02T00:00:00Z
+3,Escultura,Criações tridimensionais,#33CC33,2024-01-03T00:00:00Z,2024-01-03T00:00:00Z
+4,Fotografia,Trabalhos de arte fotográfica.,#9933CC,2024-01-04T00:00:00Z,2024-01-04T00:00:00Z
+5,Performance,Arte performática,#FF8800,2024-01-05T00:00:00Z,2024-01-05T00:00:00Z
