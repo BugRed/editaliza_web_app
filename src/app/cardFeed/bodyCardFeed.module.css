@@ -1,0 +1,13 @@
+.bodyCardFeed{
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    flex-direction: column;
+    
+    height: 24rem;
+    width: 30rem;
+    border-radius: 12px;
+    
+    background-color: #A682B4;
+    
+}

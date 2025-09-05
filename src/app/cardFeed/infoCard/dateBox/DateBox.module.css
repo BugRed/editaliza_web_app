@@ -1,0 +1,38 @@
+.DateContainer{
+    position: relative;
+}
+
+.DateBox{
+    position: absolute;
+    /* Uso de flex para centralizar a props "date" */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 6rem;
+    height: 2.25rem;
+    border-radius: 8px;
+    
+    background-color:#9333ea;
+    
+    transform: translateX(-60%);
+    bottom: 0.25rem;
+    
+    box-shadow: 0 3px 5px rgb(0, 0, 0, 0.25);
+    
+}
+
+
+.DateBoxArrow{
+    position: absolute;
+    
+    height: 0.5rem;
+    width: 0.5rem;
+    
+    background-color:#9333ea;
+    
+    transform: translateX(-60%);
+    right: 0.35rem;
+    bottom: 0;
+    transform: rotate(45deg);
+}

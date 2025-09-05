@@ -1,0 +1,13 @@
+.FooterCardFeed{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    width: 100%;
+    
+    padding: 0 1.25rem;
+    
+    bottom: 1.25rem;
+    align-self: center;
+}

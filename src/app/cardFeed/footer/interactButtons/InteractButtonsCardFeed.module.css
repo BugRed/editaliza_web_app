@@ -1,0 +1,35 @@
+.InteractButtonsCardFeed{
+    display: flex;
+
+    gap: 0 0.5rem;
+    
+    color: #000;
+}
+
+
+.Heart{
+    fill: currentColor;
+    transition: color 0.15s ease-in-out, fill 0.15s ease-in-out;
+}
+.Heart:hover{
+    fill: #fc2424;
+    color: #fc2424;
+}
+
+
+.BookMarked{
+    fill: currentColor;
+    transition: color 0.15s ease-in-out, fill 0.15s ease-in-out;
+}
+.BookMarked:hover{
+    color: #25d634;
+}
+
+
+.Share2{
+    fill: currentColor;
+    transition: color 0.15s ease-in-out, fill 0.15s ease-in-out;
+}
+.Share2:hover{
+    color: #25d634;
+}

@@ -14,6 +14,7 @@ import {
   Heart,
   Share2,
   Mail,
+  Tags,
 } from "lucide-react";
 
 // Importa os modelos de dados tipados
@@ -23,6 +24,9 @@ import { UserData } from "@/app/types/UserData";
 import { TagData } from "@/app/types/TagData";
 import { Proposer } from "@/app/types/Proposer";
 import { Artist } from "@/app/types/Artist";
+import { log } from "console";
+
+import BodyCardFeed from '@/app/cardFeed/BodyCardFeed';
 
 // Componente de imagem com fallback
 const SafeImage = ({ 
@@ -77,7 +81,7 @@ export default function FeedPage() {
       try {
         // Determina a URL base corretamente
         const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
-                       (process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '');
+                       (process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : '');
         
         const res = await fetch(`${baseUrl}/api/data`, {
           cache: "no-store",
@@ -92,7 +96,7 @@ export default function FeedPage() {
         
         // Recebe os dados brutos da API
         const rawData = await res.json();
-        console.log('Dados recebidos da API:', rawData); // Debug
+        // console.log('Dados recebidos da API:', rawData); // Debug
         setAllData(rawData as AllData);
       } catch (err: any) {
         setError(err.message);
@@ -137,26 +141,37 @@ export default function FeedPage() {
       </div>
     );
   }
+  
 
-  // Mapeia os editais, associando o proponente e as tags com base nos IDs
-  const editals = allData.editals.map((editalData) => {
-    // Busca o proponente usando o id do edital
-    const proposer = allData.proposers?.find(
-      (p) => p.id === editalData.proposer?.id
-    );
-    // As tags já estão no objeto editalData. listTags deve ser um array.
-    const tags = Array.isArray(editalData.listTags) ? editalData.listTags : [];
 
-    // Cria uma nova instância de Edital com os dados corretos
-    const editalInstance = new Edital();
-    // Preenche a instância com os dados da API
-    Object.assign(editalInstance, editalData);
-    // Adiciona as referências corretas
-    editalInstance.proposer = proposer as Proposer;
-    editalInstance.listTags = tags as TagData[];
+  // // Mapeia os editais, associando o proponente e as tags com base nos IDs
+  // const editals = allData.editals.map((editalData) => {
+  //   // Busca o proponente usando o id do edital   
 
-    return editalInstance;
-  });
+  //   const proposer = allData.proposers?.find(
+  //     (p) => p.id === editalData.proposer?.id 
+      
+  //   );
+    
+  //   // As tags já estão no objeto editalData. listTags deve ser um array.
+  //   const tags = Array.isArray(editalData.listTags) ? editalData.listTags : [];
+
+    
+  //   // Cria uma nova instância de Edital com os dados corretos
+  //   const editalInstance = new Edital();
+  //   // Preenche a instância com os dados da API
+  //   Object.assign(editalInstance, editalData);
+  //   // Adiciona as referências corretas
+  //   editalInstance.proposer = proposer as Proposer;
+  //   editalInstance.listTags = tags as TagData[];
+
+  //   return editalInstance;
+  // });
+
+  const editals = allData.editals
+  const proposers = allData.proposers
+
+
 
   return (
     <div className="container mx-auto p-4 md:p-8">
@@ -199,101 +214,129 @@ const FeedCard = ({ edital }: { edital: Edital }) => {
   const publishedDate = edital.publishDate
     ? new Date(edital.publishDate).toLocaleDateString('pt-BR')
     : "Data desconhecida";
+
   const proposerName = edital.proposer?.name || "Proponente Desconhecido";
   const coverImageUrl = edital.imgCoverUrl || "/assets/placeholder-cover.png";
+  const inscriptionLink = edital.inscriptionLink || "#"
+
+  const tagsList = edital.listTags;
+  
+  
 
   return (
-    <div className="flex flex-col rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-xl transition-shadow duration-200">
-      {/* Imagem de capa */}
-      <Link href={`./editais/${edital.id}`}>
-        <div className="w-full h-40 relative overflow-hidden">
-          <SafeImage
-            src={coverImageUrl}
-            alt={`Capa do edital ${edital.title}`}
-            fill
-            className="object-cover hover:scale-105 transition-transform duration-200"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-            fallbackSrc="/assets/placeholder-cover.png"
-          />
-          
-          {/* Botão de download do edital */}
-          {edital.completeEditalLink && (
-            <div className="absolute top-2 right-2">
-              <Link href={edital.completeEditalLink} target="_blank" rel="noopener noreferrer">
-                <button className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md transition-colors duration-200">
-                  Baixar Edital
-                </button>
-              </Link>
-            </div>
-          )}
-        </div>
-      </Link>
-
-      <div className="p-4 flex flex-col flex-grow">
-        <h2 className="text-xl font-bold mb-1 line-clamp-2">{edital.title}</h2>
-        <p className="text-sm text-gray-500 mb-2">Por {proposerName}</p>
-
-        {/* Data de publicação */}
-        <div className="text-xs text-gray-600 flex items-center gap-1 relative group cursor-pointer mb-2">
-          <span>Publicado em</span>
-          <CalendarDays size={14} className="text-gray-400" />
-          {/* Tooltip com setinha */}
-          <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1 text-sm bg-purple-600 text-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow-lg z-10">
-            {publishedDate}
-            <span className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-purple-600"></span>
-          </span>
-        </div>
-
-        {/* Área das tags */}
-        <div className="flex flex-wrap items-start my-2 gap-2">
-          {Array.isArray(edital.listTags) &&
-            edital.listTags.map((tag) => (
-              <button
-                key={tag.id}
-                className="px-3 py-1 text-sm rounded-full transition-colors duration-200 hover:opacity-80"
-                style={{ 
-                  backgroundColor: tag.color || '#e5e5e5', 
-                  color: "#000000" 
-                }}
-              >
-                {tag.name}
-              </button>
-            ))}
-        </div>
-
-        {/* Botões de interação */}
-        <div className="flex flex-row items-center gap-3 text-black mt-auto">
-          <button
-            className="text-black hover:text-red-500 transition-colors duration-200 p-1 rounded-full hover:bg-gray-100"
-            title="Favoritar"
-          >
-            <Heart size={20} strokeWidth={1} />
-          </button>
-          <button
-            className="text-black hover:text-green-500 transition-colors duration-200 p-1 rounded-full hover:bg-gray-100"
-            title="Salvar"
-          >
-            <BookMarked size={20} strokeWidth={1} />
-          </button>
-          <button
-            className="text-black hover:text-blue-500 transition-colors duration-200 p-1 rounded-full hover:bg-gray-100"
-            title="Compartilhar"
-          >
-            <Share2 size={20} strokeWidth={1} />
-          </button>
-        </div>
-
-        {/* Botão de aplicação */}
-        {edital.inscriptionLink && (
-          <div className="flex justify-end mt-4">
-            <Link href={edital.inscriptionLink} target="_blank" rel="noopener noreferrer">
-              <button className="bg-[#2AB335] hover:bg-[#259E2E] gap-2 px-6 py-2 text-sm text-white font-semibold rounded-full flex items-center shadow-md transition-all duration-200">
-                Aplicar <ExternalLink size={16} />
-              </button>
-            </Link>
-          </div>
-        )}
-      </div>
+  //Exemplo criação do cardFeed
+    //criar estrutura para div que envolve BodyCardFeed (possivel display: Grid para Pc e Flex com flex-direction: column para mobile)
+    //lembrar de adicionar função mais armazenamento do percent(calculo de quanto das vagas do formulário foram ocupadas)
+    //lembrar de adicionar colorPercent ao global, com função variando qual cor dependendo do valor de percent
+    <div>
+      <BodyCardFeed 
+        percent="30" 
+        colorPercent="#258611" 
+        coverImage={coverImageUrl} 
+        title={edital.title}
+        proposer={proposerName}
+        proposerLink={''}
+        date={publishedDate}
+        tags={tagsList}
+        buttomSubmitLink={inscriptionLink}
+      />
     </div>
+
+
+
+    //"antigo" Apagar quando resolver o card feed
+
+    // <div className="flex flex-col rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-xl transition-shadow duration-200">
+    //   {/* Imagem de capa */}
+    //   <Link href={`./editais/${edital.id}`}>
+    //     <div className="w-full h-40 relative overflow-hidden">
+    //       <SafeImage
+    //         src={coverImageUrl}
+    //         alt={`Capa do edital ${edital.title}`}
+    //         fill
+    //         className="object-cover hover:scale-105 transition-transform duration-200"
+    //         sizes="(max-widt h: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+    //         fallbackSrc="/assets/placeholder-cover.png"
+    //       />
+          
+    //       {/* Botão de download do edital */}
+    //       {edital.completeEditalLink && (
+    //         <div className="absolute top-2 right-2">
+    //           <Link href={edital.completeEditalLink} target="_blank" rel="noopener noreferrer">
+    //             <button className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md transition-colors duration-200">
+    //               Baixar Edital
+    //             </button>
+    //           </Link>
+    //         </div>
+    //       )}
+    //     </div>
+    //   </Link>
+
+    //   <div className="p-4 flex flex-col flex-grow">
+    //     <h2 className="text-xl font-bold mb-1 line-clamp-2">{edital.title}</h2>
+    //     <p className="text-sm text-gray-500 mb-2">Por {proposerName}</p>
+
+    //     {/* Data de publicação */}
+    //     <div className="text-xs text-gray-600 flex items-center gap-1 relative group cursor-pointer mb-2">
+    //       <span>Publicado em</span>
+    //       <CalendarDays size={14} className="text-gray-400" />
+    //       {/* Tooltip com setinha */}
+    //       <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1 text-sm bg-purple-600 text-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow-lg z-10">
+    //         {publishedDate}
+    //         <span className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-purple-600"></span>
+    //       </span>
+    //     </div>
+
+    //     {/* Área das tags */}
+    //     <div className="flex flex-wrap items-start my-2 gap-2">
+    //       {Array.isArray(edital.listTags) &&
+    //         edital.listTags.map((tag) => (
+    //           <button
+    //             key={tag.id}
+    //             className="px-3 py-1 text-sm rounded-full transition-colors duration-200 hover:opacity-80"
+    //             style={{ 
+    //               backgroundColor: tag.color || '#e5e5e5', 
+    //               color: "#000000" 
+    //             }}
+    //           >
+    //             {tag.name}
+    //           </button>
+    //         ))}
+    //     </div>
+
+    //     {/* Botões de interação */}
+    //     <div className="flex flex-row items-center gap-3 text-black mt-auto">
+    //       <button
+    //         className="text-black hover:text-red-500 transition-colors duration-200 p-1 rounded-full hover:bg-gray-100"
+    //         title="Favoritar"
+    //       >
+    //         <Heart size={20} strokeWidth={1} />
+    //       </button>
+    //       <button
+    //         className="text-black hover:text-green-500 transition-colors duration-200 p-1 rounded-full hover:bg-gray-100"
+    //         title="Salvar"
+    //       >
+    //         <BookMarked size={20} strokeWidth={1} />
+    //       </button>
+    //       <button
+    //         className="text-black hover:text-blue-500 transition-colors duration-200 p-1 rounded-full hover:bg-gray-100"
+    //         title="Compartilhar"
+    //       >
+    //         <Share2 size={20} strokeWidth={1} />
+    //       </button>
+    //     </div>
+
+    //     {/* Botão de aplicação */}
+    //     {edital.inscriptionLink && (
+    //       <div className="flex justify-end mt-4">
+    //         <Link href={edital.inscriptionLink} target="_blank" rel="noopener noreferrer">
+    //           <button className="bg-[#2AB335] hover:bg-[#259E2E] gap-2 px-6 py-2 text-sm text-white font-semibold rounded-full flex items-center shadow-md transition-all duration-200">
+    //             Aplicar <ExternalLink size={16} />
+    //           </button>
+    //         </Link>
+    //       </div>
+    //     )}
+    //   </div>
+    // </div>
   );
 };

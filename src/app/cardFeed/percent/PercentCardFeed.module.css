@@ -1,0 +1,21 @@
+.PercentCardFeed{
+    display: flex;
+    position: absolute;
+    
+    width: 6.25rem;
+    height: 1.55rem;
+    border-radius: 16px;
+    
+    margin: 1rem;
+
+    background-color: #F3D55C;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.PercentCardFeed span{
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--cor-dinamica);
+}

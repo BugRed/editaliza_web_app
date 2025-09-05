@@ -1,0 +1,24 @@
+.ButtomSubmitCardFeed{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 6.5rem;
+    height: 2rem;
+    border-radius: 8px;
+    
+    background-color: #2fda3d;
+    border: 1px solid black; 
+    
+    gap: 0.45rem;
+    
+    color: black;
+    
+    transition: background-color 0.1s ease-in-out;
+}
+
+.ButtomSubmitCardFeed:hover {
+    background-color: #2AB335;
+    
+    cursor: pointer;
+}
