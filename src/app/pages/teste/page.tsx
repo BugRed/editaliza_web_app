@@ -1,6 +1,3 @@
-// src/app/feed/page.tsx
-// Este é um Server Component, que busca os dados no servidor antes da renderização.
-
 "use client";
 
 import Image from "next/image";
@@ -17,17 +14,10 @@ import {
   Tags,
 } from "lucide-react";
 
-// Importa os modelos de dados tipados
-import { AllData } from "@/app/types/AllDatas";
 import { Edital, IEdital } from "@/app/types/Edital";
-import { UserData } from "@/app/types/UserData";
-import { TagData } from "@/app/types/TagData";
 import { Proposer } from "@/app/types/Proposer";
-import { Artist } from "@/app/types/Artist";
-import { log } from "console";
-
 import BodyCardFeed from "@/app/cardFeed/BodyCardFeed";
-
+import TagData from "@/app/types/TagData";
 // Componente de imagem com fallback
 const SafeImage = ({
   src,
@@ -72,37 +62,50 @@ const SafeImage = ({
 
 // Componente principal da página Feed
 export default function FeedPage() {
-  const [allData, setAllData] = useState<AllData | null>(null);
+  const [editals, setEditals] = useState<IEdital[]>([]);
+  const [proposers, setProposers] = useState<Proposer[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Determina a URL base corretamente
         const baseUrl =
           process.env.NEXT_PUBLIC_BASE_URL ||
           (process.env.NODE_ENV === "development"
             ? "http://localhost:3000"
             : "");
 
-        const res = await fetch(`${baseUrl}/api/data`, {
+        // Busca dados de editais
+        const editalsRes = await fetch(`${baseUrl}/api/editals`, {
           cache: "no-store",
           headers: {
             "Content-Type": "application/json",
           },
         });
-
-        if (!res.ok) {
+        if (!editalsRes.ok) {
           throw new Error(
-            `Erro na busca de dados: ${res.status} ${res.statusText}`
+            `Erro na busca de editais: ${editalsRes.status} ${editalsRes.statusText}`
           );
         }
+        const editalsData: IEdital[] = await editalsRes.json();
+        setEditals(editalsData);
 
-        // Recebe os dados brutos da API
-        const rawData = await res.json();
-        // console.log('Dados recebidos da API:', rawData); // Debug
-        setAllData(rawData as AllData);
+        // Busca dados de proponentes
+        const proposersRes = await fetch(`${baseUrl}/api/proposers`, {
+          cache: "no-store",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (!proposersRes.ok) {
+          throw new Error(
+            `Erro na busca de proponentes: ${proposersRes.status} ${proposersRes.statusText}`
+          );
+        }
+        const proposersData: Proposer[] = await proposersRes.json();
+        setProposers(proposersData);
+        
       } catch (err: any) {
         setError(err.message);
         console.error("Falha ao buscar dados da API:", err);
@@ -124,7 +127,7 @@ export default function FeedPage() {
     );
   }
 
-  if (error || !allData) {
+  if (error) {
     return (
       <div className="container mx-auto p-4 flex flex-col items-center justify-center min-h-screen">
         <h1 className="text-3xl font-bold mb-4 text-center">Feed de Editais</h1>
@@ -136,7 +139,7 @@ export default function FeedPage() {
   }
 
   // Verifica se existem editais
-  if (!allData.editals || allData.editals.length === 0) {
+  if (editals.length === 0) {
     return (
       <div className="container mx-auto p-4 flex flex-col items-center justify-center min-h-screen">
         <h1 className="text-3xl font-bold mb-4 text-center">Feed de Editais</h1>
@@ -147,26 +150,34 @@ export default function FeedPage() {
     );
   }
 
-  const editals = allData.editals;
-  const proposers = allData.proposers;
-
   return (
-    <div className="container mx-auto p-4">
-      {editals.map((e) => (
-        <div key={e.id} className="border rounded p-4 mb-4">
-          <BodyCardFeed 
-                  percent="30" 
-                  colorPercent="#258611" 
-                  coverImage={e.imgCoverUrl} 
-                  title={e.title}
-                  proposer={e.proposer.name}
-                  proposerLink={''}
-                  date={e.publishDate}
-                  tags={e.listTags}
-                  buttomSubmitLink={e.inscriptionLink}
-                />
-        </div>
-      ))}
+    <div className="flex flex-col items-center justify-center min-h-screen p-4">
+      {editals.map((edital) => {
+        // Encontra o proponente correspondente
+        const proposer = proposers.find(p => p.id === Number(edital.proposer));
+        
+        // Converte a string JSON de tags para um array de objetos tipado
+
+        // Renderiza o BodyCardFeed apenas se o proponente for encontrado
+        if (proposer) {
+          return (
+            <div key={edital.id} className="w-full max-w-2xl mb-8">
+              <BodyCardFeed 
+                percent="30" 
+                colorPercent="#258611" 
+                coverImage={edital.imgCoverUrl || '/assets/placeholder.png'} 
+                title={edital.title}
+                proposer={proposer.name}
+                proposerLink={''}
+                date={edital.publishDate}
+                tags={edital.listTags}
+                buttomSubmitLink={edital.inscriptionLink}
+              />
+            </div>
+          );
+        }
+        return null; // Não renderiza se o proponente não for encontrado
+      })}
     </div>
   );
 }
