@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-this-in-production';
 
 // Rotas que não precisam de autenticação
-const publicRoutes = ['/login', '/cadastro', '/api/auth/login', '/api/auth/setup'];
+const publicRoutes = ['/login', '/cadastro', '/api/auth/login', '/api/auth/setup', '/api/auth/verify', '/api/auth/logout'];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
