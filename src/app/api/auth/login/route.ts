@@ -7,7 +7,24 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-this-in-pro
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    // Ler o corpo com mais robustez para evitar erro "body stream already read"
+    let body: any = {};
+    try {
+      const text = await request.text();
+      if (!text) {
+        return NextResponse.json({ error: 'Corpo da requisição vazio' }, { status: 400 });
+      }
+      try {
+        body = JSON.parse(text);
+      } catch (parseError) {
+        console.error('Erro ao parsear JSON do corpo:', parseError, 'texto:', text);
+        return NextResponse.json({ error: 'Corpo inválido. JSON esperado.' }, { status: 400 });
+      }
+    } catch (readError: any) {
+      console.error('Erro ao ler corpo da requisiç��o:', readError);
+      return NextResponse.json({ error: 'Erro ao ler corpo da requisição' }, { status: 400 });
+    }
+
     const { login, password } = body;
 
     if (!login || !password) {
