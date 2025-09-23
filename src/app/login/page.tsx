@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuthHook } from '@/app/hooks/useAuth';
+import { useAuth } from '@/app/providers/AuthProvider';
 
 export default function LoginPage() {
   const [login, setLogin] = useState('');
