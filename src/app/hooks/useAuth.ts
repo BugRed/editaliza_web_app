@@ -1,28 +1,10 @@
 'use client';
 
-import { useState, useEffect, createContext, useContext } from 'react';
+import { useState, useEffect } from 'react';
 
 interface User {
   id: string;
   login: string;
-}
-
-interface AuthContextType {
-  user: User | null;
-  loading: boolean;
-  login: (login: string, password: string) => Promise<boolean>;
-  logout: () => Promise<void>;
-  checkAuth: () => Promise<void>;
-}
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
-
-export function useAuth() {
-  const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth deve ser usado dentro de um AuthProvider');
-  }
-  return context;
 }
 
 export function useAuthHook() {
@@ -32,11 +14,18 @@ export function useAuthHook() {
   const checkAuth = async () => {
     try {
       const response = await fetch('/api/auth/verify');
-      const data = await response.json();
-      
-      if (data.authenticated) {
-        setUser(data.user);
+      const contentType = response.headers.get('content-type') || '';
+
+      if (contentType.includes('application/json')) {
+        const data = await response.json();
+        if (data.authenticated) {
+          setUser(data.user);
+        } else {
+          setUser(null);
+        }
       } else {
+        // Se não for JSON, provavelmente foi redirecionado para a página de login
+        console.error('Resposta inesperada ao verificar autenticação:', await response.text());
         setUser(null);
       }
     } catch (error) {
@@ -57,7 +46,16 @@ export function useAuthHook() {
         body: JSON.stringify({ login, password }),
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get('content-type') || '';
+      let data: any = {};
+
+      if (contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        const text = await response.text();
+        console.error('Resposta não JSON no login:', text);
+        return false;
+      }
 
       if (response.ok) {
         setUser(data.user);
@@ -96,5 +94,3 @@ export function useAuthHook() {
     checkAuth,
   };
 }
-
-export const AuthProvider = AuthContext.Provider;
