@@ -24,7 +24,20 @@ export async function POST(request: NextRequest) {
       .eq('login', login)
       .single();
 
-    if (error || !users) {
+    // Se houver um erro do PostgREST indicando que a tabela não existe, informe o usuário
+    if (error) {
+      console.error('Erro ao consultar users:', error);
+      const message = (error.code === 'PGRST205' || (error.message && error.message.includes('Could not find the table')))
+        ? 'Tabela "users" não encontrada no Supabase. Execute SQL de criação.'
+        : 'Erro ao consultar usuário.';
+
+      return NextResponse.json(
+        { error: message },
+        { status: 500 }
+      );
+    }
+
+    if (!users) {
       return NextResponse.json(
         { error: 'Credenciais inválidas' },
         { status: 401 }
