@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { supabase } from '@/app/lib/supabase';
 import bcrypt from 'bcryptjs';
 
@@ -12,43 +13,19 @@ export async function POST() {
 
     // Se não houve erro, a tabela já existe
     if (!checkError) {
-      return NextResponse.json({ 
-        message: 'Tabela users já existe e está configurada.' 
+      return NextResponse.json({
+        message: 'Tabela users já existe e está configurada.'
       });
     }
 
-    // Se chegou aqui, a tabela precisa ser criada
-    // Vamos tentar criar o usuário admin diretamente
-    // (assumindo que a tabela será criada automaticamente pelo Supabase)
-    
-    const hashedPassword = await bcrypt.hash('admin', 10);
-    
-    const { data, error } = await supabase
-      .from('users')
-      .insert([
-        {
-          login: 'admin',
-          password: hashedPassword,
-          created_at: new Date().toISOString()
-        }
-      ])
-      .select();
-
-    if (error) {
-      console.error('Erro ao criar usuário admin:', error);
-      return NextResponse.json(
-        { 
-          error: 'Erro ao configurar usuário admin. Verifique se a tabela users existe no Supabase.',
-          details: error.message 
-        },
-        { status: 500 }
-      );
-    }
-
-    return NextResponse.json({ 
-      message: 'Usuário admin criado com sucesso!',
-      user: data 
-    });
+    // Se houve erro ao verificar a tabela, provavelmente a tabela não existe
+    console.error('Erro ao verificar a tabela users:', checkError);
+    return NextResponse.json(
+      {
+        error: 'A tabela users não existe no Supabase. Execute o SQL para criá-la (veja database/create-users-table.sql).'
+      },
+      { status: 500 }
+    );
 
   } catch (error) {
     console.error('Erro na configuração:', error);
