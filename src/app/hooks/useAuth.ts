@@ -1,5 +1,7 @@
 'use client';
 
+'use client';
+
 import { useState, useEffect } from 'react';
 
 interface User {
@@ -13,6 +15,16 @@ export function useAuthHook() {
 
   const checkAuth = async () => {
     try {
+      // Test mode: if localStorage has the test flag, set tester user
+      if (typeof window !== 'undefined') {
+        const isTester = localStorage.getItem('editaliza_test_mode');
+        if (isTester === 'true') {
+          setUser({ id: 'tester', login: 'tester' });
+          setLoading(false);
+          return;
+        }
+      }
+
       const response = await fetch('/api/auth/verify');
       const contentType = response.headers.get('content-type') || '';
 
@@ -70,8 +82,20 @@ export function useAuthHook() {
     }
   };
 
+  const loginTester = async (): Promise<boolean> => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('editaliza_test_mode', 'true');
+    }
+    setUser({ id: 'tester', login: 'tester' });
+    return true;
+  };
+
   const logout = async () => {
     try {
+      // Clear test mode
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('editaliza_test_mode');
+      }
       await fetch('/api/auth/logout', {
         method: 'POST',
       });
@@ -90,6 +114,7 @@ export function useAuthHook() {
     user,
     loading,
     login,
+    loginTester,
     logout,
     checkAuth,
   };
