@@ -35,7 +35,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const auth = useAuthHook();
 
   return (
-    <AuthContext.Provider value={auth}>
+    <AuthContext.Provider value={auth as any}>
       {children}
     </AuthContext.Provider>
   );
