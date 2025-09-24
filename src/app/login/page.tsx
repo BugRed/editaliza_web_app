@@ -77,13 +77,27 @@ export default function LoginPage() {
           </div>
 
           {/* Submit Button */}
-          <div className="flex justify-center pt-4">
+          <div className="flex flex-col items-center pt-4">
             <button
               type="submit"
               disabled={loading}
-              className="px-8 py-3 bg-purple-400 bg-opacity-80 rounded-full text-black font-bold text-lg border border-purple-600 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-400 disabled:opacity-50 transition-colors"
+              className="px-8 py-3 w-full bg-purple-400 bg-opacity-80 rounded-full text-black font-bold text-lg border border-purple-600 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-400 disabled:opacity-50 transition-colors"
             >
               {loading ? 'Entrando...' : 'Entrar'}
+            </button>
+
+            {/* Entrar como Tester */}
+            <button
+              type="button"
+              onClick={async () => {
+                const { loginTester } = useAuth();
+                // loginTester sets test flag and user
+                await loginTester();
+                router.push('/pages/feed');
+              }}
+              className="mt-4 px-8 py-3 w-full bg-green-500 text-white font-bold rounded-full hover:bg-green-600 transition-colors"
+            >
+              ENTRAR COMO TESTER
             </button>
           </div>
         </form>
