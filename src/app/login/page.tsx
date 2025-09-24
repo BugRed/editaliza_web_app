@@ -90,7 +90,6 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={async () => {
-                const { loginTester } = useAuth();
                 // loginTester sets test flag and user
                 await loginTester();
                 router.push('/pages/feed');
