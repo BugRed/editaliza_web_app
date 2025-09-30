@@ -6,7 +6,7 @@ import InfoCardFeed from "./infoCard/InfoCardFeed";
 import TagsCardFeed from "./tags/TagsCardFeed";
 import FooterCardFeed from "./footer/FooterCardFeed";
 import PercentCardFeed from "./percent/PercentCardFeed";
-import TagData from "../types/TagData";
+import TagData from "../../types/TagData";
 
 type cardFeedProps = {
   percent: string;

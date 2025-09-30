@@ -2,7 +2,7 @@ import DateBox from './dateBox/DateBox';
 import Styles from './InfoCardFeed.module.css'
 import { CalendarDays } from "lucide-react";
 import Link from 'next/link';
-import { SafeDate } from '../../utils/SafeDate';
+import { SafeDate } from '../../../lib/utils/SafeDate';
 
 type InfoCardFeedProps = {
     title: string;

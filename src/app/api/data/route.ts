@@ -1,6 +1,6 @@
 // src/app/api/data/route.ts
 import { NextResponse } from 'next/server';
-import { supabase } from '@/app/lib/supabase';
+import { supabase } from '@/app/lib/supabase/client';
 
 // Esta função assíncrona lida com requisições HTTP do tipo GET
 export async function GET() {

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/app/lib/supabase';
+import { supabase } from '@/app/lib/supabase/client';
 
 // Este endpoint lida com requisições GET para a tabela 'comments_data'
 export async function GET() {

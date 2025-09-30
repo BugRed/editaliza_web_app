@@ -23,7 +23,7 @@ import {
 
 import { Edital, IEdital } from "@/app/types/Edital";
 import { Proposer } from "@/app/types/Proposer";
-import BodyCardFeed from "@/app/cardFeed/BodyCardFeed";
+import BodyCardFeed from "@/app/components/cardFeed/BodyCardFeed";
 import TagData from "@/app/types/TagData";
 
 // Componente de imagem com fallback

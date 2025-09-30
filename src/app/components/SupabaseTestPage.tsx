@@ -1,4 +1,4 @@
-import { supabase } from '@/app/lib/supabase';
+import { supabase } from '@/app/lib/supabase/client';
 import Artist from '@/app/types/Artist';
 import Edital from '@/app/types/Edital';
 import Proposer from '@/app/types/Proposer';
