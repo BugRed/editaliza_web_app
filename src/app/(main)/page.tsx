@@ -24,6 +24,8 @@ import {
 import { Edital, IEdital } from "@/app/types/Edital";
 import { Proposer } from "@/app/types/Proposer";
 import BodyCardFeed from "@/app/components/cardFeed/BodyCardFeed";
+import Header from "../components/header/header";
+import Footer from "../components/footer/footer";
 import TagData from "@/app/types/TagData";
 
 // Componente de imagem com fallback
@@ -68,104 +70,6 @@ const SafeImage = ({
   );
 };
 
-// Componente Header fixo com logo e menu dropdown
-const Header = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--background)] border-b border-white/20 backdrop-blur-sm">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        {/* Logo à esquerda */}
-        <div className="flex items-center">
-          <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-lg">E</span>
-          </div>
-          <span className="ml-2 text-white font-semibold text-lg">Editais</span>
-        </div>
-
-        {/* Menu dropdown à direita */}
-        <div className="relative">
-          <button
-            className="flex items-center space-x-2 text-white hover:bg-white/10 px-3 py-2 rounded-lg transition-colors"
-            onMouseEnter={() => setIsDropdownOpen(true)}
-            onMouseLeave={() => setIsDropdownOpen(false)}
-          >
-            <Menu size={20} />
-            <span>Menu</span>
-          </button>
-
-          {/* Dropdown menu */}
-          {isDropdownOpen && (
-            <div
-              className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10"
-              onMouseEnter={() => setIsDropdownOpen(true)}
-              onMouseLeave={() => setIsDropdownOpen(false)}
-            >
-              <Link
-                href="/conta"
-                className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
-              >
-                <User size={16} className="mr-3" />
-                Conta
-              </Link>
-              <Link
-                href="/configuracoes"
-                className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
-              >
-                <Settings size={16} className="mr-3" />
-                Configurações
-              </Link>
-              <Link
-                href="/suporte"
-                className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
-              >
-                <HelpCircle size={16} className="mr-3" />
-                Suporte
-              </Link>
-            </div>
-          )}
-        </div>
-      </div>
-    </header>
-  );
-};
-
-// Componente Footer fixo com ícones de navegação
-const Footer = () => {
-  return (
-    <footer className="fixed bottom-0 left-0 right-0 z-50 bg-[var(--background)] border-t border-white/20 backdrop-blur-sm">
-      <div className="container mx-auto px-4 py-3">
-        <div className="flex justify-center items-center space-x-8">
-          {/* Ícone Home */}
-          <button className="flex flex-col items-center space-y-1 text-white hover:bg-white/10 p-2 rounded-lg transition-colors">
-            <Home size={20} />
-            <span className="text-xs">Home</span>
-          </button>
-
-          {/* Ícone Salvar */}
-          <button className="flex flex-col items-center space-y-1 text-white hover:bg-white/10 p-2 rounded-lg transition-colors">
-            <Bookmark size={20} />
-            <span className="text-xs">Salvar</span>
-          </button>
-
-          {/* Ícone Compartilhar */}
-          <button className="flex flex-col items-center space-y-1 text-white hover:bg-white/10 p-2 rounded-lg transition-colors">
-            <Share2 size={20} />
-            <span className="text-xs">Compartilhar</span>
-          </button>
-
-          {/* Ícone do Perfil - imagem redonda */}
-          <button className="flex flex-col items-center space-y-1 text-white hover:bg-white/10 p-2 rounded-lg transition-colors">
-            <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
-              <UserCircle2 size={16} />
-            </div>
-            <span className="text-xs">Perfil</span>
-          </button>
-        </div>
-      </div>
-    </footer>
-  );
-};
 
 // Componente principal da página Feed
 export default function FeedPage() {
@@ -278,10 +182,11 @@ export default function FeedPage() {
       
       {/* Conteúdo principal - com padding para não sobrepor header e footer */}
       <main className="pt-20 pb-20 min-h-screen">
-        <div className="flex flex-col items-center justify-center p-4">
+        <div className="flex flex-col items-center justify-center p-4 w-screen">
           {editals.map((edital) => {
             // Encontra o proponente correspondente
             const proposer = proposers.find(p => p.id === Number(edital.proposer));
+            
             
             // Renderiza o BodyCardFeed apenas se o proponente for encontrado
             if (proposer) {
@@ -289,13 +194,13 @@ export default function FeedPage() {
                 <div key={edital.id} className="my-10">
                   <BodyCardFeed 
                     percent="30" 
-                    colorPercent="#258611" 
+                    colorPercent="#F6B208" 
                     coverImage={edital.imgCoverUrl || '/assets/placeholder.png'} 
                     title={edital.title}
                     proposer={proposer.name}
                     proposerLink={''}
                     date={edital.publishDate}
-                    tags={edital.listTags}
+                    tags={typeof(edital.listTags) == "string" ? JSON.parse(edital.listTags) : edital.listTags}
                     buttomSubmitLink={edital.inscriptionLink}
                   />
                 </div>

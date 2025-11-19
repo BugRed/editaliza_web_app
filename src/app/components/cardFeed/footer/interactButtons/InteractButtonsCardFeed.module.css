@@ -1,35 +1,85 @@
 .InteractButtonsCardFeed{
     display: flex;
+    align-content: center;
+    justify-content: center;
 
     gap: 0 0.5rem;
     
-    color: #000;
+    color: #fff;
+
+    button{
+        cursor: pointer;
+    }
 }
 
 
-.Heart{
-    fill: currentColor;
-    transition: color 0.15s ease-in-out, fill 0.15s ease-in-out;
+.unLikedHeartWithNoAnimation{
+    fill: none;
 }
-.Heart:hover{
+.unLikedHeart{
+    fill: none;
+    animation: descurtir 325ms ease-out 1;
+}
+
+@keyframes descurtir {
+    from{
+        transform: scale(0.6);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+
+@keyframes curtir {
+    from{
+        transform: scale(0.6);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+
+.likedHeartWithNoAnimation{
     fill: #fc2424;
     color: #fc2424;
-}
-
-
-.BookMarked{
     fill: currentColor;
-    transition: color 0.15s ease-in-out, fill 0.15s ease-in-out;
 }
-.BookMarked:hover{
-    color: #25d634;
+.likedHeart{
+    fill: #fc2424;
+    color: #fc2424;
+    fill: currentColor;
+    animation: curtir 325ms ease-out 1 forwards;
+}
+
+.unSaved{
+    fill: none;
+}
+.saved{
+    fill: #fff;
+    color: #fff;
+    animation: salvar 300ms ease-in-out forwards;
+    fill: currentColor;
+}
+
+@keyframes salvar {
+    from{
+        transform: scale(0.8);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+    to{
+        transform: scale(1);
+    }
 }
 
 
 .Share2{
-    fill: currentColor;
-    transition: color 0.15s ease-in-out, fill 0.15s ease-in-out;
-}
-.Share2:hover{
-    color: #25d634;
+    fill: none;
 }

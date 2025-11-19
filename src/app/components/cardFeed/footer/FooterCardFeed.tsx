@@ -15,9 +15,9 @@ export default function FooterCardFeed({buttomSubmitLink}: FooterCardFeedProps){
     return(
         <div className={Styles.FooterCardFeed}>
 
-            <div><InteractButtonsCardFeed /></div>
+            <InteractButtonsCardFeed />
 
-            <div><ButtomSubmitCardFeed submitLink={buttomSubmitLink}/></div>
+            <ButtomSubmitCardFeed submitLink={buttomSubmitLink}/>
             
         </div>
     )

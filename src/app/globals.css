@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 :root {
   --background: #3E7B43;
   --foreground: #FFFFFF;
@@ -7,6 +8,8 @@
 
   --card-light: #A682B4;
   --card-dark: rgb(var(--card-light));
+
+  font-size: clamp(10px, 2vw, 16px);
   
 }
 
@@ -19,7 +22,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #3E7B43;
+    --background: #121212;
     --foreground: #FFFFFF;
   }
 }

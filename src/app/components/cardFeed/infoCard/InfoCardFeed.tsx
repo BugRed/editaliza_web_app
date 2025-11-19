@@ -21,7 +21,7 @@ export default function InfoCardFeed({title, proposer, date, linkProposer}: Info
             </Link>
 
             <div className={Styles.date}>
-                Data de postagem <CalendarDays size={14}/>
+                <p>Data de postagem <CalendarDays size={14}/></p>
                 <span className={Styles.opacityController}>
                   <DateBox date={SafeDate(date)} /> 
                   {/* Agora sempre chega string legível */}

@@ -4,14 +4,16 @@
     
     width: 6.25rem;
     height: 1.55rem;
-    border-radius: 16px;
+    border-radius: 4px;
     
     margin: 1rem;
 
-    background-color: #F3D55C;
+    background-color: #2d2d2d;
 
     align-items: center;
     justify-content: center;
+
+    box-shadow: 0 0 15px 1px var(--cor-dinamica);
 }
 
 .PercentCardFeed span{

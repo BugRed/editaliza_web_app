@@ -2,7 +2,7 @@
 
  
 
-import AuthForm from "@/components/authForm"; 
+import { AuthForm } from "@/components/authForm"; 
 
 import { useRouter } from "next/navigation"; 
 

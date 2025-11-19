@@ -1,0 +1,22 @@
+.footer{
+    position: fixed;
+    bottom: 0;
+
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+
+    background-color: #1d1d1d;
+
+    height: 4.25rem;
+    width: 100%;
+
+    gap: 2.5rem;
+
+    z-index: 1000;
+
+    button:hover{
+        cursor: pointer;
+        opacity: 60%;
+    }
+}

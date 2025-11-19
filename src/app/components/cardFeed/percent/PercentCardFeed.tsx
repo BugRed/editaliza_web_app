@@ -10,7 +10,7 @@ type PercentCardFeedProps = {
 
 export default function PercentCardFeed({percent, cor}: PercentCardFeedProps){
     return(
-        <div className={Styles.PercentCardFeed}>
+        <div className={Styles.PercentCardFeed} style={{'--cor-dinamica': cor} as React.CSSProperties}>
             {/* Propriedade cor recebe qualquer forma de declarar cores */}
             <span style={{'--cor-dinamica': cor} as React.CSSProperties} >{percent}% Match</span>        
         </div>
