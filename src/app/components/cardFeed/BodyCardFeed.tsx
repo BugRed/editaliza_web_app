@@ -77,11 +77,13 @@ export default function BodyCardFeed({
         {/* Link para formulario de inscrição */}
         <FooterCardFeed buttomSubmitLink={buttomSubmitLink} />
       </div>
-      {isMoreOpen && (
+      {isMoreOpen ? (
         <>
           <div className={styles.overlay} onClick={() => setOpenMore(!isMoreOpen)}></div>
-          <More />
+          <More isSaved={false} isOpen={true}/>
         </>
+        ) : (
+          <More isSaved={false} isOpen={false} />
         )}
     </div>
   );

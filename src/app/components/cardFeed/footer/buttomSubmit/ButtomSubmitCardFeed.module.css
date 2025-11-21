@@ -7,12 +7,14 @@
     height: 2rem;
     border-radius: 4px;
     
-    background-color: #BD86FC;
+    background-color: var(--submit-bg-color);
     
     gap: 0.45rem;
     font-weight: bold;
     
     color: black;
+
+    user-select: none;
 
 }
 

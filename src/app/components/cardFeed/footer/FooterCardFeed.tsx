@@ -8,14 +8,16 @@ import Styles from './FooterCardFeed.module.css'
 
 type FooterCardFeedProps={
     buttomSubmitLink?: string;
+    saved ?: boolean;
+    liked ?: boolean;
 }
 
 
-export default function FooterCardFeed({buttomSubmitLink}: FooterCardFeedProps){
+export default function FooterCardFeed({buttomSubmitLink, liked, saved}: FooterCardFeedProps){
     return(
         <div className={Styles.FooterCardFeed}>
 
-            <InteractButtonsCardFeed />
+            <InteractButtonsCardFeed liked={liked} saved={saved}/>
 
             <ButtomSubmitCardFeed submitLink={buttomSubmitLink}/>
             

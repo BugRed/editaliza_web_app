@@ -21,6 +21,19 @@
     animation: descurtir 325ms ease-out 1;
 }
 
+.likedHeartWithNoAnimation{
+    fill: #fc2424;
+    color: #fc2424;
+    fill: currentColor;
+}
+
+.likedHeart{
+    fill: #fc2424;
+    color: #fc2424;
+    fill: currentColor;
+    animation: curtir 325ms ease-out 1 forwards;
+}
+
 @keyframes descurtir {
     from{
         transform: scale(0.6);
@@ -45,17 +58,6 @@
     }
 }
 
-.likedHeartWithNoAnimation{
-    fill: #fc2424;
-    color: #fc2424;
-    fill: currentColor;
-}
-.likedHeart{
-    fill: #fc2424;
-    color: #fc2424;
-    fill: currentColor;
-    animation: curtir 325ms ease-out 1 forwards;
-}
 
 .unSaved{
     fill: none;

@@ -194,7 +194,7 @@ export default function FeedPage() {
                 <div key={edital.id} className="my-10">
                   <BodyCardFeed 
                     percent="30" 
-                    colorPercent="#F6B208" 
+                    colorPercent="#F2a900" 
                     coverImage={edital.imgCoverUrl || '/assets/placeholder.png'} 
                     title={edital.title}
                     proposer={proposer.name}

@@ -1,4 +1,6 @@
 .footer{
+    background-color: var(--header-footer-bg-color);
+    
     position: fixed;
     bottom: 0;
 
@@ -6,7 +8,6 @@
     justify-items: center;
     justify-content: center;
 
-    background-color: #1d1d1d;
 
     height: 4.25rem;
     width: 100%;

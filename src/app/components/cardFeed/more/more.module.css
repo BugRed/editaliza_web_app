@@ -1,23 +1,50 @@
+
 .more{
     position: fixed;
-    bottom: 4.25rem;
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: #4d4d4d;
+    background-color: var(--more-bg-color);
     border-radius: 8px 8px 0 0;
     overflow: hidden;
     padding: 0 0 1.5rem 0;
     transition: bottom 2s ease;
     z-index: 1000;
+    
     button{
-      background-color: #4d4d4d;
-      border: none;
-    }
-    .hide{
-        bottom: -20rem;
+        background-color: var(--more-bg-color);
+        border: none;
     }
 }
+.openMoreAnimation{
+    animation: subirMore 300ms ease forwards;
+    bottom: 4.25rem;
+}
+
+.closeMoreAnimation{
+    animation: descerMore 300ms ease forwards;
+    bottom: -20rem;
+}
+
+
+@keyframes subirMore {
+    from{
+        transform: translateY(20rem);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+@keyframes descerMore {
+    from{
+        transform: translateY(-20rem);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+
+
 .action{
     display: flex;
     padding: 1rem;
@@ -26,14 +53,15 @@
     transition: background-color 300ms ease;
 }
 .action:hover{
-     background-color: #5d5d5d;
+     background-color: var(--more-hover-color);
 }
 
 
 .holdButton{
     display: flex;
     justify-content: center; 
-    padding: 0.4rem 0 1rem 0;
+    cursor: grab;
+    padding: 0.75rem 0 1.5rem 0;
     width: 100%;
 }
 
