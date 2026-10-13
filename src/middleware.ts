@@ -53,7 +53,7 @@ export async function middleware(request: NextRequest) {
           // Se já estiver autenticado, redirecionar para home
           return NextResponse.redirect(new URL('/', request.url));
         }
-      } catch (error) {
+      } catch {
         // Token inválido, permitir acesso à rota pública
         return NextResponse.next();
       }
@@ -74,7 +74,7 @@ export async function middleware(request: NextRequest) {
       throw new Error('Token inválido');
     }
     return NextResponse.next();
-  } catch (error) {
+  } catch {
     const response = NextResponse.redirect(new URL('/login', request.url));
     response.cookies.delete('auth-token');
     return response;

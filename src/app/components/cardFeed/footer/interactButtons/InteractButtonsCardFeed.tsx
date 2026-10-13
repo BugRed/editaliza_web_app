@@ -21,7 +21,6 @@ export default function InteractButtonsCardFeed({liked, saved}: InteractButtonsC
   const [hasLikeInteracted, setHasLikeInteracted] = useState(false);
   const [like, setLiked] = useState(liked);
 
-  const [hasSaveInteracted, setHasSaveInteracted] = useState(false);
   const [save, setSaved] = useState(saved);
 
   function handleLike(){
@@ -30,7 +29,6 @@ export default function InteractButtonsCardFeed({liked, saved}: InteractButtonsC
   }
   
   function handleSave(){
-    setHasSaveInteracted(true);
     setSaved(!save);
   }
     return(

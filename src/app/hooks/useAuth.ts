@@ -63,28 +63,29 @@ export function AuthProvider({ children }: AuthProviderProps) {
     document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
   };
 
-  // Verificar autenticação ao carregar
-  const checkAuth = async () => {
-    try {
-      const token = getCookie('auth-token');
-      
-      if (token && await authService.verifyToken(token)) {
-        const userData = await authService.getCurrentUser(token);
-        setUser(userData);
-      } else {
+  // Verificar autenticação ao carregar — dentro do effect para rodar
+  // só na montagem, sem reabrir sessão a cada render
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const token = getCookie('auth-token');
+
+        if (token && await authService.verifyToken(token)) {
+          const userData = await authService.getCurrentUser(token);
+          setUser(userData);
+        } else {
+          deleteCookie('auth-token');
+          setUser(null);
+        }
+      } catch (error) {
+        console.error('Auth check error:', error);
         deleteCookie('auth-token');
         setUser(null);
+      } finally {
+        setIsLoading(false);
       }
-    } catch (error) {
-      console.error('Auth check error:', error);
-      deleteCookie('auth-token');
-      setUser(null);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    };
 
-  useEffect(() => {
     checkAuth();
   }, []);
 

@@ -1,7 +1,6 @@
 //ARRAY DE TAGS ESCOLHIDA PELO PROPOSER PARA O CARD
 
 import TagData from '@/app/types/TagData';
-import Styles from './TagsCardFeed.module.css'
 
 type tagsProps ={
     tags: TagData;

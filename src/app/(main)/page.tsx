@@ -1,76 +1,13 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useState, useEffect } from "react";
-import {
-  ArrowRight,
-  BookMarked,
-  CalendarDays,
-  ExternalLink,
-  Heart,
-  Share2,
-  Mail,
-  Tags,
-  Home,
-  Bookmark,
-  User,
-  Settings,
-  HelpCircle,
-  UserCircle2,
-  Menu
-} from "lucide-react";
 
-import { Edital, IEdital } from "@/app/types/Edital";
+import { IEdital } from "@/app/types/Edital";
 import { Proposer } from "@/app/types/Proposer";
 import { mensagemDeErro } from "@/app/lib/erros";
 import BodyCardFeed from "@/app/components/cardFeed/BodyCardFeed";
 import Header from "../components/header/header";
 import Footer from "../components/footer/footer";
-import TagData from "@/app/types/TagData";
-
-// Componente de imagem com fallback
-const SafeImage = ({
-  src,
-  alt,
-  className,
-  width,
-  height,
-  fill,
-  sizes,
-  priority,
-  fallbackSrc = "/assets/placeholder.png",
-}: {
-  src: string;
-  alt: string;
-  className?: string;
-  width?: number;
-  height?: number;
-  fill?: boolean;
-  sizes?: string;
-  priority?: boolean;
-  fallbackSrc?: string;
-}) => {
-  const [imgSrc, setImgSrc] = useState(src);
-
-  return (
-    <Image
-      src={imgSrc}
-      alt={alt}
-      width={width}
-      height={height}
-      fill={fill}
-      className={className}
-      sizes={sizes}
-      priority={priority}
-      onError={() => {
-        console.log(`Erro ao carregar imagem: ${imgSrc}`);
-        setImgSrc(fallbackSrc);
-      }}
-    />
-  );
-};
-
 
 // Componente principal da página Feed
 export default function FeedPage() {

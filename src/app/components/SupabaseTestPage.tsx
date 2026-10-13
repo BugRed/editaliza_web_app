@@ -1,10 +1,9 @@
-import { supabase } from '@/app/lib/supabase/client';
 import Artist from '@/app/types/Artist';
 import Edital from '@/app/types/Edital';
 import Proposer from '@/app/types/Proposer';
 import TagData from '@/app/types/TagData';
 import UserData from '@/app/types/UserData';
-import { GetStaticProps, NextPage } from 'next';
+import { NextPage } from 'next';
 
 
 interface SupabaseTestPageProps {
