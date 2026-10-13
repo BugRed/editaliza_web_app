@@ -29,13 +29,21 @@ O que existe e funciona hoje:
   mão.
 - Testes: só dois scripts Selenium em Python; nenhum teste de unidade/API.
 
-Problemas graves conhecidos:
+Problemas graves conhecidos (estado após a W0, branch `bugfix/auth-01`):
 
-1. **`GET /api/users` devolve `select('*')` com a coluna `password` em texto puro**, e o
-   matcher do middleware exclui `/api` — qualquer pessoa lista usuários e senhas.
-2. Senhas armazenadas em texto puro; sessão falsificável.
-3. Env sem validação; cliente Supabase anon exposto no browser lendo tabelas inteiras.
-4. Sem CI do app, sem migrations, sem deploy.
+1. ~~`GET /api/users` devolve `select('*')` com a coluna `password` em texto puro~~
+   **Fechado na W0**: selects explícitos sem `password`/`cpf` em todas as rotas que leem
+   `user_data`/`artist_data`/`proposer_data`; `/api` exige sessão (401 sem cookie,
+   exceto `/api/health`). Detalhe descoberto na W0: o `middleware.ts` na raiz **nunca
+   rodou** (Next 15 com app em `src/` só lê `src/middleware.ts`) — movido, e as páginas
+   passaram a exigir sessão de verdade.
+2. Senhas armazenadas em texto puro; sessão falsificável — **exposição fechada na W0**;
+   hash e token assinado só com Better Auth (T1.2).
+3. Env sem validação; cliente Supabase anon exposto no browser lendo tabelas inteiras —
+   **env validada com zod na W0** (`src/shared/lib/env.ts`, falha no boot); anon no
+   browser segue até a T1.3.
+4. Sem CI do app, sem migrations, sem deploy — **CI criado na W0** (lint+typecheck+build
+   em PR e push); migrations T1.1, deploy T1.4.
 
 ## 3. Decisões fechadas
 
