@@ -1,0 +1,48 @@
+# Verificação de pull request (ADR-0012).
+#
+# Por que existe: sonar.yml roda no push para `dev` e deploy.yml no push para
+# `main` — nenhum roda em pull_request. Sem este arquivo, um PR chega ao revisor
+# sem nenhuma verificação automática, e lint/tipo/teste só falham depois do
+# merge. Os passos são os mesmos do job `quality` do deploy.yml, de propósito.
+name: Pull request
+
+on:
+  pull_request:
+    branches: [main, dev]
+
+# Push novo na mesma PR cancela a execução anterior: o resultado antigo já não
+# descreve o código que está sendo revisado.
+concurrency:
+  group: pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Format check
+        run: yarn format:check
+
+      - name: Type check
+        run: yarn typecheck
+
+      - name: Lint
+        run: yarn lint
+
+      # test:cov e não test: o lcov alimenta o Sonar e o piso de cobertura
+      # (ratchet, ADR-0006) precisa ser exercitado aqui. A reescrita do
+      # vitest.config.ts pelo autoUpdate é descartada no CI — ver ADR-0012.
+      - name: Tests with coverage
+        run: yarn test:cov
