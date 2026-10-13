@@ -1,0 +1,48 @@
+# CI do app (ADR-0012: verificação automática antes do revisor).
+#
+# Roda lint + typecheck + build em pull request e push para master — sem isto,
+# quebra só aparece depois do merge. Sem passo de teste de propósito: o repo
+# ainda não tem suite (nasce na W2/T2.3); quando existir, entra aqui.
+# O build recebe env de placeholder porque src/shared/lib/env.ts valida as
+# variáveis no boot — sem elas o próprio `next build` falha.
+name: CI
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+
+# Push novo no mesmo PR cancela a execução anterior: o resultado antigo já não
+# descreve o código que está sendo revisado.
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: https://ci-placeholder.supabase.co
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ci-placeholder

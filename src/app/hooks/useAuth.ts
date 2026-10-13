@@ -13,7 +13,7 @@ import { authService } from '../services/auth-service';
 
 // Interfaces
 interface User {
-  id: string;
+  id: number; // id de user_data no banco é numérico
   email: string;
   name?: string;
 }

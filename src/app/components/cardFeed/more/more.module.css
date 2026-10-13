@@ -1,0 +1,73 @@
+
+.more{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--more-bg-color);
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    padding: 0 0 1.5rem 0;
+    transition: bottom 2s ease;
+    z-index: 1000;
+    
+    button{
+        background-color: var(--more-bg-color);
+        border: none;
+    }
+}
+.openMoreAnimation{
+    animation: subirMore 300ms ease forwards;
+    bottom: 4.25rem;
+}
+
+.closeMoreAnimation{
+    animation: descerMore 300ms ease forwards;
+    bottom: -20rem;
+}
+
+
+@keyframes subirMore {
+    from{
+        transform: translateY(20rem);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+@keyframes descerMore {
+    from{
+        transform: translateY(-20rem);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+
+
+.action{
+    display: flex;
+    padding: 1rem;
+    gap: 0.5rem;
+    font-weight: bold;
+    transition: background-color 300ms ease;
+}
+.action:hover{
+     background-color: var(--more-hover-color);
+}
+
+
+.holdButton{
+    display: flex;
+    justify-content: center; 
+    cursor: grab;
+    padding: 0.75rem 0 1.5rem 0;
+    width: 100%;
+}
+
+.holdMore{
+    width: 50px;
+    height: 4px;
+    background: #fff;
+    border-radius: 16px;
+}

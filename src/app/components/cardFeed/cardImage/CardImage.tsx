@@ -15,13 +15,7 @@ export default function CardImage({img}: CardProps) {
 
     return(
         <div className={Styles.cardImage}>
-            <Image 
-                width={400}
-                height={160}
-                src={safeImg}
-                alt='Imagem Card Feed'
-                layout="responsive"
-            />
+            <img src={safeImg} alt="imagem card" />
         </div>
     )
 }

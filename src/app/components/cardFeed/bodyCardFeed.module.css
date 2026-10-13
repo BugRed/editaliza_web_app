@@ -6,8 +6,61 @@
     
     height: 24rem;
     width: 30rem;
-    border-radius: 12px;
+    border-radius: 4px;
     
-    background-color: #A682B4;
+    background-color: var(--bg-card);
+
+    animation: startFeed 500ms linear 1 forwards;
     
+}
+@keyframes startFeed {
+    from{
+        opacity: 0%;
+        transform: translateY(-50px);
+    }
+
+    to{
+        transform: translateY(0);
+    }
+}
+
+.fullContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 5;
+}
+
+.moreButton{
+    position: absolute;
+    top: 55%;
+    right: 0.8rem;
+    cursor: pointer;
+}
+
+
+.tagsCardFeed{
+    display: flex;
+    
+    padding: 0.25rem 0 0 1rem;
+    gap: 0.65rem;
+}
+
+.tagsCardFeed p{
+    
+    color: var(--tag-color-card);
+    font-size: 0.75rem;
+    text-align: center;
+    
+    border-radius: 2px;
+    
+    padding: 0 1rem ;
+    
+    background-color: var(--tag-bg-card);
 }

@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +40,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# estado derivado do kit (nunca versionado — ver CLAUDE.md)
+.claude/.cache/
+
+# clone local do repo-fonte do kit (referência para sync, tem .git próprio)
+/fh-kit-estado/

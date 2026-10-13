@@ -82,7 +82,7 @@ export interface UpdateTagData {
 }
 
 // Tipo para resposta da API
-export interface TagDataResponse extends ITagData {}
+export type TagDataResponse = ITagData;
 
 // Enum para cores predefinidas (opcional)
 export enum TagColors {

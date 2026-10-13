@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { authService } from './src/app/services/auth-service';
+import { authService } from './app/services/auth-service';
 
 // Rotas públicas que NÃO requerem autenticação
 const publicRoutes = [
@@ -8,9 +8,27 @@ const publicRoutes = [
   '/cadastro',
 ];
 
+// Rotas de API abertas (liveness para deploy e cron)
+const publicApiRoutes = ['/api/health'];
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const token = request.cookies.get('auth-token')?.value;
+
+  // API responde 401 em JSON, nunca redirect: cliente de API não deve
+  // seguir para /login e receber HTML de status 200
+  if (pathname.startsWith('/api')) {
+    if (publicApiRoutes.some((route) => pathname === route)) {
+      return NextResponse.next();
+    }
+    const isAuthenticated = token
+      ? await authService.verifyToken(token)
+      : false;
+    if (!isAuthenticated) {
+      return NextResponse.json({ error: 'Não autenticado.' }, { status: 401 });
+    }
+    return NextResponse.next();
+  }
 
   // Rotas estáticas - permitir acesso
   if (
@@ -65,6 +83,6 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    '/((?!_next/static|_next/image|favicon.ico).*)',
   ],
 };

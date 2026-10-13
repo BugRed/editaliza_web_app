@@ -131,6 +131,6 @@ export interface UpdateProposerData {
 }
 
 // Tipo para resposta da API (sem senha)
-export interface ProposerResponse extends Omit<IProposer, 'password'> {}
+export type ProposerResponse = Omit<IProposer, 'password'>;
 
 export default Proposer;
