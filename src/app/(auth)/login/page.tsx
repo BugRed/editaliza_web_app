@@ -3,7 +3,6 @@
 import AuthForm from "../../components/forms/AuthForm";
 import { useAuth } from "../../hooks/useAuth";
 import { useRouter } from "next/navigation";
-import { FaGoogle, FaMicrosoft } from "react-icons/fa";
 import Image from "next/image";
 import { useEffect } from "react";
 
@@ -35,22 +34,8 @@ export default function LoginPage() {
         {/* Formulário */}
         <AuthForm onSuccess={() => router.push("/")} />
 
-        {/* Login social */}
-        <p className="mt-4 text-gray-200">Ou utilize:</p>
-        <div className="flex space-x-6 mt-2">
-          <button 
-            onClick={() => router.push("/login/google")} 
-            className="text-3xl text-white hover:text-red-400"
-          >
-            <FaGoogle />
-          </button>
-          <button 
-            onClick={() => router.push("/login/microsoft")} 
-            className="text-3xl text-white hover:text-blue-400"
-          >
-            <FaMicrosoft />
-          </button>
-        </div>
+        {/* OAuth Google/Microsoft volta junto com o Better Auth (T1.2) — os
+            botões anteriores apontavam para páginas falsas de e-mail/senha */}
 
         {/* Link de cadastro */}
         <p className="mt-6 text-white text-sm">

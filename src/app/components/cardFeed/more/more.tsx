@@ -15,8 +15,10 @@ type MoreProps = {
 }
 
 export default function More({isSaved, isOpen}: MoreProps){
-    const [ isCardSaved, setIsCardSaved ] = isSaved ? useState(true) : useState(false);
-    const [ isMoreOpen, setIsMoreOpen] = isOpen ? useState(true) : useState(false);
+    // Hooks sempre incondicionais: chamá-los por condicional troca a ordem
+    // entre renders e crasha o componente
+    const [ isCardSaved, setIsCardSaved ] = useState(isSaved);
+    const [ isMoreOpen, setIsMoreOpen] = useState(isOpen);
 
     const [ isMoreDrag, setIsMoreDrag ] = useState(false);
     const moreDivRef = useRef<HTMLDivElement | null> (null);
