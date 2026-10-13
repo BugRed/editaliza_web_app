@@ -2,6 +2,13 @@
 
 Impacto externo por entrega; app não versiona build. Novo no topo.
 
+## 2026-10-13 — fix/dep-01: deploy na Vercel desbloqueado
+
+- **Next.js 15.4.6 → 15.5.27** — a Vercel bloqueou o build por versão vulnerável. A linha 15.4.x não recebe patch desde jan/2026; 15.5 é o backport mantido do v15 (cobre React2Shell + releases de segurança de mai e ago/2026). `eslint-config-next` na mesma versão. Aviso: 15.5 deprecia `next lint` (removido no 16 — codemod `next-lint-to-eslint-cli` quando do upgrade).
+- **`allowScripts` no `package.json`** — npm ≥ 12 só executa install script de pacote aprovado; os três da toolchain (`@tailwindcss/oxide`, `sharp`, `unrs-resolver`) aprovados pinados por versão, sumindo os warnings de install-scripts do build.
+- **`npm audit` de 25 para 7 advisories** — bumps de lockfile (`tar` crítica, `ws`, `brace-expansion`, `picomatch`, `postcss`). Os 7 que restam são só-dev ou aninhados ao próprio `next` (dívida registrada).
+- **Lint zerado** (43 warnings em 12 arquivos): imports mortos de ícones/tipos, `SafeImage` duplicado e nunca usado em `/` e `/teste`, tipos `HeaderProps`/`FooterProps` órfãos, estados mortos (`hasSaveInteracted`, `setIsMoreOpen`), `catch (error)` sem uso, `checkAuth` movido para dentro do `useEffect` (mesma semântica, cala o `exhaustive-deps`). ESLint ganha `ignoreRestSiblings` para o padrão omit-via-rest. Build local: ✓ compilado sem warnings.
+
 ## 2026-10-13 — W1/T1.1: migrations versionadas (spec dados/0001, `chore/db-01`)
 
 - **Schema versionado no repo** — o banco deixa de viver só no console do Supabase: `db/migrations/0001_baseline.sql` (6 tabelas) + runner `db/migrate.mjs` (idempotente, transacional, registro em `_migrations`) + seed `db/seed.mjs` dos mocks (idempotente). Scripts `npm run db:migrate` e `npm run db:seed`.
