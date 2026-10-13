@@ -68,7 +68,7 @@ export abstract class UserData implements IUserData {
 
   // Método estático para criar instância a partir de dados
   static fromData<T extends UserData>(
-    this: new (...args: any[]) => T,
+    this: new () => T,
     data: Partial<IUserData>
   ): T {
     const instance = new this();
@@ -94,6 +94,6 @@ export interface UpdateUserData {
 }
 
 // Tipo para resposta da API (sem senha)
-export interface UserDataResponse extends Omit<IUserData, 'password'> {}
+export type UserDataResponse = Omit<IUserData, 'password'>;
 
 export default UserData;

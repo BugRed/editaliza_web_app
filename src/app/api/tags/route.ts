@@ -12,7 +12,7 @@ export async function GET() {
     }
     
     return NextResponse.json(data, { status: 200 });
-  } catch (error: any) {
+  } catch {
     return NextResponse.json(
       { error: 'Falha ao carregar dados de tags.' },
       { status: 500 }

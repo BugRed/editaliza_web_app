@@ -23,6 +23,7 @@ import {
 
 import { Edital, IEdital } from "@/app/types/Edital";
 import { Proposer } from "@/app/types/Proposer";
+import { mensagemDeErro } from "@/app/lib/erros";
 import BodyCardFeed from "@/app/components/cardFeed/BodyCardFeed";
 import Header from "../components/header/header";
 import Footer from "../components/footer/footer";
@@ -117,8 +118,8 @@ export default function FeedPage() {
         const proposersData: Proposer[] = await proposersRes.json();
         setProposers(proposersData);
         
-      } catch (err: any) {
-        setError(err.message);
+      } catch (err) {
+        setError(mensagemDeErro(err));
         console.error("Falha ao buscar dados da API:", err);
       } finally {
         setLoading(false);

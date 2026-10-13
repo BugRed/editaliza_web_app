@@ -25,6 +25,7 @@ import { Edital, IEdital } from "@/app/types/Edital";
 import { Proposer } from "@/app/types/Proposer";
 import BodyCardFeed from "@/app/components/cardFeed/BodyCardFeed";
 import TagData from "@/app/types/TagData";
+import { mensagemDeErro } from "@/app/lib/erros";
 
 // Componente de imagem com fallback
 const SafeImage = ({
@@ -213,8 +214,8 @@ export default function FeedPage() {
         const proposersData: Proposer[] = await proposersRes.json();
         setProposers(proposersData);
         
-      } catch (err: any) {
-        setError(err.message);
+      } catch (err) {
+        setError(mensagemDeErro(err));
         console.error("Falha ao buscar dados da API:", err);
       } finally {
         setLoading(false);

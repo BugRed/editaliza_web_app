@@ -229,7 +229,7 @@ export interface UpdateEditalData {
 }
 
 // Tipo para resposta da API
-export interface EditalResponse extends IEdital {}
+export type EditalResponse = IEdital;
 
 // Tipo para edital resumido (para listagens)
 export interface EditalSummary {

@@ -24,9 +24,8 @@ import { UserData } from "@/app/types/UserData";
 import { TagData } from "@/app/types/TagData";
 import { Proposer } from "@/app/types/Proposer";
 import { Artist } from "@/app/types/Artist";
-import { log } from "console";
-
 import BodyCardFeed from '@/app/components/cardFeed/BodyCardFeed';
+import { mensagemDeErro } from "@/app/lib/erros";
 
 // Componente de imagem com fallback
 const SafeImage = ({ 
@@ -98,8 +97,8 @@ export default function FeedPage() {
         const rawData = await res.json();
         // console.log('Dados recebidos da API:', rawData); // Debug
         setAllData(rawData as AllData);
-      } catch (err: any) {
-        setError(err.message);
+      } catch (err) {
+        setError(mensagemDeErro(err));
         console.error("Falha ao buscar dados da API:", err);
       } finally {
         setLoading(false);

@@ -9,11 +9,11 @@ export interface AuthResponse {
   success: boolean;
   message?: string;
   token?: string;
-  user?: any;
+  user?: { id: number; email: string; name: string };
 }
 
 // Função simples para gerar um token (alternativa ao JWT)
-function generateSimpleToken(userId: string, email: string): string {
+function generateSimpleToken(userId: string | number, email: string): string {
   const timestamp = Date.now();
   const data = `${userId}-${email}-${timestamp}`;
   

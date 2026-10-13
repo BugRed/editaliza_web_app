@@ -218,7 +218,7 @@ export interface UpdateArtistData {
 }
 
 // Tipo para resposta da API (sem senha e CPF)
-export interface ArtistResponse extends Omit<IArtist, 'password' | 'cpf'> {}
+export type ArtistResponse = Omit<IArtist, 'password' | 'cpf'>;
 
 // Tipo para resposta pública do artista
 export interface PublicArtistData {
@@ -231,6 +231,6 @@ export interface PublicArtistData {
 }
 
 // Tipo para perfil completo do artista (com CPF para admins)
-export interface ArtistProfile extends Omit<IArtist, 'password'> {}
+export type ArtistProfile = Omit<IArtist, 'password'>;
 
 export default Artist;

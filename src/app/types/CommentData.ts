@@ -206,7 +206,7 @@ export interface UpdateCommentData {
 }
 
 // Tipo para resposta da API
-export interface CommentResponse extends ICommentData {}
+export type CommentResponse = ICommentData;
 
 // Tipo para comentário público (sem dados sensíveis)
 export interface PublicCommentData {
