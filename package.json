@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "node db/migrate.mjs",
+    "db:seed": "node db/seed.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.56.0",
@@ -15,6 +17,7 @@
     "lucide-react": "^0.539.0",
     "next": "15.4.6",
     "phosphor-icons": "^1.4.2",
+    "postgres": "^3.4.9",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-icons": "^5.5.0",
@@ -27,6 +30,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "csv-parse": "^7.0.3",
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
     "tailwindcss": "^4",

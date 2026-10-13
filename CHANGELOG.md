@@ -2,6 +2,12 @@
 
 Impacto externo por entrega; app não versiona build. Novo no topo.
 
+## 2026-10-13 — W1/T1.1: migrations versionadas (spec dados/0001, `chore/db-01`)
+
+- **Schema versionado no repo** — o banco deixa de viver só no console do Supabase: `db/migrations/0001_baseline.sql` (6 tabelas) + runner `db/migrate.mjs` (idempotente, transacional, registro em `_migrations`) + seed `db/seed.mjs` dos mocks (idempotente). Scripts `npm run db:migrate` e `npm run db:seed`.
+- Baseline **sem FK de propósito** (os próprios dados reais têm referências penduradas) e derivado dos CSVs + tipos; fidelidade ao schema real fica de conferência com rede (dívida registrada).
+- `mock/artist_data.csv` e `mock/editals.csv` normalizados para CSV válido — nenhum parser lia os originais (aspas internas sem escape, coluna vazia extra); valor parseado idêntico.
+
 ## 2026-10-13 — W0: correções urgentes e higiene (spec 0001, `bugfix/auth-01`)
 
 - **`/api/*` exige sessão** — 401 em JSON sem cookie; `/api/health` (nova) é a única aberta, para liveness.
