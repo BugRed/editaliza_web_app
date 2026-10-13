@@ -24,6 +24,8 @@ uma nem outra — é ADR.
 | 2026-10-08 | kit de estado | `pr.yml` não foi validado por parser de YAML (pyyaml ausente na máquina) | O GitHub valida no primeiro push; ou `yamllint` local |
 | 2026-10-13 | W0 0001 | Selects sem `password`/`cpf` **não exercitados contra o banco real** — ambiente de dev sem rede até o Supabase; colunas derivadas dos CSVs carregados à mão + tipos | Com rede: logar, abrir `/api/users`, `/api/data`, `/api/artists`, `/api/proposers` e conferir 200 sem os campos |
 | 2026-10-13 | W0 0001 | CI novo (pr.yml reescrito na W0) **nunca rodou num PR real**; ADR-0012 segue `Proposto` | Primeiro push + PR; conferir o check verde e aceitar o ADR |
+| 2026-10-13 | T1.1 dados/0001 | Baseline v1 **derivido** (CSVs + tipos), não conferido contra o schema real do Supabase (sem rede no ambiente de dev) | Primeiro acesso com rede (ou export do console) confere tipos, defaults e constraints; divergência vira migration |
+| 2026-10-13 | T1.1 dados/0001 | Runner e seed exercitados só em Postgres 17 local — `prepare:false` para o pooler do Supabase (R8) nunca rodou contra o pooler real | Primeira `db:migrate`/`db:seed` no Supabase confirma; ADR do pooler fecha na T1.2 |
 
 
 ## Becos sem saída

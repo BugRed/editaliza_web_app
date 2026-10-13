@@ -12,11 +12,12 @@ de feature mora na spec (`docs/features/`), o que já foi entregue mora no `CHAN
 
 | Feature | Spec | Bloqueio |
 |---|---|---|
-| W0 — correções urgentes e higiene | [0001-w0-correcoes-urgentes](docs/features/seguranca/0001-w0-correcoes-urgentes.md) | commits feitos; falta push/PR (usuário) e conferir os selects contra o banco real com rede |
+| W0 — correções urgentes e higiene | [0001-w0-correcoes-urgentes](docs/features/seguranca/0001-w0-correcoes-urgentes.md) | commits feitos e push ok; falta PR/merge (usuário) e conferir os selects contra o banco real com rede |
+| W1/T1.1 — migrations versionadas | [0001-migrations-versionadas](docs/features/dados/0001-migrations-versionadas.md) | commits feitos; falta push/PR (usuário); fidelidade ao schema real do Supabase pendente de rede |
 
 ## Fila (ordem de prioridade)
 
-1. W1 — T1.1 migrations → T1.2 Better Auth → T1.3 acesso server-side → T1.4 deploy
+1. W1 — T1.2 Better Auth (precisa de banco acessível p/ teste real) → T1.3 acesso server-side → T1.4 deploy
 
 ## Bloqueado por decisão do usuário
 
