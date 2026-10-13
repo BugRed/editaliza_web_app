@@ -3,24 +3,31 @@ import { NextResponse } from 'next/server';
 import { supabase } from '@/app/lib/supabase/client';
 
 // Esta função assíncrona lida com requisições HTTP do tipo GET
+
+// Colunas sensíveis (`password`, `cpf`) nunca entram no select — sem elas
+// não há o que vazar; espelham os selects das rotas dedicadas
+const USER_COLUMNS = 'id,name,email,imgUrl,createdAt,updatedAt,userType,listComment';
+const ARTIST_COLUMNS = 'id,name,email,imgUrl,createdAt,updatedAt,userType,listComment,listTags';
+const PROPOSER_COLUMNS = 'id,name,email,imgUrl,createdAt,updatedAt,userType,listComment,cnpj,listEdital';
+
 export async function GET() {
   try {
     // Busca dados da tabela 'user_data'
-    const { data: userData, error: userError } = await supabase.from('user_data').select('*');
+    const { data: userData, error: userError } = await supabase.from('user_data').select(USER_COLUMNS);
     if (userError) {
       console.error('Erro ao buscar dados de usuários:', userError);
       throw userError;
     }
 
     // Busca dados da tabela 'artists'
-    const { data: artists, error: artistError } = await supabase.from('artist_data').select('*');
+    const { data: artists, error: artistError } = await supabase.from('artist_data').select(ARTIST_COLUMNS);
     if (artistError) {
       console.error('Erro ao buscar dados de artistas:', artistError);
       throw artistError;
     }
     
     // Busca dados da tabela 'proposers'
-    const { data: proposers, error: proposerError } = await supabase.from('proposer_data').select('*');
+    const { data: proposers, error: proposerError } = await supabase.from('proposer_data').select(PROPOSER_COLUMNS);
     if (proposerError) {
       console.error('Erro ao buscar dados de proponentes:', proposerError);
       throw proposerError;
@@ -41,9 +48,9 @@ export async function GET() {
     }
 
     const { data: comments, error: commentsError } = await supabase.from('comments_data').select('*');
-    if (tagError) {
-      console.error('Erro ao buscar dados de comments:', tagError);
-      throw tagError;
+    if (commentsError) {
+      console.error('Erro ao buscar dados de comentários:', commentsError);
+      throw commentsError;
     }
 
     // Combina os dados em um único objeto para a resposta
@@ -58,7 +65,7 @@ export async function GET() {
 
     // Retorna a resposta JSON com os dados e o status 200 (OK)
     return NextResponse.json(allData, { status: 200 });
-  } catch (error: any) {
+  } catch {
     // Em caso de erro, retorna uma resposta de erro genérica com status 500
     return NextResponse.json(
       { error: 'Falha ao carregar dados. Verifique a conexão com o Supabase ou o nome das tabelas.' },
