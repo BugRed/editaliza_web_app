@@ -6,10 +6,6 @@ import {
     BookmarkIcon
  } from "lucide-react"
 
-type FooterProps = {
-    notReadNotification ?: boolean
-}
-
 export default function Footer(){
     return(
         <div className={styles.footer}>

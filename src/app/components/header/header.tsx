@@ -2,10 +2,6 @@ import styles from './header.module.css'
 
 import { BellIcon } from "lucide-react"
 
-type HeaderProps = {
-    notReadNotification ?: boolean
-}
-
 export default function Header(){
     return(
         <div className={styles.header}>

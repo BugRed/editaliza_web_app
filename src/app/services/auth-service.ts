@@ -49,7 +49,7 @@ function verifySimpleToken(token: string): { userId: string; email: string } | n
     }
     
     return { userId, email };
-  } catch (error) {
+  } catch {
     return null;
   }
 }
@@ -97,7 +97,7 @@ export const authService = {
     try {
       const decoded = verifySimpleToken(token);
       return !!decoded;
-    } catch (error) {
+    } catch {
       return false;
     }
   },
@@ -117,7 +117,7 @@ export const authService = {
         .single();
 
       return user;
-    } catch (error) {
+    } catch {
       return null;
     }
   }

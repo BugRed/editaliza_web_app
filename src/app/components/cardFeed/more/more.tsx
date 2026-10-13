@@ -1,4 +1,4 @@
-import React, { HtmlHTMLAttributes, useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styles from './more.module.css'
 
 import {
@@ -18,7 +18,8 @@ export default function More({isSaved, isOpen}: MoreProps){
     // Hooks sempre incondicionais: chamá-los por condicional troca a ordem
     // entre renders e crasha o componente
     const [ isCardSaved, setIsCardSaved ] = useState(isSaved);
-    const [ isMoreOpen, setIsMoreOpen] = useState(isOpen);
+    // isOpen só semeia o estado inicial; a animação lê isMoreOpen
+    const [ isMoreOpen ] = useState(isOpen);
 
     const [ isMoreDrag, setIsMoreDrag ] = useState(false);
     const moreDivRef = useRef<HTMLDivElement | null> (null);

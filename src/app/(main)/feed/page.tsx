@@ -6,24 +6,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import {
-  ArrowRight,
-  BookMarked,
-  CalendarDays,
-  ExternalLink,
-  Heart,
-  Share2,
-  Mail,
-  Tags,
-} from "lucide-react";
 
 // Importa os modelos de dados tipados
 import { AllData } from "@/app/types/AllDatas";
-import { Edital, IEdital } from "@/app/types/Edital";
-import { UserData } from "@/app/types/UserData";
-import { TagData } from "@/app/types/TagData";
-import { Proposer } from "@/app/types/Proposer";
-import { Artist } from "@/app/types/Artist";
+import { Edital } from "@/app/types/Edital";
 import BodyCardFeed from '@/app/components/cardFeed/BodyCardFeed';
 import { mensagemDeErro } from "@/app/lib/erros";
 
@@ -168,7 +154,6 @@ export default function FeedPage() {
   // });
 
   const editals = allData.editals
-  const proposers = allData.proposers
 
 
 

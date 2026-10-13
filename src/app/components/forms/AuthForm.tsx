@@ -28,7 +28,7 @@ export default function AuthForm({ onSuccess, isLogin = true }: AuthFormProps) {
       } else {
         onSuccess?.();
       }
-    } catch (err) {
+    } catch {
       setError('Erro interno do servidor');
     } finally {
       setIsLoading(false);
