@@ -1,5 +1,5 @@
 // src/app/feed/page.tsx
-// Este é um Server Component, que busca os dados no servidor antes da renderização.
+// Client Component: busca os dados da própria origem na montagem.
 
 "use client";
 
@@ -64,11 +64,8 @@ export default function FeedPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Determina a URL base corretamente
-        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
-                       (process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '');
-        
-        const res = await fetch(`${baseUrl}/api/data`, {
+        // Mesma origem: no navegador, relativa resolve contra a origem da página
+        const res = await fetch(`/api/data`, {
           cache: "no-store",
           headers: {
             'Content-Type': 'application/json',

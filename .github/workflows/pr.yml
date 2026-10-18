@@ -44,5 +44,5 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          NEXT_PUBLIC_SUPABASE_URL: https://ci-placeholder.supabase.co
-          NEXT_PUBLIC_SUPABASE_ANON_KEY: ci-placeholder
+          SUPABASE_URL: https://ci-placeholder.supabase.co
+          SUPABASE_API_KEY: sb_publishable_ci-placeholder

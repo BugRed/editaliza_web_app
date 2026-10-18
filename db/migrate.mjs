@@ -8,9 +8,11 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import postgres from 'postgres';
 
-const url = process.env.DATABASE_URL;
+// Migração roda no pooler em modo sessão (DIRECT_URL): o modo transação do
+// pgBouncer (DATABASE_URL) não dá as garantias de sessão que DDL espera.
+const url = process.env.DIRECT_URL ?? process.env.DATABASE_URL;
 if (!url) {
-  console.error('DATABASE_URL não definida — copie .env.example para .env e aponte para o banco.');
+  console.error('DIRECT_URL (ou DATABASE_URL) não definida — copie .env.example para .env e aponte para o banco.');
   process.exit(1);
 }
 
