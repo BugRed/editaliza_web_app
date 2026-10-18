@@ -1,4 +1,6 @@
+import 'server-only';
 import { supabase } from '../lib/supabase/client';
+import { generateToken, verifyToken } from '@/shared/lib/auth-token';
 
 export interface LoginCredentials {
   email: string;
@@ -12,52 +14,12 @@ export interface AuthResponse {
   user?: { id: number; email: string; name: string };
 }
 
-// Função simples para gerar um token (alternativa ao JWT)
-function generateSimpleToken(userId: string | number, email: string): string {
-  const timestamp = Date.now();
-  const data = `${userId}-${email}-${timestamp}`;
-  
-  // Usando btoa para base64 (simulação simples)
-  if (typeof btoa === 'function') {
-    return btoa(data);
-  }
-  
-  // Fallback para Node.js
-  return Buffer.from(data).toString('base64');
-}
-
-// Função para verificar o token
-function verifySimpleToken(token: string): { userId: string; email: string } | null {
-  try {
-    let decoded: string;
-    
-    if (typeof atob === 'function') {
-      decoded = atob(token);
-    } else {
-      decoded = Buffer.from(token, 'base64').toString();
-    }
-    
-    const [userId, email, timestamp] = decoded.split('-');
-    
-    // Verificar se o token não expirou (1 hora)
-    const tokenTime = parseInt(timestamp);
-    const currentTime = Date.now();
-    const oneHour = 60 * 60 * 1000;
-    
-    if (currentTime - tokenTime > oneHour) {
-      return null;
-    }
-    
-    return { userId, email };
-  } catch {
-    return null;
-  }
-}
-
+// Sessão W0: credencial contra user_data + token base64 (shared/lib/auth-token).
+// Server-only: consulta o Supabase com a publishable key — a UI passa pelas
+// rotas /api/auth/*, nunca por este service. Better Auth (T1.2) substitui tudo.
 export const authService = {
   async login(credentials: LoginCredentials): Promise<AuthResponse> {
     try {
-      // Verificar no Supabase se o usuário existe
       const { data: user, error } = await supabase
         .from('user_data')
         .select('*')
@@ -72,8 +34,7 @@ export const authService = {
         };
       }
 
-      // Gerar token simples
-      const token = generateSimpleToken(user.id, user.email);
+      const token = generateToken(user.id, user.email);
 
       return {
         success: true,
@@ -94,18 +55,13 @@ export const authService = {
   },
 
   async verifyToken(token: string): Promise<boolean> {
-    try {
-      const decoded = verifySimpleToken(token);
-      return !!decoded;
-    } catch {
-      return false;
-    }
+    return verifyToken(token) !== null;
   },
 
   async getCurrentUser(token: string) {
     try {
-      const decoded = verifySimpleToken(token);
-      
+      const decoded = verifyToken(token);
+
       if (!decoded) {
         return null;
       }

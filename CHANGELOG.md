@@ -2,6 +2,14 @@
 
 Impacto externo por entrega; app não versiona build. Novo no topo.
 
+## 2026-10-18 — chore/infra-01: envs server-only, fim do NEXT_PUBLIC_
+
+- **Contrato de env sem `NEXT_PUBLIC_`** — `SUPABASE_URL` + `SUPABASE_API_KEY` (publishable key `sb_publishable_…`, sucessora da anon, mesmas RLS) obrigatórias; `DATABASE_URL`/`DIRECT_URL`/`BETTER_AUTH_*` opcionais até a W1. Boot segue validando com zod no mesmo ponto. CI e `.env.example` no contrato novo; migrations passam a ler a `DIRECT_URL` (pooler sessão). Contrato vivo em [`docs/ops/ambiente.md`](docs/ops/ambiente.md).
+- **Vazamento fechado no login** — o `AuthProvider` importava `auth-service` → client Supabase dentro da página `/login`: URL + chave iam para o bundle e a consulta de credenciais rodava no navegador (senha em texto plano como filtro de PostgREST). Auth passa pela borda HTTP: `POST /api/auth/login` (pública no middleware) e `GET /api/auth/me` (protegida); `useAuth` só fala HTTP. Middleware verifica o token com módulo puro (`shared/lib/auth-token`) — o bundle do middleware cai de 90.5 kB para 34.5 kB.
+- **Guarda `server-only`** — `env.ts`, client Supabase e `auth-service` importam o pacote: import a partir de código de cliente vira erro de build, não `undefined` silencioso. Foi ela que revelou o vazamento do login. Grep no `.next/static`: zero traços de Supabase.
+- **`/`, `/feed` e `/teste` buscam a própria origem** — `NEXT_PUBLIC_BASE_URL` era configuração morta (os fallbacks já resolviam same-origin em dev e prod); fetch relativo, sem env.
+- Corrigido no caminho: `verifyToken` do W0 rejeita timestamp ausente/inválido (NaN passava) e lê email com hífen (parse a partir do fim).
+
 ## 2026-10-13 — fix/dep-01: deploy na Vercel desbloqueado
 
 - **Next.js 15.4.6 → 15.5.27** — a Vercel bloqueou o build por versão vulnerável. A linha 15.4.x não recebe patch desde jan/2026; 15.5 é o backport mantido do v15 (cobre React2Shell + releases de segurança de mai e ago/2026). `eslint-config-next` na mesma versão. Aviso: 15.5 deprecia `next lint` (removido no 16 — codemod `next-lint-to-eslint-cli` quando do upgrade).

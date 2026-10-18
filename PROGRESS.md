@@ -14,6 +14,8 @@ de feature mora na spec (`docs/features/`), o que já foi entregue mora no `CHAN
 |---|---|---|
 | W0 — correções urgentes e higiene | [0001-w0-correcoes-urgentes](docs/features/seguranca/0001-w0-correcoes-urgentes.md) | commits feitos e push ok; falta PR/merge (usuário) e conferir os selects contra o banco real com rede |
 | W1/T1.1 — migrations versionadas | [0001-migrations-versionadas](docs/features/dados/0001-migrations-versionadas.md) | commits feitos; falta push/PR (usuário); fidelidade ao schema real do Supabase pendente de rede |
+| dep-01 — deploy bloqueado por Next vulnerável | [0002-deploy-bloqueado-next](docs/features/seguranca/0002-deploy-bloqueado-next.md) | commits e push ok; falta PR/merge (usuário) e deploy Vercel com cache limpo |
+| infra-01 — envs server-only | [0001-envs-server-side](docs/features/infra/0001-envs-server-side.md) | commits feitos; falta login ponta-a-ponta com rede + push/PR (usuário); empilhada em `fix/dep-01` |
 
 ## Fila (ordem de prioridade)
 
@@ -36,3 +38,7 @@ Quando uma vira regra de verdade, ela sai daqui e entra no `CLAUDE.md`, num ADR 
 - `DATABASE_URL` e `BETTER_AUTH_*` ficam opcionais em `env.ts` até a W1 consumi-las.
 - `cnpj` mantido no select de proponentes (dado público por lei); `cpf` e `password`
   fora, seguindo o precedente do `toPublicJSON`.
+- infra-01 nasceu **empilhada em `fix/dep-01`** (mesmos arquivos de UI tocados
+  lá); os PRs mergeiam em sequência — dep-01 primeiro.
+- `SUPABASE_URL` derivada do ref do `DATABASE_URL` no `.env` (supabase-js 2.56
+  exige URL mesmo com a publishable key nova).

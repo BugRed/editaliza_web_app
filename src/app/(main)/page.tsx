@@ -19,14 +19,8 @@ export default function FeedPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const baseUrl =
-          process.env.NEXT_PUBLIC_BASE_URL ||
-          (process.env.NODE_ENV === "development"
-            ? "http://localhost:3000"
-            : "");
-
-        // Busca dados de editais
-        const editalsRes = await fetch(`${baseUrl}/api/editals`, {
+        // Busca dados de editais — mesma origem da página
+        const editalsRes = await fetch(`/api/editals`, {
           cache: "no-store",
           headers: {
             "Content-Type": "application/json",
@@ -41,7 +35,7 @@ export default function FeedPage() {
         setEditals(editalsData);
 
         // Busca dados de proponentes
-        const proposersRes = await fetch(`${baseUrl}/api/proposers`, {
+        const proposersRes = await fetch(`/api/proposers`, {
           cache: "no-store",
           headers: {
             "Content-Type": "application/json",
