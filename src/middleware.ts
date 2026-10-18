@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { authService } from './app/services/auth-service';
+import { verifyToken } from './shared/lib/auth-token';
 
 // Rotas públicas que NÃO requerem autenticação
 const publicRoutes = [
@@ -8,8 +8,9 @@ const publicRoutes = [
   '/cadastro',
 ];
 
-// Rotas de API abertas (liveness para deploy e cron)
-const publicApiRoutes = ['/api/health'];
+// Rotas de API abertas: liveness para deploy/cron e login (porta de entrada
+// da sessão — não há token a apresentar antes de existir sessão)
+const publicApiRoutes = ['/api/health', '/api/auth/login'];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -22,7 +23,7 @@ export async function middleware(request: NextRequest) {
       return NextResponse.next();
     }
     const isAuthenticated = token
-      ? await authService.verifyToken(token)
+      ? verifyToken(token) !== null
       : false;
     if (!isAuthenticated) {
       return NextResponse.json({ error: 'Não autenticado.' }, { status: 401 });
@@ -48,7 +49,7 @@ export async function middleware(request: NextRequest) {
   if (isPublicRoute) {
     if (token) {
       try {
-        const isValid = await authService.verifyToken(token);
+        const isValid = verifyToken(token) !== null;
         if (isValid) {
           // Se já estiver autenticado, redirecionar para home
           return NextResponse.redirect(new URL('/', request.url));
@@ -69,7 +70,7 @@ export async function middleware(request: NextRequest) {
   }
 
   try {
-    const isValid = await authService.verifyToken(token);
+    const isValid = verifyToken(token) !== null;
     if (!isValid) {
       throw new Error('Token inválido');
     }

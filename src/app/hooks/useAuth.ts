@@ -9,7 +9,9 @@ import {
   createElement 
 } from 'react';
 import { useRouter } from 'next/navigation';
-import { authService } from '../services/auth-service';
+
+// Sessão via /api/auth/* — o service de auth é server-only (consulta o
+// Supabase com a publishable key) e nunca é importado daqui.
 
 // Interfaces
 interface User {
@@ -70,11 +72,17 @@ export function AuthProvider({ children }: AuthProviderProps) {
       try {
         const token = getCookie('auth-token');
 
-        if (token && await authService.verifyToken(token)) {
-          const userData = await authService.getCurrentUser(token);
-          setUser(userData);
+        if (token) {
+          const res = await fetch('/api/auth/me', { cache: 'no-store' });
+
+          if (res.ok) {
+            const data = await res.json();
+            setUser(data.user);
+          } else {
+            deleteCookie('auth-token');
+            setUser(null);
+          }
         } else {
-          deleteCookie('auth-token');
           setUser(null);
         }
       } catch (error) {
@@ -92,8 +100,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
   // Função de login
   const login = async (email: string, password: string) => {
     try {
-      const result = await authService.login({ email, password });
-      
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+      const result = await res.json();
+
       if (result.success && result.token) {
         setCookie('auth-token', result.token, 1); // 1 dia
         setUser(result.user || null);
