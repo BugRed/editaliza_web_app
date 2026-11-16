@@ -50,6 +50,8 @@ precisa refletir isso antes de qualquer implementação.
 - D23–D25: candidatura dentro do app; taxonomia derivada pela IA e revisada pelo usuário; golden set depois.
 - WBS reescrito (W1b, W3–W7, W6b, W-UI) em `plano.md` §5.
 
+- Roadmap por ondas O1–O5 (`plano.md` §6.0): design → no ar → editais reais → ArtistRank → semântica e organizações. Onda 1 = articulação de design (sistema, mapa de telas, protótipo).
+
 **Não entra:**
 - Implementação de qualquer item acima; revisão de projeto por IA; scrapers além do Mapa Cultural.
 
@@ -71,7 +73,7 @@ precisa refletir isso antes de qualquer implementação.
 
 ## Decisões em aberto
 - Perguntas de 2026-11-16 sobre ArtistRank e telas: ver o resumo do `/feature` e as respostas registradas aqui.
-- Ordem do redesign das telas: em espera por decisão do usuário.
+- Ordem das telas dentro da O1: sai do mapa de telas, a aprovar.
 - Limiares não calibrados da spec (pesos, α, limiar de poder discriminante): ficam configuráveis até haver dado.
 - O que fazer com os 4 branches empilhados (W0, T1.1, dep-01, infra-01) que ainda esperam PR?
 - Governança do termo `performance` (conceito transversal × dois termos): pendente por decisão da spec v1.2; implementação usa um id por ramo até lá.

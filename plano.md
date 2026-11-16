@@ -71,7 +71,7 @@ Problemas graves conhecidos (estado após a W0, branch `bugfix/auth-01`):
 | D14 | Objeto de recomendação | `both`: artistas e obras, calculados separadamente e combinados (`0,35·artista + 0,65·portfólio`, configurável por modalidade) |
 | D15 | Imagens | WebP/AVIF com `sharp` no upload; JXL descartado (suporte de navegador). Arquivos no Supabase Storage |
 | D16 | Design system | **Sol & Mar**, tokens em `globals.css` (branch `feature/ui-01`); só tema claro por ora |
-| D17 | Escopo da V1 | Fases 1+2+3 da spec ArtistRank (cadastro profundo e taxonomia, motor determinístico, embeddings Voyage + busca semântica) **+ resumo do edital por IA**. Pipeline LLM completo com revisão humana (fase 4) entra só no que o resumo e o admin exigirem; calibração (fase 5) é pós-V1. O A/B TF-IDF × Voyage (spec §27.9) vira tarefa antes de fixar o modelo |
+| D17 | Escopo da V1 (ciclo O1–O5, ver §6.0) | Fases 1+2+3 da spec ArtistRank (cadastro profundo e taxonomia, motor determinístico, embeddings Voyage + busca semântica) **+ resumo do edital por IA**. Pipeline LLM completo com revisão humana (fase 4) entra só no que o resumo e o admin exigirem; calibração (fase 5) é pós-V1. O A/B TF-IDF × Voyage (spec §27.9) vira tarefa antes de fixar o modelo |
 | D18 | Onboarding | **Mínimo + enriquecimento progressivo**: cadastro curto (linguagens, cidade, interesses) já gera feed; trajetória, obras e o resto vêm depois. Campo ausente é desconhecido (nota 0,5); cobertura aparece no card |
 | D19 | Quem usa | **Artistas e organizações.** Artista vê editais e obras ranqueados; organização publica editais e vê artistas compatíveis. Papéis: `artist`, `organization`, `admin`. Visibilidade do perfil do artista para organizações exige regra de privacidade (aberta) |
 | D20 | Edital publicado por organização | Pipeline da spec §12.6: PDF → texto → DeepSeek (JSON) → Zod → verificação de evidência → **confirmação humana** (organização no edital dela; admin no edital importado) → banco. Cada requisito guarda documento, página, trecho, versão e estado de validação (spec §7.7); array vazio = "não informado", nunca proibição (§7.6) |
@@ -211,6 +211,29 @@ fixada aqui. Cada tela nasce como organismo em `src/shared/components/` (atoms �
 | T7.4 | Antes de monetizar: Vercel Pro, termos de uso, política de privacidade e retenção | Documentos publicados |
 
 ## 6. Roadmap
+
+### 6.0 Roadmap vigente — ondas de entrega (decidido em 2026-11-16, opção A)
+
+Princípio: **disponibilidade primeiro**. Tudo que é preciso para o app ficar no ar, seguro e bonito vem antes;
+ArtistRank e IA ficam nas últimas ondas. As ondas O1–O5 abaixo **ordenam** as ondas técnicas W0–W7 e W-UI
+da §5, que continuam sendo o detalhamento das tarefas.
+
+| Onda | Nome | Entrega | Tarefas (§5) | Pronto quando |
+|---|---|---|---|---|
+| **O1** | **Articulação de design** | Design system fechado (tokens, atoms, molecules, claro e escuro), **mapa e fluxo de todas as telas**, protótipo navegável aprovado pelo usuário; código só de atoms e molecules em `src/shared/components/` | W-UI (parte), D16, §10, §11 | Usuário aprova o protótipo; `/feed` e login usam só os tokens; nenhuma cor/raio literal fora de `globals.css` |
+| **O2** | **No ar** | Merge das 4 branches empilhadas, Prisma, Better Auth com papéis, env validada, deploy Vercel + Supabase, CI, headers, rate limit, LGPD mínima (consentimento, exportar e excluir) | W0, W1, W1b, T4.6, T7.2–T7.3 | URL pública com cadastro, login e feed funcionando; sem senha em texto puro; checklist de segurança aprovado |
+| **O3** | **Editais reais** | Admin cadastra edital (PDF + formulário), conector Mapa Cultural PE, feed por data, filtro e tags, detalhe do edital e **resumo IA em linguagem simples** | W2, T3.2–T3.5 (sem ranking) | ≥100 editais reais; resumo com link ao trecho oficial; coleta idempotente |
+| **O4** | **ArtistRank v1** | Taxonomia, perfil profundo, obras, trajetória, motor determinístico, confiança C, "por quê" | W3 (T3.1), W4, W5 | Casos de regressão da spec §27.5 passam; feed passa a ordenar por compatibilidade |
+| **O5** | **Semântica e organizações** | Embeddings Voyage (após A/B), candidatura dentro do app, área da organização, feedback com motivo, projeção da banca; depois nível 3 e revisão do projeto | W6, W6b, Pós-V1 | Organização só vê quem se candidatou (teste); A/B registrado em ADR |
+
+Consequências:
+
+- **"V1 publicável" = O1 a O3.** O D17 (escopo da V1 com fases 1–3 do ArtistRank) passa a valer para **o ciclo completo O1–O5**; o primeiro lançamento (gratuito, D22) acontece ao fim da O3, com o feed ordenado por data e filtros, **sem score de compatibilidade**. A UI não exibe porcentagem enquanto o motor não existe.
+- O protótipo `editaliza_prot` (§11) alimenta a O1; o motor dele não entra no ar (§11.2).
+- As 4 branches empilhadas (W0, T1.1, dep-01, infra-01) são o **primeiro bloqueio da O2** e dependem do usuário (PR e merge).
+- Ordem das telas dentro da O1: definida no mapa de telas, aprovado pelo usuário antes de portar qualquer uma.
+
+### 6.1 Grafo técnico original (histórico)
 
 ```
 W0 ─► W1 ─┬─► W2 ─► W3 ─┐
