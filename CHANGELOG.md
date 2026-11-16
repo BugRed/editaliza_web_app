@@ -2,14 +2,22 @@
 
 Impacto externo por entrega; app não versiona build. Novo no topo.
 
-## 2026-11-16 — feature/ui-02: articulação de design (O1)
+## 2026-11-16 — feature/ui-02: front do editaliza_prot, galeria rica, mídia, selos, anúncios e barras do ranking
 
-- **Design system do protótipo `editaliza_prot`** — paleta e Roboto dele em `globals.css`, foco visível; 11 atoms e 9 molecules em `src/shared/components/`; shell em três colunas e card de feed estilo post.
-- **Login e cadastro refeitos** — cadastro valida e-mail, senha (8+ com número, antes 6) e exige consentimento; **ainda não cria conta** (Better Auth, O2). Removido o `console.log` da senha.
-- **Feed** — novo shell de navegação, busca, estados vazio/carregando/erro; some a porcentagem de compatibilidade fixa (30%), que era falsa.
-- **Telas 4–15 como organismos testados, sem rota** — o endpoint de protótipo foi removido para não ir a produção.
-- **Banco local em Docker** — `docker-compose.dev.yml` (Postgres 17 + PostgREST + gateway) e `npm run dev:db` / `dev:db:setup`; permite logar e ver o feed sem o Supabase da nuvem. Ver `docs/ops/ambiente.md`.
-- **Testes em Docker** — Vitest + Testing Library, `npm run test:docker` sem rede.
+- **Front do `editaliza_prot` aqui, exato** — paleta, Roboto, shell em três colunas, feed estilo post, login, perfil, configurações, salvos e publicar edital. O `src` do protótipo foi trazido inteiro; o design anterior (atoms/molecules próprios) foi descartado.
+- **Banco corrigido para o front** — migration `0002_colunas_do_front.sql` (perfil do artista e do proponente, critérios estruturados e resumo do edital) e seed regenerado a partir das tabelas do protótipo. Sem as colunas, `/api/artists` e `/api/proposers` davam 500.
+- **Banco local em Docker** — `docker-compose.dev.yml` (Postgres 17 + PostgREST + gateway), `yarn dev:db` e `yarn dev:db:setup`; permite logar sem o Supabase da nuvem. Ver `docs/ops/ambiente.md`.
+- **Obras expressivas** — título, ano, tipo (imagem, fotografia, vídeo, áudio, texto), linguagem, técnica, dimensões, texto curto, temas e capa; abas por tipo; vídeo e áudio tocam no app (YouTube, Vimeo ou arquivo). O formulário de nova obra coleta tudo isso.
+- **Reordenar obras** — subir/descer em Configurações muda a ordem da galeria pública.
+- **Perfil do proponente e da empresa** — galeria dos editais publicados; página pública em `/empresas/[id]`, alcançada pelo nome ou avatar no post e por "Organizado por" no resumo.
+- **Selos levam a algum lugar** — `/perfil/[id]/selos/[badgeId]` mostra o edital (abre o resumo) e a empresa que concedeu; o formulário escolhe o edital da base. O card de badges deixou de estourar o container com o ano.
+- **Publicidade** — banner com imagem no menu lateral (até a linha acima do perfil), dois na direita fixos ao rolar (estilo LinkedIn) e um a cada 3 posts na timeline; sempre "Publicidade", `rel="sponsored"`. Criativos de exemplo, sem rede de anúncios.
+- **Coluna da direita** — busca e "Artistas na rede" no topo, no máximo 4 perfis e "Ver mais (n)" recursivo.
+- **Clique no card do feed** — imagem e título abrem o resumo, como "Inscrever-se"; o card inteiro não é link. Saiu o balão que repetia a data.
+- **Barras do ranking** — o resumo do edital mostra score final, os dois grupos e cada fator em barras (vermelho até 40, amarelo até 70, verde acima), com dropdown por grupo fechado por padrão, "sem informação" para dado ausente e a confiança fora do score ([ADR 0019](docs/adr/0019-artistrank-mostra-barras-por-fator-e-confianca-a-parte.md), proposto). Editais 306–309 de exemplo geram notas baixas.
+- **API** — `PATCH /api/artists/[id]` aceita os campos novos de obra e selo e recusa link de mídia inseguro (`javascript:`, `data:`).
+- **yarn como único gerenciador** — `yarn.lock` no lugar do `package-lock.json` (versões resolvidas de novo); testes em Docker por `yarn test:docker`, sem rede.
+- ⚠️ **O backend que veio com o protótipo reverte correções de segurança do repo (W0 e infra-01)** — ver `docs/divida.md`.
 
 ## 2026-11-16 — docs/docs-01: replanejamento da V1 (ArtistRank, protótipo, ondas)
 
