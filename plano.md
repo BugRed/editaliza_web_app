@@ -76,8 +76,8 @@ Problemas graves conhecidos (estado após a W0, branch `bugfix/auth-01`):
 | D21 | Visibilidade do artista para a organização | **Só quando o artista se candidata** ao edital dela. Sem busca ativa de artistas, sem acesso a autodeclarações ou documentos fora da candidatura. Implica **inscrição dentro do app** (a definir) |
 | D22 | Infra da V1 | **Tudo TypeScript, sem LangGraph nem worker Python.** Jobs agendados chamando endpoints protegidos, fila no Postgres. **Lançamento gratuito**, sem monetização: Vercel Hobby serve; migrar para Pro **antes** de qualquer cobrança ou divulgação comercial |
 | D23 | Candidatura | **Inscrição dentro do app**: o artista escolhe obra(s), anexa documentos e envia; a organização vê o dossiê (score, fatores, evidências) só dos candidatos dela. Exige estados de inscrição, armazenamento de documentos e retenção definida |
-| D24 | Taxonomia | Vocabulário inicial **derivado pela IA da spec (§3.2–§3.5) e do corpus**, entregue como planilha para revisão do usuário antes de virar seed. "performance" vira dois termos distintos (artes visuais × artes cênicas). Governança (sinônimos, hierarquia, versionamento) em ADR |
-| D25 | Validação do motor | Golden set **montado depois**, sem o pacote de benchmark da spec (não está no repo). Até lá, os casos de §27.5 da spec (Ana × Dança = 45,0; Beto × Malakoff = 77,1; Bituca × FIC bloqueado) viram testes de regressão reconstruídos |
+| D24 | Taxonomia | Vocabulário inicial **derivado pela IA da spec (§3.2–§3.5) e do corpus**, entregue como planilha para revisão do usuário antes de virar seed. **"performance" aparece em dois ramos (artes visuais e artes cênicas) e a spec v1.2 manda NÃO resolver sozinho:** cada ocorrência recebe identificador estável próprio, sem deduplicar pelo rótulo, e a decisão (conceito transversal × termos distintos) fica pendente do usuário. Governança (sinônimos, hierarquia, versionamento) em ADR |
+| D25 | Validação do motor | Golden set **montado depois**. O pacote de benchmark da spec (`verify_v11.py`, datasets) **não está no repo nem foi anexado**; a spec mesma não afirma que esteja disponível, e a conferência de 38 verificações é só relato do responsável. O benchmark usa TF-IDF, não Voyage, e dados em sua maioria hipotéticos. Até lá, os casos de §27.5 da spec (Ana × Dança = 45,0; Beto × Malakoff = 77,1; Bituca × FIC bloqueado) viram testes de regressão reconstruídos |
 
 ## 4. Arquitetura alvo (resumo)
 
@@ -139,7 +139,7 @@ só depende de ondas anteriores; dentro da onda, tarefas são paralelizáveis en
 
 | T | O quê | Pronto quando |
 |---|---|---|
-| T3.1 | `taxonomy_terms` + relações (hierarquia, sinônimos, versão); vocabulário inicial (D24) revisado pelo usuário e carregado como seed | Planilha aprovada; 100% das linguagens do corpus mapeadas |
+| T3.1 | `taxonomy_terms` + relações (hierarquia, sinônimos, versão); vocabulário inicial (D24) revisado pelo usuário e carregado como seed | Planilha aprovada; 100% das linguagens do corpus mapeadas; "performance" com um id por ramo e a decisão de governança registrada como pendente |
 | T3.2 | Tabelas do edital (inclui enum de tipo de oportunidade): `opportunities`, `opportunity_requirements` (com `mandatory`, papel CORE/SUPPORT), `opportunity_criteria`, `opportunity_evidence` (documento, página, trecho, versão, estado de validação) | Migration aplicada; array vazio = "não informado" |
 | T3.3 | Pipeline de extração (D20): `LLMProvider` DeepSeek, saída JSON, validação Zod com repair, verificação de evidência, estados `pendente/confirmado` | Extração do FRTN bate com a leitura manual |
 | T3.4 | Confirmação humana: organização confirma o edital dela; admin confirma o importado; item não confirmado é invisível ao ranking | Itens `UNKNOWN`/ambíguos listados com evidência |
@@ -162,7 +162,7 @@ só depende de ondas anteriores; dentro da onda, tarefas são paralelizáveis en
 |---|---|---|
 | T5.1 | Elegibilidade `PASS/FAIL/UNKNOWN/NOT_APPLICABLE` como função pura | Casos eliminatórios cobertos; arte alta não compensa `FAIL` |
 | T5.2 | Oito fatores e pesos versionados em configuração; nota neutra 0,5 sem renormalizar; cobertura calculada (motor v4) | Mesma entrada, mesma nota |
-| T5.3 | Teto de 45 no score final combinado; CORE/SUPPORT; combinação artista/portfólio por modalidade, α configurável | Caso Ana × Dança = 45,0 |
+| T5.3 | Teto de 45 aplicado **depois** de combinar artista e portfólio (nunca só no score do artista); `FAIL` de requisito artístico obrigatório explícito ativa, `UNKNOWN` não; CORE/SUPPORT; combinação por modalidade, α configurável | Ana × Dança: `R_artista` 45,0 e `R_portfólio` 46,7 combinam em 46,1 e o final é 45,0 |
 | T5.4 | Confiança C separada, sem efeito no score | Teste prova que C não altera ranking |
 | T5.5 | `recommendations` + `recommendation_factors` persistindo versão, pesos, entradas, evidências | Recalcular não duplica; mudança de entrada invalida |
 | T5.6 | Testes de regressão dos casos §27.5 reconstruídos (D25) | Rodam no CI |

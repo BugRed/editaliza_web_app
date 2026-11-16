@@ -74,3 +74,4 @@ precisa refletir isso antes de qualquer implementação.
 - Ordem do redesign das telas: em espera por decisão do usuário.
 - Limiares não calibrados da spec (pesos, α, limiar de poder discriminante): ficam configuráveis até haver dado.
 - O que fazer com os 4 branches empilhados (W0, T1.1, dep-01, infra-01) que ainda esperam PR?
+- Governança do termo `performance` (conceito transversal × dois termos): pendente por decisão da spec v1.2; implementação usa um id por ramo até lá.

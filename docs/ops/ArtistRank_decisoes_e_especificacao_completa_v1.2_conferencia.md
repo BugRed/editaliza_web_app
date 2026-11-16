@@ -1,6 +1,6 @@
 # ArtistRank --- Registro mestre de decisões e especificação do projeto
 
-> **Versão 1.2 — revisão da conferência empírica (16/11/2026).** Esta edição incorpora a conferência de 38 verificações da versão 1.1: 38 corretas e nenhuma divergência numérica. Além de consolidar as correções do benchmark, resolve a contagem de recomendações Top-1, corrige a aplicação do teto de 45 no score final combinado e registra ajustes de escopo, documentação, governança da taxonomia e versionamento dos artefatos. O benchmark usa 12 editais estruturados, 12 perfis hipotéticos e 144 pares artista–edital; não representa resultados de editais reais nem probabilidade de aprovação.
+> **Versão 1.2 — revisão empírica conferida (16/11/2026).** Esta edição incorpora o relatório *ArtistRank: Avaliação Empírica das Decisões*, baseado em 12 editais estruturados, 12 perfis hipotéticos e 144 pares artista–edital. As decisões originais continuam registradas, mas regras corrigidas por experimento passam a prevalecer. Hipóteses ainda não testadas estão identificadas como pendências. O benchmark não representa resultados de editais reais nem probabilidade de aprovação.
 
 > **Documento de consolidação:** reúne as decisões tomadas, propostas
 > técnicas discutidas, parâmetros iniciais, alternativas consideradas,
@@ -172,7 +172,7 @@ artistic_language
 │   ├── fotografia
 │   ├── escultura
 │   ├── instalacao
-│   ├── performance
+│   ├── performance  # ocorrência em artes_visuais; classificação pendente de governança
 │   ├── arte_digital
 │   ├── videoarte
 │   └── arte_urbana
@@ -196,14 +196,12 @@ artistic_language
 Essa taxonomia é inicial, extensível e não pretende ser uma
 classificação universal ou fechada.
 
-**Ponto de governança identificado na conferência:** `performance` aparece
-em dois ramos (`artes_visuais` e `artes_cenicas`). Não criar dois termos
-independentes com o mesmo significado apenas por causa dessa duplicidade.
-A governança da taxonomia deve decidir se haverá um conceito canônico
-transversal com relações para múltiplos contextos, ou termos distintos
-com definições explícitas. Até essa decisão, preservar a ambiguidade no
-cadastro e exigir contexto/evidência; não deduplicar automaticamente nem
-inferir equivalência apenas pelo rótulo.
+**Pendência de governança:** `performance` aparece em dois ramos
+(`artes_visuais` e `artes_cenicas`). Não consolidar nem remover uma das
+ocorrências automaticamente: definir se representam conceitos distintos
+ou uma linguagem transversal. Até essa decisão, a implementação deve
+usar identificadores estáveis por conceito/ramo e evitar deduplicação
+apenas pelo rótulo textual.
 
 ### 3.3 Técnicas, suportes, materiais, tecnologias e formatos
 
@@ -671,24 +669,29 @@ A nota `0.5` não significa que o artista atende ao requisito: significa apenas 
 
 ### 9.3.1 Regra de teto para requisito artístico obrigatório — validada no benchmark v2/v3
 
-Depois de calcular o score combinado de artista e portfólio, aplicar um teto de **45/100** quando houver pelo menos um requisito artístico explicitamente marcado como obrigatório e comprovadamente não atendido. O teto incide no **score final combinado**, não isoladamente no score bruto do artista. No benchmark, isso foi aplicado a linguagem núcleo, posicionamento e nicho obrigatórios.
-
-Fórmula exata da configuração testada:
+Depois de calcular os scores do artista e do portfólio e combiná-los,
+aplicar um teto de **45/100 ao score final combinado** quando houver
+pelo menos um requisito artístico explicitamente marcado como
+obrigatório e comprovadamente não atendido. No benchmark, isso foi
+aplicado a linguagem núcleo, posicionamento e nicho obrigatórios. O teto
+não deve ser aplicado isoladamente ao score do artista ou da obra.
 
 ```text
-score_combinado = 0.35 * R_artista + 0.65 * R_portfolio
+score_bruto_combinado = 0.35 * R_artista + 0.65 * R_portfolio
 se existe requisito_artistico_obrigatorio com estado FAIL:
-    score_final = min(score_combinado, 45)
+    score_final = min(score_bruto_combinado, 45)
 senão:
-    score_final = score_combinado
+    score_final = score_bruto_combinado
 ```
 
-Na implementação, se os pesos artista/portfólio forem configurados por
-modalidade, usar a combinação efetivamente configurada antes de aplicar
-o teto. A regra de teto permanece sobre o resultado combinado. Exemplo
-conferido: Ana × Festival de Dança = **45,0** no motor testado; aplicar
-o teto apenas ao score do artista produziria **46,1**, divergindo do
-comportamento validado.
+A combinação `0,35` artista + `0,65` portfólio é a configuração
+exercitada no benchmark, mas permanece provisória e configurável por
+modalidade de edital; o teto, quando ativado, incide depois dessa
+combinação. Exemplo de regressão: Ana × Festival de Dança, com
+`R_artista = 45,0` e `R_portfolio = 46,7`, produz score combinado de
+`46,1`; com requisito obrigatório não atendido, o score final correto
+é `45,0`. Aplicar o teto apenas a `R_artista` deixaria o resultado em
+`46,1`, divergindo do motor testado.
 
 - O teto não substitui a elegibilidade formal. Requisitos eliminatórios jurídicos/administrativos continuam sendo avaliados no filtro de elegibilidade.
 - `UNKNOWN` não ativa o teto. Falta de informação não pode ser tratada como incompatibilidade confirmada.
@@ -1332,21 +1335,17 @@ async function recommend(
     artworkResults
   );
 
-  const combinedRawScore =
+  const combinedScore =
     opportunity.artistWeight * artistScore +
     opportunity.portfolioWeight * portfolioScore;
 
-  // 5.1 Teto artístico: aplicar ao score combinado final, nunca apenas
-  // ao score isolado do artista. UNKNOWN não ativa o teto.
-  const hasFailedMandatoryArtisticRequirement =
-    evaluateMandatoryArtisticRequirements(
-      artist,
-      opportunity
-    ).some(requirement => requirement.status === "FAIL");
+  // O teto é aplicado ao score combinado, nunca apenas ao artistScore.
+  const hasUnmetMandatoryArtisticRequirement =
+    hasExplicitMandatoryArtisticRequirementInFail(eligibility, opportunity);
 
-  const finalScore = hasFailedMandatoryArtisticRequirement
-    ? Math.min(combinedRawScore, 45)
-    : combinedRawScore;
+  const finalScore = hasUnmetMandatoryArtisticRequirement
+    ? Math.min(combinedScore, 45)
+    : combinedScore;
 
   // 6. Confiança dos dados
   const confidence = calculateConfidence(
@@ -1374,7 +1373,7 @@ async function recommend(
     confidence,
     artworkResults,
     explanation,
-    algorithmVersion: "1.2.0-empirical-v4"
+    algorithmVersion: "1.1.0-empirical-v4"
   });
 }
 ```
@@ -1383,7 +1382,7 @@ async function recommend(
 
 -   `weightedScore` deve atribuir nota neutra `0.5` aos fatores sem informação; não renormalizar os pesos em função dos fatores desconhecidos.
 -   Retornar também a cobertura dos fatores e discriminar valores observados de valores neutros imputados.
--   Aplicar o teto de 45 pontos somente depois de combinar score do artista e score do portfólio; a fórmula testada é `min(0.35 * R_artista + 0.65 * R_portfolio, 45)` quando requisito artístico obrigatório explícito estiver em `FAIL`. Se a modalidade usar outros pesos configurados, aplicar o teto ao score combinado correspondente.
+-   Calcular primeiro `score_bruto_combinado = 0.35 * artistScore + 0.65 * portfolioScore`; quando requisito artístico obrigatório explícito estiver em `FAIL`, aplicar `finalScore = min(score_bruto_combinado, 45)`. O teto incide no score final combinado, não apenas em `artistScore`.
 -   Tratar linguagem `CORE` e `SUPPORT` separadamente.
 -   Não converter dados ausentes em zero; na versão empírica v4, usar `0.5` neutro e sinalizar a imputação.
 -   `FAIL` eliminatório não pode ser compensado por nota alta em outro
@@ -2058,7 +2057,7 @@ mas não faz parte do algoritmo de ranking em si.
 ### 25.4 Pendências de produto e engenharia
 
 -   Definir modalidade e categorias oficiais da taxonomia.
--   Definir sinônimos, relações hierárquicas e governança da taxonomia, incluindo a duplicidade do termo `performance` nos ramos de artes visuais e artes cênicas (ver §3.2).
+-   Definir sinônimos, relações hierárquicas e governança da taxonomia.
 -   Definir quais campos do perfil serão obrigatórios e quais opcionais.
 -   Definir regras de privacidade e consentimento para dados pessoais e
     portfólios.
@@ -2117,7 +2116,7 @@ e quais informações ainda precisam ser confirmadas**.
 
 ------------------------------------------------------------------------
 
-## 27. Avaliação empírica e decisões atualizadas — versão 1.1
+## 27. Avaliação empírica e decisões atualizadas — base v1.1, conferência v1.2
 
 **Fonte:** *ArtistRank: Avaliação Empírica das Decisões — Julgamento da especificação com testes reais: 12 editais estruturados, 12 perfis de artista e oito experimentos*, Recife/Pernambuco, 16/11/2026. Foram fornecidos PDF e DOCX equivalentes. Esta seção passa a ser a referência de validação empírica do registro mestre.
 
@@ -2125,7 +2124,7 @@ e quais informações ainda precisam ser confirmadas**.
 
 - 12 editais estruturados × 12 perfis hipotéticos = 144 pares artista–edital.
 - 24 pares (16,7%) foram bloqueados por inelegibilidade; 120 pares foram usados nas métricas de ranking.
-- Rótulos de referência: 83 irrelevantes, 25 marginais, 20 bons e 16 fortes. Entre os pares elegíveis usados no ranking, **33 foram relevantes** (rótulo ≥ 2). Considerando a classificação artística antes do bloqueio territorial, havia 36 pares com potencial de relevância; **três pares de Rosa foram bloqueados por território**, não devendo ser contados como recomendações elegíveis/relevantes no ranking final.
+- Rótulos de referência: 83 irrelevantes, 25 marginais, 20 bons e 16 fortes. Há 36 pares com rótulo relevante (≥ 2) no conjunto bruto; três pares da artista Rosa foram bloqueados pelo requisito territorial. Portanto, **33 pares relevantes eram elegíveis** e 3 relevantes foram bloqueados por inelegibilidade.
 - Rubrica: 3 = aderência forte; 2 = boa/plausível; 1 = marginal; 0 = sem aderência ou inelegível.
 - Um edital (OBSERVA 4/Torre Malakoff) foi tratado como caso documentado; SPA 2026, 29º Festival Internacional de Dança do Recife e Recife Virado na Periferia PNAB 2026 tiveram existência e dados básicos confirmados publicamente; os demais registros estruturados são reconstruções representativas para testar a mecânica, não transcrições oficiais.
 - Os 12 artistas são perfis hipotéticos que cobrem diferentes linguagens e estágios de trajetória.
@@ -2148,7 +2147,7 @@ O benchmark é uma primeira referência de regressão, não prova de desempenho 
 | v4 — v3 + nulos neutros | 0,769 | 0,947 | 0,818 | 1,000 | 0,959 |
 | v4 com pesos iguais | 0,763 | 0,945 | 0,818 | 1,000 | 0,965 |
 
-**Interpretação correta:** o motor estruturado apresenta sinal forte contra a rubrica deste benchmark. A linguagem artística é o sinal dominante para ordenação geral; conceitos, posicionamento, obras e viabilidade elevam a precisão no topo. A métrica Top-1 foi calculada apenas para os 11 artistas que tinham ao menos uma opção relevante. Não generalizar o 1,000 para todos os perfis ou para o mundo real.
+**Interpretação correta:** o motor estruturado apresenta sinal forte contra a rubrica deste benchmark. A linguagem artística é o sinal dominante para ordenação geral; conceitos, posicionamento, obras e viabilidade elevam a precisão no topo. A AUC da v4 (0,947) é 0,002 inferior à v3 (0,949), diferença pequena neste benchmark e sem evidência de regressão relevante; a v4 foi mantida por tratar dados ausentes de forma neutra. O Top-1 = 1,000 refere-se aos 11 artistas com pelo menos uma opção relevante. Na conferência corrigida, **11 dos 12 artistas tiveram como primeira recomendação um edital de aderência forte (rótulo 3)**; Beto foi o único sem opção relevante. Não generalizar esses resultados para todos os perfis ou para o mundo real.
 
 ### 27.3 Veredito por decisão
 
@@ -2214,7 +2213,7 @@ Fórmula mantida: `C = 100 × (0,35K + 0,30E + 0,15A + 0,20X)`.
 
 ### 27.10 Próximos passos por ordem
 
-1. Versionar no repositório o pacote já reexecutado (datasets, scripts, rótulos, resultados e figuras), registrar commit/tag e instruções de reprodução; manter `verify_v11.py` como teste de integridade/regressão automatizado.
+1. Empacotar dados, scripts, rótulos e resultados do benchmark em repositório versionado; criar teste de regressão automatizado.
 2. Fixar v4 como baseline do motor para os casos cobertos, com versão de algoritmo, pesos e proveniência.
 3. Obter editais oficiais completos e revisar os requisitos, papéis de linguagem, critérios e erratas.
 4. Ampliar os perfis reais com consentimento e revisão humana; rotular pares com pelo menos dois avaliadores.
@@ -2224,7 +2223,7 @@ Fórmula mantida: `C = 100 × (0,35K + 0,30E + 0,15A + 0,20X)`.
 
 ### 27.11 Artefatos de reprodução mencionados no relatório
 
-O pacote do benchmark descrito no relatório contém, segundo a Tabela 9:
+O pacote do benchmark descrito no relatório contém, segundo a Tabela 9. Na conferência complementar de 16/11/2026, os artefatos foram localizados e reexecutados pelo script `verify_v11.py`; as 38 verificações numéricas reportadas fecharam sem divergências. O pacote deve ser versionado no repositório do projeto, junto com os hashes/versões dos dados e scripts, para permitir reprodução futura. A existência e a reexecução são registradas com base na conferência apresentada pelo responsável pelo benchmark.
 
 - `artistrank/data/editais_estruturados.json` — 12 editais estruturados com proveniência e força de requisitos.
 - `artistrank/data/artistas.json` — 12 perfis com posicionamento, conceitos, trajetória, obras e cobertura.
@@ -2235,34 +2234,11 @@ O pacote do benchmark descrito no relatório contém, segundo a Tabela 9:
 - `artistrank/results/figs/*.png` — seis figuras.
 - `scripts/artistrank/*.py` — motor, datasets, experimentos e gráficos reprodutíveis.
 
-**Atualização da conferência:** os artefatos foram localizados e reexecutados durante a conferência; o script `verify_v11.py` realizou **38 verificações, com 38 corretas e zero divergências**. O pacote deve ser versionado no repositório do projeto, incluindo datasets, scripts, rótulos, resultados e figuras, com identificação de commit/tag e instruções de reprodução. A existência e reexecução foram confirmadas na conferência; o versionamento no repositório permanece uma ação de engenharia a concluir e registrar com o respectivo hash/identificador.
+Esses artefatos foram mencionados como entregues junto ao relatório, mas não foram anexados nesta conversa; portanto, este registro não afirma que os arquivos estejam disponíveis localmente.
 
-### 27.12 Conferência numérica independente — 16/11/2026
+### 27.12 Ressalvas e inconsistências resolvidas na conferência
 
-A conferência executou `verify_v11.py` sobre os resultados e artefatos do benchmark:
-
-- **38 verificações realizadas; 38 corretas; zero divergências.**
-- Tabela de métricas: 9 modelos × 5 métricas, todos os valores idênticos aos dados de referência.
-- Saturação/discriminância: FIC 2025 de 64,7 ± 5,6 para 62,3 ± 3,7; formação técnica de 60,7 ± 8,1 para 60,3 ± 6,1.
-- Sensibilidade: tau de Kendall entre 0,953 e 0,973 nas perturbações testadas; pesos iguais resultaram em tau 0,883.
-- Casos: Ana × Dança 67,0 → 45,0; Beto × Malakoff 80,2 → 77,1 com cobertura de 75%; Bituca × FIC Recife com afinidade 59,3, mas bloqueado por território.
-- Projeção competitiva: Ana 21,0/26; Marina 21,6/26; Beto 16,4/26.
-- Confiança C: faixa observada de 53,5 a 91,2 e correlação 0,385.
-- Aritmética dos exemplos internos: 87,65 e 89,25 corretos.
-
-A conferência valida a consistência numérica dos resultados reportados; não amplia por si só a validade externa do benchmark nem substitui a avaliação com artistas reais e múltiplos avaliadores.
-
-### 27.13 Ressalvas resolvidas e limitações que permanecem
-
-**Contagem Top-1 — resolvida pela conferência:**
-
-- Top-1 = 1,000 está correto para os **11 artistas que tinham ao menos uma opção relevante**.
-- A contagem textual correta é **11 dos 12 artistas** com primeira recomendação em edital de aderência forte (rótulo 3).
-- **Beto é o único dos 12 sem opção relevante**. A expressão anterior “10 dos 12” estava desatualizada e correspondia à rodada anterior à correção do teto, quando DJ Grafitte e Vinícius perdiam indevidamente o Virado por aplicação incorreta do cap.
-- Não misturar a métrica Top-1 (denominador 11) com a contagem descritiva 11/12 (todos os artistas).
-
-**Limitações que permanecem:**
-
+- **Top-1 e contagem por artista:** Top-1 = 1,000 está correto para os 11 artistas com pelo menos uma opção relevante. A frase antiga “10 dos 12” estava desatualizada e correspondia à rodada anterior à correção do teto. Após a correção, **11/12 artistas** têm primeira recomendação em edital de aderência forte (rótulo 3); Beto é o único sem opção relevante. Não manter a contagem antiga de 10/12.
 - O benchmark usa TF-IDF, não Voyage; a camada de embeddings continua sem validação empírica.
 - Os dados são hipotéticos/reconstruídos em sua maioria e a rubrica tem um avaliador; as métricas podem superestimar generalização.
 - A projeção competitiva Malakoff é ilustrativa e depende de mapeamento fator→critério; não é nota oficial nem probabilidade.
@@ -2279,10 +2255,10 @@ Para implementação, adotar esta ordem de precedência:
 3. Dados ausentes com nota neutra 0,5 e cobertura explicitada (v4).
 4. Requisitos artísticos explícitos obrigatórios: teto máximo 45 quando comprovadamente não atendidos.
 5. Linguagens do edital classificadas como núcleo ou suporte.
-6. Cálculo separado de score de artista, obras e portfólio; combinação provisória ainda pendente de calibração.
+6. Calcular separadamente score do artista e score do portfólio; combiná-los (baseline testada: 0,35/0,65) e aplicar, somente depois, o teto de 45 ao score combinado quando houver requisito artístico obrigatório explicitamente não atendido. A combinação continua provisória e configurável.
 7. Confiança C separada e sem efeito punitivo no score.
 8. Poder discriminante por edital e aviso quando a oportunidade pouco diferencia os perfis.
 9. Projeção competitiva apenas quando critérios oficiais estiverem documentados e mapeáveis.
 10. Explicações, evidências, cobertura, proveniência e versão do algoritmo persistidas para auditoria.
 
-**Baseline recomendado:** motor v4 para regras de ausência de dados, com correção de linguagem e teto já introduzidas em v2/v3. A AUC da v4 é **0,947**, contra **0,949** da v3; a diferença é pequena e tratada como dentro do ruído observado nesta avaliação. A v4 elimina a inflação por dados ausentes e mantém P@3 e NDCG@5 iguais aos da v3; por isso é a versão de referência mais completa para implementação.
+**Baseline recomendado:** motor v4 para regras de ausência de dados, com correção de linguagem e teto já introduzidas em v2/v3. A AUC da v4 (0,947) fica 0,002 abaixo da v3 (0,949), diferença pequena neste benchmark e sem evidência de regressão relevante. A v4 não melhora as métricas agregadas sobre v3, mas elimina a inflação por dados ausentes e mantém as demais métricas de ranking; por isso é a versão de referência mais completa para implementação. O teto de 45 deve ser aplicado ao score combinado artista/portfólio, conforme §9.3.1 e §15.
