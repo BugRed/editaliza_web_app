@@ -12,16 +12,16 @@
 ## Estado
 
 <!-- kit:camadas -->
-- [ ] prisma — não se aplica, onda de design sem banco
-- [ ] service — não se aplica, sem regra de negócio
-- [ ] controller — não se aplica
-- [ ] route — não se aplica
+- [x] prisma — não se aplica, onda de design sem banco
+- [x] service — não se aplica, sem regra de negócio
+- [x] controller — não se aplica
+- [x] route — só o `src/middleware.ts` (libera `/prototipo` fora de produção); sem route handler novo
 - [x] ui — atoms e molecules em `src/shared/components/`, tokens em `globals.css`
 - [x] teste — comportamento dos atoms e molecules; qualquer teste roda interno, em Docker
 - [x] doc — mapa de telas e fluxo em `docs/`
 <!-- /kit:camadas -->
 
-**Próximo passo:** usuário navega o protótipo em `/prototipo` e aprova (ou pede ajustes); depois, `/quality-check` e `/fechar`.
+**Próximo passo:** usuário navega o protótipo em `/prototipo` (`npm run dev`) e aprova ou pede ajustes; com a aprovação, marcar o critério pendente, mudar **Status** para `entregue` e abrir a O2.
 
 ## Problema / motivação
 A O1 do roadmap (`plano.md` §6.0) é a primeira onda: design fechado antes de qualquer tela entrar
@@ -92,6 +92,13 @@ Nenhuma regra nova. Match e score ficam na O4 ([`plano.md`](../../../plano.md) �
 - Handlers de salvar, dispensar, exportar, excluir, concluir onboarding e salvar rascunho só
   mudam estado local; ligam a serviços nas ondas O2–O5.
 - Tema escuro e shell responsivo (barra inferior no celular) sem verificação visual.
+
+- `tsconfig.json` passou a excluir `editaliza_prot/` (clone ignorado pelo git): o `tsc` varria os
+  84 erros dele. Resolve a linha correspondente de `docs/divida.md`.
+- Gate adaptado: o repo não tem `format:check`, `test:cov` nem Sonar. Rodaram `tsc`, `eslint src`
+  e Vitest (Docker); **cobertura, formatação e Sonar não rodaram**.
+- `Dockerfile.test` instala com `npm install` (o lock omite `@emnapi/*`), então o ambiente de
+  teste não é reprodutível por lock.
 
 ## Decisões em aberto
 - Nenhuma. (Protótipo como páginas Next com dados fixos: decidido e aprovado.)
