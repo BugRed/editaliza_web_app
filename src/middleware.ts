@@ -40,12 +40,6 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Protótipo de telas (dados fixos): aberto só fora de produção. Em produção a rota não é
-  // liberada aqui e o próprio layout de /prototipo responde 404.
-  if (process.env.NODE_ENV !== 'production' && pathname.startsWith('/prototipo')) {
-    return NextResponse.next();
-  }
-
   // Verificar se é uma rota pública
   const isPublicRoute = publicRoutes.some(route => 
     pathname === route || pathname.startsWith(route + '/')

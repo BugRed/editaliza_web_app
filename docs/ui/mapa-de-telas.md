@@ -1,16 +1,15 @@
 # Mapa de telas e fluxo (O1)
 
-**Status:** aprovado pelo usuário em 2026-11-16 · protótipo navegável em `/prototipo` (só fora de produção) · **Spec:** [`0002-articulacao-design-o1`](../features/ui/0002-articulacao-design-o1.md)
+**Status:** aprovado pelo usuário em 2026-11-16 · sem protótipo navegável: o endpoint `/prototipo` foi removido em 2026-11-16 para não ir a produção · **Spec:** [`0002-articulacao-design-o1`](../features/ui/0002-articulacao-design-o1.md)
 **Fontes:** [`plano.md`](../../plano.md) §10 (telas) e §11 (protótipo `editaliza_prot`).
 
 Este documento fixa **quais telas existem, quem as vê, como se ligam e em que ordem entram**.
 Nenhuma tela é portada antes da aprovação. Onde o plano ou o protótipo divergem, vale o plano.
 
-> **Como navegar:** `npm run dev` e abra `/prototipo`. O protótipo espelha este inventário
-> (`src/shared/fixtures/screen-map.ts`), usa dados fixos e inventados, e cada tela com estado
-> especial tem link para ele (`?estado=vazio`, `?estado=carregando`). Login, cadastro e feed
-> são telas reais; as rotas finais da §2 só existem quando a tela vai ao ar, e até lá ficam em
-> `/prototipo/<rota>`.
+> **Onde as telas estão:** login, cadastro e feed são telas reais. As demais (3 a 15) existem como
+> organismos em `src/shared/components/organisms/`, com testes e dados de exemplo em
+> `src/shared/fixtures/prototype.ts`, **sem rota**: cada uma ganha a rota final da §2 quando a
+> onda dela chegar. Não há página de protótipo no app.
 
 ## 1. Papéis
 

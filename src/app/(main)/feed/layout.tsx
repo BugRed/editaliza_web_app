@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 import { useAuth } from "@/app/hooks/useAuth";
 import { AppShell, type NavEntry } from "@/shared/components/organisms/AppShell";
 
-// Só entram na navegação as rotas que existem de verdade; o restante vive em /prototipo.
+// Só entram na navegação as rotas que existem de verdade; as demais telas entram nas ondas do mapa (docs/ui/mapa-de-telas.md).
 const NAV_ITEMS: NavEntry[] = [{ href: "/feed", label: "Início", icon: Home }];
 
 export default function FeedLayout({ children }: { children: ReactNode }) {
