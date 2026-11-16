@@ -21,7 +21,7 @@
 - [x] doc — mapa de telas e fluxo em `docs/`
 <!-- /kit:camadas -->
 
-**Próximo passo:** tela do **feed** (`/feed`) sobre `EditalCard`, `SearchBar` e `EmptyState`, só com tokens e sem score; depois o detalhe do edital e o protótipo navegável das demais telas.
+**Próximo passo:** usuário navega o protótipo em `/prototipo` e aprova (ou pede ajustes); depois, `/quality-check` e `/fechar`.
 
 ## Problema / motivação
 A O1 do roadmap (`plano.md` §6.0) é a primeira onda: design fechado antes de qualquer tela entrar
@@ -61,10 +61,10 @@ Nenhuma regra nova. Match e score ficam na O4 ([`plano.md`](../../../plano.md) �
 ## Critérios de aceite
 
 <!-- kit:criterios -->
-- [ ] Mapa de telas e fluxo aprovado pelo usuário
+- [x] Mapa de telas e fluxo aprovado pelo usuário
 - [ ] Protótipo navegável aprovado pelo usuário
-- [ ] `/feed` e login usam só tokens; nenhuma cor/raio literal fora de `globals.css`
-- [ ] Atoms e molecules testados (comportamento) e `yarn lint` passando
+- [x] `/feed` e login usam só tokens; nenhuma cor/raio literal fora de `globals.css`
+- [x] Atoms e molecules testados (comportamento) e `yarn lint` passando
 <!-- /kit:criterios -->
 
 ## Dívida / não exercitado
@@ -80,6 +80,18 @@ Nenhuma regra nova. Match e score ficam na O4 ([`plano.md`](../../../plano.md) �
 - Logo `/logoLogin.png` não existe mais no repo: o card usa o nome em texto.
 - `AuthForm` e `loginForm.tsx` antigos, sem uso, foram removidos.
 
+- **Protótipo em `/prototipo/*`:** 12 telas com dados fixos e inventados; o layout responde 404 em
+  produção e o `middleware.ts` só o libera fora de produção. Esse 404 em produção **não foi
+  exercitado** (sem `next build` nesta sessão).
+- **Rotas do mapa só existem como `/prototipo/<rota>`** até a tela ir ao ar; a nav real (`/feed`)
+  lista só o que existe.
+- `/feed` real ainda lê `/api/data` (Supabase) no cliente; a O2 troca por Prisma. Os cards não
+  têm mais a porcentagem de compatibilidade fixa (30%), que era falsa.
+- A página `/` (`(main)/page.tsx`) e `components/cardFeed/*` seguem como o feed duplicado da T7.1,
+  fora do shell novo.
+- Handlers de salvar, dispensar, exportar, excluir, concluir onboarding e salvar rascunho só
+  mudam estado local; ligam a serviços nas ondas O2–O5.
+- Tema escuro e shell responsivo (barra inferior no celular) sem verificação visual.
+
 ## Decisões em aberto
-- Forma do "protótipo navegável": páginas Next com dados fixos, ou Storybook. Padrão sugerido:
-  páginas Next com fixtures, sem dependência nova.
+- Nenhuma. (Protótipo como páginas Next com dados fixos: decidido e aprovado.)

@@ -25,4 +25,17 @@ describe("EditalCard", () => {
     render(<EditalCard {...base} tags={[]} />);
     expect(screen.queryByText(/%/)).not.toBeInTheDocument();
   });
+
+  it("sem href o título é texto, não link", () => {
+    render(<EditalCard {...base} href={undefined} tags={[]} />);
+    expect(screen.queryByRole("link")).not.toBeInTheDocument();
+    expect(screen.getByText("Edital Aldir Blanc")).toBeInTheDocument();
+  });
+
+  it("link externo abre em outra aba sem vazar a origem", () => {
+    render(<EditalCard {...base} href="https://exemplo.gov.br/edital" tags={[]} />);
+    const link = screen.getByRole("link", { name: "Edital Aldir Blanc" });
+    expect(link).toHaveAttribute("target", "_blank");
+    expect(link).toHaveAttribute("rel", "noopener noreferrer");
+  });
 });

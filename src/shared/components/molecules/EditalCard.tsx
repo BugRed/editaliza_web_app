@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Badge } from "@/shared/components/atoms/Badge";
 
 type EditalCardProps = {
-  href: string;
+  href?: string;
   title: string;
   organization: string;
   deadlineLabel: string;
@@ -16,9 +16,7 @@ export function EditalCard({ href, title, organization, deadlineLabel, tags }: E
     <article className="flex flex-col gap-3 rounded-lg bg-surface p-5 shadow-card">
       <div>
         <h3 className="text-lg font-semibold text-ink">
-          <Link href={href} className="hover:text-primary">
-            {title}
-          </Link>
+          <CardTitle href={href} title={title} />
         </h3>
         <p className="text-sm text-ink-muted">{organization}</p>
       </div>
@@ -33,5 +31,23 @@ export function EditalCard({ href, title, organization, deadlineLabel, tags }: E
         </ul>
       )}
     </article>
+  );
+}
+
+const EXTERNAL_LINK = /^https?:\/\//;
+
+function CardTitle({ href, title }: { href?: string; title: string }) {
+  if (!href) return <>{title}</>;
+  if (EXTERNAL_LINK.test(href)) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+        {title}
+      </a>
+    );
+  }
+  return (
+    <Link href={href} className="hover:text-primary">
+      {title}
+    </Link>
   );
 }

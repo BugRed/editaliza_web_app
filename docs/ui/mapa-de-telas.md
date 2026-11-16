@@ -1,10 +1,16 @@
 # Mapa de telas e fluxo (O1)
 
-**Status:** proposta, aguardando aprovação do usuário · **Spec:** [`0002-articulacao-design-o1`](../features/ui/0002-articulacao-design-o1.md)
+**Status:** aprovado pelo usuário em 2026-11-16 · protótipo navegável em `/prototipo` (só fora de produção) · **Spec:** [`0002-articulacao-design-o1`](../features/ui/0002-articulacao-design-o1.md)
 **Fontes:** [`plano.md`](../../plano.md) §10 (telas) e §11 (protótipo `editaliza_prot`).
 
 Este documento fixa **quais telas existem, quem as vê, como se ligam e em que ordem entram**.
 Nenhuma tela é portada antes da aprovação. Onde o plano ou o protótipo divergem, vale o plano.
+
+> **Como navegar:** `npm run dev` e abra `/prototipo`. O protótipo espelha este inventário
+> (`src/shared/fixtures/screen-map.ts`), usa dados fixos e inventados, e cada tela com estado
+> especial tem link para ele (`?estado=vazio`, `?estado=carregando`). Login, cadastro e feed
+> são telas reais; as rotas finais da §2 só existem quando a tela vai ao ar, e até lá ficam em
+> `/prototipo/<rota>`.
 
 ## 1. Papéis
 
@@ -104,7 +110,7 @@ protótipo navegável com dados fixos.
 
 ## 7. Decisões que dependem do usuário
 
-- [ ] Aprova o inventário e as rotas da §2?
-- [ ] Aprova a ordem da §6?
-- [ ] Detalhe do edital como **página** (`/editais/[id]`) em vez do modal do protótipo — recomendado: página tem URL compartilhável e serve ao resumo IA.
-- [ ] Protótipo navegável como páginas Next com dados fixos (padrão sugerido), em vez de Storybook.
+- [x] Aprova o inventário e as rotas da §2?
+- [x] Aprova a ordem da §6?
+- [x] Detalhe do edital como **página** (`/editais/[id]`) em vez do modal do protótipo — recomendado: página tem URL compartilhável e serve ao resumo IA.
+- [x] Protótipo navegável como páginas Next com dados fixos (padrão sugerido), em vez de Storybook.
