@@ -5,7 +5,9 @@
 >
 > **Replanejamento de 2026-11-16:** o motor de recomendação passa a ser o **ArtistRank**, especificado em
 > [`docs/ops/ArtistRank_decisoes_e_especificacao_completa_v1.2_conferencia.md`](docs/ops/ArtistRank_decisoes_e_especificacao_completa_v1.2_conferencia.md)
-> (daqui em diante "spec ArtistRank"). Onde este plano e a spec divergem sobre o motor, vale a spec,
+> (daqui em diante "spec ArtistRank").
+>
+> **Protótipo de frontend:** [`github.com/BugRed/editaliza_prot`](https://github.com/BugRed/editaliza_prot) (`git@github.com:BugRed/editaliza_prot.git`), branch `main`. Inventário e estratégia de aproveitamento em §11. Onde este plano e a spec divergem sobre o motor, vale a spec,
 > exceto nas decisões D2 e D12–D16 abaixo, que são do usuário. Ver §7 e §10.
 
 ## 1. Visão
@@ -516,3 +518,57 @@ spec ArtistRank:
 | Organização: publicar edital e ver artistas compatíveis | Papel `organization`, requisitos estruturados, artistas elegíveis só com consentimento |
 | Admin: edital | Upload de PDF, revisão de requisitos extraídos, CORE/SUPPORT, status de processamento |
 | Perfil / privacidade | Exportar e excluir dados, visibilidade do portfólio |
+
+## 11. Protótipo de frontend — `editaliza_prot`
+
+Repositório: [github.com/BugRed/editaliza_prot](https://github.com/BugRed/editaliza_prot)
+(`git@github.com:BugRed/editaliza_prot.git`), `main`, 2 commits. Foi lido em 2026-11-16 a partir de um
+clone local em `./editaliza_prot/` (ignorado no git). **O protótipo é a referência de UX e de
+fluxos**; o backend dele não é.
+
+### 11.1 O que ele tem (e este repo não)
+
+| Item | Onde | Para o plano |
+|---|---|---|
+| Design Sol & Mar já aplicado (paleta, Roboto) | `src/app/globals.css` | Convive com a branch `feature/ui-01` (Inter, tokens `--color-*`). **Escolher uma**: tokens da `ui-01` ficam; copiar do protótipo só o que ele acrescenta (`primary-soft`, `accent-soft`, `border-subtle`, foco visível) |
+| Shell de navegação responsivo (Início, Publicar edital, Salvos, Perfil, Configurações, busca de artistas) | `components/shell/AppShell.tsx` | Base do organismo de navegação (W-UI) |
+| Feed ranqueado com score, confiança, teto, aviso de escassez | `(main)/page.tsx`, `api/ranking` | Referência da UI do feed (W6/W-UI) |
+| Modal de resumo do edital em linguagem simples (o que é, quem pode, benefícios, tags) | `components/modal/EditalSummaryModal.tsx` | Molde da T3.5. Hoje o resumo é um **gerador fixo** (`getPlainEditalSummary`), não IA |
+| Publicar edital por proponente | `(main)/publicar-edital` (545 linhas) | Molde do formulário de organização (T6b.2, D20) |
+| Perfil público do artista, obras, badges de editais vencidos | `perfil`, `perfil/[id]`, `components/profile` | Molde de W4 (perfil, obras, trajetória) |
+| Configurações (editar perfil, obras, badges) | `configuracoes` (854 linhas) | Idem; precisa quebrar em organismos |
+| Salvos | `salvos` | Feedback `salvo` (spec §20) |
+| Cadastro real (`api/auth/register`) com Zod | `api/auth/register` | Só o schema de entrada; ver §11.3 |
+| Motor `artistrank.ts` (335 linhas) | `src/shared/lib/artistrank.ts` | **Protótipo do motor, não a implementação da W5**; ver §11.2 |
+| Store social do cliente | `hooks/useSocialStore.tsx` (542 linhas) | Descartar; vira server state (D10: sinal social fora do score) |
+
+### 11.2 O motor do protótipo vs. a spec ArtistRank
+
+O `artistrank.ts` acerta a forma (combina `0,35·artista + 0,65·portfólio`, teto de 45 no score combinado,
+CORE 1,0 × SUPPORT 0,65, rótulo e aviso de escassez), mas **não é fiel à spec**, e a W5 o reescreve:
+
+- Notas por fator são **constantes soltas** (82, 92, 96, 58…) e só seis critérios, não os oito fatores com pesos 15/20/10/15/10/15/5/10.
+- Fator sem dado é **removido do denominador** (renormaliza): é exatamente a inflação que a spec v4 proíbe. Spec: nota neutra 0,5 sem renormalizar.
+- Não há estado `UNKNOWN`: elegibilidade é só território e CNPJ. Falta `PASS/FAIL/UNKNOWN/NOT_APPLICABLE`.
+- O teto de 45 dispara por **formação técnica ausente** e por **portfólio vazio**, que são requisitos de elegibilidade, não "requisito artístico obrigatório explícito em `FAIL`" (spec §9.3.1). Só o caso de linguagem obrigatória se aproxima.
+- Confiança C é `53,5 + cobertura·31,1 + obras·2,2`, **calibrada para cair na faixa observada** (53,5–91,2), não a fórmula `100·(0,35K + 0,30E + 0,15A + 0,20X)` da spec.
+- Sem evidências, sem versão de algoritmo, sem pesos persistidos, sem poder discriminante, sem projeção da banca.
+- Níveis `INICIANTE…MESTRE` e `profileLevel` não existem na spec; trajetória vem de `experiences` com estado de comprovação.
+
+Uso permitido: **fixture de UI** (formato do resultado: `rArtista`, `rPortfolio`, `scoreBruto`, `scoreFinal`, `confiancaC`, `cobertura`, `tetoAplicado`, `motivoTeto`, `bloqueado`) e semente dos testes de regressão.
+
+### 11.3 Problemas do protótipo que **não** podem ser portados
+
+- `api/auth/register` grava `password: data.password` **em texto puro** em `user_data`, `artist_data` e `proposer_data` (três tabelas). É o vazamento que a W0 fechou; Better Auth (T1.2) substitui, e hash nunca é opcional.
+- `api/ranking` aceita `?artistId=` de qualquer chamador e, sem sessão, **cai no artista 1**: qualquer um ranqueia por qualquer artista. Na nova versão o artista vem da sessão, nunca da query.
+- Usa o client Supabase anon direto nas rotas e `select('*')` em editais; a infra-01 deste repo já tirou isso.
+- `console.error` nas rotas e componentes de 500 a 850 linhas (lint do kit barra).
+- É um snapshot **anterior** à W0/T1.1/dep-01/infra-01 deste repo: portar por cópia reverteria correções.
+
+### 11.4 Estratégia de aproveitamento
+
+1. **Não substituir este repo pelo protótipo.** Portar **por tela**, reescrevendo para `src/shared/components/` (atoms → organisms), dados por prop e Server Components, sobre os tokens da `feature/ui-01`.
+2. Ordem do redesign continua **em espera** (decisão do usuário); o protótipo vira o insumo de cada tela quando ela for escolhida.
+3. Cada tela portada traz a UI dele **e** o contrato real (ArtistRank, Better Auth, Prisma), nunca o mock.
+4. O resumo "em linguagem simples" do modal define o **formato do JSON** da T3.5 (`whatIsIt`, `whoCanApply[]`, `benefits[]`, `extraTags[]`); a IA passa a preencher.
+5. O formulário de publicar edital do protótipo cobre território, linguagens exigidas/aceitas, CNPJ, formação, experiência e nível-alvo. Faltam vs. spec: critérios com pesos, CORE/SUPPORT explícito, evidência por requisito, tipo de oportunidade e anexo do PDF.
