@@ -21,8 +21,8 @@ import a partir de código de cliente vira **erro de build**, não valor
 
 ## Onde rodar
 
-- **Local:** `.env` preenchido (`.env.example` como molde) → `npm run dev`.
-  Migrations: `npm run db:migrate` (lê `DIRECT_URL`); seed: `npm run db:seed`.
+- **Local:** `.env` preenchido (`.env.example` como molde) → `yarn dev`.
+  Migrations: `yarn db:migrate` (lê `DIRECT_URL`); seed: `yarn db:seed`.
 - **CI (`.github/workflows/pr.yml`):** placeholders — o build valida o boot,
   não conecta em nada.
 - **Vercel/produção:** as quatro variáveis reais como project env. Nenhuma
@@ -35,13 +35,13 @@ Alternativa ao Supabase da nuvem, sem rede: Postgres 17 + PostgREST + um nginx q
 
 ```bash
 cp .env.docker.example .env.local   # o Next carrega .env.local por cima do .env
-npm run dev:db                      # sobe db, postgrest e gateway (aguarda ficarem saudáveis)
-npm run dev:db:setup                # migrations + seed + recarrega o schema do PostgREST
-npm run dev                         # reinicie se já estava rodando
+yarn dev:db                      # sobe db, postgrest e gateway (aguarda ficarem saudáveis)
+yarn dev:db:setup                # migrations + seed + recarrega o schema do PostgREST
+yarn dev                         # reinicie se já estava rodando
 ```
 
-Login de teste (vem de `mock/user_data.csv`): `maria.oliveira@email.com` / `senha_segura_2`
-(User) e `joao.silva@email.com` / `senha_segura_1` (Admin). `npm run dev:db:down` para; `dev:db:reset`
+Login de teste (vem de `mock/user_data.csv`): `maria.oliveira@email.com` / `senha_segura_2` e
+`joao.silva@email.com` / `senha_segura_1` (ambos `ARTIST`). `yarn dev:db:down` para; `dev:db:reset`
 apaga os dados. Para voltar ao Supabase da nuvem, apague `.env.local`.
 
 Portas: 54321 (gateway REST) e 54322 (Postgres), só em `127.0.0.1`. O gateway tira o header
@@ -50,8 +50,8 @@ Não há RLS aqui: não serve para validar políticas do Supabase.
 
 ## Testes
 
-Rodam **em Docker, sem rede** (`network_mode: none`): `npm run test:docker` constrói
-`Dockerfile.test` e executa o Vitest (jsdom + Testing Library). `npm test` roda no host, só para
+Rodam **em Docker, sem rede** (`network_mode: none`): `yarn test:docker` constrói
+`Dockerfile.test` e executa o Vitest (jsdom + Testing Library). `yarn test` roda no host, só para
 iterar. Nenhum teste toca Supabase ou serviço externo.
 
 ## Rotas de API abertas no middleware
