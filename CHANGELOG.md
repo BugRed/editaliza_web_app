@@ -2,6 +2,13 @@
 
 Impacto externo por entrega; app não versiona build. Novo no topo.
 
+## 2026-11-16 — docs/docs-01: replanejamento da V1 (ArtistRank, protótipo, ondas)
+
+- **Plano reescrito** — `plano.md` passa a seguir a spec ArtistRank v1.2 ([`docs/ops/`](docs/ops/ArtistRank_decisoes_e_especificacao_completa_v1.2_conferencia.md)): decisões D3 e D12–D25 (Prisma, Better Auth mantido, DeepSeek, Voyage, schema em inglês, onboarding mínimo, artistas e organizações, candidatura no app, tudo em TS e lançamento gratuito).
+- **Roadmap por ondas O1–O5** — design → no ar → editais reais + resumo IA → ArtistRank → semântica e organizações; "V1 publicável" = O1 a O3, sem score até o motor existir.
+- **Protótipo `BugRed/editaliza_prot` mapeado** — §11 lista o que aproveitar e o que não pode ser portado (senha em texto puro no cadastro, `?artistId=` aberto no ranking, motor fora da spec).
+- Sem mudança de código nesta entrega.
+
 ## 2026-10-18 — chore/infra-01: envs server-only, fim do NEXT_PUBLIC_
 
 - **Contrato de env sem `NEXT_PUBLIC_`** — `SUPABASE_URL` + `SUPABASE_API_KEY` (publishable key `sb_publishable_…`, sucessora da anon, mesmas RLS) obrigatórias; `DATABASE_URL`/`DIRECT_URL`/`BETTER_AUTH_*` opcionais até a W1. Boot segue validando com zod no mesmo ponto. CI e `.env.example` no contrato novo; migrations passam a ler a `DIRECT_URL` (pooler sessão). Contrato vivo em [`docs/ops/ambiente.md`](docs/ops/ambiente.md).

@@ -31,6 +31,9 @@ uma nem outra — é ADR.
 | 2026-10-18 | infra-01 ([spec](features/infra/0001-envs-server-side.md)) | Publishable key e `SUPABASE_URL` (derivada do ref do `DATABASE_URL`) **não exercitadas contra o Supabase real** — sandbox sem rede até lá; login ponta-a-pendente | `npm run dev` local → logar → `/feed` carrega; URL divergente corrige o `.env` |
 | 2026-10-18 | infra-01 ([spec](features/infra/0001-envs-server-side.md)) | Auth legado segue até T1.2: senha comparada em texto plano (agora só no servidor), token base64 sem assinatura, cookie não-httpOnly | Better Auth (T1.2) substitui o serviço de auth inteiro |
 
+| 2026-11-16 | [`docs/features/planejamento/0001-replanejamento-v1.md`](features/planejamento/0001-replanejamento-v1.md) | Clone do protótipo (`./editaliza_prot/`, ignorado no git) fica **dentro** do repo e quebra o `tsc` (84 erros nele); `typecheck` só passa filtrando esse caminho | Mover o clone para fora do repo (`~/workspace/editaliza_prot`) |
+| 2026-11-16 | [`docs/features/planejamento/0001-replanejamento-v1.md`](features/planejamento/0001-replanejamento-v1.md) | `plano.md` §7.1–7.9 mantém a fórmula antiga do motor como histórico ao lado da §7.0 vigente; duas versões do motor no mesmo arquivo | Remover §7.1–7.9 quando a W5 virar ADR/`docs/negocio/` |
+| 2026-11-16 | [`docs/features/planejamento/0001-replanejamento-v1.md`](features/planejamento/0001-replanejamento-v1.md) | ADRs de auth, Prisma, DeepSeek, imagens e governança de `performance` não escritos; D12–D25 vivem só no `plano.md` | Escrever cada ADR na onda que implementa (O2/O3/O4) |
 
 ## Becos sem saída
 

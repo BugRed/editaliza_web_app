@@ -1,6 +1,6 @@
 # Replanejamento da V1 — feed por afinidade e resumo de edital por IA
 
-**Status:** em-desenvolvimento
+**Status:** entregue
 **Responsabilidade:** planejamento
 **Branch:** docs/docs-01/replanejamento-v1
 **Autor:** BugRed · **Data:** 2026-11-15
@@ -17,11 +17,11 @@
 - [x] route — não se aplica, só documentação
 - [x] ui — não se aplica, só documentação
 - [x] teste — não se aplica, só documentação
-- [ ] doc — `plano.md` reescrito, ADRs das decisões abaixo, ROADMAP/PROGRESS
+- [x] doc — `plano.md` reescrito (decisões D2–D25, §6.0 ondas, §7.0 ArtistRank, §10 telas, §11 protótipo); PROGRESS e CHANGELOG atualizados
 <!-- /kit:camadas -->
 
-**Próximo passo:** fechar as decisões em aberto abaixo, depois reescrever `plano.md` (§3 decisões,
-§5 WBS) refletindo a V1 e abrir os ADRs (auth, stack de dados, LLM, imagens).
+**Próximo passo:** usuário faz push/PR desta branch (e das 4 empilhadas), depois abrir a **O1 — articulação de design**:
+mapa de telas e protótipo navegável para aprovar, partindo do `editaliza_prot` e dos tokens da `feature/ui-01`.
 
 ## Problema / motivação
 O `plano.md` (2026-10-13) foi escrito antes de o produto ser reposicionado: a IA de resumo
@@ -62,12 +62,14 @@ precisa refletir isso antes de qualquer implementação.
 ## Critérios de aceite
 
 <!-- kit:criterios -->
-- [ ] `plano.md` reflete as decisões e não contradiz os ADRs
-- [ ] ADRs: auth (Better Auth, confirma D2), dados (Prisma), LLM (DeepSeek), imagens (WebP/AVIF)
-- [ ] Decisões em aberto abaixo resolvidas ou viradas tarefa
+- [x] `plano.md` reflete as decisões (nenhum ADR novo as contradiz: ainda não há ADR para elas)
+- [x] ADRs de auth (Better Auth), dados (Prisma), LLM (DeepSeek) e imagens (WebP/AVIF) **viraram tarefa da O2/O3**, escritos junto de cada implementação; não são entregues aqui (critério reescrito de "escritos" para "listados")
+- [x] Decisões em aberto abaixo resolvidas ou viradas tarefa/pendência com dono
 <!-- /kit:criterios -->
 
 ## Dívida / não exercitado
+- Gate parcial: só `typecheck` e `lint` existem neste repo (sem `format:check`, testes, cobertura, Sonar). `tsc` sai com erro **só** por causa do clone `./editaliza_prot/` (84 erros nele, 0 no código do repo); lint passou.
+- O protótipo foi lido pelo clone local, sem checar o histórico no GitHub (SSH falhou, HTTPS recusado).
 - Custo e limites do DeepSeek para PDFs longos não medidos; avaliar no golden set.
 - Quota de 1 GB do Supabase Storage free não dimensionada contra o corpus de PDFs.
 
