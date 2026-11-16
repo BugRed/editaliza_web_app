@@ -75,6 +75,9 @@ Problemas graves conhecidos (estado após a W0, branch `bugfix/auth-01`):
 | D20 | Edital publicado por organização | Pipeline da spec §12.6: PDF → texto → DeepSeek (JSON) → Zod → verificação de evidência → **confirmação humana** (organização no edital dela; admin no edital importado) → banco. Cada requisito guarda documento, página, trecho, versão e estado de validação (spec §7.7); array vazio = "não informado", nunca proibição (§7.6) |
 | D21 | Visibilidade do artista para a organização | **Só quando o artista se candidata** ao edital dela. Sem busca ativa de artistas, sem acesso a autodeclarações ou documentos fora da candidatura. Implica **inscrição dentro do app** (a definir) |
 | D22 | Infra da V1 | **Tudo TypeScript, sem LangGraph nem worker Python.** Jobs agendados chamando endpoints protegidos, fila no Postgres. **Lançamento gratuito**, sem monetização: Vercel Hobby serve; migrar para Pro **antes** de qualquer cobrança ou divulgação comercial |
+| D23 | Candidatura | **Inscrição dentro do app**: o artista escolhe obra(s), anexa documentos e envia; a organização vê o dossiê (score, fatores, evidências) só dos candidatos dela. Exige estados de inscrição, armazenamento de documentos e retenção definida |
+| D24 | Taxonomia | Vocabulário inicial **derivado pela IA da spec (§3.2–§3.5) e do corpus**, entregue como planilha para revisão do usuário antes de virar seed. "performance" vira dois termos distintos (artes visuais × artes cênicas). Governança (sinônimos, hierarquia, versionamento) em ADR |
+| D25 | Validação do motor | Golden set **montado depois**, sem o pacote de benchmark da spec (não está no repo). Até lá, os casos de §27.5 da spec (Ana × Dança = 45,0; Beto × Malakoff = 77,1; Bituca × FIC bloqueado) viram testes de regressão reconstruídos |
 
 ## 4. Arquitetura alvo (resumo)
 
@@ -125,51 +128,77 @@ só depende de ondas anteriores; dentro da onda, tarefas são paralelizáveis en
 | T2.5 | (monitoramento semanal de novos editais do Recife, spec §24: só itens verificados em fonte oficial; coleta incompleta nunca vira "nada de novo") Cron diário: GitHub Actions agendado chamando endpoint admin protegido por secret; alerta quando coleta volta vazia (fonte mudou) | Coleta roda 7 dias seguidos sem intervenção; coleta vazia notifica |
 | T2.6 | UI consome dado real: feed e página de detalhe do edital lendo o banco (fonte, datas, status, link oficial, PDF) | Mocks saem do fluxo de leitura (ficam só como seed) |
 
-### W3 — Taxonomia e extração de requisitos (dep: W2)
+### W1b — Migração para Prisma e papéis (dep: T1.1; antes de qualquer tabela do ArtistRank)
 
 | T | O quê | Pronto quando |
 |---|---|---|
-| T3.1 | **Vocabulário controlado versionado** (`db/vocabulario/`): áreas/linguagens (mapear `terms.area` do Mapas Culturais ↔ linguagens do PNAB Recife), cotas, tipos de proponente, tipos de requisito | Mapeamento cobre 100% das linguagens vistas no corpus (12) e das áreas da API |
-| T3.2 | Tabelas `requisito` e `criterio_avaliacao` (§5.6) com migração | Migration aplicada |
-| T3.3 | **Extrator LLM plugável**: pipeline texto do edital → requisitos + critérios/pesos + cotas + faixas, cada item com evidência citável e confiança; validação zod do output com retry/repair | Extração da FRTN bate com a leitura manual (golden extraction) |
-| T3.4 | Backfill do corpus: rodar extração sobre editais ingeridos + `docs/editais-exemplo/` | Todo edital ativo tem requisitos com evidência |
-| T3.5 | Revisão humana mínima: rota admin listando requisitos por edital com approve/edit para confiança baixa | Itens abaixo do limiar de confiança ficam invisíveis ao match até revisados |
+| T1.5 | Prisma sobre o Postgres do Supabase: schema modular em `prisma/schema/`, migration baseline equivalente ao `db/migrations/0001_baseline.sql`, seed por domínio; `db/migrate.mjs` aposentado | `prisma migrate` recria o schema do zero; mocks viram seeder |
+| T1.6 | Papéis `artist`, `organization`, `admin` no Better Auth e guardas no `proxy.ts` | Cada rota exige o papel certo; teste de acesso negado |
 
-### W4 — Perfil e projetos do usuário (dep: T1.2 + T3.1; paralela à W3)
+### W3 — Taxonomia e estruturação de editais (dep: W1b, W2)
 
 | T | O quê | Pronto quando |
 |---|---|---|
-| T4.1 | Formulário de perfil multi-etapas (§5.7): tipo de proponente, território + flag área periférica, autodeclarações com **consentimento LGPD explícito e criptografia em repouso**, atuação, capacidade formal, histórico de participações | Perfil salva completo; autodeclarações não aparecem em nenhuma resposta sem escopo |
-| T4.2 | Direitos LGPD: exportar meus dados e excluir conta (dados sensíveis first) | Exclusão remove autodeclarações e vetores derivados |
-| T4.3 | Upload de projeto: PDF/texto + links de vídeo/foto (portfólio com comprovação), extração de texto (mesma pipeline da W2), campos estruturados (área, valor, formato, inédita, território) | Projeto enviado aparece com texto extraído e campos preenchidos |
-| T4.4 | Completude do perfil por edital: função que diz quais campos avaliados por aquele edital estão faltando | Alimenta a UI "complete seu perfil" da W5 |
+| T3.1 | `taxonomy_terms` + relações (hierarquia, sinônimos, versão); vocabulário inicial (D24) revisado pelo usuário e carregado como seed | Planilha aprovada; 100% das linguagens do corpus mapeadas |
+| T3.2 | Tabelas do edital: `opportunities`, `opportunity_requirements` (com `mandatory`, papel CORE/SUPPORT), `opportunity_criteria`, `opportunity_evidence` (documento, página, trecho, versão, estado de validação) | Migration aplicada; array vazio = "não informado" |
+| T3.3 | Pipeline de extração (D20): `LLMProvider` DeepSeek, saída JSON, validação Zod com repair, verificação de evidência, estados `pendente/confirmado` | Extração do FRTN bate com a leitura manual |
+| T3.4 | Confirmação humana: organização confirma o edital dela; admin confirma o importado; item não confirmado é invisível ao ranking | Itens `UNKNOWN`/ambíguos listados com evidência |
+| T3.5 | Resumo do edital em linguagem simples (V1), gerado pós-confirmação, com link para o trecho oficial | Todo edital confirmado tem resumo; aviso de "interpretação por IA" |
 
-### W5 — Match v1: regras (dep: W3 + W4)
-
-| T | O quê | Pronto quando |
-|---|---|---|
-| T5.1 | **Golden set v0**: 30+ casos derivados do dataset rotulado (`multi_result`) + casos sintéticos com nota esperada | Arquivo versionado + teste de regressão roda no CI |
-| T5.2 | Fórmula v1 (§5.2): gates eliminatórios + requisitos pontuáveis + **espelhamento dos pesos que o próprio edital publica** quando existem | Golden set passa; mesma entrada → mesma nota (determinismo testado) |
-| T5.3 | `match_result` + invalidação por `inputs_hash` (perfil/projeto/edital mudaram → recalcula) | Recalcular não duplica; mudança de perfil invalida cache |
-| T5.4 | UI: score real no `PercentCardFeed`, feed ordenado por match, página "por quê" com breakdown + evidência + link oficial, bloco de pendências | O "30%" fixo morre; toda nota é clicável e explicada |
-
-### W6 — Match v2: embeddings (dep: W5)
+### W4 — Perfil, obras e trajetória (dep: T1.6 + T3.1; paralela à W3)
 
 | T | O quê | Pronto quando |
 |---|---|---|
-| T6.1 | pgvector + tabela `embedding` (modelo+versão+dimensão+hash); interface `EmbeddingProvider`; **escolha do modelo** por avaliação no golden set (PT-BR, custo, dimensão suportada) | Troca de modelo tem backfill versionado |
-| T6.2 | Chunking por seção do edital (objeto, público-alvo, categorias) + embeddings de projeto; lexical TF-IDF/BM25 como baseline e feature | Baseline e denso comparados no golden set |
-| T6.3 | Fórmula v2 híbrida (§5.8): regras + lexical + denso com RRF, pesos espelhados do edital quando publicados | v2 ≥ v1 no golden set sem perder explicabilidade |
-| T6.4 | Pré-computo do feed: top-N por usuário quando entra edital novo; recomputação quando perfil/projeto muda | Feed abre com scores prontos (<100ms), sem computar na request |
+| T4.1 | Onboarding mínimo (D18): linguagens, cidade, interesses; gera feed com cobertura baixa visível | Artista novo vê feed em poucos minutos |
+| T4.2 | `artists`, `artist_terms`: identidade, linguagens, técnicas, temas, posicionamento (spec §3); autodeclaração só por declaração ou evidência, nunca inferida | Campo ausente = desconhecido |
+| T4.3 | `experiences`: trajetória com categorias, estágios incluídos, estado de comprovação (spec §4) | Pontuação de trajetória contextual, não contagem |
+| T4.4 | `artworks` + `artwork_terms` + mídia (WebP/AVIF com `sharp`, D15) + necessidades de montagem (spec §5) | Obra avaliada individualmente |
+| T4.5 | Intenção e disponibilidade (spec §6) | Alimenta viabilidade |
+| T4.6 | LGPD: consentimento, exportar e excluir conta (inclui vetores derivados) | Exclusão remove dados sensíveis e embeddings |
 
-### W7 — Refactoração e endurecimento (dep: todas; o "deixa pro final")
+### W5 — ArtistRank v1: motor determinístico (dep: W3 + W4)
 
 | T | O quê | Pronto quando |
 |---|---|---|
-| T7.1 | Unificar as três `FeedPage` em uma; remover código morto e comentários de código; classes tipo TypeORM → interfaces puras | Uma só página de feed; `src/app/types` sem classes com estado |
-| T7.2 | Rename de domínio (D8): `artist_data`/`proposer_data` → agente cultural/organização, migrations + seed | Nenhuma referência a Artist/Proposer no código |
-| T7.3 | Lint do kit ligado no CI (`eslint.kit.mjs` somado ao `eslint.config.mjs`) + cobertura mínima nos services críticos (auth, normalizadores, fórmula) | `yarn lint` passa; services críticos com teste de comportamento |
-| T7.4 | Revisão de segurança final: headers, rate limit no login, URLs de storage assinadas, checagem OWASP básica | Checklist de segurança documentado e aprovado |
+| T5.1 | Elegibilidade `PASS/FAIL/UNKNOWN/NOT_APPLICABLE` como função pura | Casos eliminatórios cobertos; arte alta não compensa `FAIL` |
+| T5.2 | Oito fatores e pesos versionados em configuração; nota neutra 0,5 sem renormalizar; cobertura calculada (motor v4) | Mesma entrada, mesma nota |
+| T5.3 | Teto de 45 no score final combinado; CORE/SUPPORT; combinação artista/portfólio por modalidade, α configurável | Caso Ana × Dança = 45,0 |
+| T5.4 | Confiança C separada, sem efeito no score | Teste prova que C não altera ranking |
+| T5.5 | `recommendations` + `recommendation_factors` persistindo versão, pesos, entradas, evidências | Recalcular não duplica; mudança de entrada invalida |
+| T5.6 | Testes de regressão dos casos §27.5 reconstruídos (D25) | Rodam no CI |
+
+### W6 — Embeddings e feed (dep: W5)
+
+| T | O quê | Pronto quando |
+|---|---|---|
+| T6.1 | pgvector no Prisma (`Unsupported("vector")` + SQL cru) e tabela `embeddings` com `content_hash`; `EmbeddingProvider` | Texto igual não regera vetor |
+| T6.2 | A/B TF-IDF × Voyage (`voyage-4-lite`) com os mesmos casos; mede ranking, latência e custo | Decisão registrada em ADR antes de fixar o modelo |
+| T6.3 | Afinidade semântica por dimensão (conceito, posicionamento, obra) combinada à taxonomia | Fatores 2 e 4 usam a similaridade; golden set não piora |
+| T6.4 | Pré-computo do feed por artista; recomputa quando perfil, obra ou edital mudam | Feed abre sem calcular na request |
+| T6.5 | Poder discriminante por edital e estado "poucas oportunidades compatíveis" (spec §9.7, §9.9) | Aviso exibido; limiar marcado como não calibrado |
+
+### W6b — Candidatura e organizações (dep: W5, T1.6)
+
+| T | O quê | Pronto quando |
+|---|---|---|
+| T6b.1 | Inscrição: artista escolhe obra(s) e anexa documentos; estados da inscrição | Inscrição criada, editável até o prazo |
+| T6b.2 | Área da organização: publicar edital (D20), ver só candidatos dela, dossiê com score, fatores e evidências | Organização não enxerga artista que não se candidatou (teste) |
+| T6b.3 | Feedback com motivo (spec §20) e "por quê" da nota | Rejeição registra motivo; nota exibe nota antes do teto |
+| T6b.4 | Projeção sobre critérios oficiais (spec §9.8), só quando mapeável | Rotulada como projeção; "indisponível" se faltar critério |
+
+### W-UI — Redesign de todas as telas (dep: design system Sol & Mar; ordem a definir)
+
+Telas e dependências em §10. **A ordem do redesign está em espera por decisão do usuário** e não será
+fixada aqui. Cada tela nasce como organismo em `src/shared/components/` (atoms → molecules → organisms).
+
+### W7 — Endurecimento (dep: todas)
+
+| T | O quê | Pronto quando |
+|---|---|---|
+| T7.1 | Unificar as três `FeedPage`; remover código morto | Uma só página de feed |
+| T7.2 | Lint do kit no CI e cobertura mínima nos services críticos (auth, normalizadores, motor) | `yarn lint` passa |
+| T7.3 | Revisão de segurança final: headers, rate limit, URLs assinadas, OWASP básico | Checklist aprovado |
+| T7.4 | Antes de monetizar: Vercel Pro, termos de uso, política de privacidade e retenção | Documentos publicados |
 
 ## 6. Roadmap
 
@@ -185,7 +214,8 @@ W0 ─► W1 ─┬─► W2 ─► W3 ─┐
 | W0 | Vazamento de senhas, env, CI | — | tudo |
 | W1 | Migrations, Better Auth, acesso server-side, deploy | W0 | — |
 | W2 | Ingestão (Mapa Cultural PE → PDFs → cron → feed real) | T1.1 | W1 (após T1.1) |
-| W3 | Taxonomia + extração de requisitos | W2 | W4 |
+| W1b | Prisma + papéis | T1.1 | W2 |
+| W3 | Taxonomia + estruturação de editais + resumo IA | W1b, W2 | W4 |
 | W4 | Perfil LGPD + projetos | T1.2, T3.1 | W3 (após T3.1) |
 | W5 | Match v1 regras + golden set + UI do score | W3, W4 | — |
 | W6 | Match v2 embeddings + pré-computo | W5 | — |

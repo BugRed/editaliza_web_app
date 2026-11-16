@@ -47,6 +47,9 @@ precisa refletir isso antes de qualquer implementação.
 
 - D20–D22: edital de organização passa por extração + confirmação; organização só vê artista que se candidata; tudo em TS, lançamento gratuito.
 
+- D23–D25: candidatura dentro do app; taxonomia derivada pela IA e revisada pelo usuário; golden set depois.
+- WBS reescrito (W1b, W3–W7, W6b, W-UI) em `plano.md` §5.
+
 **Não entra:**
 - Implementação de qualquer item acima; revisão de projeto por IA; scrapers além do Mapa Cultural.
 
@@ -68,5 +71,6 @@ precisa refletir isso antes de qualquer implementação.
 
 ## Decisões em aberto
 - Perguntas de 2026-11-16 sobre ArtistRank e telas: ver o resumo do `/feature` e as respostas registradas aqui.
-- Dados do artista (tags de arte) nascem no cadastro ou no onboarding?
+- Ordem do redesign das telas: em espera por decisão do usuário.
+- Limiares não calibrados da spec (pesos, α, limiar de poder discriminante): ficam configuráveis até haver dado.
 - O que fazer com os 4 branches empilhados (W0, T1.1, dep-01, infra-01) que ainda esperam PR?
