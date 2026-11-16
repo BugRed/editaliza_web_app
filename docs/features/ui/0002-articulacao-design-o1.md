@@ -21,7 +21,7 @@
 - [x] doc — mapa de telas e fluxo em `docs/`
 <!-- /kit:camadas -->
 
-**Próximo passo:** telas de **login e cadastro** e depois **feed** sobre os atoms e molecules (mapa §6, aprovado), com protótipo navegável das demais telas em páginas Next com dados fixos.
+**Próximo passo:** tela do **feed** (`/feed`) sobre `EditalCard`, `SearchBar` e `EmptyState`, só com tokens e sem score; depois o detalhe do edital e o protótipo navegável das demais telas.
 
 ## Problema / motivação
 A O1 do roadmap (`plano.md` §6.0) é a primeira onda: design fechado antes de qualquer tela entrar
@@ -72,6 +72,13 @@ Nenhuma regra nova. Match e score ficam na O4 ([`plano.md`](../../../plano.md) �
   (wasm opcional) e o `npm ci` o rejeita, mesmo com o mesmo npm. Não é reprodutível por lock.
 - Tema escuro definido nos tokens, mas sem verificação visual (só claro foi visto).
 - `Avatar` usa `<img>` e não `next/image` (origem arbitrária); regra do ESLint desligada na linha.
+
+- **Cadastro não grava nada:** a UI valida (e-mail, senha de 8+ com número, consentimento) e segue
+  para `/login`; a conta só é criada com o Better Auth (O2). O cadastro antigo fazia o mesmo e
+  ainda dava `console.log` da senha, removido.
+- Senha mínima passou de 6 (regex antiga) para 8 + 1 número, que era o `minLength` do campo.
+- Logo `/logoLogin.png` não existe mais no repo: o card usa o nome em texto.
+- `AuthForm` e `loginForm.tsx` antigos, sem uso, foram removidos.
 
 ## Decisões em aberto
 - Forma do "protótipo navegável": páginas Next com dados fixos, ou Storybook. Padrão sugerido:
