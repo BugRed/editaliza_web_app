@@ -140,7 +140,7 @@ só depende de ondas anteriores; dentro da onda, tarefas são paralelizáveis en
 | T | O quê | Pronto quando |
 |---|---|---|
 | T3.1 | `taxonomy_terms` + relações (hierarquia, sinônimos, versão); vocabulário inicial (D24) revisado pelo usuário e carregado como seed | Planilha aprovada; 100% das linguagens do corpus mapeadas |
-| T3.2 | Tabelas do edital: `opportunities`, `opportunity_requirements` (com `mandatory`, papel CORE/SUPPORT), `opportunity_criteria`, `opportunity_evidence` (documento, página, trecho, versão, estado de validação) | Migration aplicada; array vazio = "não informado" |
+| T3.2 | Tabelas do edital (inclui enum de tipo de oportunidade): `opportunities`, `opportunity_requirements` (com `mandatory`, papel CORE/SUPPORT), `opportunity_criteria`, `opportunity_evidence` (documento, página, trecho, versão, estado de validação) | Migration aplicada; array vazio = "não informado" |
 | T3.3 | Pipeline de extração (D20): `LLMProvider` DeepSeek, saída JSON, validação Zod com repair, verificação de evidência, estados `pendente/confirmado` | Extração do FRTN bate com a leitura manual |
 | T3.4 | Confirmação humana: organização confirma o edital dela; admin confirma o importado; item não confirmado é invisível ao ranking | Itens `UNKNOWN`/ambíguos listados com evidência |
 | T3.5 | Resumo do edital em linguagem simples (V1), gerado pós-confirmação, com link para o trecho oficial | Todo edital confirmado tem resumo; aviso de "interpretação por IA" |
@@ -190,6 +190,14 @@ só depende de ondas anteriores; dentro da onda, tarefas são paralelizáveis en
 
 Telas e dependências em §10. **A ordem do redesign está em espera por decisão do usuário** e não será
 fixada aqui. Cada tela nasce como organismo em `src/shared/components/` (atoms → molecules → organisms).
+
+### Pós-V1 — Recomendação de projeto futuro e revisão do projeto (dep: W5, W6b)
+
+| T | O quê | Pronto quando |
+|---|---|---|
+| TP.1 | Nível 3 do chat: para o par artista × edital, indicar a série mais aderente, critérios atendidos, o que desenvolver, documentos faltantes e critérios a cuidar, sem descaracterizar o artista | Sugestão cita evidência do edital e do perfil |
+| TP.2 | Revisão do texto do projeto contra o edital: o que faltou e o que errou (visão original do produto) | Cada apontamento aponta o trecho do edital |
+| TP.3 | Fase 5 da spec: calibração com resultados reais e avaliação por especialistas | Só com dados homologados |
 
 ### W7 — Endurecimento (dep: todas)
 
@@ -266,6 +274,30 @@ trabalho, nunca inferida de endereço; feedback registra o **motivo**.
 
 Sem oportunidade relevante, o feed mostra "poucas ou nenhuma oportunidade compatível" e separa as
 marginais (spec §9.9). Sinais sociais seguem fora do score (D10).
+
+**Do chat de origem do ArtistRank** (colado pelo usuário em 2026-11-16; a spec já consolida quase tudo, o que
+segue é o que ela não tem ou tem só de passagem):
+
+- **Tipos de oportunidade** viram enum em `opportunities` (a spec não os define): multilinguagem · nicho
+  (hip-hop, dança, teatro, circo) · ocupação/exposição · formação · financiamento (MIC, FIC) · programação
+  (carnaval, São João) · aquisição de obras · representação (conselhos). Cada tipo pesa os fatores de modo
+  diferente (ocupação → viabilidade e montagem; formação → capacidade de transmitir; financiamento →
+  orçamento e proponente) e muda os requisitos que o formulário da organização pede.
+- **Três níveis de recomendação:** artista, obra e **projeto futuro**. O terceiro (sugerir como desenvolver
+  uma proposta para o edital sem descaracterizar o artista: série mais aderente, critérios atendidos, o que
+  desenvolver, documentos faltantes, critérios que merecem atenção) é **pós-V1** e é a mesma frente da
+  revisão do projeto por IA da visão do produto.
+- **Afinidade explícita × contextual:** explícita = o edital pede fotografia e o artista faz fotografia;
+  contextual = o tema (memória, território) casa mesmo sem a técnica ser citada. A contextual é o que os
+  embeddings (W6) acrescentam; a explícita sai só da taxonomia (W5).
+- **Os 30 editais de Recife** (spec §22) são **base de benchmarking**, não 30 documentos analisados:
+  servem de fila de coleta (W2), casos de teste e extração. Falta baixar edital completo, anexos,
+  retificações e critérios de cada um.
+- **O stack sugerido no chat** (NestJS, Redis + BullMQ, Python para PDFs, busca textual) **não vale**:
+  prevalecem D12 (Prisma), D22 (TS, fila no Postgres, jobs agendados) e a busca do próprio Postgres.
+- Para o edital OBSERVA 4 / Torre Malakoff, o exemplo de JSON do chat é o molde do formulário de edital:
+  elegibilidade, requisitos artísticos (listas vazias = não informado), proposta, critérios com pontuação
+  máxima (7 critérios, 26 pontos, corte 13), premiação e status.
 
 **Dados** (spec §16): `artists`, `artworks`, `experiences`, `taxonomy_terms`, `artist_terms`,
 `artwork_terms`, `opportunities`, `opportunity_requirements`, `opportunity_criteria`,
