@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { getEditalProposerHref } from "@/shared/lib/edital-owner";
+import { Fragment, useState, useEffect } from "react";
 import Link from "next/link";
 import { AlertTriangle, PlusCircle } from "lucide-react";
 import { IEdital } from "@/app/types/Edital";
@@ -8,6 +9,8 @@ import { TagData } from "@/app/types/TagData";
 import { mensagemDeErro } from "@/app/lib/erros";
 import BodyCardFeed from "@/app/components/cardFeed/BodyCardFeed";
 import AppShell from "@/app/components/shell/AppShell";
+import AdSlot from "@/app/components/ads/AdSlot";
+import { adPositions } from "@/app/lib/ads";
 import { useAuth } from "@/app/hooks/useAuth";
 import { useSocialStore } from "@/app/hooks/useSocialStore";
 import { ArtistRankResult } from "@/shared/lib/artistrank";
@@ -17,6 +20,8 @@ interface RankedEditalItem {
   proposerName: string;
   rank: ArtistRankResult | null;
 }
+
+const AD_EVERY = 3;
 
 export default function FeedPage() {
   const { user, token } = useAuth();
@@ -93,6 +98,9 @@ export default function FeedPage() {
     return [];
   };
 
+  // Um anúncio a cada AD_EVERY posts, como numa timeline: o post nunca fica sem o seu card.
+  const adIndexes = adPositions(rankedItems.length, AD_EVERY);
+
   const getRankColor = (rank: ArtistRankResult | null) => {
     if (!rank) return "#0E7C86";
     if (rank.bloqueado) return "#B91C1C";
@@ -158,9 +166,9 @@ export default function FeedPage() {
             </div>
           )}
 
-          {rankedItems.map(({ edital, proposerName, rank }) => (
+          {rankedItems.map(({ edital, proposerName, rank }, index) => (
+            <Fragment key={edital.id}>
             <BodyCardFeed
-              key={edital.id}
               editalId={edital.id}
               percent={rank ? String(Math.round(rank.scoreFinal)) : "Aberto"}
               colorPercent={getRankColor(rank)}
@@ -168,7 +176,7 @@ export default function FeedPage() {
               title={edital.title}
               description={edital.description}
               proposer={proposerName}
-              proposerLink=""
+              proposerLink={getEditalProposerHref(edital)}
               date={edital.publishDate}
               tags={parseTags(edital.listTags)}
               buttomSubmitLink={edital.inscriptionLink}
@@ -177,6 +185,8 @@ export default function FeedPage() {
                 openEditalModal(edital, proposerName, rank ?? undefined)
               }
             />
+            {adIndexes.includes(index) && <AdSlot variant="feed" slot={index} />}
+            </Fragment>
           ))}
         </div>
       )}

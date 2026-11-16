@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { AlertCircle, EllipsisVerticalIcon, ShieldAlert } from "lucide-react";
 import styles from "./bodyCardFeed.module.css";
@@ -68,9 +69,20 @@ export default function BodyCardFeed({
         {/* Post Header (X / Instagram style) */}
         <div className={styles.postHeader}>
           <div className={styles.proposerCluster}>
-            <div className={styles.proposerAvatar} aria-hidden="true">
-              {initials}
-            </div>
+            {proposerLink ? (
+              <Link
+                href={proposerLink}
+                tabIndex={-1}
+                aria-hidden="true"
+                className={`${styles.proposerAvatar} transition-colors hover:border-[#0E7C86]`}
+              >
+                {initials}
+              </Link>
+            ) : (
+              <div className={styles.proposerAvatar} aria-hidden="true">
+                {initials}
+              </div>
+            )}
             <InfoCardFeed
               title={title}
               proposer={proposer}
@@ -92,6 +104,16 @@ export default function BodyCardFeed({
         {/* Post Media (Instagram-like 16:9 image) */}
         <div className={styles.mediaWrapper}>
           <CardImage img={coverImage} title={title} />
+          {/* O clique vive só na imagem (e no título): o card inteiro não é um alvo, para não
+              disputar com curtir, salvar, compartilhar, menu e "Inscrever-se". */}
+          {onOpenSummary && (
+            <button
+              type="button"
+              onClick={onOpenSummary}
+              aria-label={`Ver resumo de ${title}`}
+              className="absolute inset-0 z-[1] cursor-pointer bg-transparent transition-colors hover:bg-[#102A30]/5 focus-visible:outline-offset-[-3px]"
+            />
+          )}
           <PercentCardFeed
             percent={percent}
             cor={colorPercent}
@@ -102,7 +124,19 @@ export default function BodyCardFeed({
         {/* Post Body & Actions */}
         <div className={styles.contentWrapper}>
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <h2 className={styles.postTitle}>{title}</h2>
+            <h2 className={styles.postTitle}>
+              {onOpenSummary ? (
+                <button
+                  type="button"
+                  onClick={onOpenSummary}
+                  className="cursor-pointer text-left font-[inherit] transition-colors hover:text-[#0E7C86]"
+                >
+                  {title}
+                </button>
+              ) : (
+                title
+              )}
+            </h2>
             {rank && (
               <span className="text-xs font-medium text-[#4A656B] tabular-nums">
                 {rank.nivelAderencia} · Confiança {rank.confiancaC.toFixed(1)}

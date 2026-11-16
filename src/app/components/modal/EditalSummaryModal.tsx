@@ -1,5 +1,8 @@
 "use client";
 
+import Link from "next/link";
+import { getEditalProposerHref } from "@/shared/lib/edital-owner";
+import RankBars from "@/app/components/rank/RankBars";
 import { useEffect } from "react";
 import {
   Bookmark,
@@ -43,6 +46,7 @@ export default function EditalSummaryModal() {
 
   const { edital, proposerName, rank } = activeEditalModal;
   const saved = isEditalSaved(edital.id);
+  const proposerHref = getEditalProposerHref(edital);
 
   const dbPlainSummary: PlainEditalSummaryData | null = (() => {
     if (!edital.plainSummary) return null;
@@ -110,7 +114,18 @@ export default function EditalSummaryModal() {
               {edital.title}
             </h2>
             <p className="text-sm text-[#4A656B] mt-0.5">
-              Organizado por <span className="font-medium text-[#102A30]">{proposerName}</span>
+              Organizado por{" "}
+              {proposerHref ? (
+                <Link
+                  href={proposerHref}
+                  onClick={closeEditalModal}
+                  className="font-medium text-[#0E7C86] hover:underline"
+                >
+                  {proposerName}
+                </Link>
+              ) : (
+                <span className="font-medium text-[#102A30]">{proposerName}</span>
+              )}
             </p>
           </div>
 
@@ -126,52 +141,7 @@ export default function EditalSummaryModal() {
 
         {/* Body well distributed */}
         <div className="p-6 space-y-6">
-          {rank && (
-            <section className="rounded-xl border border-[#DCE6E8] bg-[#F8FAFB] p-4 space-y-3">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#0E7C86]">
-                    Compatibilidade com o seu perfil (ArtistRank)
-                  </p>
-                  <p className="text-sm font-bold text-[#102A30] mt-0.5">
-                    {rank.nivelAderencia} · {rank.bloqueado ? "Bloqueado" : `${rank.scoreFinal.toFixed(1)} / 100`}
-                  </p>
-                </div>
-                <span className="text-xs font-semibold text-[#4A656B] tabular-nums">
-                  Confiança C: {rank.confiancaC.toFixed(1)} · Cobertura: {rank.cobertura.toFixed(0)}%
-                </span>
-              </div>
-
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs">
-                <div className="rounded-lg bg-white border border-[#DCE6E8] p-2.5">
-                  <span className="text-[#6B8388] block">Perfil do artista (35%)</span>
-                  <span className="font-bold text-[#102A30] tabular-nums">{rank.rArtista.toFixed(1)}</span>
-                </div>
-                <div className="rounded-lg bg-white border border-[#DCE6E8] p-2.5">
-                  <span className="text-[#6B8388] block">Portfólio e obras (65%)</span>
-                  <span className="font-bold text-[#102A30] tabular-nums">{rank.rPortfolio.toFixed(1)}</span>
-                </div>
-                <div className="rounded-lg bg-white border border-[#DCE6E8] p-2.5 col-span-2 sm:col-span-1">
-                  <span className="text-[#6B8388] block">Score combinado</span>
-                  <span className="font-bold text-[#0E7C86] tabular-nums">
-                    {rank.scoreFinal.toFixed(1)}
-                    {rank.tetoAplicado ? ` (bruto ${rank.scoreBruto.toFixed(1)})` : ""}
-                  </span>
-                </div>
-              </div>
-
-              {rank.bloqueado && rank.motivoBloqueio && (
-                <p className="text-xs font-semibold text-red-700 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
-                  {rank.motivoBloqueio}
-                </p>
-              )}
-              {!rank.bloqueado && rank.tetoAplicado && rank.motivoTeto && (
-                <p className="text-xs font-semibold text-[#7A5400] bg-[#FFF8E1] border border-amber-200 rounded-lg px-3 py-2">
-                  {rank.motivoTeto}
-                </p>
-              )}
-            </section>
-          )}
+          {rank && <RankBars rank={rank} />}
 
           {/* O que é */}
           <section className="bg-[#F8FAFB] border border-[#DCE6E8] rounded-xl p-4 sm:p-5">

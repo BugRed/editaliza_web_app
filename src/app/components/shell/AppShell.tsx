@@ -17,6 +17,8 @@ import {
 import { useAuth } from "@/app/hooks/useAuth";
 import { useSocialStore } from "@/app/hooks/useSocialStore";
 import EditalSummaryModal from "@/app/components/modal/EditalSummaryModal";
+import AdSlot from "@/app/components/ads/AdSlot";
+import ArtistList from "@/app/components/shell/ArtistList";
 
 interface AppShellProps {
   title: string;
@@ -107,7 +109,7 @@ export default function AppShell({ title, children }: AppShellProps) {
       <div className="max-w-[1200px] mx-auto flex justify-center">
         {/* Left Sidebar (Instagram / X style) */}
         <aside className="hidden md:flex flex-col justify-between w-60 xl:w-64 shrink-0 sticky top-0 h-screen px-4 py-5">
-          <div className="space-y-6">
+          <div className="flex min-h-0 flex-1 flex-col gap-6">
             <Link
               href="/"
               className="inline-flex items-center gap-2.5 px-3 py-1.5 text-xl font-bold text-[#0E7C86] tracking-tight"
@@ -148,6 +150,12 @@ export default function AppShell({ title, children }: AppShellProps) {
                 );
               })}
             </nav>
+
+            {/* Publicidade entre o último item do menu (Configurações) e o perfil: ocupa a altura
+                que sobra, até a linha que separa o cartão do usuário */}
+            <div className="min-h-0 flex-1 pb-4">
+              <AdSlot variant="sidebar" slot={1} />
+            </div>
           </div>
 
           {/* Current user mini-card + logout */}
@@ -279,9 +287,9 @@ export default function AppShell({ title, children }: AppShellProps) {
           {children}
         </div>
 
-        {/* Right Sticky Search & Users Rail (Desktop lg+) */}
-        <aside className="hidden lg:block w-80 shrink-0 px-5 py-4">
-          <div className="sticky top-4 space-y-5">
+        {/* Coluna da direita (desktop lg+): busca e perfis no topo; a publicidade vem depois e fica fixa ao rolar */}
+        <aside className="hidden w-80 shrink-0 px-5 py-4 lg:flex lg:flex-col">
+          <div className="flex flex-1 flex-col gap-5">
             {/* Search bar for other users */}
             <div className="relative">
               <Search
@@ -299,54 +307,25 @@ export default function AppShell({ title, children }: AppShellProps) {
               />
             </div>
 
-            {/* Search results / seeded users list */}
-            <section className="bg-white border border-[#DCE6E8] rounded-2xl overflow-hidden">
-              <div className="px-4 py-3 border-b border-[#DCE6E8] flex items-center justify-between">
+            <section aria-label="Artistas na rede" className="overflow-hidden rounded-2xl border border-[#DCE6E8] bg-white">
+              <div className="flex items-center justify-between border-b border-[#DCE6E8] px-4 py-3">
                 <h2 className="text-sm font-bold text-[#102A30]">
                   {searchQuery.trim() ? "Resultados da busca" : "Artistas na rede"}
                 </h2>
-                <span className="text-xs font-medium text-[#6B8388] tabular-nums">
-                  {filteredUsers.length}
-                </span>
+                <span className="text-xs font-medium tabular-nums text-[#6B8388]">{filteredUsers.length}</span>
               </div>
-
-              <div className="divide-y divide-[#DCE6E8]">
-                {filteredUsers.length === 0 ? (
-                  <div className="p-4 text-sm text-[#6B8388]">
-                    Nenhum perfil encontrado para &ldquo;{searchQuery}&rdquo;.
-                  </div>
-                ) : (
-                  filteredUsers.map((artist) => (
-                    <Link
-                      key={artist.id}
-                      href={`/perfil/${artist.id}`}
-                      className="flex items-start gap-3 p-3.5 hover:bg-[#F8FAFB] transition-colors"
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={artist.avatarUrl}
-                        alt={artist.name}
-                        className="w-11 h-11 rounded-full object-cover border border-[#DCE6E8] shrink-0"
-                      />
-                      <div className="min-w-0 flex-1">
-                        <p className="text-sm font-bold text-[#102A30] truncate">
-                          {artist.name}
-                        </p>
-                        <p className="text-xs text-[#6B8388] truncate">
-                          {artist.handle}
-                          {artist.city
-                            ? ` · ${artist.city}${artist.state ? `, ${artist.state}` : ""}`
-                            : ""}
-                        </p>
-                        <p className="text-xs font-medium text-[#09585F] mt-1 truncate">
-                          {artist.tags.join(" · ")}
-                        </p>
-                      </div>
-                    </Link>
-                  ))
-                )}
-              </div>
+              {filteredUsers.length === 0 ? (
+                <div className="p-4 text-sm text-[#6B8388]">Nenhum perfil encontrado para &ldquo;{searchQuery}&rdquo;.</div>
+              ) : (
+                <ArtistList key={searchQuery.trim()} artists={filteredUsers} />
+              )}
             </section>
+
+            {/* Estilo LinkedIn: ao rolar, os banners ficam fixos à direita. A altura é limitada à da janela. */}
+            <div className="sticky top-4 flex max-h-[calc(100vh-2rem)] flex-col gap-5 overflow-y-auto">
+              <AdSlot variant="rail" slot={0} />
+              <AdSlot variant="rail" slot={2} />
+            </div>
           </div>
         </aside>
       </div>

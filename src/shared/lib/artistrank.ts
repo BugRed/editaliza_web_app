@@ -43,6 +43,30 @@ export interface RankEditalInput {
   targetProfileLevels?: string[];
 }
 
+export type RankFactorGroup = 'ARTISTA' | 'PORTFOLIO';
+
+export interface RankFactor {
+  id: string;
+  grupo: RankFactorGroup;
+  label: string;
+  /** Peso do fator dentro do seu grupo (a soma de cada grupo é 1). */
+  peso: number;
+  /** Nota de 0 a 100, ou null quando o motor não tinha dado para avaliar (desconhecido, não zero). */
+  nota: number | null;
+}
+
+// Pesos e rótulos dos fatores que o motor deste protótipo calcula. Não são os oito fatores da
+// spec ArtistRank §9.1: a W5 reescreve o motor, e as barras seguem o que ele devolver.
+const FACTOR_DEFS: Array<Omit<RankFactor, 'nota'>> = [
+  { id: 'linguagem', grupo: 'ARTISTA', label: 'Linguagem artística', peso: 0.48 },
+  { id: 'territorio', grupo: 'ARTISTA', label: 'Território', peso: 0.2 },
+  { id: 'experiencia', grupo: 'ARTISTA', label: 'Experiência', peso: 0.16 },
+  { id: 'trajetoria', grupo: 'ARTISTA', label: 'Nível de trajetória', peso: 0.16 },
+  { id: 'obras', grupo: 'PORTFOLIO', label: 'Obras aderentes ao edital', peso: 0.55 },
+  { id: 'completude', grupo: 'PORTFOLIO', label: 'Completude do portfólio', peso: 0.3 },
+  { id: 'selos', grupo: 'PORTFOLIO', label: 'Selos na área', peso: 0.15 },
+];
+
 export interface ArtistRankResult {
   editalId: number;
   rArtista: number;
@@ -57,6 +81,8 @@ export interface ArtistRankResult {
   motivoBloqueio?: string;
   rotulo: 0 | 1 | 2 | 3;
   nivelAderencia: 'Aderência forte' | 'Aderência moderada' | 'Aderência baixa' | 'Inelegível';
+  /** Nota de cada fator, para a interface mostrar como o score foi formado. */
+  fatores: RankFactor[];
 }
 
 function normalize(value: string): string {
@@ -125,6 +151,7 @@ export function evaluateArtistRank(
   }
 
   // 2. R_artista (35%) com nulos neutros e cobertura
+  const observed = new Map<string, number>();
   const artistFactors: Array<{ weight: number; score: number }> = [];
   let nonNullCriteria = 0;
   const totalCriteria = 6;
@@ -151,6 +178,7 @@ export function evaluateArtistRank(
         : 0;
     const langScore = clamp(bestLangScore * 0.88 + breadthBonus, 0, 100);
     artistFactors.push({ weight: 0.48, score: langScore });
+    observed.set('linguagem', langScore);
   }
 
   // 2b. Território
@@ -167,6 +195,7 @@ export function evaluateArtistRank(
       territoryScore = 90;
     }
     artistFactors.push({ weight: 0.2, score: territoryScore });
+    observed.set('territorio', territoryScore);
   }
 
   // 2c. Experiência e nível artístico
@@ -180,6 +209,7 @@ export function evaluateArtistRank(
         ? clamp(84 + (artist.experienceYears - minExp) * 3, 84, 100)
         : clamp((artist.experienceYears / Math.max(minExp, 1)) * 68, 25, 68);
     artistFactors.push({ weight: 0.16, score: expScore });
+    observed.set('experiencia', expScore);
   }
 
   // 2d. Nível de trajetória (profileLevel)
@@ -193,6 +223,7 @@ export function evaluateArtistRank(
         ? 96
         : 58;
     artistFactors.push({ weight: 0.16, score: levelScore });
+    observed.set('trajetoria', levelScore);
   }
 
   const rArtista =
@@ -217,13 +248,16 @@ export function evaluateArtistRank(
         ? 44
         : 30;
     const volumeScore = clamp(55 + Math.min(artist.worksCount, 4) * 10, 55, 95);
-    portfolioFactors.push({ weight: 0.55, score: workRelevance * 0.7 + volumeScore * 0.3 });
+    const obrasScore = workRelevance * 0.7 + volumeScore * 0.3;
+    portfolioFactors.push({ weight: 0.55, score: obrasScore });
+    observed.set('obras', obrasScore);
   }
 
   if (typeof artist.portfolioCompleteness === 'number') {
     nonNullCriteria += 1;
     const completenessScore = clamp(artist.portfolioCompleteness, 20, 100);
     portfolioFactors.push({ weight: 0.3, score: completenessScore });
+    observed.set('completude', completenessScore);
   }
 
   // Bônus leve por badge conquistada na área
@@ -234,6 +268,7 @@ export function evaluateArtistRank(
     badgeScore = 76;
   }
   portfolioFactors.push({ weight: 0.15, score: badgeScore });
+  observed.set('selos', badgeScore);
 
   const rPortfolio =
     portfolioFactors.length > 0
@@ -304,6 +339,10 @@ export function evaluateArtistRank(
     motivoBloqueio,
     rotulo,
     nivelAderencia,
+    fatores: FACTOR_DEFS.map((def) => ({
+      ...def,
+      nota: observed.has(def.id) ? round2(observed.get(def.id) as number) : null,
+    })),
   };
 }
 

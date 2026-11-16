@@ -18,6 +18,7 @@ import {
 } from "../lib/user-profiles";
 import { IEdital, PlainEditalSummaryData } from "../types/Edital";
 import { ArtistRankResult, ProfileLevel, TerritoryScope } from "@/shared/lib/artistrank";
+import { moveItem } from "@/shared/lib/reorder";
 
 export interface ProposerProfile {
   id: number;
@@ -75,6 +76,8 @@ interface SocialStoreContextType {
   ) => Promise<{ success: boolean; error?: string; edital?: IEdital }>;
   addArtWorkToCurrentProfile: (work: Omit<ArtWork, "id">) => Promise<void>;
   removeArtWorkFromCurrentProfile: (workId: string) => Promise<void>;
+  /** Sobe (−1) ou desce (+1) uma obra; a ordem da lista é a ordem da galeria. */
+  moveArtWorkOfCurrentProfile: (workId: string, delta: -1 | 1) => Promise<void>;
   addBadgeToCurrentProfile: (badge: Omit<UserBadge, "id">) => Promise<void>;
   removeBadgeFromCurrentProfile: (badgeId: string) => Promise<void>;
   savedEditalIds: number[];
@@ -416,6 +419,17 @@ export function SocialStoreProvider({
     [currentProfile.works, updateCurrentProfile]
   );
 
+  const moveArtWorkOfCurrentProfile = useCallback(
+    async (workId: string, delta: -1 | 1) => {
+      const index = currentProfile.works.findIndex((w) => w.id === workId);
+      if (index === -1) return;
+      const reordered = moveItem(currentProfile.works, index, delta);
+      if (reordered.every((work, i) => work === currentProfile.works[i])) return;
+      await updateCurrentProfile({ works: reordered });
+    },
+    [currentProfile.works, updateCurrentProfile]
+  );
+
   const addBadgeToCurrentProfile = useCallback(
     async (badge: Omit<UserBadge, "id">) => {
       const newBadge: UserBadge = {
@@ -513,6 +527,7 @@ export function SocialStoreProvider({
         publishEdital,
         addArtWorkToCurrentProfile,
         removeArtWorkFromCurrentProfile,
+        moveArtWorkOfCurrentProfile,
         addBadgeToCurrentProfile,
         removeBadgeFromCurrentProfile,
         savedEditalIds,

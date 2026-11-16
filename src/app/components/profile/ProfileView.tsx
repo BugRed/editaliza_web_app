@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { Award, Briefcase, GraduationCap, MapPin, Plus, Settings, X } from "lucide-react";
-import { ArtistProfile, ArtWork } from "@/app/lib/user-profiles";
+import { Award, Briefcase, ChevronRight, GraduationCap, MapPin, Plus, Settings } from "lucide-react";
+import { ArtistProfile } from "@/app/lib/user-profiles";
+import WorkGallery from "./WorkGallery";
 
 interface ProfileViewProps {
   profile: ArtistProfile;
@@ -25,8 +25,6 @@ const SCOPE_LABELS: Record<string, string> = {
 };
 
 export default function ProfileView({ profile, isOwnProfile }: ProfileViewProps) {
-  const [selectedWork, setSelectedWork] = useState<ArtWork | null>(null);
-
   const coreTags =
     profile.coreLanguages.length > 0 ? profile.coreLanguages : profile.tags;
   const supportTags = profile.supportLanguages.filter(
@@ -156,30 +154,28 @@ export default function ProfileView({ profile, isOwnProfile }: ProfileViewProps)
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {profile.badges.map((badge) => (
-              <div
+              <Link
                 key={badge.id}
-                className="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-[#DCE6E8]"
+                href={`/perfil/${profile.id}/selos/${badge.id}`}
+                aria-label={`Ver o selo ${badge.title}: ${badge.editalName}`}
+                className="group flex items-start gap-3 rounded-xl border border-[#DCE6E8] bg-white p-3.5 transition-colors hover:border-[#0E7C86]/50 hover:bg-[#F8FAFB]"
               >
-                <span className="w-10 h-10 rounded-xl bg-[#FFF6D6] border border-[#FFB800]/50 text-[#7A5400] flex items-center justify-center shrink-0">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#FFB800]/50 bg-[#FFF6D6] text-[#7A5400]">
                   <Award size={20} strokeWidth={2.2} aria-hidden="true" />
                 </span>
-                <div className="min-w-0">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-[#0E7C86]">
-                      {badge.title}
-                    </span>
-                    <span className="text-xs text-[#6B8388] tabular-nums">
-                      · {badge.year}
-                    </span>
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                    <span className="text-xs font-bold text-[#0E7C86]">{badge.title}</span>
+                    <span className="text-xs tabular-nums text-[#6B8388]">· {badge.year}</span>
                   </div>
-                  <p className="text-sm font-bold text-[#102A30] leading-snug mt-0.5">
-                    {badge.editalName}
-                  </p>
-                  <p className="text-xs text-[#6B8388] mt-0.5">
+                  <p className="mt-0.5 break-words text-sm font-bold leading-snug text-[#102A30]">{badge.editalName}</p>
+                  <p className="mt-0.5 text-xs text-[#6B8388]">
                     Área: {badge.category}
+                    {badge.issuerName ? ` · ${badge.issuerName}` : ""}
                   </p>
                 </div>
-              </div>
+                <ChevronRight size={16} className="mt-1 shrink-0 text-[#6B8388] group-hover:text-[#0E7C86]" aria-hidden="true" />
+              </Link>
             ))}
           </div>
         )}
@@ -203,84 +199,14 @@ export default function ProfileView({ profile, isOwnProfile }: ProfileViewProps)
         </div>
 
         {profile.works.length === 0 ? (
-          <div className="p-8 text-center border border-dashed border-[#DCE6E8] rounded-xl">
-            <p className="text-sm text-[#6B8388]">
-              Nenhum trabalho artístico publicado ainda.
-            </p>
+          <div className="rounded-xl border border-dashed border-[#DCE6E8] p-8 text-center">
+            <p className="text-sm text-[#6B8388]">Nenhum trabalho artístico publicado ainda.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3">
-            {profile.works.map((work) => (
-              <button
-                key={work.id}
-                type="button"
-                onClick={() => setSelectedWork(work)}
-                className="group relative aspect-square rounded-xl overflow-hidden border border-[#DCE6E8] bg-[#F0F6F7] text-left cursor-pointer"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={work.imageUrl}
-                  alt={work.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
-                />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#102A30]/85 via-[#102A30]/40 to-transparent p-2.5">
-                  <p className="text-xs font-bold text-white truncate">
-                    {work.title}
-                  </p>
-                  <p className="text-[11px] text-white/85 truncate">
-                    {work.category} · {work.year}
-                  </p>
-                </div>
-              </button>
-            ))}
-          </div>
+          <WorkGallery works={profile.works} />
         )}
       </section>
 
-      {/* Lightbox de obra selecionada */}
-      {selectedWork && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#102A30]/60 backdrop-blur-xs p-4"
-          role="dialog"
-          aria-modal="true"
-          onClick={() => setSelectedWork(null)}
-        >
-          <div
-            className="w-full max-w-lg bg-white border border-[#DCE6E8] rounded-2xl overflow-hidden shadow-xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="relative aspect-square w-full bg-[#F0F6F7]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={selectedWork.imageUrl}
-                alt={selectedWork.title}
-                className="w-full h-full object-cover"
-              />
-              <button
-                type="button"
-                onClick={() => setSelectedWork(null)}
-                aria-label="Fechar visualização da obra"
-                className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 text-[#102A30] flex items-center justify-center hover:bg-white cursor-pointer shadow-sm"
-              >
-                <X size={18} />
-              </button>
-            </div>
-            <div className="p-5 space-y-1.5">
-              <div className="flex items-center justify-between gap-2">
-                <h4 className="text-lg font-bold text-[#102A30]">
-                  {selectedWork.title}
-                </h4>
-                <span className="text-xs font-semibold text-[#0E7C86] tabular-nums">
-                  {selectedWork.category} · {selectedWork.year}
-                </span>
-              </div>
-              <p className="text-sm text-[#4A656B] leading-relaxed">
-                {selectedWork.description}
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { ProfileLevel, RankArtistInput, TerritoryScope } from "@/shared/lib/artistrank";
+import { isWorkKind, type WorkKind } from "@/shared/lib/media";
 
 export interface UserBadge {
   id: string;
@@ -6,15 +7,42 @@ export interface UserBadge {
   editalName: string;
   year: string;
   category: string;
+  /** Edital que concedeu o selo (leva ao resumo dele). */
+  editalId?: number;
+  /** Proponente que concedeu o selo (leva ao perfil da empresa). */
+  issuerId?: number;
+  issuerName?: string;
 }
 
 export interface ArtWork {
   id: string;
   title: string;
+  /** Linguagem artística (Pintura, Música…), a mesma usada no ranking. */
   category: string;
   year: string;
+  /** Texto curto que define a obra. */
   description: string;
+  /** Capa. Em vídeo e áudio é o pôster. */
   imageUrl: string;
+  /** Formato da obra. Ausente em obras antigas: vale IMAGEM. */
+  kind?: WorkKind;
+  technique?: string;
+  dimensions?: string;
+  /** Temas e assuntos que a obra abrange. */
+  tags?: string[];
+  /** Arquivo ou link tocável (vídeo/áudio). */
+  mediaUrl?: string;
+}
+
+export function normalizeWork(raw: ArtWork): ArtWork {
+  return {
+    ...raw,
+    kind: isWorkKind(raw.kind) ? raw.kind : "IMAGEM",
+    technique: raw.technique ?? "",
+    dimensions: raw.dimensions ?? "",
+    tags: Array.isArray(raw.tags) ? raw.tags.filter((tag) => typeof tag === "string" && tag.trim()) : [],
+    mediaUrl: raw.mediaUrl ?? "",
+  };
 }
 
 export interface ArtistProfile {
@@ -116,7 +144,7 @@ export function normalizeArtistRow(
   ).filter(Boolean);
 
   const badges = parseJsonField<UserBadge[]>(row.badges, fallback?.badges ?? []);
-  const works = parseJsonField<ArtWork[]>(row.works, fallback?.works ?? []);
+  const works = parseJsonField<ArtWork[]>(row.works, fallback?.works ?? []).map(normalizeWork);
   const savedEditalIds = parseJsonField<number[]>(
     row.savedEditalIds,
     fallback?.savedEditalIds ?? []
@@ -230,6 +258,9 @@ export const SEEDED_PROFILES: ArtistProfile[] = [
         editalName: "Concurso de Pintura Jovem",
         year: "2025",
         category: "Pintura",
+        editalId: 301,
+        issuerId: 101,
+        issuerName: "Empresa A Propostas",
       },
       {
         id: "badge-2",
@@ -247,6 +278,10 @@ export const SEEDED_PROFILES: ArtistProfile[] = [
         year: "2025",
         description: "Técnica mista com acrílica e óleo sobre tela crua (120 x 150 cm).",
         imageUrl: "/images/art_pintura_tela_1794791580838.jpg",
+        kind: "IMAGEM",
+        technique: "Acrílica e óleo sobre tela crua",
+        dimensions: "120 × 150 cm",
+        tags: ["Abstração", "Paisagem", "Cor"],
       },
       {
         id: "w-102",
@@ -255,6 +290,10 @@ export const SEEDED_PROFILES: ArtistProfile[] = [
         year: "2026",
         description: "Registro de cena da montagem autoral sobre deslocamentos urbanos.",
         imageUrl: "/images/art_teatro_palco_1794791582532.jpg",
+        kind: "FOTOGRAFIA",
+        technique: "Registro fotográfico de cena",
+        dimensions: "Impressão 40 × 60 cm",
+        tags: ["Cena contemporânea", "Deslocamento", "Cidade"],
       },
       {
         id: "w-103",
@@ -263,6 +302,11 @@ export const SEEDED_PROFILES: ArtistProfile[] = [
         year: "2025",
         description: "Apresentação ao vivo de repertório autoral para voz, violão e percussão.",
         imageUrl: "/images/edital_musica_1794791580539.jpg",
+        kind: "VIDEO",
+        technique: "Registro ao vivo em vídeo",
+        dimensions: "Duração 0:06 · amostra",
+        tags: ["Canção autoral", "Ao vivo", "Percussão"],
+        mediaUrl: "/media/amostra-video.mp4",
       },
     ],
     savedEditalIds: [301],
@@ -300,6 +344,9 @@ export const SEEDED_PROFILES: ArtistProfile[] = [
         editalName: "Ocupação de Espaço Cultural",
         year: "2026",
         category: "Performance",
+        editalId: 303,
+        issuerId: 103,
+        issuerName: "Startup C Cultural",
       },
     ],
     works: [
@@ -310,6 +357,10 @@ export const SEEDED_PROFILES: ArtistProfile[] = [
         year: "2026",
         description: "Escultura em cerâmica de alta temperatura encaixada em cedro reaproveitado.",
         imageUrl: "/images/art_escultura_galeria_1794791581583.jpg",
+        kind: "IMAGEM",
+        technique: "Cerâmica de alta temperatura e cedro reaproveitado",
+        dimensions: "60 × 40 × 40 cm",
+        tags: ["Escultura", "Reuso", "Equilíbrio"],
       },
       {
         id: "w-202",
@@ -318,6 +369,10 @@ export const SEEDED_PROFILES: ArtistProfile[] = [
         year: "2025",
         description: "Instalação têxtil suspensa e ação performática coletiva em pátio público.",
         imageUrl: "/images/edital_ocupacao_1794791581648.jpg",
+        kind: "FOTOGRAFIA",
+        technique: "Registro de instalação têxtil e ação coletiva",
+        dimensions: "Série de 12 fotografias",
+        tags: ["Instalação", "Coletivo", "Espaço público"],
       },
       {
         id: "w-203",
@@ -326,6 +381,10 @@ export const SEEDED_PROFILES: ArtistProfile[] = [
         year: "2025",
         description: "Série expositiva com grandes telas em pigmentos minerais e folha dourada.",
         imageUrl: "/images/edital_pintura_1794791580477.jpg",
+        kind: "IMAGEM",
+        technique: "Pigmentos minerais e folha dourada sobre tela",
+        dimensions: "Série de 5 telas · 100 × 100 cm",
+        tags: ["Cor", "Mineral", "Série"],
       },
     ],
     savedEditalIds: [303],
@@ -356,6 +415,9 @@ export const SEEDED_PROFILES: ArtistProfile[] = [
         editalName: "Festival de Música Popular",
         year: "2025",
         category: "Música",
+        editalId: 302,
+        issuerId: 102,
+        issuerName: "Instituição B Projetos",
       },
     ],
     works: [
@@ -366,6 +428,11 @@ export const SEEDED_PROFILES: ArtistProfile[] = [
         year: "2025",
         description: "Turnê de lançamento do disco autoral em festivais independentes.",
         imageUrl: "/images/edital_musica_1794791580539.jpg",
+        kind: "AUDIO",
+        technique: "Gravação em estúdio, violão e voz",
+        dimensions: "Duração 0:06 · amostra",
+        tags: ["Disco autoral", "Violão", "Canção"],
+        mediaUrl: "/media/amostra-acorde.mp3",
       },
       {
         id: "w-302",
@@ -374,6 +441,11 @@ export const SEEDED_PROFILES: ArtistProfile[] = [
         year: "2026",
         description: "Composição e execução de trilha sonora ao vivo para espetáculo teatral.",
         imageUrl: "/images/art_teatro_palco_1794791582532.jpg",
+        kind: "AUDIO",
+        technique: "Trilha sonora executada ao vivo",
+        dimensions: "Duração 0:06 · amostra",
+        tags: ["Teatro", "Trilha", "Ao vivo"],
+        mediaUrl: "/media/amostra-acorde.mp3",
       },
       {
         id: "w-303",
@@ -382,6 +454,11 @@ export const SEEDED_PROFILES: ArtistProfile[] = [
         year: "2025",
         description: "Intervenção acústica e espacialização sonora em centro cultural.",
         imageUrl: "/images/edital_ocupacao_1794791581648.jpg",
+        kind: "VIDEO",
+        technique: "Intervenção sonora com espacialização",
+        dimensions: "Duração 0:06 · amostra",
+        tags: ["Paisagem sonora", "Intervenção", "Centro cultural"],
+        mediaUrl: "/media/amostra-video.mp4",
       },
     ],
     savedEditalIds: [302],

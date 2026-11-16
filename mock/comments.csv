@@ -1,4 +1,4 @@
 id,authorName,content,approved,status,createdAt,updatedAt,user,edital
 401,João Silva,Excelente edital! Já me inscrevi.,true,APPROVED,2024-08-02T11:00:00Z,2024-08-02T11:00:00Z,1,301
-402,Mariana Oliveira,Achei a descrição um pouco vaga.,true,APPROVED,2024-08-03T15:00:00Z,2024-08-03T15:00:00Z,2,301
-403,Carlos Músico,Há alguma possibilidade de estender o prazo?,false,PENDING,2024-08-21T10:30:00Z,2024-08-21T10:30:00Z,203,302
+402,Mariana Oliveira,Achei a descrição bem clara e completa.,true,APPROVED,2024-08-03T15:00:00Z,2024-08-03T15:00:00Z,2,301
+403,Carlos Músico,Há alguma possibilidade de estender o prazo?,false,PENDING,2024-08-21T10:30:00Z,2024-08-21T10:30:00Z,3,302

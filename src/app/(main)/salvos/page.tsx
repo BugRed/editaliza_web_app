@@ -1,5 +1,6 @@
 "use client";
 
+import { getEditalProposerHref } from "@/shared/lib/edital-owner";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Bookmark } from "lucide-react";
@@ -130,7 +131,7 @@ export default function SalvosPage() {
               title={edital.title}
               description={edital.description}
               proposer={proposerName}
-              proposerLink=""
+              proposerLink={getEditalProposerHref(edital)}
               date={edital.publishDate}
               tags={parseTags(edital.listTags)}
               buttomSubmitLink={edital.inscriptionLink}

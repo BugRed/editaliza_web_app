@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { supabase } from '@/app/lib/supabase/client';
 import { ARTIST_PUBLIC_COLUMNS } from '@/shared/lib/artist-columns';
+import { getMediaSource, WORK_KINDS } from '@/shared/lib/media';
 import {
   calculatePortfolioCompleteness,
   normalizeArtistRow,
@@ -14,6 +15,9 @@ const badgeSchema = z.object({
   editalName: z.string().min(1),
   year: z.string().min(1),
   category: z.string().min(1),
+  editalId: z.number().int().positive().optional(),
+  issuerId: z.number().int().positive().optional(),
+  issuerName: z.string().max(160).optional(),
 });
 
 const workSchema = z.object({
@@ -21,8 +25,18 @@ const workSchema = z.object({
   title: z.string().min(1),
   category: z.string().min(1),
   year: z.string().min(1),
-  description: z.string(),
+  description: z.string().max(600),
   imageUrl: z.string().min(1),
+  kind: z.enum(WORK_KINDS).optional(),
+  technique: z.string().max(160).optional(),
+  dimensions: z.string().max(120).optional(),
+  tags: z.array(z.string().trim().min(1).max(40)).max(12).optional(),
+  // Vazio é permitido; preenchido precisa ser mídia tocável segura (http(s) ou arquivo do site).
+  mediaUrl: z
+    .string()
+    .max(500)
+    .refine((value) => value === '' || getMediaSource(value) !== null, 'Link de mídia inválido.')
+    .optional(),
 });
 
 const updateArtistSchema = z.object({

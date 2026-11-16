@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Award, Check, Plus, Trash2, X } from "lucide-react";
+import { Check, X } from "lucide-react";
 import AppShell from "@/app/components/shell/AppShell";
+import BadgeManager from "@/app/components/profile/BadgeManager";
+import WorkManager from "@/app/components/profile/WorkManager";
 import { useSocialStore, ProposerProfile } from "@/app/hooks/useSocialStore";
 import {
   ALL_ART_TAGS,
@@ -16,13 +18,6 @@ const PRESET_AVATARS = [
   "/images/avatar_joao_1794791579584.jpg",
   "/images/avatar_maria_1794791579527.jpg",
   "/images/avatar_carlos_1794791579626.jpg",
-];
-
-const PRESET_WORKS = [
-  "/images/art_pintura_tela_1794791580838.jpg",
-  "/images/art_escultura_galeria_1794791581583.jpg",
-  "/images/art_teatro_palco_1794791582532.jpg",
-  "/images/edital_musica_1794791580539.jpg",
 ];
 
 export default function ConfiguracoesPage() {
@@ -202,13 +197,7 @@ function ConfiguracoesContent({
 }: {
   currentProfile: ArtistProfile;
 }) {
-  const {
-    updateCurrentProfile,
-    addArtWorkToCurrentProfile,
-    removeArtWorkFromCurrentProfile,
-    addBadgeToCurrentProfile,
-    removeBadgeFromCurrentProfile,
-  } = useSocialStore();
+  const { updateCurrentProfile } = useSocialStore();
 
   const [name, setName] = useState(currentProfile.name);
   const [handle, setHandle] = useState(currentProfile.handle);
@@ -241,19 +230,6 @@ function ConfiguracoesContent({
   const [customTag, setCustomTag] = useState("");
   const [savingProfile, setSavingProfile] = useState(false);
   const [savedNotice, setSavedNotice] = useState(false);
-
-  const [workTitle, setWorkTitle] = useState("");
-  const [workCategory, setWorkCategory] = useState("Pintura");
-  const [workYear, setWorkYear] = useState("2026");
-  const [workDescription, setWorkDescription] = useState("");
-  const [workImage, setWorkImage] = useState(PRESET_WORKS[0]);
-  const [workAddedNotice, setWorkAddedNotice] = useState(false);
-
-  const [badgeTitle, setBadgeTitle] = useState("Selecionado");
-  const [badgeEditalName, setBadgeEditalName] = useState("");
-  const [badgeYear, setBadgeYear] = useState("2026");
-  const [badgeCategory, setBadgeCategory] = useState("Pintura");
-  const [badgeAddedNotice, setBadgeAddedNotice] = useState(false);
 
   const toggleCoreLanguage = (tag: string) => {
     setSupportLanguages((prev) => prev.filter((t) => t !== tag));
@@ -307,36 +283,6 @@ function ConfiguracoesContent({
     setSavingProfile(false);
     setSavedNotice(true);
     setTimeout(() => setSavedNotice(false), 3500);
-  };
-
-  const handleAddWork = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!workTitle.trim()) return;
-    await addArtWorkToCurrentProfile({
-      title: workTitle.trim(),
-      category: workCategory,
-      year: workYear.trim() || "2026",
-      description: workDescription.trim() || "Trabalho artístico autoral.",
-      imageUrl: workImage,
-    });
-    setWorkTitle("");
-    setWorkDescription("");
-    setWorkAddedNotice(true);
-    setTimeout(() => setWorkAddedNotice(false), 3000);
-  };
-
-  const handleAddBadge = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!badgeEditalName.trim()) return;
-    await addBadgeToCurrentProfile({
-      title: badgeTitle.trim() || "Selecionado",
-      editalName: badgeEditalName.trim(),
-      year: badgeYear.trim() || "2026",
-      category: badgeCategory,
-    });
-    setBadgeEditalName("");
-    setBadgeAddedNotice(true);
-    setTimeout(() => setBadgeAddedNotice(false), 3000);
   };
 
   const allAvailableTags = Array.from(
@@ -638,217 +584,9 @@ function ConfiguracoesContent({
           </button>
         </form>
 
-        {/* Adicionar nova obra ao portfólio */}
-        <form
-          id="novo-trabalho"
-          onSubmit={handleAddWork}
-          className="p-5 sm:p-6 space-y-4 bg-[#F8FAFB]/60"
-        >
-          <h2 className="text-base font-bold text-[#102A30]">
-            Trabalhos artísticos no portfólio ({currentProfile.works.length})
-          </h2>
+        <WorkManager profile={currentProfile} availableCategories={allAvailableTags} />
 
-          {workAddedNotice && (
-            <div className="flex items-center justify-between gap-3 p-3 rounded-xl bg-[#E6F4F5] border border-[#0E7C86]/30 text-sm text-[#09585F] font-medium">
-              <span>Trabalho adicionado e salvo no banco!</span>
-              <Link href="/perfil" className="font-bold underline">
-                Ver galeria
-              </Link>
-            </div>
-          )}
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <input
-              type="text"
-              placeholder="Título da obra"
-              value={workTitle}
-              onChange={(e) => setWorkTitle(e.target.value)}
-              className="sm:col-span-2 px-3.5 py-2.5 rounded-xl bg-white border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
-              required
-            />
-            <input
-              type="text"
-              placeholder="Ano"
-              value={workYear}
-              onChange={(e) => setWorkYear(e.target.value)}
-              className="px-3.5 py-2.5 rounded-xl bg-white border border-[#DCE6E8] text-sm text-[#102A30] tabular-nums focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <select
-              value={workCategory}
-              onChange={(e) => setWorkCategory(e.target.value)}
-              className="px-3.5 py-2.5 rounded-xl bg-white border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
-            >
-              {allAvailableTags.map((t) => (
-                <option key={t} value={t}>
-                  {t}
-                </option>
-              ))}
-            </select>
-
-            <select
-              value={workImage}
-              onChange={(e) => setWorkImage(e.target.value)}
-              className="px-3.5 py-2.5 rounded-xl bg-white border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
-            >
-              <option value="/images/art_pintura_tela_1794791580838.jpg">
-                Imagem: Pintura em tela
-              </option>
-              <option value="/images/art_escultura_galeria_1794791581583.jpg">
-                Imagem: Escultura em galeria
-              </option>
-              <option value="/images/art_teatro_palco_1794791582532.jpg">
-                Imagem: Cena de teatro
-              </option>
-              <option value="/images/edital_musica_1794791580539.jpg">
-                Imagem: Show de música
-              </option>
-            </select>
-          </div>
-
-          <input
-            type="text"
-            placeholder="Breve descrição da obra ou técnica"
-            value={workDescription}
-            onChange={(e) => setWorkDescription(e.target.value)}
-            className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
-          />
-
-          <button
-            type="submit"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FFB800] text-[#102A30] text-sm font-bold hover:bg-[#E5A500] transition-colors cursor-pointer"
-          >
-            <Plus size={16} />
-            <span>Publicar trabalho no perfil</span>
-          </button>
-
-          {currentProfile.works.length > 0 && (
-            <div className="pt-2 space-y-2">
-              {currentProfile.works.map((w) => (
-                <div
-                  key={w.id}
-                  className="flex items-center justify-between gap-3 p-2.5 rounded-xl bg-white border border-[#DCE6E8]"
-                >
-                  <div className="flex items-center gap-3 min-w-0">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={w.imageUrl}
-                      alt={w.title}
-                      className="w-10 h-10 rounded-lg object-cover shrink-0"
-                    />
-                    <div className="min-w-0">
-                      <p className="text-sm font-bold text-[#102A30] truncate">
-                        {w.title}
-                      </p>
-                      <p className="text-xs text-[#6B8388]">
-                        {w.category} · {w.year}
-                      </p>
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => void removeArtWorkFromCurrentProfile(w.id)}
-                    aria-label={`Remover ${w.title}`}
-                    className="p-2 rounded-lg text-[#6B8388] hover:text-red-700 hover:bg-red-50 transition-colors cursor-pointer"
-                  >
-                    <Trash2 size={15} />
-                  </button>
-                </div>
-              ))}
-            </div>
-          )}
-        </form>
-
-        {/* Gerenciar badges conquistadas */}
-        <form onSubmit={handleAddBadge} className="p-5 sm:p-6 space-y-4">
-          <div className="flex items-center gap-2">
-            <Award size={18} className="text-[#0E7C86]" />
-            <h2 className="text-base font-bold text-[#102A30]">
-              Badges conquistadas em editais ({currentProfile.badges.length})
-            </h2>
-          </div>
-
-          {badgeAddedNotice && (
-            <div className="p-3 rounded-xl bg-[#E6F4F5] border border-[#0E7C86]/30 text-sm text-[#09585F] font-medium">
-              Badge registrada no perfil!
-            </div>
-          )}
-
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
-            <input
-              type="text"
-              placeholder="Resultado (ex: Contemplado)"
-              value={badgeTitle}
-              onChange={(e) => setBadgeTitle(e.target.value)}
-              className="px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
-            />
-            <input
-              type="text"
-              placeholder="Nome do edital aprovado"
-              value={badgeEditalName}
-              onChange={(e) => setBadgeEditalName(e.target.value)}
-              className="sm:col-span-2 px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
-              required
-            />
-            <div className="flex gap-2">
-              <select
-                value={badgeCategory}
-                onChange={(e) => setBadgeCategory(e.target.value)}
-                className="flex-1 px-2.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
-              >
-                {allAvailableTags.map((t) => (
-                  <option key={t} value={t}>
-                    {t}
-                  </option>
-                ))}
-              </select>
-              <input
-                type="text"
-                value={badgeYear}
-                onChange={(e) => setBadgeYear(e.target.value)}
-                className="w-20 px-2.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] tabular-nums focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
-              />
-            </div>
-          </div>
-
-          <button
-            type="submit"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-[#0E7C86] text-[#0E7C86] text-sm font-bold hover:bg-[#E6F4F5] transition-colors cursor-pointer"
-          >
-            <Plus size={16} />
-            <span>Adicionar conquista</span>
-          </button>
-
-          {currentProfile.badges.length > 0 && (
-            <div className="space-y-2 pt-1">
-              {currentProfile.badges.map((b) => (
-                <div
-                  key={b.id}
-                  className="flex items-center justify-between gap-3 p-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8]"
-                >
-                  <div className="min-w-0">
-                    <p className="text-sm font-bold text-[#102A30] truncate">
-                      {b.title} — {b.editalName}
-                    </p>
-                    <p className="text-xs text-[#6B8388]">
-                      {b.category} · {b.year}
-                    </p>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => void removeBadgeFromCurrentProfile(b.id)}
-                    aria-label={`Remover badge ${b.editalName}`}
-                    className="p-2 rounded-lg text-[#6B8388] hover:text-red-700 hover:bg-red-50 transition-colors cursor-pointer"
-                  >
-                    <Trash2 size={15} />
-                  </button>
-                </div>
-              ))}
-            </div>
-          )}
-        </form>
+        <BadgeManager profile={currentProfile} availableCategories={allAvailableTags} />
       </div>
   );
 }

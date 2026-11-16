@@ -1,4 +1,3 @@
-import DateBox from "./dateBox/DateBox";
 import Styles from "./InfoCardFeed.module.css";
 import { CalendarDays } from "lucide-react";
 import Link from "next/link";
@@ -37,9 +36,6 @@ export default function InfoCardFeed({
           <span className={Styles.dateTrigger}>
             <CalendarDays size={13} aria-hidden="true" />
             <span>{formattedDate}</span>
-          </span>
-          <span className={Styles.opacityController}>
-            <DateBox date={formattedDate} />
           </span>
         </div>
       </div>
