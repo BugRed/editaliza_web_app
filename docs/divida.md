@@ -31,6 +31,12 @@ uma nem outra — é ADR.
 | 2026-10-18 | infra-01 ([spec](features/infra/0001-envs-server-side.md)) | Publishable key e `SUPABASE_URL` (derivada do ref do `DATABASE_URL`) **não exercitadas contra o Supabase real** — sandbox sem rede até lá; login ponta-a-pendente | `npm run dev` local → logar → `/feed` carrega; URL divergente corrige o `.env` |
 | 2026-10-18 | infra-01 ([spec](features/infra/0001-envs-server-side.md)) | Auth legado segue até T1.2: senha comparada em texto plano (agora só no servidor), token base64 sem assinatura, cookie não-httpOnly | Better Auth (T1.2) substitui o serviço de auth inteiro |
 
+| 2026-11-16 | [`docs/features/planejamento/0001-replanejamento-v1.md`](features/planejamento/0001-replanejamento-v1.md) | `plano.md` §7.1–7.9 mantém a fórmula antiga do motor como histórico ao lado da §7.0 vigente; duas versões do motor no mesmo arquivo | Remover §7.1–7.9 quando a W5 virar ADR/`docs/negocio/` |
+| 2026-11-16 | [`docs/features/planejamento/0001-replanejamento-v1.md`](features/planejamento/0001-replanejamento-v1.md) | ADRs de auth, Prisma, DeepSeek, imagens e governança de `performance` não escritos; D12–D25 vivem só no `plano.md` | Escrever cada ADR na onda que implementa (O2/O3/O4) |
+| 2026-11-16 | [`docs/features/ui/0002-articulacao-design-o1.md`](features/ui/0002-articulacao-design-o1.md) | Protótipo `/prototipo` e o **404 em produção** nunca exercitados com `next build`; tema escuro, shell responsivo e telas **sem verificação visual** (só HTTP 200 e testes de DOM) | `next build && next start` e abrir `/prototipo`; olhar as telas em claro, escuro e celular |
+| 2026-11-16 | [`docs/features/ui/0002-articulacao-design-o1.md`](features/ui/0002-articulacao-design-o1.md) | `Dockerfile.test` usa `npm install`, não `npm ci` (lock omite `@emnapi/*`): teste sem reprodução por lock | Regenerar o lock num ambiente que inclua os opcionais, ou migrar para yarn como o `editaliza_true` |
+| 2026-11-16 | [`docs/features/ui/0002-articulacao-design-o1.md`](features/ui/0002-articulacao-design-o1.md) | Sem `format:check`, cobertura (`@vitest/coverage-v8`) nem Sonar neste repo; `eslint.kit.mjs` segue fora do `eslint.config.mjs` | Somar o kit ao `eslint.config.mjs` e os scripts do `editaliza_true` |
+| 2026-11-16 | [`docs/features/ui/0002-articulacao-design-o1.md`](features/ui/0002-articulacao-design-o1.md) | Feed duplicado (`/` e `components/cardFeed/*`) com cores literais fora do shell; cadastro não grava conta | T7.1 (unificar feed); Better Auth na O2 |
 
 ## Becos sem saída
 

@@ -28,6 +28,17 @@ import a partir de código de cliente vira **erro de build**, não valor
 - **Vercel/produção:** as quatro variáveis reais como project env. Nenhuma
   precisa ser "exposed to client" — todo consumo é server-side.
 
+## Testes
+
+Rodam **em Docker, sem rede** (`network_mode: none`): `npm run test:docker` constrói
+`Dockerfile.test` e executa o Vitest (jsdom + Testing Library). `npm test` roda no host, só para
+iterar. Nenhum teste toca Supabase ou serviço externo.
+
+## Protótipo de telas
+
+`/prototipo/*` serve telas com dados fixos para aprovação de design. Existe só fora de produção:
+o layout responde 404 e o `src/middleware.ts` só o libera quando `NODE_ENV !== 'production'`.
+
 ## Rotas de API abertas no middleware
 
 Apenas `/api/health` (liveness) e `/api/auth/login` (porta de entrada da

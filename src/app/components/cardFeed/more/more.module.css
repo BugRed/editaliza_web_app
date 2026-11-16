@@ -4,15 +4,16 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: var(--more-bg-color);
-    border-radius: 8px 8px 0 0;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    box-shadow: var(--shadow-float);
     overflow: hidden;
     padding: 0 0 1.5rem 0;
     transition: bottom 2s ease;
     z-index: 1000;
     
     button{
-        background-color: var(--more-bg-color);
+        background-color: var(--color-surface);
         border: none;
     }
 }
@@ -53,7 +54,7 @@
     transition: background-color 300ms ease;
 }
 .action:hover{
-     background-color: var(--more-hover-color);
+     background-color: var(--color-bg);
 }
 
 
@@ -68,6 +69,6 @@
 .holdMore{
     width: 50px;
     height: 4px;
-    background: #fff;
+    background: var(--color-line);
     border-radius: 16px;
 }

@@ -2,6 +2,22 @@
 
 Impacto externo por entrega; app não versiona build. Novo no topo.
 
+## 2026-11-16 — feature/ui-02: articulação de design (O1)
+
+- **Design system** — tokens `primary-soft`, `accent-soft`, `line-subtle`, foco visível e **tema escuro** em `globals.css`; 10 atoms e 8 molecules em `src/shared/components/`.
+- **Login e cadastro refeitos** — cadastro valida e-mail, senha (8+ com número, antes 6) e exige consentimento; **ainda não cria conta** (Better Auth, O2). Removido o `console.log` da senha.
+- **Feed** — novo shell de navegação, busca, estados vazio/carregando/erro; some a porcentagem de compatibilidade fixa (30%), que era falsa.
+- **Protótipo `/prototipo`** — 12 telas com dados fixos para aprovação; 404 em produção.
+- **Testes em Docker** — Vitest + Testing Library, `npm run test:docker` sem rede.
+- `src/middleware.ts` libera `/prototipo` fora de produção.
+
+## 2026-11-16 — docs/docs-01: replanejamento da V1 (ArtistRank, protótipo, ondas)
+
+- **Plano reescrito** — `plano.md` passa a seguir a spec ArtistRank v1.2 ([`docs/ops/`](docs/ops/ArtistRank_decisoes_e_especificacao_completa_v1.2_conferencia.md)): decisões D3 e D12–D25 (Prisma, Better Auth mantido, DeepSeek, Voyage, schema em inglês, onboarding mínimo, artistas e organizações, candidatura no app, tudo em TS e lançamento gratuito).
+- **Roadmap por ondas O1–O5** — design → no ar → editais reais + resumo IA → ArtistRank → semântica e organizações; "V1 publicável" = O1 a O3, sem score até o motor existir.
+- **Protótipo `BugRed/editaliza_prot` mapeado** — §11 lista o que aproveitar e o que não pode ser portado (senha em texto puro no cadastro, `?artistId=` aberto no ranking, motor fora da spec).
+- Sem mudança de código nesta entrega.
+
 ## 2026-10-18 — chore/infra-01: envs server-only, fim do NEXT_PUBLIC_
 
 - **Contrato de env sem `NEXT_PUBLIC_`** — `SUPABASE_URL` + `SUPABASE_API_KEY` (publishable key `sb_publishable_…`, sucessora da anon, mesmas RLS) obrigatórias; `DATABASE_URL`/`DIRECT_URL`/`BETTER_AUTH_*` opcionais até a W1. Boot segue validando com zod no mesmo ponto. CI e `.env.example` no contrato novo; migrations passam a ler a `DIRECT_URL` (pooler sessão). Contrato vivo em [`docs/ops/ambiente.md`](docs/ops/ambiente.md).

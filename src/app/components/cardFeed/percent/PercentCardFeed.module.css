@@ -4,20 +4,21 @@
     
     width: 6.25rem;
     height: 1.55rem;
-    border-radius: 4px;
+    border-radius: var(--radius-pill);
     
     margin: 1rem;
 
-    background-color: var(--percent-bg-color);
+    background-color: var(--color-surface);
 
     align-items: center;
     justify-content: center;
 
-    box-shadow: 0 0 15px 1px var(--cor-dinamica);
+    box-shadow: var(--shadow-card);
+    border: 1.5px solid var(--cor-dinamica);
 }
 
 .PercentCardFeed span{
     font-size: 0.85rem;
-    font-weight: bold;
+    font-weight: 800;
     color: var(--cor-dinamica);
 }

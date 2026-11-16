@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Barrio&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
 .header{
-    background-color: var(--header-footer-bg-color);
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-line);
 
     position: fixed;
     top: 0;
@@ -17,9 +16,9 @@
     z-index: 1000;
 
     p{
-        font-family: "Barrio", system-ui;
-        font-weight: 400;
-        font-style: normal;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: var(--color-primary);
         font-size: 1.5rem;
     }
 

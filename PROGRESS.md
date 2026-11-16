@@ -16,10 +16,12 @@ de feature mora na spec (`docs/features/`), o que já foi entregue mora no `CHAN
 | W1/T1.1 — migrations versionadas | [0001-migrations-versionadas](docs/features/dados/0001-migrations-versionadas.md) | commits feitos; falta push/PR (usuário); fidelidade ao schema real do Supabase pendente de rede |
 | dep-01 — deploy bloqueado por Next vulnerável | [0002-deploy-bloqueado-next](docs/features/seguranca/0002-deploy-bloqueado-next.md) | commits e push ok; falta PR/merge (usuário) e deploy Vercel com cache limpo |
 | infra-01 — envs server-only | [0001-envs-server-side](docs/features/infra/0001-envs-server-side.md) | commits feitos; falta login ponta-a-ponta com rede + push/PR (usuário); empilhada em `fix/dep-01` |
+| O1 — articulação de design | [0002-articulacao-design-o1](docs/features/ui/0002-articulacao-design-o1.md) | falta o usuário navegar `/prototipo` e aprovar; depois push/PR (usuário) |
+| replanejamento V1 | [0001-replanejamento-v1](docs/features/planejamento/0001-replanejamento-v1.md) | entregue; falta push/PR (usuário), empilhada sobre infra-01 |
 
 ## Fila (ordem de prioridade)
 
-1. W1 — T1.2 Better Auth (precisa de banco acessível p/ teste real) → T1.3 acesso server-side → T1.4 deploy
+1. **O1 — articulação de design** (mapa de telas e protótipo a partir de `editaliza_prot`) → O2 no ar (merge das 4 branches, Prisma, Better Auth, deploy) → O3 editais reais + resumo IA → O4 ArtistRank → O5 semântica e organizações. Detalhe em `plano.md` §6.0
 
 ## Bloqueado por decisão do usuário
 

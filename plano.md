@@ -1,8 +1,14 @@
 # Plano — Editaliza
 
 > Plano vivo de evolução da plataforma: fonte única até virar código e ADR.
-> Atualizado em 2026-10-13 · branch `feature/front-end` · corpus de editais reais em
-> `docs/editais-exemplo/`.
+> Atualizado em 2026-11-16 · corpus de editais reais em `docs/editais-exemplo/`.
+>
+> **Replanejamento de 2026-11-16:** o motor de recomendação passa a ser o **ArtistRank**, especificado em
+> [`docs/ops/ArtistRank_decisoes_e_especificacao_completa_v1.2_conferencia.md`](docs/ops/ArtistRank_decisoes_e_especificacao_completa_v1.2_conferencia.md)
+> (daqui em diante "spec ArtistRank").
+>
+> **Protótipo de frontend:** [`github.com/BugRed/editaliza_prot`](https://github.com/BugRed/editaliza_prot) (`git@github.com:BugRed/editaliza_prot.git`), branch `main`. Inventário e estratégia de aproveitamento em §11. Onde este plano e a spec divergem sobre o motor, vale a spec,
+> exceto nas decisões D2 e D12–D16 abaixo, que são do usuário. Ver §7 e §10.
 
 ## 1. Visão
 
@@ -10,8 +16,8 @@ Unir em um só lugar os editais culturais de Recife e de Pernambuco publicados e
 público, extrair deles requisitos estruturados (tags, cotas, critérios pontuados) e
 entregar a cada usuário um **score de match explicável** entre seu perfil/projetos e cada
 edital. O Editaliza caminhará para ser rede social (curtir, compartilhar, comentar), mas
-**sinais sociais nunca entram no cálculo do match**. Na V2: editor de IA para criar e
-corrigir propostas, para usuários premium.
+**sinais sociais nunca entram no cálculo do match**. **V1:** feed ordenado por compatibilidade (ArtistRank) + resumo do edital em linguagem simples por IA.
+Pós-V1: revisão do projeto do artista por IA e premium.
 
 ## 2. Estado atual (ponto de partida)
 
@@ -51,15 +57,29 @@ Problemas graves conhecidos (estado após a W0, branch `bugfix/auth-01`):
 |---|---|---|
 | D1 | Escopo da coleta | Cultura: Mapa Cultural PE (API pública) + culturarecife.com.br + Funcultura/SECULT-PE + Diário Oficial do Recife |
 | D2 | Autenticação | **Better Auth** sobre o Postgres do Supabase (sem lock-in de vendor). E-mail/senha + OAuth Google e Microsoft reais |
-| D3 | Motor de match | **Híbrido**: regras duras (elegibilidade) + afinidade semântica (embeddings, cosseno, pgvector). Fórmula versionada, determinística, explicável |
+| D3 | Motor de match | **ArtistRank**, híbrido (`hybrid`): elegibilidade formal (`PASS/FAIL/UNKNOWN/NOT_APPLICABLE`) como etapa anterior + 8 fatores ponderados + embeddings. Ranking determinístico em TypeScript, versionado, explicável; **IA nunca decide ranking nem elegibilidade**. Detalhe em §7 e na spec ArtistRank |
 | D4 | Dados do usuário | Perfil rico (autodeclarações LGPD-sensíveis, território, área, PF/MEI/PJ, tempo de atuação, formação) + projetos enviados (PDF/texto/links) |
-| D5 | IA de propostas e premium | **V2** — pagamentos, assinaturas e editor de propostas fora deste ciclo |
-| D6 | Provedor de IA | Plugável (`EmbeddingProvider`, `LLMProvider`), escolha por env; modelo de embedding definido na W6 com avaliação no golden set |
+| D5 | IA e premium | **V1:** resumo de edital em linguagem simples. **Pós-V1:** revisão do projeto do artista, pagamentos e assinaturas |
+| D6 | Provedor de IA | Plugável (`EmbeddingProvider`, `LLMProvider`), escolha por env. **LLM: DeepSeek** (Flash na rotina, Pro nos casos ambíguos; nomes e preços a conferir na API). **Embeddings: Voyage** (`voyage-4-lite` inicial), sujeito ao A/B TF-IDF × Voyage da spec §27.9 |
 | D7 | Coleta | Cron diário; dedup por (fonte, id da fonte, hash do conteúdo) |
-| D8 | Domínio | `Artist`/`Proposer` → **Agente Cultural** (PF/MEI) e **Organização**; executa na refactoração final (W7), tabelas novas já nascem no nome certo |
+| D8 | Domínio | `Artist`/`Proposer` → **Agente Cultural** (PF/MEI) e **Organização**; executa na refactoração final (W7), tabelas novas já nascem no nome certo. **Decidido em 2026-11-16:** schema e código em **inglês**, como a spec ArtistRank (`artists`, `artworks`, `opportunities`, `recommendations`); UI e docs em português |
 | D9 | Arquitetura | Código novo nasce em `src/server` (`api → controller → service`); legado só migra na W7 |
 | D10 | Sinais sociais fora do match | Curtir/compartilhar/comentar são UI; score é função apenas de perfil + projeto + edital; social também não calibra |
 | D11 | Trabalho pesado fora da request | Parse de PDF/OCR, extração LLM e embeddings rodam em job agendado (worker), nunca no ciclo da requisição |
+| D12 | Stack de dados | **Prisma** sobre o Postgres do Supabase (substitui o runner SQL puro `db/migrate.mjs`); pgvector via `Unsupported(\"vector\")` + SQL cru onde o Prisma não alcança |
+| D13 | Auth (reafirma D2) | **Better Auth**, não Supabase Auth, mesmo a spec ArtistRank listando Supabase Auth: o usuário quer ficar livre para migrar de provedor |
+| D14 | Objeto de recomendação | `both`: artistas e obras, calculados separadamente e combinados (`0,35·artista + 0,65·portfólio`, configurável por modalidade) |
+| D15 | Imagens | WebP/AVIF com `sharp` no upload; JXL descartado (suporte de navegador). Arquivos no Supabase Storage |
+| D16 | Design system | **Sol & Mar**, tokens em `globals.css` (branch `feature/ui-01`); só tema claro por ora |
+| D17 | Escopo da V1 (ciclo O1–O5, ver §6.0) | Fases 1+2+3 da spec ArtistRank (cadastro profundo e taxonomia, motor determinístico, embeddings Voyage + busca semântica) **+ resumo do edital por IA**. Pipeline LLM completo com revisão humana (fase 4) entra só no que o resumo e o admin exigirem; calibração (fase 5) é pós-V1. O A/B TF-IDF × Voyage (spec §27.9) vira tarefa antes de fixar o modelo |
+| D18 | Onboarding | **Mínimo + enriquecimento progressivo**: cadastro curto (linguagens, cidade, interesses) já gera feed; trajetória, obras e o resto vêm depois. Campo ausente é desconhecido (nota 0,5); cobertura aparece no card |
+| D19 | Quem usa | **Artistas e organizações.** Artista vê editais e obras ranqueados; organização publica editais e vê artistas compatíveis. Papéis: `artist`, `organization`, `admin`. Visibilidade do perfil do artista para organizações exige regra de privacidade (aberta) |
+| D20 | Edital publicado por organização | Pipeline da spec §12.6: PDF → texto → DeepSeek (JSON) → Zod → verificação de evidência → **confirmação humana** (organização no edital dela; admin no edital importado) → banco. Cada requisito guarda documento, página, trecho, versão e estado de validação (spec §7.7); array vazio = "não informado", nunca proibição (§7.6) |
+| D21 | Visibilidade do artista para a organização | **Só quando o artista se candidata** ao edital dela. Sem busca ativa de artistas, sem acesso a autodeclarações ou documentos fora da candidatura. Implica **inscrição dentro do app** (a definir) |
+| D22 | Infra da V1 | **Tudo TypeScript, sem LangGraph nem worker Python.** Jobs agendados chamando endpoints protegidos, fila no Postgres. **Lançamento gratuito**, sem monetização: Vercel Hobby serve; migrar para Pro **antes** de qualquer cobrança ou divulgação comercial |
+| D23 | Candidatura | **Inscrição dentro do app**: o artista escolhe obra(s), anexa documentos e envia; a organização vê o dossiê (score, fatores, evidências) só dos candidatos dela. Exige estados de inscrição, armazenamento de documentos e retenção definida |
+| D24 | Taxonomia | Vocabulário inicial **derivado pela IA da spec (§3.2–§3.5) e do corpus**, entregue como planilha para revisão do usuário antes de virar seed. **"performance" aparece em dois ramos (artes visuais e artes cênicas) e a spec v1.2 manda NÃO resolver sozinho:** cada ocorrência recebe identificador estável próprio, sem deduplicar pelo rótulo, e a decisão (conceito transversal × termos distintos) fica pendente do usuário. Governança (sinônimos, hierarquia, versionamento) em ADR |
+| D25 | Validação do motor | Golden set **montado depois**. O pacote de benchmark da spec (`verify_v11.py`, datasets) **não está no repo nem foi anexado**; a spec mesma não afirma que esteja disponível, e a conferência de 38 verificações é só relato do responsável. O benchmark usa TF-IDF, não Voyage, e dados em sua maioria hipotéticos. Até lá, os casos de §27.5 da spec (Ana × Dança = 45,0; Beto × Malakoff = 77,1; Bituca × FIC bloqueado) viram testes de regressão reconstruídos |
 
 ## 4. Arquitetura alvo (resumo)
 
@@ -107,56 +127,113 @@ só depende de ondas anteriores; dentro da onda, tarefas são paralelizáveis en
 | T2.2 | Anexos: baixar PDFs das oportunidades para o Storage; extração de texto com parser JS (ex. `pdf-parse`); PDF sem texto marcado `precisa_ocr` (OCR é fallback futuro) | Todo edital ativo tem texto extraído ou flag `precisa_ocr` |
 | T2.3 | Normalização com testes: datas em TZ **America/Recife**, derivação de status (aberto/encerrado por `registrationFrom/To`), parse de moeda ("R$ 20.000,00") e faixas de valor | Suite Vitest cobre os formatos reais vistos nas duas fontes |
 | T2.4 | Conector **Culturarecife** (spike primeiro): site ASP legado com redirect JS → Playwright headless mapeando `/public/documentos/edital_home_*`; alternativa estruturada: Diário Oficial do Recife. Decidir por ADR após o spike | ADR escolhendo a rota municipal; editais municipais entrando no mesmo pipeline |
-| T2.5 | Cron diário: GitHub Actions agendado chamando endpoint admin protegido por secret; alerta quando coleta volta vazia (fonte mudou) | Coleta roda 7 dias seguidos sem intervenção; coleta vazia notifica |
+| T2.5 | (monitoramento semanal de novos editais do Recife, spec §24: só itens verificados em fonte oficial; coleta incompleta nunca vira "nada de novo") Cron diário: GitHub Actions agendado chamando endpoint admin protegido por secret; alerta quando coleta volta vazia (fonte mudou) | Coleta roda 7 dias seguidos sem intervenção; coleta vazia notifica |
 | T2.6 | UI consome dado real: feed e página de detalhe do edital lendo o banco (fonte, datas, status, link oficial, PDF) | Mocks saem do fluxo de leitura (ficam só como seed) |
 
-### W3 — Taxonomia e extração de requisitos (dep: W2)
+### W1b — Migração para Prisma e papéis (dep: T1.1; antes de qualquer tabela do ArtistRank)
 
 | T | O quê | Pronto quando |
 |---|---|---|
-| T3.1 | **Vocabulário controlado versionado** (`db/vocabulario/`): áreas/linguagens (mapear `terms.area` do Mapas Culturais ↔ linguagens do PNAB Recife), cotas, tipos de proponente, tipos de requisito | Mapeamento cobre 100% das linguagens vistas no corpus (12) e das áreas da API |
-| T3.2 | Tabelas `requisito` e `criterio_avaliacao` (§5.6) com migração | Migration aplicada |
-| T3.3 | **Extrator LLM plugável**: pipeline texto do edital → requisitos + critérios/pesos + cotas + faixas, cada item com evidência citável e confiança; validação zod do output com retry/repair | Extração da FRTN bate com a leitura manual (golden extraction) |
-| T3.4 | Backfill do corpus: rodar extração sobre editais ingeridos + `docs/editais-exemplo/` | Todo edital ativo tem requisitos com evidência |
-| T3.5 | Revisão humana mínima: rota admin listando requisitos por edital com approve/edit para confiança baixa | Itens abaixo do limiar de confiança ficam invisíveis ao match até revisados |
+| T1.5 | Prisma sobre o Postgres do Supabase: schema modular em `prisma/schema/`, migration baseline equivalente ao `db/migrations/0001_baseline.sql`, seed por domínio; `db/migrate.mjs` aposentado | `prisma migrate` recria o schema do zero; mocks viram seeder |
+| T1.6 | Papéis `artist`, `organization`, `admin` no Better Auth e guardas no `proxy.ts` | Cada rota exige o papel certo; teste de acesso negado |
 
-### W4 — Perfil e projetos do usuário (dep: T1.2 + T3.1; paralela à W3)
+### W3 — Taxonomia e estruturação de editais (dep: W1b, W2)
 
 | T | O quê | Pronto quando |
 |---|---|---|
-| T4.1 | Formulário de perfil multi-etapas (§5.7): tipo de proponente, território + flag área periférica, autodeclarações com **consentimento LGPD explícito e criptografia em repouso**, atuação, capacidade formal, histórico de participações | Perfil salva completo; autodeclarações não aparecem em nenhuma resposta sem escopo |
-| T4.2 | Direitos LGPD: exportar meus dados e excluir conta (dados sensíveis first) | Exclusão remove autodeclarações e vetores derivados |
-| T4.3 | Upload de projeto: PDF/texto + links de vídeo/foto (portfólio com comprovação), extração de texto (mesma pipeline da W2), campos estruturados (área, valor, formato, inédita, território) | Projeto enviado aparece com texto extraído e campos preenchidos |
-| T4.4 | Completude do perfil por edital: função que diz quais campos avaliados por aquele edital estão faltando | Alimenta a UI "complete seu perfil" da W5 |
+| T3.1 | `taxonomy_terms` + relações (hierarquia, sinônimos, versão); vocabulário inicial (D24) revisado pelo usuário e carregado como seed | Planilha aprovada; 100% das linguagens do corpus mapeadas; "performance" com um id por ramo e a decisão de governança registrada como pendente |
+| T3.2 | Tabelas do edital (inclui enum de tipo de oportunidade): `opportunities`, `opportunity_requirements` (com `mandatory`, papel CORE/SUPPORT), `opportunity_criteria`, `opportunity_evidence` (documento, página, trecho, versão, estado de validação) | Migration aplicada; array vazio = "não informado" |
+| T3.3 | Pipeline de extração (D20): `LLMProvider` DeepSeek, saída JSON, validação Zod com repair, verificação de evidência, estados `pendente/confirmado` | Extração do FRTN bate com a leitura manual |
+| T3.4 | Confirmação humana: organização confirma o edital dela; admin confirma o importado; item não confirmado é invisível ao ranking | Itens `UNKNOWN`/ambíguos listados com evidência |
+| T3.5 | Resumo do edital em linguagem simples (V1), gerado pós-confirmação, com link para o trecho oficial | Todo edital confirmado tem resumo; aviso de "interpretação por IA" |
 
-### W5 — Match v1: regras (dep: W3 + W4)
-
-| T | O quê | Pronto quando |
-|---|---|---|
-| T5.1 | **Golden set v0**: 30+ casos derivados do dataset rotulado (`multi_result`) + casos sintéticos com nota esperada | Arquivo versionado + teste de regressão roda no CI |
-| T5.2 | Fórmula v1 (§5.2): gates eliminatórios + requisitos pontuáveis + **espelhamento dos pesos que o próprio edital publica** quando existem | Golden set passa; mesma entrada → mesma nota (determinismo testado) |
-| T5.3 | `match_result` + invalidação por `inputs_hash` (perfil/projeto/edital mudaram → recalcula) | Recalcular não duplica; mudança de perfil invalida cache |
-| T5.4 | UI: score real no `PercentCardFeed`, feed ordenado por match, página "por quê" com breakdown + evidência + link oficial, bloco de pendências | O "30%" fixo morre; toda nota é clicável e explicada |
-
-### W6 — Match v2: embeddings (dep: W5)
+### W4 — Perfil, obras e trajetória (dep: T1.6 + T3.1; paralela à W3)
 
 | T | O quê | Pronto quando |
 |---|---|---|
-| T6.1 | pgvector + tabela `embedding` (modelo+versão+dimensão+hash); interface `EmbeddingProvider`; **escolha do modelo** por avaliação no golden set (PT-BR, custo, dimensão suportada) | Troca de modelo tem backfill versionado |
-| T6.2 | Chunking por seção do edital (objeto, público-alvo, categorias) + embeddings de projeto; lexical TF-IDF/BM25 como baseline e feature | Baseline e denso comparados no golden set |
-| T6.3 | Fórmula v2 híbrida (§5.8): regras + lexical + denso com RRF, pesos espelhados do edital quando publicados | v2 ≥ v1 no golden set sem perder explicabilidade |
-| T6.4 | Pré-computo do feed: top-N por usuário quando entra edital novo; recomputação quando perfil/projeto muda | Feed abre com scores prontos (<100ms), sem computar na request |
+| T4.1 | Onboarding mínimo (D18): linguagens, cidade, interesses; gera feed com cobertura baixa visível | Artista novo vê feed em poucos minutos |
+| T4.2 | `artists`, `artist_terms`: identidade, linguagens, técnicas, temas, posicionamento (spec §3); autodeclaração só por declaração ou evidência, nunca inferida | Campo ausente = desconhecido |
+| T4.3 | `experiences`: trajetória com categorias, estágios incluídos, estado de comprovação (spec §4) | Pontuação de trajetória contextual, não contagem |
+| T4.4 | `artworks` + `artwork_terms` + mídia (WebP/AVIF com `sharp`, D15) + necessidades de montagem (spec §5) | Obra avaliada individualmente |
+| T4.5 | Intenção e disponibilidade (spec §6) | Alimenta viabilidade |
+| T4.6 | LGPD: consentimento, exportar e excluir conta (inclui vetores derivados) | Exclusão remove dados sensíveis e embeddings |
 
-### W7 — Refactoração e endurecimento (dep: todas; o "deixa pro final")
+### W5 — ArtistRank v1: motor determinístico (dep: W3 + W4)
 
 | T | O quê | Pronto quando |
 |---|---|---|
-| T7.1 | Unificar as três `FeedPage` em uma; remover código morto e comentários de código; classes tipo TypeORM → interfaces puras | Uma só página de feed; `src/app/types` sem classes com estado |
-| T7.2 | Rename de domínio (D8): `artist_data`/`proposer_data` → agente cultural/organização, migrations + seed | Nenhuma referência a Artist/Proposer no código |
-| T7.3 | Lint do kit ligado no CI (`eslint.kit.mjs` somado ao `eslint.config.mjs`) + cobertura mínima nos services críticos (auth, normalizadores, fórmula) | `yarn lint` passa; services críticos com teste de comportamento |
-| T7.4 | Revisão de segurança final: headers, rate limit no login, URLs de storage assinadas, checagem OWASP básica | Checklist de segurança documentado e aprovado |
+| T5.1 | Elegibilidade `PASS/FAIL/UNKNOWN/NOT_APPLICABLE` como função pura | Casos eliminatórios cobertos; arte alta não compensa `FAIL` |
+| T5.2 | Oito fatores e pesos versionados em configuração; nota neutra 0,5 sem renormalizar; cobertura calculada (motor v4) | Mesma entrada, mesma nota |
+| T5.3 | Teto de 45 aplicado **depois** de combinar artista e portfólio (nunca só no score do artista); `FAIL` de requisito artístico obrigatório explícito ativa, `UNKNOWN` não; CORE/SUPPORT; combinação por modalidade, α configurável | Ana × Dança: `R_artista` 45,0 e `R_portfólio` 46,7 combinam em 46,1 e o final é 45,0 |
+| T5.4 | Confiança C separada, sem efeito no score | Teste prova que C não altera ranking |
+| T5.5 | `recommendations` + `recommendation_factors` persistindo versão, pesos, entradas, evidências | Recalcular não duplica; mudança de entrada invalida |
+| T5.6 | Testes de regressão dos casos §27.5 reconstruídos (D25) | Rodam no CI |
+
+### W6 — Embeddings e feed (dep: W5)
+
+| T | O quê | Pronto quando |
+|---|---|---|
+| T6.1 | pgvector no Prisma (`Unsupported("vector")` + SQL cru) e tabela `embeddings` com `content_hash`; `EmbeddingProvider` | Texto igual não regera vetor |
+| T6.2 | A/B TF-IDF × Voyage (`voyage-4-lite`) com os mesmos casos; mede ranking, latência e custo | Decisão registrada em ADR antes de fixar o modelo |
+| T6.3 | Afinidade semântica por dimensão (conceito, posicionamento, obra) combinada à taxonomia | Fatores 2 e 4 usam a similaridade; golden set não piora |
+| T6.4 | Pré-computo do feed por artista; recomputa quando perfil, obra ou edital mudam | Feed abre sem calcular na request |
+| T6.5 | Poder discriminante por edital e estado "poucas oportunidades compatíveis" (spec §9.7, §9.9) | Aviso exibido; limiar marcado como não calibrado |
+
+### W6b — Candidatura e organizações (dep: W5, T1.6)
+
+| T | O quê | Pronto quando |
+|---|---|---|
+| T6b.1 | Inscrição: artista escolhe obra(s) e anexa documentos; estados da inscrição | Inscrição criada, editável até o prazo |
+| T6b.2 | Área da organização: publicar edital (D20), ver só candidatos dela, dossiê com score, fatores e evidências | Organização não enxerga artista que não se candidatou (teste) |
+| T6b.3 | Feedback com motivo (spec §20) e "por quê" da nota | Rejeição registra motivo; nota exibe nota antes do teto |
+| T6b.4 | Projeção sobre critérios oficiais (spec §9.8), só quando mapeável | Rotulada como projeção; "indisponível" se faltar critério |
+
+### W-UI — Redesign de todas as telas (dep: design system Sol & Mar; ordem a definir)
+
+Telas e dependências em §10. **A ordem do redesign está em espera por decisão do usuário** e não será
+fixada aqui. Cada tela nasce como organismo em `src/shared/components/` (atoms → molecules → organisms).
+
+### Pós-V1 — Recomendação de projeto futuro e revisão do projeto (dep: W5, W6b)
+
+| T | O quê | Pronto quando |
+|---|---|---|
+| TP.1 | Nível 3 do chat: para o par artista × edital, indicar a série mais aderente, critérios atendidos, o que desenvolver, documentos faltantes e critérios a cuidar, sem descaracterizar o artista | Sugestão cita evidência do edital e do perfil |
+| TP.2 | Revisão do texto do projeto contra o edital: o que faltou e o que errou (visão original do produto) | Cada apontamento aponta o trecho do edital |
+| TP.3 | Fase 5 da spec: calibração com resultados reais e avaliação por especialistas | Só com dados homologados |
+
+### W7 — Endurecimento (dep: todas)
+
+| T | O quê | Pronto quando |
+|---|---|---|
+| T7.1 | Unificar as três `FeedPage`; remover código morto | Uma só página de feed |
+| T7.2 | Lint do kit no CI e cobertura mínima nos services críticos (auth, normalizadores, motor) | `yarn lint` passa |
+| T7.3 | Revisão de segurança final: headers, rate limit, URLs assinadas, OWASP básico | Checklist aprovado |
+| T7.4 | Antes de monetizar: Vercel Pro, termos de uso, política de privacidade e retenção | Documentos publicados |
 
 ## 6. Roadmap
+
+### 6.0 Roadmap vigente — ondas de entrega (decidido em 2026-11-16, opção A)
+
+Princípio: **disponibilidade primeiro**. Tudo que é preciso para o app ficar no ar, seguro e bonito vem antes;
+ArtistRank e IA ficam nas últimas ondas. As ondas O1–O5 abaixo **ordenam** as ondas técnicas W0–W7 e W-UI
+da §5, que continuam sendo o detalhamento das tarefas.
+
+| Onda | Nome | Entrega | Tarefas (§5) | Pronto quando |
+|---|---|---|---|---|
+| **O1** | **Articulação de design** | Design system fechado (tokens, atoms, molecules, claro e escuro), **mapa e fluxo de todas as telas**, protótipo navegável aprovado pelo usuário; código só de atoms e molecules em `src/shared/components/` | W-UI (parte), D16, §10, §11 | Usuário aprova o protótipo; `/feed` e login usam só os tokens; nenhuma cor/raio literal fora de `globals.css` |
+| **O2** | **No ar** | Merge das 4 branches empilhadas, Prisma, Better Auth com papéis, env validada, deploy Vercel + Supabase, CI, headers, rate limit, LGPD mínima (consentimento, exportar e excluir) | W0, W1, W1b, T4.6, T7.2–T7.3 | URL pública com cadastro, login e feed funcionando; sem senha em texto puro; checklist de segurança aprovado |
+| **O3** | **Editais reais** | Admin cadastra edital (PDF + formulário), conector Mapa Cultural PE, feed por data, filtro e tags, detalhe do edital e **resumo IA em linguagem simples** | W2, T3.2–T3.5 (sem ranking) | ≥100 editais reais; resumo com link ao trecho oficial; coleta idempotente |
+| **O4** | **ArtistRank v1** | Taxonomia, perfil profundo, obras, trajetória, motor determinístico, confiança C, "por quê" | W3 (T3.1), W4, W5 | Casos de regressão da spec §27.5 passam; feed passa a ordenar por compatibilidade |
+| **O5** | **Semântica e organizações** | Embeddings Voyage (após A/B), candidatura dentro do app, área da organização, feedback com motivo, projeção da banca; depois nível 3 e revisão do projeto | W6, W6b, Pós-V1 | Organização só vê quem se candidatou (teste); A/B registrado em ADR |
+
+Consequências:
+
+- **"V1 publicável" = O1 a O3.** O D17 (escopo da V1 com fases 1–3 do ArtistRank) passa a valer para **o ciclo completo O1–O5**; o primeiro lançamento (gratuito, D22) acontece ao fim da O3, com o feed ordenado por data e filtros, **sem score de compatibilidade**. A UI não exibe porcentagem enquanto o motor não existe.
+- O protótipo `editaliza_prot` (§11) alimenta a O1; o motor dele não entra no ar (§11.2).
+- As 4 branches empilhadas (W0, T1.1, dep-01, infra-01) são o **primeiro bloqueio da O2** e dependem do usuário (PR e merge).
+- Ordem das telas dentro da O1: definida no mapa de telas, aprovado pelo usuário antes de portar qualquer uma.
+
+### 6.1 Grafo técnico original (histórico)
 
 ```
 W0 ─► W1 ─┬─► W2 ─► W3 ─┐
@@ -170,7 +247,8 @@ W0 ─► W1 ─┬─► W2 ─► W3 ─┐
 | W0 | Vazamento de senhas, env, CI | — | tudo |
 | W1 | Migrations, Better Auth, acesso server-side, deploy | W0 | — |
 | W2 | Ingestão (Mapa Cultural PE → PDFs → cron → feed real) | T1.1 | W1 (após T1.1) |
-| W3 | Taxonomia + extração de requisitos | W2 | W4 |
+| W1b | Prisma + papéis | T1.1 | W2 |
+| W3 | Taxonomia + estruturação de editais + resumo IA | W1b, W2 | W4 |
 | W4 | Perfil LGPD + projetos | T1.2, T3.1 | W3 (após T3.1) |
 | W5 | Match v1 regras + golden set + UI do score | W3, W4 | — |
 | W6 | Match v2 embeddings + pré-computo | W5 | — |
@@ -186,6 +264,79 @@ Marcos de produto ao fim de cada onda:
 - **Fim W7:** código enxuto, seguro, pronto para o V2 (premium/IA).
 
 ## 7. O motor de match — spec central
+
+> **Substituído em grande parte pela spec ArtistRank.** §7.0 resume o que vale; §7.1–7.9 abaixo
+> ficam como histórico e como insumo (taxonomia de perfil §7.7 e corpus §7.9 seguem úteis), mas
+> **a fórmula de §7.2 não é mais a de referência**.
+
+### 7.0 O que vale (ArtistRank, estado normativo — spec §28)
+
+Ordem de precedência, da mais forte para a mais fraca:
+
+1. **Elegibilidade formal** (`PASS`/`FAIL`/`UNKNOWN`/`NOT_APPLICABLE`): `FAIL` em eliminatório bloqueia;
+   `UNKNOWN` mostra "pendente"; arte alta nunca compensa eliminatório.
+2. **Oito fatores** com pesos baseline: linguagem 15 · conceito 20 · técnica/suporte 10 ·
+   posicionamento 15 · trajetória 10 · obra/projeto 15 · território/público 5 · viabilidade 10.
+   Nota por fator em 0–1 (1; 0,75; 0,5; 0,25; 0). Pesos são hipótese de engenharia, versionados.
+3. **Dado ausente = nota neutra 0,5**, sem renormalizar pesos; **cobertura** exibida à parte (motor v4).
+4. **Teto de 45** no score final combinado quando um requisito artístico obrigatório está em `FAIL`
+   (nunca por `UNKNOWN`); a UI mostra qual requisito, evidência e a nota antes do teto.
+5. Linguagens do edital marcadas **CORE** ou **SUPPORT**, com evidência; ambíguo vai a revisão humana.
+6. Score de artista, de obra e de portfólio calculados separadamente; `R_portfólio = α·melhor + (1−α)·média das melhores`
+   (α não calibrado; só 0,6 foi exercitado).
+7. **Confiança C** = `100·(0,35·cobertura + 0,30·evidências + 0,15·atualidade + 0,20·extração)`,
+   **separada e sem efeito no score**; C baixa pede documento/revisão, nunca rebaixa nem ordena.
+8. **Poder discriminante** por edital (média, desvio, amplitude); aviso de edital pouco diferenciador.
+   Limiar não calibrado.
+9. **Projeção sobre critérios oficiais da banca**: só quando o edital publica critérios mapeáveis;
+   sempre rotulada como projeção, nunca probabilidade.
+10. Persistir versão do algoritmo, pesos, entradas, evidências, cobertura e proveniência (auditoria).
+
+Princípios que a UI e o schema herdam (spec §2): compatibilidade ≠ probabilidade; ausência ≠
+incompatibilidade; toda exigência tem evidência (documento, página, trecho); distinguir declaração,
+inferência e comprovação; arte periférica/popular/comunitária só por autodeclaração ou evidência do
+trabalho, nunca inferida de endereço; feedback registra o **motivo**.
+
+Sem oportunidade relevante, o feed mostra "poucas ou nenhuma oportunidade compatível" e separa as
+marginais (spec §9.9). Sinais sociais seguem fora do score (D10).
+
+**Do chat de origem do ArtistRank** (colado pelo usuário em 2026-11-16; a spec já consolida quase tudo, o que
+segue é o que ela não tem ou tem só de passagem):
+
+- **Tipos de oportunidade** viram enum em `opportunities` (a spec não os define): multilinguagem · nicho
+  (hip-hop, dança, teatro, circo) · ocupação/exposição · formação · financiamento (MIC, FIC) · programação
+  (carnaval, São João) · aquisição de obras · representação (conselhos). Cada tipo pesa os fatores de modo
+  diferente (ocupação → viabilidade e montagem; formação → capacidade de transmitir; financiamento →
+  orçamento e proponente) e muda os requisitos que o formulário da organização pede.
+- **Três níveis de recomendação:** artista, obra e **projeto futuro**. O terceiro (sugerir como desenvolver
+  uma proposta para o edital sem descaracterizar o artista: série mais aderente, critérios atendidos, o que
+  desenvolver, documentos faltantes, critérios que merecem atenção) é **pós-V1** e é a mesma frente da
+  revisão do projeto por IA da visão do produto.
+- **Afinidade explícita × contextual:** explícita = o edital pede fotografia e o artista faz fotografia;
+  contextual = o tema (memória, território) casa mesmo sem a técnica ser citada. A contextual é o que os
+  embeddings (W6) acrescentam; a explícita sai só da taxonomia (W5).
+- **Os 30 editais de Recife** (spec §22) são **base de benchmarking**, não 30 documentos analisados:
+  servem de fila de coleta (W2), casos de teste e extração. Falta baixar edital completo, anexos,
+  retificações e critérios de cada um.
+- **O stack sugerido no chat** (NestJS, Redis + BullMQ, Python para PDFs, busca textual) **não vale**:
+  prevalecem D12 (Prisma), D22 (TS, fila no Postgres, jobs agendados) e a busca do próprio Postgres.
+- Para o edital OBSERVA 4 / Torre Malakoff, o exemplo de JSON do chat é o molde do formulário de edital:
+  elegibilidade, requisitos artísticos (listas vazias = não informado), proposta, critérios com pontuação
+  máxima (7 critérios, 26 pontos, corte 13), premiação e status.
+
+**Dados** (spec §16): `artists`, `artworks`, `experiences`, `taxonomy_terms`, `artist_terms`,
+`artwork_terms`, `opportunities`, `opportunity_requirements`, `opportunity_criteria`,
+`opportunity_evidence`, `embeddings` (entidade, tipo, modelo, `content_hash`, `vector(1024)`),
+`recommendations`, `recommendation_factors`, `feedback`. HNSW só quando o volume pedir.
+
+**Pipeline de edital** (spec §12.6, §19): PDF → texto → DeepSeek (JSON) → validação Zod → verificação
+de evidência → revisão humana quando preciso → banco. O LLM nunca grava requisito definitivo direto.
+
+**Mapa spec → ondas deste plano:** Fase 1 (estrutura e taxonomia) → W3/W4 · Fase 2 (motor
+determinístico) → W5 · Fase 3 (semântica) → W6 · Fase 4 (pipeline inteligente) → W3 e W2 ·
+Fase 5 (feedback e calibração) → pós-V1. **LangGraph** (spec §13) fica fora da V1: pipeline em TS em
+job agendado; reavaliar se a revisão humana pedir orquestração (pergunta aberta).
+
 
 ### 7.1 O que ele precisa ter (dependências)
 
@@ -367,7 +518,80 @@ taxonomia (as colunas da tabela são as features mínimas do motor).
 
 ## 9. Fora de escopo deste ciclo (V2)
 
-Pagamentos e premium · editor de propostas com IA (RAG sobre o edital) · probabilidade
+Pagamentos e premium · revisão do projeto do artista por IA (RAG sobre o edital) · probabilidade
 calibrada de aprovação · alertas push/e-mail de novo edital · expansão nacional ·
 multi-idioma · app mobile · feed social com curtir/compartilhar persistidos (a UI já
 prevê os botões; a implementação social fica para depois do match entregue).
+
+## 10. Telas e redesign (rascunho — fecha com as respostas da spec do replanejamento)
+
+Sol & Mar já tem tokens. Telas a redesenhar, em ordem de dependência, com o que cada uma pede da
+spec ArtistRank:
+
+| Tela | Pede do ArtistRank |
+|---|---|
+| Login / cadastro | Better Auth; consentimento LGPD |
+| Onboarding do artista (multi-etapas) | Identidade, linguagens, técnicas, temas, posicionamento, intenção e disponibilidade (§3, §6); campo ausente = desconhecido, nunca obrigatório por padrão |
+| Trajetória (inclui estágios) | Experiências com categoria, estado de comprovação (§4) |
+| Cadastro de obras | Obra como entidade própria, com técnica, suporte, montagem, mídia (§5) |
+| Feed | Card com compatibilidade, confiança, estado de elegibilidade, motivos e lacunas (§14.4); "poucas oportunidades" (§9.9) |
+| Detalhe do edital | Resumo IA em linguagem simples, requisitos com evidência, aviso de baixo poder discriminante, projeção da banca quando houver |
+| "Por quê" da nota | Fatores, evidências, nota antes do teto, o que falta informar |
+| Salvos / feedback | Interesse, rejeição **com motivo** (§20) |
+| Organização: publicar edital e ver artistas compatíveis | Papel `organization`, requisitos estruturados, artistas elegíveis só com consentimento |
+| Admin: edital | Upload de PDF, revisão de requisitos extraídos, CORE/SUPPORT, status de processamento |
+| Perfil / privacidade | Exportar e excluir dados, visibilidade do portfólio |
+
+## 11. Protótipo de frontend — `editaliza_prot`
+
+Repositório: [github.com/BugRed/editaliza_prot](https://github.com/BugRed/editaliza_prot)
+(`git@github.com:BugRed/editaliza_prot.git`), `main`, 2 commits. Foi lido em 2026-11-16 a partir de um
+clone local em `./editaliza_prot/` (ignorado no git). **O protótipo é a referência de UX e de
+fluxos**; o backend dele não é.
+
+### 11.1 O que ele tem (e este repo não)
+
+| Item | Onde | Para o plano |
+|---|---|---|
+| Design Sol & Mar já aplicado (paleta, Roboto) | `src/app/globals.css` | Convive com a branch `feature/ui-01` (Inter, tokens `--color-*`). **Escolher uma**: tokens da `ui-01` ficam; copiar do protótipo só o que ele acrescenta (`primary-soft`, `accent-soft`, `border-subtle`, foco visível) |
+| Shell de navegação responsivo (Início, Publicar edital, Salvos, Perfil, Configurações, busca de artistas) | `components/shell/AppShell.tsx` | Base do organismo de navegação (W-UI) |
+| Feed ranqueado com score, confiança, teto, aviso de escassez | `(main)/page.tsx`, `api/ranking` | Referência da UI do feed (W6/W-UI) |
+| Modal de resumo do edital em linguagem simples (o que é, quem pode, benefícios, tags) | `components/modal/EditalSummaryModal.tsx` | Molde da T3.5. Hoje o resumo é um **gerador fixo** (`getPlainEditalSummary`), não IA |
+| Publicar edital por proponente | `(main)/publicar-edital` (545 linhas) | Molde do formulário de organização (T6b.2, D20) |
+| Perfil público do artista, obras, badges de editais vencidos | `perfil`, `perfil/[id]`, `components/profile` | Molde de W4 (perfil, obras, trajetória) |
+| Configurações (editar perfil, obras, badges) | `configuracoes` (854 linhas) | Idem; precisa quebrar em organismos |
+| Salvos | `salvos` | Feedback `salvo` (spec §20) |
+| Cadastro real (`api/auth/register`) com Zod | `api/auth/register` | Só o schema de entrada; ver §11.3 |
+| Motor `artistrank.ts` (335 linhas) | `src/shared/lib/artistrank.ts` | **Protótipo do motor, não a implementação da W5**; ver §11.2 |
+| Store social do cliente | `hooks/useSocialStore.tsx` (542 linhas) | Descartar; vira server state (D10: sinal social fora do score) |
+
+### 11.2 O motor do protótipo vs. a spec ArtistRank
+
+O `artistrank.ts` acerta a forma (combina `0,35·artista + 0,65·portfólio`, teto de 45 no score combinado,
+CORE 1,0 × SUPPORT 0,65, rótulo e aviso de escassez), mas **não é fiel à spec**, e a W5 o reescreve:
+
+- Notas por fator são **constantes soltas** (82, 92, 96, 58…) e só seis critérios, não os oito fatores com pesos 15/20/10/15/10/15/5/10.
+- Fator sem dado é **removido do denominador** (renormaliza): é exatamente a inflação que a spec v4 proíbe. Spec: nota neutra 0,5 sem renormalizar.
+- Não há estado `UNKNOWN`: elegibilidade é só território e CNPJ. Falta `PASS/FAIL/UNKNOWN/NOT_APPLICABLE`.
+- O teto de 45 dispara por **formação técnica ausente** e por **portfólio vazio**, que são requisitos de elegibilidade, não "requisito artístico obrigatório explícito em `FAIL`" (spec §9.3.1). Só o caso de linguagem obrigatória se aproxima.
+- Confiança C é `53,5 + cobertura·31,1 + obras·2,2`, **calibrada para cair na faixa observada** (53,5–91,2), não a fórmula `100·(0,35K + 0,30E + 0,15A + 0,20X)` da spec.
+- Sem evidências, sem versão de algoritmo, sem pesos persistidos, sem poder discriminante, sem projeção da banca.
+- Níveis `INICIANTE…MESTRE` e `profileLevel` não existem na spec; trajetória vem de `experiences` com estado de comprovação.
+
+Uso permitido: **fixture de UI** (formato do resultado: `rArtista`, `rPortfolio`, `scoreBruto`, `scoreFinal`, `confiancaC`, `cobertura`, `tetoAplicado`, `motivoTeto`, `bloqueado`) e semente dos testes de regressão.
+
+### 11.3 Problemas do protótipo que **não** podem ser portados
+
+- `api/auth/register` grava `password: data.password` **em texto puro** em `user_data`, `artist_data` e `proposer_data` (três tabelas). É o vazamento que a W0 fechou; Better Auth (T1.2) substitui, e hash nunca é opcional.
+- `api/ranking` aceita `?artistId=` de qualquer chamador e, sem sessão, **cai no artista 1**: qualquer um ranqueia por qualquer artista. Na nova versão o artista vem da sessão, nunca da query.
+- Usa o client Supabase anon direto nas rotas e `select('*')` em editais; a infra-01 deste repo já tirou isso.
+- `console.error` nas rotas e componentes de 500 a 850 linhas (lint do kit barra).
+- É um snapshot **anterior** à W0/T1.1/dep-01/infra-01 deste repo: portar por cópia reverteria correções.
+
+### 11.4 Estratégia de aproveitamento
+
+1. **Não substituir este repo pelo protótipo.** Portar **por tela**, reescrevendo para `src/shared/components/` (atoms → organisms), dados por prop e Server Components, sobre os tokens da `feature/ui-01`.
+2. Ordem do redesign continua **em espera** (decisão do usuário); o protótipo vira o insumo de cada tela quando ela for escolhida.
+3. Cada tela portada traz a UI dele **e** o contrato real (ArtistRank, Better Auth, Prisma), nunca o mock.
+4. O resumo "em linguagem simples" do modal define o **formato do JSON** da T3.5 (`whatIsIt`, `whoCanApply[]`, `benefits[]`, `extraTags[]`); a IA passa a preencher.
+5. O formulário de publicar edital do protótipo cobre território, linguagens exigidas/aceitas, CNPJ, formação, experiência e nível-alvo. Faltam vs. spec: critérios com pesos, CORE/SUPPORT explícito, evidência por requisito, tipo de oportunidade e anexo do PDF.

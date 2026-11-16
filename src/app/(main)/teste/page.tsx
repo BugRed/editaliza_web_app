@@ -23,20 +23,20 @@ const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--background)] border-b border-white/20 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg)] border-b border-[var(--color-line)] backdrop-blur-sm">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo à esquerda */}
         <div className="flex items-center">
-          <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-lg">E</span>
+          <div className="w-10 h-10 bg-line rounded-lg flex items-center justify-center">
+            <span className="text-ink font-bold text-lg">E</span>
           </div>
-          <span className="ml-2 text-white font-semibold text-lg">Editais</span>
+          <span className="ml-2 text-ink font-semibold text-lg">Editais</span>
         </div>
 
         {/* Menu dropdown à direita */}
         <div className="relative">
           <button
-            className="flex items-center space-x-2 text-white hover:bg-white/10 px-3 py-2 rounded-lg transition-colors"
+            className="flex items-center space-x-2 text-ink hover:bg-surface px-3 py-2 rounded-lg transition-colors"
             onMouseEnter={() => setIsDropdownOpen(true)}
             onMouseLeave={() => setIsDropdownOpen(false)}
           >
@@ -83,30 +83,30 @@ const Header = () => {
 // Componente Footer fixo com ícones de navegação
 const Footer = () => {
   return (
-    <footer className="fixed bottom-0 left-0 right-0 z-50 bg-[var(--background)] border-t border-white/20 backdrop-blur-sm">
+    <footer className="fixed bottom-0 left-0 right-0 z-50 bg-[var(--color-bg)] border-t border-[var(--color-line)] backdrop-blur-sm">
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-center items-center space-x-8">
           {/* Ícone Home */}
-          <button className="flex flex-col items-center space-y-1 text-white hover:bg-white/10 p-2 rounded-lg transition-colors">
+          <button className="flex flex-col items-center space-y-1 text-ink hover:bg-surface p-2 rounded-lg transition-colors">
             <Home size={20} />
             <span className="text-xs">Home</span>
           </button>
 
           {/* Ícone Salvar */}
-          <button className="flex flex-col items-center space-y-1 text-white hover:bg-white/10 p-2 rounded-lg transition-colors">
+          <button className="flex flex-col items-center space-y-1 text-ink hover:bg-surface p-2 rounded-lg transition-colors">
             <Bookmark size={20} />
             <span className="text-xs">Salvar</span>
           </button>
 
           {/* Ícone Compartilhar */}
-          <button className="flex flex-col items-center space-y-1 text-white hover:bg-white/10 p-2 rounded-lg transition-colors">
+          <button className="flex flex-col items-center space-y-1 text-ink hover:bg-surface p-2 rounded-lg transition-colors">
             <Share2 size={20} />
             <span className="text-xs">Compartilhar</span>
           </button>
 
           {/* Ícone do Perfil - imagem redonda */}
-          <button className="flex flex-col items-center space-y-1 text-white hover:bg-white/10 p-2 rounded-lg transition-colors">
-            <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
+          <button className="flex flex-col items-center space-y-1 text-ink hover:bg-surface p-2 rounded-lg transition-colors">
+            <div className="w-6 h-6 bg-line rounded-full flex items-center justify-center">
               <UserCircle2 size={16} />
             </div>
             <span className="text-xs">Perfil</span>
@@ -174,9 +174,9 @@ export default function FeedPage() {
       <>
         <Header />
         <div className="pt-20 pb-20 min-h-screen flex flex-col items-center justify-center p-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mb-4"></div>
-          <h1 className="text-3xl font-bold mb-4 text-center text-white">Feed de Editais</h1>
-          <p className="text-white/70 text-center">Carregando dados...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mb-4"></div>
+          <h1 className="text-3xl font-bold mb-4 text-center text-ink">Feed de Editais</h1>
+          <p className="text-ink-muted text-center">Carregando dados...</p>
         </div>
         <Footer />
       </>
@@ -189,8 +189,8 @@ export default function FeedPage() {
       <>
         <Header />
         <div className="pt-20 pb-20 min-h-screen flex flex-col items-center justify-center p-4">
-          <h1 className="text-3xl font-bold mb-4 text-center text-white">Feed de Editais</h1>
-          <p className="text-red-300 text-center">
+          <h1 className="text-3xl font-bold mb-4 text-center text-ink">Feed de Editais</h1>
+          <p className="text-danger text-center">
             {error || "Erro ao carregar dados. Tente novamente mais tarde."}
           </p>
         </div>
@@ -205,8 +205,8 @@ export default function FeedPage() {
       <>
         <Header />
         <div className="pt-20 pb-20 min-h-screen flex flex-col items-center justify-center p-4">
-          <h1 className="text-3xl font-bold mb-4 text-center text-white">Feed de Editais</h1>
-          <p className="text-white/70 text-center">
+          <h1 className="text-3xl font-bold mb-4 text-center text-ink">Feed de Editais</h1>
+          <p className="text-ink-muted text-center">
             Nenhum edital encontrado. Tente importar os dados novamente.
           </p>
         </div>

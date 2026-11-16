@@ -1,51 +1,94 @@
 @import "tailwindcss";
 
+/*
+ * Design system "Sol & Mar" — fonte única de tokens.
+ * Módulos CSS e utilitários Tailwind leem daqui; cor, raio e sombra literais fora deste
+ * arquivo são dívida. Só tema claro: o tema escuro nasce de um segundo conjunto de valores
+ * para os mesmos nomes, não de nomes novos.
+ */
+@theme {
+  --color-bg: #fffbf0;
+  --color-surface: #ffffff;
+  --color-ink: #0b2a3c;
+  --color-ink-muted: #4b6472;
+  --color-line: #ede4cc;
+  --color-line-subtle: #f5eed8;
 
-:root {
-  --background: #3E7B43;
-  --foreground: #FFFFFF;
+  --color-primary: #0e7c86;
+  --color-primary-hover: #0b656d;
+  --color-primary-soft: #dff1f2;
+  --color-on-primary: #ffffff;
 
-  --header-footer-bg-color: #1D361F;
-  
-  --bg-card: #A682B4;
-  --tag-bg-card: #F6E373;
-  --tag-color-card: #000;
-  --submit-bg-color: #F6E373;
-  --more-bg-color: #2D462F;
-  --more-hover-color: #3D563F;
-  --percent-bg-color: #fff7d6;
-  
-  
-  font-size: clamp(10px, 2vw, 16px);
-  
+  --color-accent: #ffb800;
+  --color-on-accent: #0b2a3c;
+  --color-accent-soft: #fff1c7;
+
+  --color-danger: #c62828;
+  --color-focus: #0e7c86;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 1px 2px rgb(11 42 60 / 0.06), 0 4px 12px rgb(11 42 60 / 0.06);
+  --shadow-float: 0 8px 24px rgb(11 42 60 / 0.16);
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Tema escuro: mesmos nomes, outros valores. `data-theme` força o tema; sem ele vale o do sistema. */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #121212;
-    --foreground: #FFFFFF;
-    
-    --header-footer-bg-color: #1d1d1d;
-    
-    --bg-card: #4d4d4d;
-    --tag-bg-card: #2d2d2d;
-    --tag-color-card: #fff;
-    --submit-bg-color: #BD86FC;
-    --more-bg-color: #2d2d2d;
-    --more-hover-color: #3d3d3d;
-    --percent-bg-color: #2d2d2d;
+  :root:not([data-theme="light"]) {
+    --color-bg: #08202d;
+    --color-surface: #0f2f40;
+    --color-ink: #f4efe0;
+    --color-ink-muted: #a9bcc7;
+    --color-line: #24475a;
+    --color-line-subtle: #173a4c;
+    --color-primary: #3cc0cb;
+    --color-primary-hover: #66d2db;
+    --color-primary-soft: #11424d;
+    --color-on-primary: #08202d;
+    --color-accent: #ffc933;
+    --color-accent-soft: #4a3a0b;
+    --color-on-accent: #08202d;
+    --color-danger: #ff8a80;
+    --color-focus: #66d2db;
   }
 }
 
+:root[data-theme="dark"] {
+  --color-bg: #08202d;
+  --color-surface: #0f2f40;
+  --color-ink: #f4efe0;
+  --color-ink-muted: #a9bcc7;
+  --color-line: #24475a;
+  --color-line-subtle: #173a4c;
+  --color-primary: #3cc0cb;
+  --color-primary-hover: #66d2db;
+  --color-primary-soft: #11424d;
+  --color-on-primary: #08202d;
+  --color-accent: #ffc933;
+  --color-accent-soft: #4a3a0b;
+  --color-on-accent: #08202d;
+  --color-danger: #ff8a80;
+  --color-focus: #66d2db;
+}
+
+/* Foco visível em todo elemento interativo, para teclado. */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* 16px fixo: o clamp antigo caía para 10px no celular e quebrava toda medida em rem. */
+:root {
+  font-size: 16px;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
 }
