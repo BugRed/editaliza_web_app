@@ -43,6 +43,8 @@ precisa refletir isso antes de qualquer implementação.
 - Imagens: **WebP/AVIF** com `sharp` desde o início (JXL descartado: suporte de navegador).
 - Design system: tokens em Tailwind v4 + atoms→organisms, começando pelo card do feed.
 
+- Escopo V1 (D17): fases 1–3 do ArtistRank + resumo IA. Nomes em inglês (D8). Onboarding mínimo (D18). Artistas e organizações (D19).
+
 **Não entra:**
 - Implementação de qualquer item acima; revisão de projeto por IA; scrapers além do Mapa Cultural.
 

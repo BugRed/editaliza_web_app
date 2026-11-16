@@ -60,7 +60,7 @@ Problemas graves conhecidos (estado após a W0, branch `bugfix/auth-01`):
 | D5 | IA e premium | **V1:** resumo de edital em linguagem simples. **Pós-V1:** revisão do projeto do artista, pagamentos e assinaturas |
 | D6 | Provedor de IA | Plugável (`EmbeddingProvider`, `LLMProvider`), escolha por env. **LLM: DeepSeek** (Flash na rotina, Pro nos casos ambíguos; nomes e preços a conferir na API). **Embeddings: Voyage** (`voyage-4-lite` inicial), sujeito ao A/B TF-IDF × Voyage da spec §27.9 |
 | D7 | Coleta | Cron diário; dedup por (fonte, id da fonte, hash do conteúdo) |
-| D8 | Domínio | `Artist`/`Proposer` → **Agente Cultural** (PF/MEI) e **Organização**; executa na refactoração final (W7), tabelas novas já nascem no nome certo. **Em revisão:** a spec ArtistRank usa `artists`/`artworks`/`opportunities`; idioma e nomes do schema são pergunta aberta (spec do replanejamento) |
+| D8 | Domínio | `Artist`/`Proposer` → **Agente Cultural** (PF/MEI) e **Organização**; executa na refactoração final (W7), tabelas novas já nascem no nome certo. **Decidido em 2026-11-16:** schema e código em **inglês**, como a spec ArtistRank (`artists`, `artworks`, `opportunities`, `recommendations`); UI e docs em português |
 | D9 | Arquitetura | Código novo nasce em `src/server` (`api → controller → service`); legado só migra na W7 |
 | D10 | Sinais sociais fora do match | Curtir/compartilhar/comentar são UI; score é função apenas de perfil + projeto + edital; social também não calibra |
 | D11 | Trabalho pesado fora da request | Parse de PDF/OCR, extração LLM e embeddings rodam em job agendado (worker), nunca no ciclo da requisição |
@@ -69,6 +69,9 @@ Problemas graves conhecidos (estado após a W0, branch `bugfix/auth-01`):
 | D14 | Objeto de recomendação | `both`: artistas e obras, calculados separadamente e combinados (`0,35·artista + 0,65·portfólio`, configurável por modalidade) |
 | D15 | Imagens | WebP/AVIF com `sharp` no upload; JXL descartado (suporte de navegador). Arquivos no Supabase Storage |
 | D16 | Design system | **Sol & Mar**, tokens em `globals.css` (branch `feature/ui-01`); só tema claro por ora |
+| D17 | Escopo da V1 | Fases 1+2+3 da spec ArtistRank (cadastro profundo e taxonomia, motor determinístico, embeddings Voyage + busca semântica) **+ resumo do edital por IA**. Pipeline LLM completo com revisão humana (fase 4) entra só no que o resumo e o admin exigirem; calibração (fase 5) é pós-V1. O A/B TF-IDF × Voyage (spec §27.9) vira tarefa antes de fixar o modelo |
+| D18 | Onboarding | **Mínimo + enriquecimento progressivo**: cadastro curto (linguagens, cidade, interesses) já gera feed; trajetória, obras e o resto vêm depois. Campo ausente é desconhecido (nota 0,5); cobertura aparece no card |
+| D19 | Quem usa | **Artistas e organizações.** Artista vê editais e obras ranqueados; organização publica editais e vê artistas compatíveis. Papéis: `artist`, `organization`, `admin`. Visibilidade do perfil do artista para organizações exige regra de privacidade (aberta) |
 
 ## 4. Arquitetura alvo (resumo)
 
@@ -445,5 +448,6 @@ spec ArtistRank:
 | Detalhe do edital | Resumo IA em linguagem simples, requisitos com evidência, aviso de baixo poder discriminante, projeção da banca quando houver |
 | "Por quê" da nota | Fatores, evidências, nota antes do teto, o que falta informar |
 | Salvos / feedback | Interesse, rejeição **com motivo** (§20) |
+| Organização: publicar edital e ver artistas compatíveis | Papel `organization`, requisitos estruturados, artistas elegíveis só com consentimento |
 | Admin: edital | Upload de PDF, revisão de requisitos extraídos, CORE/SUPPORT, status de processamento |
 | Perfil / privacidade | Exportar e excluir dados, visibilidade do portfólio |
