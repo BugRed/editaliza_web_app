@@ -78,11 +78,11 @@ export default function LoginForm() {
 
   return ( 
 
-    <div className="h-screen w-screen flex items-center justify-center bg-green-700">  
+    <div className="h-screen w-screen flex items-center justify-center bg-primary">  
 
       {/* Card */} 
 
-      <div className="bg-green-800 flex flex-col items-center p-8 w-full max-w-md rounded-xl shadow-lg">  
+      <div className="bg-primary-hover flex flex-col items-center p-8 w-full max-w-md rounded-xl shadow-lg">  
 
          
 
@@ -160,7 +160,7 @@ export default function LoginForm() {
 
           /> 
 
-          <button type="submit" className="w-full py-2 rounded-lg bg-purple-600 text-white font-semibold hover:bg-purple-700">Entrar</button> 
+          <button type="submit" className="w-full py-2 rounded-lg bg-accent text-on-accent font-semibold hover:brightness-95">Entrar</button> 
 
           {erro && <p className="text-red-400 text-sm">{erro}</p>} 
 

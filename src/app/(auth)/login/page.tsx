@@ -18,8 +18,8 @@ export default function LoginPage() {
   }, [user, router]);
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center bg-green-700">
-      <div className="bg-green-800 flex flex-col items-center p-8 w-full max-w-md rounded-xl shadow-lg">
+    <div className="h-screen w-screen flex items-center justify-center bg-primary">
+      <div className="bg-primary-hover flex flex-col items-center p-8 w-full max-w-md rounded-xl shadow-lg">
         
         {/* Logo */}
         <div className="flex flex-col items-center mb-6">

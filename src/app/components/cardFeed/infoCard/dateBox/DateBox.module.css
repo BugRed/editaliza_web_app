@@ -13,14 +13,16 @@
     
     width: 6rem;
     height: 2.25rem;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
+    color: var(--color-on-primary);
+    font-weight: 700;
     
-    background-color:#9333ea;
+    background-color:var(--color-primary);
     
     transform: translateX(55%);
     bottom: 1.15rem;
     
-    box-shadow: 0 3px 5px rgb(0, 0, 0, 0.25);
+    box-shadow: var(--shadow-card);
     
 }
 
@@ -31,7 +33,7 @@
     height: 0.5rem;
     width: 0.5rem;
     
-    background-color:#9333ea;
+    background-color:var(--color-primary);
     
     right: 1.95rem;
     bottom: 0.9rem;

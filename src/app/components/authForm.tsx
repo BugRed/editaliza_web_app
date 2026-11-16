@@ -98,7 +98,7 @@ export default function AuthForm({ onSuccess }: { onSuccess?: () => void }) {
 
         type="submit" 
 
-        className="w-full py-2 rounded-lg bg-purple-600 text-white font-semibold hover:bg-purple-700" 
+        className="w-full py-2 rounded-lg bg-accent text-on-accent font-semibold hover:brightness-95" 
 
       > 
 

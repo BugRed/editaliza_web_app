@@ -66,9 +66,9 @@ export default function FeedPage() {
       <>
         <Header />
         <div className="pt-20 pb-20 min-h-screen flex flex-col items-center justify-center p-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mb-4"></div>
-          <h1 className="text-3xl font-bold mb-4 text-center text-white">Feed de Editais</h1>
-          <p className="text-white/70 text-center">Carregando dados...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mb-4"></div>
+          <h1 className="text-3xl font-bold mb-4 text-center text-ink">Feed de Editais</h1>
+          <p className="text-ink-muted text-center">Carregando dados...</p>
         </div>
         <Footer />
       </>
@@ -81,8 +81,8 @@ export default function FeedPage() {
       <>
         <Header />
         <div className="pt-20 pb-20 min-h-screen flex flex-col items-center justify-center p-4">
-          <h1 className="text-3xl font-bold mb-4 text-center text-white">Feed de Editais</h1>
-          <p className="text-red-300 text-center">
+          <h1 className="text-3xl font-bold mb-4 text-center text-ink">Feed de Editais</h1>
+          <p className="text-danger text-center">
             {error || "Erro ao carregar dados. Tente novamente mais tarde."}
           </p>
         </div>
@@ -97,8 +97,8 @@ export default function FeedPage() {
       <>
         <Header />
         <div className="pt-20 pb-20 min-h-screen flex flex-col items-center justify-center p-4">
-          <h1 className="text-3xl font-bold mb-4 text-center text-white">Feed de Editais</h1>
-          <p className="text-white/70 text-center">
+          <h1 className="text-3xl font-bold mb-4 text-center text-ink">Feed de Editais</h1>
+          <p className="text-ink-muted text-center">
             Nenhum edital encontrado. Tente importar os dados novamente.
           </p>
         </div>

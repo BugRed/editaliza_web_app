@@ -1,25 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Barrio&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
 .infoCardFeed{
-    color: #fff;
+    color: var(--color-ink);
     
     margin: 0.85rem 0 0 1rem;
 
-    font-family: "Roboto", sans-serif;
 }
 
 .infoCardFeed h1{
     font-size: 1.5rem;
     line-height: 2.25rem;
 
-    font-weight: bold;
+    font-weight: 800;
 }
 
 .infoCardFeed p{
     display: flex;
     
     font-size: 1rem;
-    font-weight: lighter;
+    font-weight: 400;
+    color: var(--color-ink-muted);
     line-height: 1.15rem;
 
 

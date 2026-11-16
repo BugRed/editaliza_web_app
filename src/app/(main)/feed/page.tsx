@@ -105,7 +105,7 @@ export default function FeedPage() {
     return (
       <div className="container mx-auto p-4 flex flex-col items-center justify-center min-h-screen">
         <h1 className="text-3xl font-bold mb-4 text-center">Feed de Editais</h1>
-        <p className="text-red-500 text-center">
+        <p className="text-danger text-center">
           {error || "Erro ao carregar dados. Tente novamente mais tarde."}
         </p>
       </div>
