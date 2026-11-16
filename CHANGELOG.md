@@ -7,9 +7,9 @@ Impacto externo por entrega; app não versiona build. Novo no topo.
 - **Design system do protótipo `editaliza_prot`** — paleta e Roboto dele em `globals.css`, foco visível; 11 atoms e 9 molecules em `src/shared/components/`; shell em três colunas e card de feed estilo post.
 - **Login e cadastro refeitos** — cadastro valida e-mail, senha (8+ com número, antes 6) e exige consentimento; **ainda não cria conta** (Better Auth, O2). Removido o `console.log` da senha.
 - **Feed** — novo shell de navegação, busca, estados vazio/carregando/erro; some a porcentagem de compatibilidade fixa (30%), que era falsa.
-- **Protótipo `/prototipo`** — 12 telas com dados fixos para aprovação; 404 em produção.
+- **Telas 4–15 como organismos testados, sem rota** — o endpoint de protótipo foi removido para não ir a produção.
+- **Banco local em Docker** — `docker-compose.dev.yml` (Postgres 17 + PostgREST + gateway) e `npm run dev:db` / `dev:db:setup`; permite logar e ver o feed sem o Supabase da nuvem. Ver `docs/ops/ambiente.md`.
 - **Testes em Docker** — Vitest + Testing Library, `npm run test:docker` sem rede.
-- `src/middleware.ts` libera `/prototipo` fora de produção.
 
 ## 2026-11-16 — docs/docs-01: replanejamento da V1 (ArtistRank, protótipo, ondas)
 

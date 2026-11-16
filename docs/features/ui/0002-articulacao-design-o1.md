@@ -15,13 +15,13 @@
 - [x] prisma — não se aplica, onda de design sem banco
 - [x] service — não se aplica, sem regra de negócio
 - [x] controller — não se aplica
-- [x] route — só o `src/middleware.ts` (libera `/prototipo` fora de produção); sem route handler novo
+- [x] route — não se aplica: nenhuma rota nova (o endpoint `/prototipo` foi removido)
 - [x] ui — atoms e molecules em `src/shared/components/`, tokens em `globals.css`
 - [x] teste — comportamento dos atoms e molecules; qualquer teste roda interno, em Docker
 - [x] doc — mapa de telas e fluxo em `docs/`
 <!-- /kit:camadas -->
 
-**Próximo passo:** usuário navega o protótipo em `/prototipo` (`npm run dev`) e aprova ou pede ajustes; com a aprovação, marcar o critério pendente, mudar **Status** para `entregue` e abrir a O2.
+**Próximo passo:** usuário sobe o banco local (`docs/ops/ambiente.md`), loga e confere feed e login no navegador; definir como aprovar as telas 4–15, já que o `/prototipo` foi removido; depois `/fechar` de novo.
 
 ## Problema / motivação
 A O1 do roadmap (`plano.md` §6.0) é a primeira onda: design fechado antes de qualquer tela entrar
@@ -80,26 +80,7 @@ Nenhuma regra nova. Match e score ficam na O4 ([`plano.md`](../../../plano.md) �
 - Logo `/logoLogin.png` não existe mais no repo: o card usa o nome em texto.
 - `AuthForm` e `loginForm.tsx` antigos, sem uso, foram removidos.
 
-- **Protótipo em `/prototipo/*`:** 12 telas com dados fixos e inventados; o layout responde 404 em
-  produção e o `middleware.ts` só o libera fora de produção. Esse 404 em produção **não foi
-  exercitado** (sem `next build` nesta sessão).
-- **Rotas do mapa só existem como `/prototipo/<rota>`** até a tela ir ao ar; a nav real (`/feed`)
-  lista só o que existe.
-- `/feed` real ainda lê `/api/data` (Supabase) no cliente; a O2 troca por Prisma. Os cards não
-  têm mais a porcentagem de compatibilidade fixa (30%), que era falsa.
-- A página `/` (`(main)/page.tsx`) e `components/cardFeed/*` seguem como o feed duplicado da T7.1,
-  fora do shell novo.
-- Handlers de salvar, dispensar, exportar, excluir, concluir onboarding e salvar rascunho só
-  mudam estado local; ligam a serviços nas ondas O2–O5.
-- Conferido por captura só o feed e o login em 1280px; **não** conferidos: celular (barra inferior), tema escuro manual e as demais telas do protótipo.
-
-- `tsconfig.json` passou a excluir `editaliza_prot/` (clone ignorado pelo git): o `tsc` varria os
-  84 erros dele. Resolve a linha correspondente de `docs/divida.md`.
-- Gate adaptado: o repo não tem `format:check`, `test:cov` nem Sonar. Rodaram `tsc`, `eslint src`
-  e Vitest (Docker); **cobertura, formatação e Sonar não rodaram**.
-- `Dockerfile.test` instala com `npm install` (o lock omite `@emnapi/*`), então o ambiente de
-  teste não é reprodutível por lock.
-
+- **Endpoint `/prototipo` removido (2026-11-16, a pedido do usuário):** dados fixos em rota do app são risco de ir a produção. Ficam os organismos das telas 4–15 em `src/shared/components/organisms/`, testados e **sem rota** (código ainda sem uso, até a onda de cada tela), e os dados de exemplo em `src/shared/fixtures/`. O `middleware.ts` voltou ao que era.
 - **Correção de rumo (2026-11-16):** a primeira versão partiu dos tokens da `ui-01` e de componentes
   inventados, sem ler o visual do `editaliza_prot`. Refeita sobre o protótipo: paleta e Roboto
   copiadas dele (`--color-primary-ink`, `accent-ink`, `surface-subtle`, `line-strong`…), shell em
@@ -112,6 +93,12 @@ Nenhuma regra nova. Match e score ficam na O4 ([`plano.md`](../../../plano.md) �
 - Capas e avatares do protótipo copiados para `public/images/` (redimensionados: 784 KB no total).
 - Curtir e salvar do card mudam só estado local (o protótipo usava um store social no cliente,
   descartado no plano §11.3).
+
+- **Banco local em Docker** (`docker-compose.dev.yml`): o Supabase do `.env` não existe mais (tenant
+  não encontrado no pooler). O gateway nginx remove `Authorization` porque o PostgREST sem segredo
+  JWT recusa o token do `supabase-js`. Sem RLS. O `.env.local` criado aqui sobrepõe o `.env`.
+- Login exercitado contra o stack local: 200 para as duas contas do seed, 401 para senha errada,
+  `/api/data` com 3 editais. **Não** testado contra o Supabase real.
 
 ## Decisões em aberto
 - Nenhuma. (Protótipo como páginas Next com dados fixos: decidido e aprovado.)
