@@ -7,7 +7,7 @@ export function PublicArtistProfile({ artist }: { artist: PublicArtist }) {
   return (
     <>
       <header className="flex items-center gap-4">
-        <Avatar name={artist.name} className="size-16 text-xl" />
+        <Avatar name={artist.name} src={artist.avatarUrl} className="size-16 text-xl" />
         <div>
           <h1 className="text-2xl font-semibold text-ink">{artist.name}</h1>
           <p className="text-ink-muted">{artist.city}</p>

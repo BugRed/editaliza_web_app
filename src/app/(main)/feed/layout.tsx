@@ -7,12 +7,18 @@ import { useAuth } from "@/app/hooks/useAuth";
 import { AppShell, type NavEntry } from "@/shared/components/organisms/AppShell";
 
 // Só entram na navegação as rotas que existem de verdade; o restante vive em /prototipo.
-const NAV_ITEMS: NavEntry[] = [{ href: "/feed", label: "Editais", icon: Home }];
+const NAV_ITEMS: NavEntry[] = [{ href: "/feed", label: "Início", icon: Home }];
 
 export default function FeedLayout({ children }: { children: ReactNode }) {
-  const { logout } = useAuth();
+  const { user, logout } = useAuth();
   return (
-    <AppShell items={NAV_ITEMS} onLogout={logout}>
+    <AppShell
+      items={NAV_ITEMS}
+      title="Editais"
+      padded={false}
+      user={user ? { name: user.name ?? user.email, subtitle: user.email } : undefined}
+      onLogout={logout}
+    >
       {children}
     </AppShell>
   );

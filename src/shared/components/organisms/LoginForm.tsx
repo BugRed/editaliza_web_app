@@ -40,7 +40,7 @@ export function LoginForm({ onSubmit, onSuccess }: LoginFormProps) {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       {error && (
-        <p role="alert" className="rounded-md border border-danger px-3 py-2 text-sm text-danger">
+        <p role="alert" className="rounded-lg border border-danger/30 bg-danger-soft px-4 py-3 text-sm text-danger">
           {error}
         </p>
       )}
@@ -61,7 +61,7 @@ export function LoginForm({ onSubmit, onSuccess }: LoginFormProps) {
           />
         )}
       </FormField>
-      <Button type="submit" loading={loading}>
+      <Button type="submit" loading={loading} className="w-full">
         Entrar
       </Button>
     </form>

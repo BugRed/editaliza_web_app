@@ -2,10 +2,13 @@ import type { IEdital } from "@/app/types/Edital";
 
 export type EditalCardData = {
   id: number;
-  href?: string;
   title: string;
   organization: string;
   deadlineLabel: string;
+  description?: string;
+  coverImage?: string;
+  statusLabel?: string;
+  submitHref?: string;
   tags: string[];
 };
 
@@ -26,12 +29,16 @@ export function formatDeadline(endDate: Date | string | null | undefined, now: D
 }
 
 export function toEditalCardData(edital: IEdital, now: Date = new Date()): EditalCardData {
+  const end = toDate(edital.endDate);
   return {
     id: edital.id,
-    href: edital.completeEditalLink || edital.inscriptionLink || undefined,
     title: edital.title,
     organization: edital.proposer?.name ?? "Organização não informada",
     deadlineLabel: formatDeadline(edital.endDate, now),
+    description: edital.description || undefined,
+    coverImage: edital.imgCoverUrl || undefined,
+    statusLabel: end && end.getTime() < now.getTime() ? "Encerrado" : "Edital aberto",
+    submitHref: edital.inscriptionLink || edital.completeEditalLink || undefined,
     tags: (edital.listTags ?? []).map((tag) => tag.name),
   };
 }

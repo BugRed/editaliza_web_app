@@ -10,7 +10,7 @@ export default function PrototypeIndexPage() {
       <PageHeader title="Mapa de telas" description="Protótipo navegável. Login e cadastro já são telas reais (/login, /cadastro)." />
       <ul className="flex flex-col gap-3" aria-label="Telas">
         {SCREENS.map((screen) => (
-          <li key={screen.number} className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-surface p-4 shadow-card">
+          <li key={screen.number} className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-surface p-4 border border-line">
             <div>
               <Link href={screen.href} className="font-medium text-primary hover:underline">
                 {screen.number}. {screen.name}

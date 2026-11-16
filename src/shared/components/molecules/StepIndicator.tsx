@@ -13,7 +13,7 @@ export function StepIndicator({ steps, currentIndex }: StepIndicatorProps) {
             "rounded-pill px-3 py-1",
             index === currentIndex && "bg-primary text-on-primary",
             index < currentIndex && "bg-primary-soft text-primary",
-            index > currentIndex && "bg-line-subtle text-ink-muted",
+            index > currentIndex && "bg-surface-subtle text-ink-muted",
           )}
         >
           {index + 1}. {step}

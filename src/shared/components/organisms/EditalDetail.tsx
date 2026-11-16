@@ -47,17 +47,17 @@ export function EditalDetail({ edital, whyHref }: EditalDetailProps) {
           Não tenho interesse
         </Button>
         {whyHref && (
-          <Link href={whyHref} className="inline-flex h-11 items-center rounded-md px-5 font-medium text-primary hover:bg-primary-soft">
+          <Link href={whyHref} className="inline-flex h-11 items-center rounded-xl px-5 font-medium text-primary hover:bg-primary-soft">
             Por que este edital?
           </Link>
         )}
       </div>
       {dismissedReason && (
-        <p role="status" className="rounded-md bg-accent-soft px-3 py-2 text-sm text-ink">
+        <p role="status" className="rounded-xl bg-accent-soft px-3 py-2 text-sm text-ink">
           Edital dispensado: {dismissedReason}.
         </p>
       )}
-      <div className="flex flex-col gap-5 rounded-lg bg-surface p-6 shadow-card">
+      <div className="flex flex-col gap-5 rounded-xl bg-surface p-6 border border-line">
         <h2 className="text-lg font-semibold text-ink">Resumo em linguagem simples</h2>
         {edital.summary ? (
           <>

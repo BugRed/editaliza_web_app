@@ -20,17 +20,25 @@ describe("toEditalCardData", () => {
     const edital = { id: 1, title: "X", endDate: null } as unknown as IEdital;
     expect(toEditalCardData(edital, NOW)).toEqual({
       id: 1,
-      href: undefined,
       title: "X",
       organization: "Organização não informada",
       deadlineLabel: "Prazo não informado",
+      description: undefined,
+      coverImage: undefined,
+      statusLabel: "Edital aberto",
+      submitHref: undefined,
       tags: [],
     });
   });
 
-  it("prefere o link do edital completo ao de inscrição", () => {
+  it("prefere o link de inscrição ao do edital completo", () => {
     const edital = { id: 1, title: "X", completeEditalLink: "https://a", inscriptionLink: "https://b" } as unknown as IEdital;
-    expect(toEditalCardData(edital, NOW).href).toBe("https://a");
+    expect(toEditalCardData(edital, NOW).submitHref).toBe("https://b");
+  });
+
+  it("prazo vencido marca o edital como encerrado", () => {
+    const edital = { id: 1, title: "X", endDate: "2026-11-01T00:00:00Z" } as unknown as IEdital;
+    expect(toEditalCardData(edital, NOW).statusLabel).toBe("Encerrado");
   });
 });
 

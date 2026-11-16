@@ -14,9 +14,10 @@ export type EditalDetailData = {
   summary: EditalSummary | null;
   officialLink: string;
   tags: string[];
+  coverImage?: string;
 };
 
-export type Work = { id: number; title: string; technique: string; year: number; support: string };
+export type Work = { id: number; title: string; technique: string; year: number; support: string; imageUrl?: string };
 
 export type ProofState = "comprovada" | "declarada" | "sem-comprovacao";
 export type Experience = { id: number; title: string; category: string; year: number; proof: ProofState };
@@ -27,7 +28,7 @@ export type MatchFactor = { label: string; level: FactorLevel; note: string };
 export type EligibilityState = "elegivel" | "inelegivel" | "desconhecido";
 export type Candidate = { id: number; name: string; city: string; languages: string[]; eligibility: EligibilityState };
 
-export type PublicArtist = { name: string; city: string; languages: string[]; bio: string; works: Work[] };
+export type PublicArtist = { name: string; city: string; languages: string[]; bio: string; avatarUrl?: string; works: Work[] };
 
 export type AdminEditalStatus = "processando" | "revisao" | "falha" | "publicado";
 export type AdminEdital = { id: number; title: string; status: AdminEditalStatus; note?: string };

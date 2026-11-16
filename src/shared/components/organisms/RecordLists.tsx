@@ -18,7 +18,7 @@ export function TrajectoryView({ experiences }: { experiences: Experience[] }) {
       ) : (
         <ul className="flex flex-col gap-3" aria-label="Experiências">
           {experiences.map((item) => (
-            <li key={item.id} className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-surface p-4 shadow-card">
+            <li key={item.id} className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-surface p-4 border border-line">
               <div>
                 <p className="font-medium text-ink">{item.title}</p>
                 <p className="text-sm text-ink-muted">
@@ -43,11 +43,17 @@ export function WorksView({ works }: { works: Work[] }) {
       ) : (
         <ul className="grid gap-3 sm:grid-cols-2" aria-label="Obras">
           {works.map((work) => (
-            <li key={work.id} className="rounded-lg bg-surface p-4 shadow-card">
+            <li key={work.id} className="overflow-hidden rounded-xl border border-line bg-surface">
+              {work.imageUrl && (
+                // eslint-disable-next-line @next/next/no-img-element -- imagem estática do protótipo
+                <img src={work.imageUrl} alt="" className="aspect-[4/3] w-full object-cover" />
+              )}
+              <div className="p-4">
               <p className="font-medium text-ink">{work.title}</p>
               <p className="text-sm text-ink-muted">
                 {work.technique} · {work.support} · {work.year}
               </p>
+              </div>
             </li>
           ))}
         </ul>

@@ -60,7 +60,7 @@ export function SignupForm({ onSubmit }: SignupFormProps) {
           </p>
         )}
       </div>
-      <Button type="submit" loading={loading}>
+      <Button type="submit" loading={loading} className="w-full">
         Criar conta
       </Button>
     </form>

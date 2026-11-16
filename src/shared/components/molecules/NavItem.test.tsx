@@ -14,4 +14,11 @@ describe("NavItem", () => {
     expect(screen.getByRole("link", { name: "Início" })).toHaveAttribute("aria-current", "page");
     expect(screen.getByRole("link", { name: "Salvos" })).not.toHaveAttribute("aria-current");
   });
+
+  it("mostra o contador só quando maior que zero", () => {
+    const { rerender } = render(<NavItem href="/salvos" label="Salvos" icon={Home} count={3} />);
+    expect(screen.getByText("3")).toBeInTheDocument();
+    rerender(<NavItem href="/salvos" label="Salvos" icon={Home} count={0} />);
+    expect(screen.queryByText("0")).not.toBeInTheDocument();
+  });
 });

@@ -44,7 +44,7 @@ export function ConfirmDialog({
         role="alertdialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="w-full max-w-md rounded-lg bg-surface p-6 shadow-float"
+        className="w-full max-w-md rounded-xl bg-surface p-6 shadow-float"
       >
         <h2 id={titleId} className="text-lg font-semibold text-ink">
           {title}

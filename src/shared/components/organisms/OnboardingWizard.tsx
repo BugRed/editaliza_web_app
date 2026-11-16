@@ -31,7 +31,7 @@ export function OnboardingWizard({ onFinish }: OnboardingWizardProps) {
     <>
       <PageHeader title="Conte sobre a sua arte" description="Tudo é opcional. Quanto mais você informa, melhor a gente entende o que serve para você." />
       <StepIndicator steps={[...STEPS]} currentIndex={step} />
-      <form className="flex flex-col gap-4 rounded-lg bg-surface p-6 shadow-card" onSubmit={(event) => event.preventDefault()}>
+      <form className="flex flex-col gap-4 rounded-xl bg-surface p-6 border border-line" onSubmit={(event) => event.preventDefault()}>
         {step === 0 && (
           <>
             <FormField label="Nome artístico">{(control) => <Input {...control} />}</FormField>

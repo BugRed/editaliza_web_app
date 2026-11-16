@@ -91,7 +91,7 @@ Nenhuma regra nova. Match e score ficam na O4 ([`plano.md`](../../../plano.md) �
   fora do shell novo.
 - Handlers de salvar, dispensar, exportar, excluir, concluir onboarding e salvar rascunho só
   mudam estado local; ligam a serviços nas ondas O2–O5.
-- Tema escuro e shell responsivo (barra inferior no celular) sem verificação visual.
+- Conferido por captura só o feed e o login em 1280px; **não** conferidos: celular (barra inferior), tema escuro manual e as demais telas do protótipo.
 
 - `tsconfig.json` passou a excluir `editaliza_prot/` (clone ignorado pelo git): o `tsc` varria os
   84 erros dele. Resolve a linha correspondente de `docs/divida.md`.
@@ -99,6 +99,19 @@ Nenhuma regra nova. Match e score ficam na O4 ([`plano.md`](../../../plano.md) �
   e Vitest (Docker); **cobertura, formatação e Sonar não rodaram**.
 - `Dockerfile.test` instala com `npm install` (o lock omite `@emnapi/*`), então o ambiente de
   teste não é reprodutível por lock.
+
+- **Correção de rumo (2026-11-16):** a primeira versão partiu dos tokens da `ui-01` e de componentes
+  inventados, sem ler o visual do `editaliza_prot`. Refeita sobre o protótipo: paleta e Roboto
+  copiadas dele (`--color-primary-ink`, `accent-ink`, `surface-subtle`, `line-strong`…), shell em
+  três colunas (menu, feed de 640px com cabeçalho fixo, coluna de busca de artistas), card de feed
+  estilo post (cabeçalho com iniciais, capa 16:9 ou fallback em degradê, selo, "Continuar lendo",
+  curtir/salvar/compartilhar, "Inscrever-se"), login com barra em degradê e marca de sol. Isto
+  **supera** a decisão do plano §11.1 de manter os tokens da `ui-01`.
+- Tema escuro automático removido (o protótipo é só claro); `data-theme="dark"` ficou como opção
+  manual, sem tela de teste nem seletor.
+- Capas e avatares do protótipo copiados para `public/images/` (redimensionados: 784 KB no total).
+- Curtir e salvar do card mudam só estado local (o protótipo usava um store social no cliente,
+  descartado no plano §11.3).
 
 ## Decisões em aberto
 - Nenhuma. (Protótipo como páginas Next com dados fixos: decidido e aprovado.)

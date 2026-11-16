@@ -25,7 +25,7 @@ export function AdminEditalPanel({ editais, requirements }: AdminEditalPanelProp
   return (
     <>
       <PageHeader title="Editais (admin)" description="Envie o PDF, revise os requisitos extraídos e publique." />
-      <section className="rounded-lg bg-surface p-6 shadow-card" aria-label="Enviar edital">
+      <section className="rounded-xl bg-surface p-6 border border-line" aria-label="Enviar edital">
         <FormField label="PDF do edital" hint="Só arquivos PDF.">
           {(control) => <Input {...control} type="file" accept="application/pdf" className="py-2" />}
         </FormField>
@@ -35,7 +35,7 @@ export function AdminEditalPanel({ editais, requirements }: AdminEditalPanelProp
       ) : (
         <ul className="flex flex-col gap-3" aria-label="Editais enviados">
           {editais.map((edital) => (
-            <li key={edital.id} className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-surface p-4 shadow-card">
+            <li key={edital.id} className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-surface p-4 border border-line">
               <div>
                 <p className="font-medium text-ink">{edital.title}</p>
                 {edital.note && <p className="text-sm text-danger">{edital.note}</p>}
@@ -45,11 +45,11 @@ export function AdminEditalPanel({ editais, requirements }: AdminEditalPanelProp
           ))}
         </ul>
       )}
-      <section aria-label="Requisitos extraídos" className="rounded-lg bg-surface p-6 shadow-card">
+      <section aria-label="Requisitos extraídos" className="rounded-xl bg-surface p-6 border border-line">
         <h2 className="font-semibold text-ink">Requisitos extraídos para revisão</h2>
         <ul className="mt-3 flex flex-col gap-3">
           {requirements.map((requirement) => (
-            <li key={requirement.text} className="flex flex-col gap-1 border-b border-line-subtle pb-3 last:border-0">
+            <li key={requirement.text} className="flex flex-col gap-1 border-b border-line pb-3 last:border-0">
               <div className="flex items-center gap-2">
                 <Badge tone={requirement.kind === "CORE" ? "primary" : "neutral"}>{requirement.kind}</Badge>
                 <span className="text-ink">{requirement.text}</span>

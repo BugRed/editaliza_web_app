@@ -17,7 +17,7 @@ export function ProfilePrivacy({ email, onExport, onDelete }: ProfilePrivacyProp
   return (
     <>
       <PageHeader title="Perfil e privacidade" description={email} />
-      <section className="flex flex-col gap-4 rounded-lg bg-surface p-6 shadow-card" aria-label="Visibilidade">
+      <section className="flex flex-col gap-4 rounded-xl bg-surface p-6 border border-line" aria-label="Visibilidade">
         <FormField label="Quem vê o seu portfólio" hint="Organizações só veem artistas que se candidataram.">
           {(control) => (
             <Select {...control} defaultValue="candidaturas">
@@ -28,7 +28,7 @@ export function ProfilePrivacy({ email, onExport, onDelete }: ProfilePrivacyProp
           )}
         </FormField>
       </section>
-      <section className="flex flex-col gap-3 rounded-lg bg-surface p-6 shadow-card" aria-label="Seus dados">
+      <section className="flex flex-col gap-3 rounded-xl bg-surface p-6 border border-line" aria-label="Seus dados">
         <h2 className="font-semibold text-ink">Seus dados</h2>
         <div className="flex flex-wrap gap-3">
           <Button

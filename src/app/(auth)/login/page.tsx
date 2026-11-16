@@ -18,7 +18,7 @@ export default function LoginPage() {
 
   return (
     <AuthCard
-      title="Entrar"
+      subtitle="Acesse editais culturais e oportunidades de fomento com leitura clara e organizada."
       footer={
         <>
           Ainda não tem conta?{" "}

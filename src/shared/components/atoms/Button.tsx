@@ -14,14 +14,14 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   primary: "bg-primary text-on-primary hover:bg-primary-hover",
-  secondary: "border border-line bg-surface text-ink hover:bg-primary-soft",
+  secondary: "border border-line bg-surface text-ink hover:bg-surface-subtle",
   ghost: "text-primary hover:bg-primary-soft",
   danger: "bg-danger text-on-primary hover:opacity-90",
 };
 
 const SIZE_CLASSES: Record<ButtonSize, string> = {
-  md: "h-11 px-5 text-base",
-  sm: "h-9 px-3 text-sm",
+  md: "h-10 px-[1.125rem] text-sm",
+  sm: "h-8 px-3 text-xs",
 };
 
 export function Button({
@@ -40,7 +40,7 @@ export function Button({
       disabled={disabled || loading}
       aria-busy={loading || undefined}
       className={joinClassNames(
-        "inline-flex items-center justify-center gap-2 rounded-md font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50",
+        "inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50",
         VARIANT_CLASSES[variant],
         SIZE_CLASSES[size],
         className,

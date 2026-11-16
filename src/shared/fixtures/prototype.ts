@@ -8,6 +8,7 @@ import type {
   Requirement,
   Work,
 } from "@/shared/lib/profile-view";
+import type { RailArtist } from "@/shared/components/organisms/ArtistRail";
 import type { EditalCardData } from "@/shared/lib/edital-view";
 
 // Tudo aqui é inventado, só para o protótipo: nenhum edital, órgão ou pessoa reais.
@@ -21,6 +22,7 @@ export const EDITAL_DETAILS: EditalDetailData[] = [
     closed: false,
     officialLink: "https://exemplo.gov.br/edital-1",
     tags: ["Artes visuais"],
+    coverImage: "/images/edital_pintura.jpg",
     summary: {
       whatIsIt: "Prêmio em dinheiro para artistas visuais que já têm uma série de trabalhos e querem mostrá-la numa exposição.",
       whoCanApply: ["Artistas visuais com residência no estado há pelo menos 2 anos", "Pessoas físicas ou MEI"],
@@ -36,6 +38,7 @@ export const EDITAL_DETAILS: EditalDetailData[] = [
     closed: true,
     officialLink: "https://exemplo.gov.br/edital-2",
     tags: ["Música"],
+    coverImage: "/images/edital_musica.jpg",
     summary: null,
   },
   {
@@ -46,6 +49,7 @@ export const EDITAL_DETAILS: EditalDetailData[] = [
     closed: false,
     officialLink: "https://exemplo.gov.br/edital-3",
     tags: ["Teatro", "Pesquisa"],
+    coverImage: "/images/edital_ocupacao.jpg",
     summary: {
       whatIsIt: "Bolsa mensal por 12 meses para quem pesquisa processos de criação teatral.",
       whoCanApply: ["Artistas e grupos de teatro", "Sem exigência de CNPJ"],
@@ -61,9 +65,19 @@ export function toCardData(detail: EditalDetailData): EditalCardData {
     title: detail.title,
     organization: detail.organization,
     deadlineLabel: detail.deadlineLabel,
+    description: detail.summary?.whatIsIt,
+    coverImage: detail.coverImage,
+    statusLabel: detail.closed ? "Encerrado" : "Edital aberto",
+    submitHref: detail.officialLink,
     tags: detail.tags,
   };
 }
+
+export const RAIL_ARTISTS: RailArtist[] = [
+  { id: 1, name: "Maria Exemplo", handle: "@maria", city: "Recife, PE", tags: ["Artes visuais"], avatarUrl: "/images/avatar_maria.jpg" },
+  { id: 2, name: "João Exemplo", handle: "@joao", city: "Olinda, PE", tags: ["Música", "Audiovisual"], avatarUrl: "/images/avatar_joao.jpg" },
+  { id: 3, name: "Carlos Exemplo", handle: "@carlos", city: "Caruaru, PE", tags: ["Teatro"], avatarUrl: "/images/avatar_carlos.jpg" },
+];
 
 export const EDITAL_CARDS: EditalCardData[] = EDITAL_DETAILS.map(toCardData);
 
@@ -82,14 +96,15 @@ export const EXPERIENCES: Experience[] = [
 ];
 
 export const WORKS: Work[] = [
-  { id: 1, title: "Vista da janela", technique: "Pintura", support: "Tela", year: 2024 },
-  { id: 2, title: "Sal e ferrugem", technique: "Gravura", support: "Papel", year: 2023 },
+  { id: 1, title: "Vista da janela", technique: "Pintura", support: "Tela", year: 2024, imageUrl: "/images/art_pintura_tela.jpg" },
+  { id: 2, title: "Sal e ferrugem", technique: "Escultura", support: "Metal", year: 2023, imageUrl: "/images/art_escultura_galeria.jpg" },
 ];
 
 export const PUBLIC_ARTIST: PublicArtist = {
   name: "Maria Exemplo",
   city: "Recife, PE",
   languages: ["Artes visuais"],
+  avatarUrl: "/images/avatar_maria.jpg",
   bio: "Artista visual que trabalha com pintura e gravura a partir da paisagem urbana.",
   works: WORKS,
 };

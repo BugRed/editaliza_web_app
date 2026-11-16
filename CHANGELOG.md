@@ -4,7 +4,7 @@ Impacto externo por entrega; app não versiona build. Novo no topo.
 
 ## 2026-11-16 — feature/ui-02: articulação de design (O1)
 
-- **Design system** — tokens `primary-soft`, `accent-soft`, `line-subtle`, foco visível e **tema escuro** em `globals.css`; 10 atoms e 8 molecules em `src/shared/components/`.
+- **Design system do protótipo `editaliza_prot`** — paleta e Roboto dele em `globals.css`, foco visível; 11 atoms e 9 molecules em `src/shared/components/`; shell em três colunas e card de feed estilo post.
 - **Login e cadastro refeitos** — cadastro valida e-mail, senha (8+ com número, antes 6) e exige consentimento; **ainda não cria conta** (Better Auth, O2). Removido o `console.log` da senha.
 - **Feed** — novo shell de navegação, busca, estados vazio/carregando/erro; some a porcentagem de compatibilidade fixa (30%), que era falsa.
 - **Protótipo `/prototipo`** — 12 telas com dados fixos para aprovação; 404 em produção.

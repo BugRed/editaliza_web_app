@@ -27,7 +27,7 @@ export function MatchExplanation({ editalTitle, factors }: MatchExplanationProps
       <PageHeader title="Por que este edital?" description={editalTitle} />
       <ul className="flex flex-col gap-3" aria-label="Fatores">
         {factors.map((factor) => (
-          <li key={factor.label} className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-surface p-4 shadow-card">
+          <li key={factor.label} className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-surface p-4 border border-line">
             <div>
               <p className="font-medium text-ink">{factor.label}</p>
               <p className="text-sm text-ink-muted">{factor.note}</p>
@@ -37,7 +37,7 @@ export function MatchExplanation({ editalTitle, factors }: MatchExplanationProps
         ))}
       </ul>
       {missing.length > 0 && (
-        <section aria-label="O que falta informar" className="rounded-lg bg-accent-soft p-4">
+        <section aria-label="O que falta informar" className="rounded-2xl bg-accent-soft p-4">
           <h2 className="font-semibold text-ink">O que falta informar</h2>
           <ul className="mt-1 list-disc pl-5 text-ink">
             {missing.map((factor) => (

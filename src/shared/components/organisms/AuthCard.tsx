@@ -1,17 +1,23 @@
 import type { ReactNode } from "react";
 
-type AuthCardProps = { title: string; children: ReactNode; footer?: ReactNode };
+import { BrandMark } from "@/shared/components/atoms/BrandMark";
 
-export function AuthCard({ title, children, footer }: AuthCardProps) {
+type AuthCardProps = { subtitle: string; children: ReactNode; footer?: ReactNode };
+
+export function AuthCard({ subtitle, children, footer }: AuthCardProps) {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-bg p-4">
-      <div className="flex w-full max-w-md flex-col gap-6 rounded-lg bg-surface p-8 shadow-card">
-        <div className="flex flex-col items-center gap-3">
-          <p className="text-lg font-semibold text-primary">Editaliza</p>
-          <h1 className="text-2xl font-semibold text-ink">{title}</h1>
+    <main className="flex min-h-screen w-full items-center justify-center bg-bg px-4 py-10">
+      <div className="w-full max-w-md overflow-hidden rounded-xl border border-line bg-surface shadow-sm">
+        <div className="h-1.5 w-full bg-gradient-to-r from-primary via-primary to-accent" />
+        <div className="flex flex-col items-center gap-6 p-8">
+          <div className="flex flex-col items-center text-center">
+            <BrandMark size="lg" className="mb-3" />
+            <h1 className="text-2xl font-bold tracking-tight text-primary">Editaliza</h1>
+            <p className="mt-1 max-w-xs text-sm leading-relaxed text-ink-muted">{subtitle}</p>
+          </div>
+          <div className="w-full">{children}</div>
+          {footer && <p className="text-sm text-ink-muted">{footer}</p>}
         </div>
-        {children}
-        {footer && <p className="text-center text-sm text-ink-muted">{footer}</p>}
       </div>
     </main>
   );

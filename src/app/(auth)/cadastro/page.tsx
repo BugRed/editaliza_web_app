@@ -17,7 +17,7 @@ export default function CadastroPage() {
 
   return (
     <AuthCard
-      title="Crie sua conta"
+      subtitle="Crie sua conta para acompanhar editais que combinam com a sua arte."
       footer={
         <>
           Já tem conta?{" "}

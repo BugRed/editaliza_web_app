@@ -26,7 +26,7 @@ export function CandidatesList({ editalTitle, candidates }: { editalTitle: strin
       ) : (
         <ul className="flex flex-col gap-3" aria-label="Candidatos">
           {candidates.map((candidate) => (
-            <li key={candidate.id} className="flex flex-wrap items-center justify-between gap-3 rounded-lg bg-surface p-4 shadow-card">
+            <li key={candidate.id} className="flex flex-wrap items-center justify-between gap-3 rounded-xl bg-surface p-4 border border-line">
               <div className="flex items-center gap-3">
                 <Avatar name={candidate.name} />
                 <div>

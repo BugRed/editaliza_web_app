@@ -31,7 +31,7 @@ export function OrgEditalForm({ onSaveDraft }: OrgEditalFormProps) {
   return (
     <>
       <PageHeader title="Publicar edital" description="Descreva o edital e o que ele exige. Você pode salvar como rascunho." />
-      <form noValidate onSubmit={handleSubmit} className="flex flex-col gap-4 rounded-lg bg-surface p-6 shadow-card">
+      <form noValidate onSubmit={handleSubmit} className="flex flex-col gap-4 rounded-xl bg-surface p-6 border border-line">
         <FormField label="Título" error={error}>
           {(control) => <Input {...control} value={title} onChange={(event) => setTitle(event.target.value)} />}
         </FormField>
