@@ -39,8 +39,9 @@ O front do `editaliza_prot` lê colunas que o baseline não tinha; sem elas `/ap
   `requiresPortfolio`, `requiresCnpj`, `requiresTechnicalFormation`, `minExperienceYears`,
   `targetProfileLevels`, `plainSummary` (o resumo em linguagem simples, jsonb).
 
-Os `mock/*.csv` foram regenerados a partir das tabelas em memória do protótipo
-(`createInitialMockTables` em `src/app/lib/supabase/client.ts`), que é o formato que o front espera.
+Os `mock/*.csv` foram gerados a partir das tabelas em memória do protótipo (a função
+`createInitialMockTables`, que existia em `src/app/lib/supabase/client.ts` e foi removida junto com o modo sem
+banco; segue no commit `b6a96ad`). Hoje os CSVs são a fonte do seed.
 
 ## Decisões da derivação do baseline
 

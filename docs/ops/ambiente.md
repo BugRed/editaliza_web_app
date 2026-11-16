@@ -28,6 +28,12 @@ import a partir de código de cliente vira **erro de build**, não valor
 - **Vercel/produção:** as quatro variáveis reais como project env. Nenhuma
   precisa ser "exposed to client" — todo consumo é server-side.
 
+## Variáveis obrigatórias
+
+O app **não sobe** sem `SUPABASE_URL` e `SUPABASE_API_KEY` (validadas em `src/shared/lib/env.ts`, falham no boot).
+O protótipo tinha um modo sem banco, com tabelas em memória; ele foi removido porque carregava senhas no código.
+Para desenvolver sem a nuvem, use o banco local abaixo.
+
 ## Banco local em Docker
 
 Alternativa ao Supabase da nuvem, sem rede: Postgres 17 + PostgREST + um nginx que expõe

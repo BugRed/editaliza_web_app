@@ -17,7 +17,8 @@ Impacto externo por entrega; app não versiona build. Novo no topo.
 - **Barras do ranking** — o resumo do edital mostra score final, os dois grupos e cada fator em barras (vermelho até 40, amarelo até 70, verde acima), com dropdown por grupo fechado por padrão, "sem informação" para dado ausente e a confiança fora do score ([ADR 0019](docs/adr/0019-artistrank-mostra-barras-por-fator-e-confianca-a-parte.md), proposto). Editais 306–309 de exemplo geram notas baixas.
 - **API** — `PATCH /api/artists/[id]` aceita os campos novos de obra e selo e recusa link de mídia inseguro (`javascript:`, `data:`).
 - **yarn como único gerenciador** — `yarn.lock` no lugar do `package-lock.json` (versões resolvidas de novo); testes em Docker por `yarn test:docker`, sem rede.
-- ⚠️ **O backend que veio com o protótipo reverte correções de segurança do repo (W0 e infra-01)** — ver `docs/divida.md`.
+- **Correções de segurança restauradas sobre o backend do protótipo** — só o dono altera o próprio perfil (`PATCH /api/artists/[id]` e `/api/proposers/[id]`, antes qualquer logado alterava qualquer um); só proponente publica edital; `/api/ranking` usa o usuário da sessão e ignora `?artistId=`; páginas sem sessão redirecionam ao login; cookie `SameSite=Lax`; env validada no boot e client Supabase sem tabelas em memória nem senhas no código (fim do modo sem banco do protótipo: o app agora exige `SUPABASE_URL` e `SUPABASE_API_KEY`).
+- ⚠️ A senha segue em texto puro até o Better Auth, como já era na W0 — ver `docs/divida.md`.
 
 ## 2026-11-16 — docs/docs-01: replanejamento da V1 (ArtistRank, protótipo, ondas)
 

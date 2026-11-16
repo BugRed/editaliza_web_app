@@ -13,17 +13,17 @@
 
 <!-- kit:camadas -->
 - [x] prisma — não se aplica: sem Prisma; o schema é SQL (`db/migrations/0002_colunas_do_front.sql`, ver Impacto técnico)
-- [x] service — `src/app/services/auth-service.ts` veio do protótipo; nenhuma regra de negócio nova nesta feature
+- [x] service — `src/app/services/auth-service.ts` e `src/app/lib/session.ts`; regras de autorização em `src/shared/lib/authorization.ts` (sem regra de negócio nova)
 - [x] controller — não se aplica
-- [x] route — rotas de API do protótipo e `PATCH /api/artists/[id]` ampliado; `middleware.ts` é o do protótipo
+- [x] route — rotas de API do protótipo endurecidas (dono, papel, sessão), `PATCH /api/artists/[id]` ampliado e `middleware.ts` com redirect de páginas
 - [x] ui — front do `editaliza_prot` e as telas e componentes acrescentados
-- [x] teste — 78 testes de comportamento (Vitest + Testing Library); rodam também em Docker, sem rede
+- [x] teste — 92 testes de comportamento, inclusive de autorização das rotas (Vitest + Testing Library); rodam também em Docker, sem rede
 - [x] doc — CHANGELOG, ADR 0019, `docs/db`, `docs/ops`, `docs/ui`, dívida
 <!-- /kit:camadas -->
 
 **Próximo passo:** usuário confere no navegador (`yarn dev:db`, `yarn dev:db:setup`, `yarn dev`) o celular e os
 fluxos que não foram exercitados, e aceita ou revisa o [ADR 0019](../../adr/0019-artistrank-mostra-barras-por-fator-e-confianca-a-parte.md);
-depois push e PR (do usuário). A O2 começa por restaurar as correções de segurança que o backend do protótipo reverteu.
+depois push e PR (do usuário).
 
 ## Problema / motivação
 A O1 do roadmap (`plano.md` §6.0) fecha o design antes de qualquer tela ir ao ar. O protótipo `editaliza_prot`
@@ -78,14 +78,18 @@ Nenhuma regra nova. O ranking segue o motor do protótipo; a apresentação é d
 - [x] Obras com tipo, técnica, dimensões, texto e temas; vídeo e áudio; reordenação refletida na galeria
 - [x] Perfil do proponente lista os editais publicados; empresa e selo acessíveis a partir do post e do perfil
 - [x] Publicidade nas três posições pedidas e barras do ranking com dropdowns fechados por padrão
-- [x] `yarn typecheck`, `yarn lint` e `yarn test` passando (78 testes), também em Docker
+- [x] Correções de segurança da W0 e da infra-01 restauradas sobre o backend do protótipo, com teste (dono, papel, sessão, ranking)
+- [x] `yarn typecheck`, `yarn lint` e `yarn test` passando (92 testes), também em Docker
 - [ ] Usuário confere no navegador, inclusive celular, e aceita o ADR 0019
 <!-- /kit:criterios -->
 
 ## Dívida / não exercitado
 Resumo; a lista viva está em [`docs/divida.md`](../../divida.md).
-- **Segurança herdada do protótipo** (senha em texto puro no cadastro, senhas fixas no `client.ts`, `?artistId=` do
-  ranking): o `src` trazido reverte parte das correções da W0 e da infra-01.
+- **Segurança restaurada** (dono, papel, ranking pela sessão, redirect, cookie `Lax`, env no boot, client sem mock). Segue
+  aberto, como na W0: senha em texto puro, token sem assinatura e o token também em `localStorage` (Better Auth, O2).
+- **Modo sem banco do protótipo removido:** o app exige Supabase configurado (o banco local em Docker serve).
+- **Páginas sem sessão redirecionam ao login**, o que desativa o uso do app em iframe com cookie de terceiro bloqueado,
+  que o protótipo tolerava.
 - **Não exercitado:** celular, vídeo e áudio no navegador real, embed de YouTube e Vimeo, `yarn build`, Supabase real.
 - **Decidido na hora:** limites de cor 40 e 70; dropdowns fechados; 4 perfis por página na direita; um anúncio a cada
   3 posts; anúncio do menu lateral ocupa a altura livre; "Tipo de mídia" como campo novo; imagens originais (7,3 MB)
@@ -94,4 +98,4 @@ Resumo; a lista viva está em [`docs/divida.md`](../../divida.md).
 
 ## Decisões em aberto
 - Aceitar o ADR 0019 (barras, faixas de cor e dropdowns) ou revisá-lo.
-- Restaurar as correções de segurança antes da O2 ou deixá-las para o Better Auth.
+- Se o uso em iframe (cookie de terceiro) precisa voltar, decidir como sem enfraquecer a sessão.
