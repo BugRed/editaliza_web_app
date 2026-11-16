@@ -36,7 +36,8 @@ precisa refletir isso antes de qualquer implementação.
   (não há grafo social nem interações). Tags são um sinal, não o motor.
 - V1 = **feed + resumo IA do edital**. Revisão do projeto do artista fica pós-V1.
 - Stack: **Prisma + Better Auth + Supabase Storage**. Mantém o D2 (sem lock-in de vendor, livre para migrar de provedor depois); só o runner SQL puro é substituído por Prisma.
-- **Algoritmo de recomendação:** o usuário está escrevendo um plano em paralelo e vai anexá-lo; fica fora deste replanejamento até chegar. Vale o D3 só como placeholder.
+- **Algoritmo de recomendação:** ArtistRank, spec em `docs/ops/ArtistRank_decisoes_e_especificacao_completa_v1.2_conferencia.md`; resumo normativo em `plano.md` §7.0.
+- **Redesign de todas as telas:** rascunho em `plano.md` §10.
 - LLM: **DeepSeek** atrás da interface `LLMProvider` (D6), em job agendado.
 - Ingestão V1: admin manual (upload de PDF) + conector Mapa Cultural PE.
 - Imagens: **WebP/AVIF** com `sharp` desde o início (JXL descartado: suporte de navegador).
@@ -62,6 +63,6 @@ precisa refletir isso antes de qualquer implementação.
 - Quota de 1 GB do Supabase Storage free não dimensionada contra o corpus de PDFs.
 
 ## Decisões em aberto
-- Plano do algoritmo de recomendação: aguardando anexo do usuário.
+- Perguntas de 2026-11-16 sobre ArtistRank e telas: ver o resumo do `/feature` e as respostas registradas aqui.
 - Dados do artista (tags de arte) nascem no cadastro ou no onboarding?
 - O que fazer com os 4 branches empilhados (W0, T1.1, dep-01, infra-01) que ainda esperam PR?
