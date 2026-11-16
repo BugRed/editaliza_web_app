@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { canEditProfile } from '@/shared/lib/authorization';
+import { getSessionUser } from '@/app/lib/session';
 import { z } from 'zod';
 import { supabase } from '@/app/lib/supabase/client';
 
@@ -57,6 +59,12 @@ export async function PATCH(
     const proposerId = Number(id);
     if (!Number.isFinite(proposerId)) {
       return NextResponse.json({ error: 'ID inválido.' }, { status: 400 });
+    }
+
+    // Autenticado não basta: só o próprio proponente altera o próprio perfil.
+    const sessionUser = await getSessionUser();
+    if (!canEditProfile(sessionUser, proposerId, 'PROPOSER')) {
+      return NextResponse.json({ error: 'Sem permissão para alterar este perfil.' }, { status: 403 });
     }
 
     const body = await req.json().catch(() => null);

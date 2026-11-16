@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { supabase } from '@/app/lib/supabase/client';
 import { ARTIST_PUBLIC_COLUMNS } from '@/shared/lib/artist-columns';
+import { canEditProfile } from '@/shared/lib/authorization';
 import { getMediaSource, WORK_KINDS } from '@/shared/lib/media';
+import { getSessionUser } from '@/app/lib/session';
 import {
   calculatePortfolioCompleteness,
   normalizeArtistRow,
@@ -112,6 +114,12 @@ export async function PATCH(
     const artistId = Number(id);
     if (!Number.isFinite(artistId)) {
       return NextResponse.json({ error: 'ID inválido.' }, { status: 400 });
+    }
+
+    // Autenticado não basta: só o próprio artista altera o próprio perfil.
+    const sessionUser = await getSessionUser();
+    if (!canEditProfile(sessionUser, artistId, 'ARTIST')) {
+      return NextResponse.json({ error: 'Sem permissão para alterar este perfil.' }, { status: 403 });
     }
 
     const body = await req.json();

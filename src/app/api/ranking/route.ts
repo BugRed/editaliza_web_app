@@ -1,7 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { cookies, headers } from 'next/headers';
+import { NextResponse } from 'next/server';
+import { getSessionUser } from '@/app/lib/session';
 import { supabase } from '@/app/lib/supabase/client';
-import { authService } from '@/app/services/auth-service';
 import { ARTIST_PUBLIC_COLUMNS } from '@/shared/lib/artist-columns';
 import {
   normalizeArtistRow,
@@ -36,28 +35,15 @@ function parseStringArray(raw: unknown): string[] {
   return [];
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
-    const artistIdParam = req.nextUrl.searchParams.get('artistId');
-    let artistId = artistIdParam ? Number(artistIdParam) : NaN;
-
-    if (!Number.isFinite(artistId)) {
-      const cookieToken = (await cookies()).get('auth-token')?.value;
-      const authHeader = (await headers()).get('authorization');
-      const bearerToken = authHeader?.startsWith('Bearer ')
-        ? authHeader.slice(7).trim()
-        : undefined;
-      const token = cookieToken || bearerToken;
-
-      if (token && (await authService.verifyToken(token))) {
-        const user = await authService.getCurrentUser(token);
-        if (user?.id) artistId = Number(user.id);
-      }
+    // O ranking é do usuário da sessão. `?artistId=` foi removido: aceitá-lo deixava qualquer
+    // logado ranquear (e ver o perfil) de outro artista.
+    const sessionUser = await getSessionUser();
+    if (!sessionUser) {
+      return NextResponse.json({ error: 'Não autenticado.' }, { status: 401 });
     }
-
-    if (!Number.isFinite(artistId)) {
-      artistId = 1;
-    }
+    const artistId = Number(sessionUser.id);
 
     const [artistRes, proposerSelfRes, editalsRes, proposersRes] = await Promise.all([
       supabase

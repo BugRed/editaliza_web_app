@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { cookies, headers } from 'next/headers';
+import { canPublishEdital } from '@/shared/lib/authorization';
+import { getSessionUser } from '@/app/lib/session';
 import { z } from 'zod';
 import { supabase } from '@/app/lib/supabase/client';
-import { authService } from '@/app/services/auth-service';
 
 function parseJson<T>(raw: unknown, fallback: T): T {
   if (raw === null || raw === undefined) return fallback;
@@ -85,16 +85,12 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   try {
-    const cookieToken = (await cookies()).get('auth-token')?.value;
-    const authHeader = (await headers()).get('authorization');
-    const bearerToken = authHeader?.startsWith('Bearer ')
-      ? authHeader.slice(7).trim()
-      : undefined;
-    const token = cookieToken || bearerToken;
-
-    const currentUser = token ? await authService.getCurrentUser(token) : null;
+    const currentUser = await getSessionUser();
     if (!currentUser) {
       return NextResponse.json({ error: 'Não autenticado.' }, { status: 401 });
+    }
+    if (!canPublishEdital(currentUser)) {
+      return NextResponse.json({ error: 'Só contas de proponente publicam editais.' }, { status: 403 });
     }
 
     const body = await req.json().catch(() => null);

@@ -58,10 +58,15 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Se existe cookie de sessão, valida; se inválido, limpa e volta ao login.
-  // Se o navegador em iframe bloquear cookies de terceiros, o ProtectedRoute
-  // valida a sessão via token Bearer no /api/auth/me.
-  if (token && verifyToken(token) === null) {
+  // Toda página que não é pública exige sessão válida: sem token vai para o login (guardando o
+  // destino) e token inválido é limpo. A API já responde 401 acima; isto fecha a casca das páginas.
+  if (!token) {
+    const loginUrl = new URL('/login', request.url);
+    loginUrl.searchParams.set('redirect', pathname);
+    return NextResponse.redirect(loginUrl);
+  }
+
+  if (verifyToken(token) === null) {
     const response = NextResponse.redirect(new URL('/login', request.url));
     response.cookies.delete('auth-token');
     return response;

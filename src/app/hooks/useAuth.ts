@@ -65,7 +65,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
     const expires = `expires=${date.toUTCString()}`;
     const isHttps = typeof window !== 'undefined' && window.location.protocol === 'https:';
-    const sameSite = isHttps ? 'SameSite=None;Secure' : 'SameSite=Lax';
+    const sameSite = isHttps ? 'SameSite=Lax;Secure' : 'SameSite=Lax';
     document.cookie = `${name}=${value};${expires};path=/;${sameSite}`;
   };
 
@@ -81,7 +81,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const deleteCookie = (name: string) => {
     const isHttps = typeof window !== 'undefined' && window.location.protocol === 'https:';
-    const sameSite = isHttps ? ';SameSite=None;Secure' : '';
+    const sameSite = isHttps ? ';SameSite=Lax;Secure' : '';
     document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/${sameSite}`;
   };
 
