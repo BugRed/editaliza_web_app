@@ -25,6 +25,23 @@ npm run db:seed      # popula com mock/*.csv (idempotente)
 | `comments_data` | comentários | `user`/`edital` bigint sem FK; `approved` boolean; `status` |
 | `_migrations` | infra do runner | nome + hash + `applied_at` |
 
+## Colunas do front (`0002_colunas_do_front.sql`)
+
+O front do `editaliza_prot` lê colunas que o baseline não tinha; sem elas `/api/artists` e
+`/api/proposers` davam 500 (`column artist_data.handle does not exist`).
+
+- `artist_data`: `handle`, `avatarUrl`, `bio`, `city`, `state`, `territoryScope`, `coreLanguages`,
+  `supportLanguages`, `experienceYears`, `profileLevel`, `hasCnpjOrMei`, `hasTechnicalFormation`,
+  `portfolioCompleteness`, `badges`, `works`, `savedEditalIds`, `likedEditalIds`. `password` deixa
+  de ser `NOT NULL` (o perfil do artista não guarda senha; a credencial é a de `user_data`).
+- `proposer_data`: `handle`, `bio`, `city`, `state`.
+- `editals_data`: `territoryScope`, `city`, `state`, `requiredLanguages`, `acceptedLanguages`,
+  `requiresPortfolio`, `requiresCnpj`, `requiresTechnicalFormation`, `minExperienceYears`,
+  `targetProfileLevels`, `plainSummary` (o resumo em linguagem simples, jsonb).
+
+Os `mock/*.csv` foram regenerados a partir das tabelas em memória do protótipo
+(`createInitialMockTables` em `src/app/lib/supabase/client.ts`), que é o formato que o front espera.
+
 ## Decisões da derivação do baseline
 
 - **Derivado dos CSVs + interfaces** (`mock/*.csv`, `src/app/types`): sem rede até o

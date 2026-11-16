@@ -15,7 +15,11 @@ const sql = postgres(url, { prepare: false, onnotice: () => {} });
 
 // Colunas jsonb: o CSV guarda texto JSON, mas o driver só serializa objeto —
 // string crua viraria jsonb escalar do tipo "string" (dupla codificação)
-const COLUNAS_JSON = new Set(['listComment', 'listTags', 'listEdital']);
+const COLUNAS_JSON = new Set([
+  'listComment', 'listTags', 'listEdital',
+  'coreLanguages', 'supportLanguages', 'badges', 'works', 'savedEditalIds', 'likedEditalIds',
+  'requiredLanguages', 'acceptedLanguages', 'targetProfileLevels', 'plainSummary',
+]);
 
 // Ordem das inserções segue a leitura lógica dos dados (as referências entre
 // tabelas não são FK — ver baseline —, mas a ordem mantém o seed previsível)
