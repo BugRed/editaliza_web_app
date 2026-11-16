@@ -45,6 +45,8 @@ precisa refletir isso antes de qualquer implementação.
 
 - Escopo V1 (D17): fases 1–3 do ArtistRank + resumo IA. Nomes em inglês (D8). Onboarding mínimo (D18). Artistas e organizações (D19).
 
+- D20–D22: edital de organização passa por extração + confirmação; organização só vê artista que se candidata; tudo em TS, lançamento gratuito.
+
 **Não entra:**
 - Implementação de qualquer item acima; revisão de projeto por IA; scrapers além do Mapa Cultural.
 

@@ -72,6 +72,9 @@ Problemas graves conhecidos (estado após a W0, branch `bugfix/auth-01`):
 | D17 | Escopo da V1 | Fases 1+2+3 da spec ArtistRank (cadastro profundo e taxonomia, motor determinístico, embeddings Voyage + busca semântica) **+ resumo do edital por IA**. Pipeline LLM completo com revisão humana (fase 4) entra só no que o resumo e o admin exigirem; calibração (fase 5) é pós-V1. O A/B TF-IDF × Voyage (spec §27.9) vira tarefa antes de fixar o modelo |
 | D18 | Onboarding | **Mínimo + enriquecimento progressivo**: cadastro curto (linguagens, cidade, interesses) já gera feed; trajetória, obras e o resto vêm depois. Campo ausente é desconhecido (nota 0,5); cobertura aparece no card |
 | D19 | Quem usa | **Artistas e organizações.** Artista vê editais e obras ranqueados; organização publica editais e vê artistas compatíveis. Papéis: `artist`, `organization`, `admin`. Visibilidade do perfil do artista para organizações exige regra de privacidade (aberta) |
+| D20 | Edital publicado por organização | Pipeline da spec §12.6: PDF → texto → DeepSeek (JSON) → Zod → verificação de evidência → **confirmação humana** (organização no edital dela; admin no edital importado) → banco. Cada requisito guarda documento, página, trecho, versão e estado de validação (spec §7.7); array vazio = "não informado", nunca proibição (§7.6) |
+| D21 | Visibilidade do artista para a organização | **Só quando o artista se candidata** ao edital dela. Sem busca ativa de artistas, sem acesso a autodeclarações ou documentos fora da candidatura. Implica **inscrição dentro do app** (a definir) |
+| D22 | Infra da V1 | **Tudo TypeScript, sem LangGraph nem worker Python.** Jobs agendados chamando endpoints protegidos, fila no Postgres. **Lançamento gratuito**, sem monetização: Vercel Hobby serve; migrar para Pro **antes** de qualquer cobrança ou divulgação comercial |
 
 ## 4. Arquitetura alvo (resumo)
 
@@ -119,7 +122,7 @@ só depende de ondas anteriores; dentro da onda, tarefas são paralelizáveis en
 | T2.2 | Anexos: baixar PDFs das oportunidades para o Storage; extração de texto com parser JS (ex. `pdf-parse`); PDF sem texto marcado `precisa_ocr` (OCR é fallback futuro) | Todo edital ativo tem texto extraído ou flag `precisa_ocr` |
 | T2.3 | Normalização com testes: datas em TZ **America/Recife**, derivação de status (aberto/encerrado por `registrationFrom/To`), parse de moeda ("R$ 20.000,00") e faixas de valor | Suite Vitest cobre os formatos reais vistos nas duas fontes |
 | T2.4 | Conector **Culturarecife** (spike primeiro): site ASP legado com redirect JS → Playwright headless mapeando `/public/documentos/edital_home_*`; alternativa estruturada: Diário Oficial do Recife. Decidir por ADR após o spike | ADR escolhendo a rota municipal; editais municipais entrando no mesmo pipeline |
-| T2.5 | Cron diário: GitHub Actions agendado chamando endpoint admin protegido por secret; alerta quando coleta volta vazia (fonte mudou) | Coleta roda 7 dias seguidos sem intervenção; coleta vazia notifica |
+| T2.5 | (monitoramento semanal de novos editais do Recife, spec §24: só itens verificados em fonte oficial; coleta incompleta nunca vira "nada de novo") Cron diário: GitHub Actions agendado chamando endpoint admin protegido por secret; alerta quando coleta volta vazia (fonte mudou) | Coleta roda 7 dias seguidos sem intervenção; coleta vazia notifica |
 | T2.6 | UI consome dado real: feed e página de detalhe do edital lendo o banco (fonte, datas, status, link oficial, PDF) | Mocks saem do fluxo de leitura (ficam só como seed) |
 
 ### W3 — Taxonomia e extração de requisitos (dep: W2)
