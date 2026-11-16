@@ -18,12 +18,10 @@
 - [ ] route — não se aplica
 - [ ] ui — atoms e molecules em `src/shared/components/`, tokens em `globals.css`
 - [ ] teste — comportamento dos atoms e molecules; qualquer teste roda interno, em Docker
-- [ ] doc — mapa de telas e fluxo em `docs/`
+- [x] doc — mapa de telas e fluxo em `docs/`
 <!-- /kit:camadas -->
 
-**Próximo passo:** produzir o **mapa de telas e fluxo** (`docs/ui/mapa-de-telas.md`) a partir de
-`plano.md` §10 e do inventário do `editaliza_prot` (§11.1), com a ordem proposta das telas, para o
-usuário aprovar **antes** de portar qualquer uma.
+**Próximo passo:** usuário aprova o mapa em [`docs/ui/mapa-de-telas.md`](../../ui/mapa-de-telas.md) (§7); depois, atoms e molecules (§5) e as telas de login e feed sobre os tokens.
 
 ## Problema / motivação
 A O1 do roadmap (`plano.md` §6.0) é a primeira onda: design fechado antes de qualquer tela entrar
