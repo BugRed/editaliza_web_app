@@ -1,19 +1,42 @@
-import Styles from './ButtomSubmitCardFeed.module.css'
-import { ExternalLink } from "lucide-react";
-import Link from 'next/link';
+"use client";
 
-type ButtomSubmitCardFeedProps={
-    submitLink?: string;
-}
+import Styles from "./ButtomSubmitCardFeed.module.css";
+import { FileText } from "lucide-react";
 
-export default function ButtomSubmitCardFeed({submitLink}: ButtomSubmitCardFeedProps){
-    const safeImg: string = submitLink ?? "/assets/placeholder.png";
-    return(
-        <>
-            {/* href={edital.inscriptionLink} */}
-            <Link href={safeImg}>
-                <button className={Styles.ButtomSubmitCardFeed}>submit <ExternalLink size={16}/></button>
-            </Link>
-        </>
-    )
+type ButtomSubmitCardFeedProps = {
+  submitLink?: string;
+  onOpenSummary?: () => void;
+};
+
+export default function ButtomSubmitCardFeed({
+  submitLink,
+  onOpenSummary,
+}: ButtomSubmitCardFeedProps) {
+  if (onOpenSummary) {
+    return (
+      <button
+        type="button"
+        onClick={onOpenSummary}
+        className={Styles.ButtomSubmitCardFeed}
+      >
+        <span>Inscrever-se</span>
+        <FileText size={15} aria-hidden="true" />
+      </button>
+    );
+  }
+
+  const safeHref = submitLink && submitLink.trim() !== "" ? submitLink : "#";
+  const isExternal = safeHref.startsWith("http");
+
+  return (
+    <a
+      href={safeHref}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      className={Styles.ButtomSubmitCardFeed}
+    >
+      <span>Inscrever-se</span>
+      <FileText size={15} aria-hidden="true" />
+    </a>
+  );
 }

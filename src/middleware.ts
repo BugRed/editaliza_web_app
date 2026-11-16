@@ -8,23 +8,30 @@ const publicRoutes = [
   '/cadastro',
 ];
 
-// Rotas de API abertas: liveness para deploy/cron e login (porta de entrada
-// da sessão — não há token a apresentar antes de existir sessão)
-const publicApiRoutes = ['/api/health', '/api/auth/login'];
+// Rotas de API abertas
+const publicApiRoutes = ['/api/health', '/api/auth/login', '/api/auth/register'];
+
+function extractToken(request: NextRequest): string | undefined {
+  const cookieToken = request.cookies.get('auth-token')?.value;
+  if (cookieToken) return cookieToken;
+
+  const authHeader = request.headers.get('authorization');
+  if (authHeader && authHeader.toLowerCase().startsWith('bearer ')) {
+    return authHeader.slice(7).trim();
+  }
+  return undefined;
+}
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const token = request.cookies.get('auth-token')?.value;
+  const token = extractToken(request);
 
-  // API responde 401 em JSON, nunca redirect: cliente de API não deve
-  // seguir para /login e receber HTML de status 200
+  // API responde 401 em JSON se não houver token válido (cookie ou Bearer)
   if (pathname.startsWith('/api')) {
     if (publicApiRoutes.some((route) => pathname === route)) {
       return NextResponse.next();
     }
-    const isAuthenticated = token
-      ? verifyToken(token) !== null
-      : false;
+    const isAuthenticated = token ? verifyToken(token) !== null : false;
     if (!isAuthenticated) {
       return NextResponse.json({ error: 'Não autenticado.' }, { status: 401 });
     }
@@ -35,51 +42,32 @@ export async function middleware(request: NextRequest) {
   if (
     pathname.startsWith('/_next/') ||
     pathname.startsWith('/favicon.ico') ||
-    pathname.includes('.') // arquivos com extensão
+    pathname.includes('.')
   ) {
     return NextResponse.next();
   }
 
-  // Verificar se é uma rota pública
-  const isPublicRoute = publicRoutes.some(route => 
-    pathname === route || pathname.startsWith(route + '/')
+  const isPublicRoute = publicRoutes.some(
+    (route) => pathname === route || pathname.startsWith(route + '/')
   );
 
-  // Se for rota pública
   if (isPublicRoute) {
-    if (token) {
-      try {
-        const isValid = verifyToken(token) !== null;
-        if (isValid) {
-          // Se já estiver autenticado, redirecionar para home
-          return NextResponse.redirect(new URL('/', request.url));
-        }
-      } catch {
-        // Token inválido, permitir acesso à rota pública
-        return NextResponse.next();
-      }
+    if (token && verifyToken(token) !== null) {
+      return NextResponse.redirect(new URL('/', request.url));
     }
     return NextResponse.next();
   }
 
-  // PARA TODAS AS OUTRAS ROTAS (incluindo '/') - VERIFICAR AUTENTICAÇÃO
-  if (!token) {
-    const loginUrl = new URL('/login', request.url);
-    loginUrl.searchParams.set('redirect', pathname);
-    return NextResponse.redirect(loginUrl);
-  }
-
-  try {
-    const isValid = verifyToken(token) !== null;
-    if (!isValid) {
-      throw new Error('Token inválido');
-    }
-    return NextResponse.next();
-  } catch {
+  // Se existe cookie de sessão, valida; se inválido, limpa e volta ao login.
+  // Se o navegador em iframe bloquear cookies de terceiros, o ProtectedRoute
+  // valida a sessão via token Bearer no /api/auth/me.
+  if (token && verifyToken(token) === null) {
     const response = NextResponse.redirect(new URL('/login', request.url));
     response.cookies.delete('auth-token');
     return response;
   }
+
+  return NextResponse.next();
 }
 
 export const config = {

@@ -5,7 +5,6 @@ import TagData from '@/app/types/TagData';
 import UserData from '@/app/types/UserData';
 import { NextPage } from 'next';
 
-
 interface SupabaseTestPageProps {
   userData: UserData[];
   artists: Artist[];
@@ -18,57 +17,51 @@ interface SupabaseTestPageProps {
 const SupabaseTestPage: NextPage<SupabaseTestPageProps> = ({ userData, artists, proposers, editals, tags, error }) => {
   if (error) {
     return (
-      <div className="container mx-auto p-4">
-        <h1 className="text-3xl font-bold mb-4">Teste de Conexão Supabase</h1>
-        <p className="text-red-500">Erro ao carregar dados: {error}</p>
+      <div className="container mx-auto p-6 bg-[#F8FAFB] text-[#102A30]">
+        <h1 className="text-3xl font-bold mb-4 text-[#0E7C86]">Teste de Conexão de Dados</h1>
+        <p className="text-red-700">Erro ao carregar dados: {error}</p>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-8">Dados Carregados do Supabase</h1>
+    <div className="container mx-auto p-6 bg-[#F8FAFB] text-[#102A30]">
+      <h1 className="text-3xl font-bold mb-8 text-[#0E7C86]">Dados Carregados</h1>
 
-      {/* Seção 1: user_data */}
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Dados de Usuários (user_data)</h2>
-        <pre className="bg-gray-100 p-4 rounded-md overflow-x-auto">
+        <h2 className="text-xl font-semibold mb-3">Usuários (user_data)</h2>
+        <pre className="bg-white border border-[#DCE6E8] p-4 rounded-lg overflow-x-auto text-xs">
           {JSON.stringify(userData, null, 2)}
         </pre>
       </div>
 
-      {/* Seção 2: artist_data */}
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Dados de Artistas (artists)</h2>
-        <pre className="bg-gray-100 p-4 rounded-md overflow-x-auto">
+        <h2 className="text-xl font-semibold mb-3">Artistas (artists)</h2>
+        <pre className="bg-white border border-[#DCE6E8] p-4 rounded-lg overflow-x-auto text-xs">
           {JSON.stringify(artists, null, 2)}
         </pre>
       </div>
-      
-      {/* Seção 3: proposer_data */}
+
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Dados de Proponentes (proposers)</h2>
-        <pre className="bg-gray-100 p-4 rounded-md overflow-x-auto">
+        <h2 className="text-xl font-semibold mb-3">Proponentes (proposers)</h2>
+        <pre className="bg-white border border-[#DCE6E8] p-4 rounded-lg overflow-x-auto text-xs">
           {JSON.stringify(proposers, null, 2)}
         </pre>
       </div>
-      
-      {/* Seção 4: editals_data */}
+
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Dados de Editais (editals)</h2>
-        <pre className="bg-gray-100 p-4 rounded-md overflow-x-auto">
+        <h2 className="text-xl font-semibold mb-3">Editais (editals)</h2>
+        <pre className="bg-white border border-[#DCE6E8] p-4 rounded-lg overflow-x-auto text-xs">
           {JSON.stringify(editals, null, 2)}
         </pre>
       </div>
 
-      {/* Seção 5: tags_data */}
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Dados de Tags (tags)</h2>
-        <pre className="bg-gray-100 p-4 rounded-md overflow-x-auto">
+        <h2 className="text-xl font-semibold mb-3">Tags (tags)</h2>
+        <pre className="bg-white border border-[#DCE6E8] p-4 rounded-lg overflow-x-auto text-xs">
           {JSON.stringify(tags, null, 2)}
         </pre>
       </div>
-      
     </div>
   );
 };

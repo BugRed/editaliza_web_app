@@ -1,92 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap");
 @import "tailwindcss";
 
-/*
- * Design system "Sol & Mar" — fonte única de tokens.
- * Módulos CSS e utilitários Tailwind leem daqui; cor, raio e sombra literais fora deste
- * arquivo são dívida. Valores copiados do protótipo editaliza_prot; só tema claro por padrão.
- */
-@theme {
-  /* Valores do protótipo editaliza_prot (guia de design): mesma paleta, nomes semânticos. */
-  --color-bg: #f8fafb;
-  --color-surface: #ffffff;
-  --color-surface-subtle: #f0f6f7;
-  --color-ink: #102a30;
-  --color-ink-muted: #4a656b;
-  --color-ink-subtle: #6b8388;
-  --color-line: #dce6e8;
-  --color-line-strong: #c2d3d7;
-
-  --color-primary: #0e7c86;
-  --color-primary-hover: #0b656d;
-  --color-primary-soft: #e6f4f5;
-  --color-primary-ink: #09585f;
-  --color-on-primary: #ffffff;
-
-  --color-accent: #ffb800;
-  --color-accent-hover: #e5a500;
-  --color-accent-soft: #fff6d6;
-  --color-accent-ink: #7a5400;
-  --color-on-accent: #102a30;
-
-  --color-danger: #c62828;
-  --color-danger-soft: #fef2f2;
-  --color-focus: #0e7c86;
-
-  --radius-pill: 999px;
-
-  --shadow-card: 0 1px 2px rgb(16 42 48 / 0.06), 0 4px 12px rgb(16 42 48 / 0.06);
-  --shadow-float: 0 8px 24px rgb(16 42 48 / 0.16);
-
-}
-
-/* `inline`: --font-roboto nasce no <body> (next/font); sem isso --font-sans resolveria no :root
-   onde ela não existe e cairia na fonte do sistema. */
-@theme inline {
-  --font-sans: var(--font-roboto), system-ui, sans-serif;
-}
-
-/* 16px fixo: o clamp antigo caía para 10px no celular e quebrava toda medida em rem. */
 :root {
+  /* Sol & Mar — Tema Claro (Confiável, otimista e confortável para texto longo) */
+  --background: #F8FAFB;
+  --foreground: #102A30;
+
+  --primary: #0E7C86;
+  --primary-hover: #0B656D;
+  --primary-soft: #E6F4F5;
+  --primary-ink: #09585F;
+
+  --accent: #FFB800;
+  --accent-hover: #E5A500;
+  --accent-soft: #FFF6D6;
+  --accent-ink: #7A5400;
+
+  --header-footer-bg-color: rgba(255, 255, 255, 0.96);
+
+  --bg-card: #FFFFFF;
+  --surface-subtle: #F0F6F7;
+  --border-subtle: #DCE6E8;
+  --border-strong: #C2D3D7;
+
+  --text-muted: #4A656B;
+  --text-subtle: #6B8388;
+
+  --tag-bg-card: #E6F4F5;
+  --tag-color-card: #09585F;
+  --submit-bg-color: #0E7C86;
+  --submit-text-color: #FFFFFF;
+  --more-bg-color: #FFFFFF;
+  --more-hover-color: #F0F6F7;
+  --percent-bg-color: #FFFFFF;
+
   font-size: 16px;
 }
 
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --font-sans: "Roboto", system-ui, -apple-system, sans-serif;
+  --font-serif: "Roboto", system-ui, -apple-system, sans-serif;
+  --font-mono: "Roboto Mono", ui-monospace, monospace;
+}
+
 body {
-  background: var(--color-bg);
-  color: var(--color-ink);
+  background: var(--background);
+  color: var(--foreground);
   font-family: var(--font-sans);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Escuro só por opção (`data-theme="dark"`). O protótipo editaliza_prot é só claro, então o
-   tema do sistema não troca a aparência sozinho. */
-:root[data-theme="dark"] {
-  --color-bg: #08202d;
-  --color-surface: #0f2f40;
-  --color-ink: #f4efe0;
-  --color-ink-muted: #a9bcc7;
-  --color-line: #24475a;
-  --color-surface-subtle: #173a4c;
-  --color-ink-subtle: #8aa3ad;
-  --color-line-strong: #33596d;
-  --color-primary-ink: #9fe0e6;
-  --color-accent-ink: #ffd466;
-  --color-accent-hover: #ffd966;
-  --color-danger-soft: #3d1f1f;
-  --color-primary: #3cc0cb;
-  --color-primary-hover: #66d2db;
-  --color-primary-soft: #11424d;
-  --color-on-primary: #08202d;
-  --color-accent: #ffc933;
-  --color-accent-soft: #4a3a0b;
-  --color-on-accent: #08202d;
-  --color-danger: #ff8a80;
-  --color-focus: #66d2db;
-}
-
-/* Foco visível em todo elemento interativo, para teclado. */
-:focus-visible {
-  outline: 2px solid var(--color-focus);
+*:focus-visible {
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
-

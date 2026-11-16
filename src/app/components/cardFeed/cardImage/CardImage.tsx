@@ -1,21 +1,39 @@
-//IMAGEM COVER DO CARD
+"use client";
 
-import Styles from './cardImage.module.css'
+import { useState } from "react";
+import { BookOpen } from "lucide-react";
+import Styles from "./cardImage.module.css";
 
-{/* Recebe caminho da imagem */}
 type CardProps = {
-    img?: string | "";
-}
+  img?: string | "";
+  title?: string;
+};
 
+export default function CardImage({ img, title }: CardProps) {
+  const [hasError, setHasError] = useState(!img || img.includes("exemplo.com") || img.includes("placeholder"));
 
-export default function CardImage({img}: CardProps) {
-    const safeImg: string = img ?? "/assets/placeholder.png";
-
-    return(
-        <div className={Styles.cardImage}>
-            {/* eslint-disable-next-line @next/next/no-img-element -- migrar para
-                next/image exige auditar dimensão/fill do CSS module do card */}
-            <img src={safeImg} alt="imagem card" />
+  if (hasError || !img) {
+    return (
+      <div className={Styles.fallback} aria-label={title || "Capa do edital"}>
+        <div className={Styles.fallbackInner}>
+          <span className={Styles.fallbackIcon}>
+            <BookOpen size={24} strokeWidth={1.8} />
+          </span>
+          {title && <span className={Styles.fallbackLabel}>{title}</span>}
         </div>
-    )
+      </div>
+    );
+  }
+
+  return (
+    <div className={Styles.cardImage}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={img}
+        alt={title || "Capa do edital"}
+        referrerPolicy="no-referrer"
+        onError={() => setHasError(true)}
+      />
+    </div>
+  );
 }

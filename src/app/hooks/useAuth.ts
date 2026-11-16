@@ -1,94 +1,143 @@
 'use client';
 
-import { 
-  useState, 
-  useEffect, 
-  createContext, 
-  useContext, 
+import {
+  useState,
+  useEffect,
+  createContext,
+  useContext,
   ReactNode,
-  createElement 
+  createElement,
 } from 'react';
 import { useRouter } from 'next/navigation';
 
-// Sessão via /api/auth/* — o service de auth é server-only (consulta o
-// Supabase com a publishable key) e nunca é importado daqui.
-
-// Interfaces
 interface User {
-  id: number; // id de user_data no banco é numérico
+  id: number;
   email: string;
   name?: string;
+  userType?: 'ARTIST' | 'PROPOSER' | string;
+}
+
+export interface RegisterPayload {
+  userType: 'ARTIST' | 'PROPOSER';
+  name: string;
+  email: string;
+  password: string;
+  handle?: string;
+  bio?: string;
+  city?: string;
+  state?: string;
+  cpf?: string;
+  cnpj?: string;
+  territoryScope?: 'MUNICIPAL' | 'METROPOLITANO' | 'ESTADUAL' | 'NACIONAL';
+  coreLanguages?: string[];
+  supportLanguages?: string[];
+  experienceYears?: number;
+  profileLevel?: 'INICIANTE' | 'EMERGENTE' | 'CONSOLIDADO' | 'MESTRE';
+  hasCnpjOrMei?: boolean;
+  hasTechnicalFormation?: boolean;
 }
 
 interface AuthContextType {
   user: User | null;
+  token: string | null;
   login: (email: string, password: string) => Promise<{ success: boolean; message?: string }>;
+  register: (payload: RegisterPayload) => Promise<{ success: boolean; message?: string }>;
   logout: () => void;
   isLoading: boolean;
 }
 
-// Criar o contexto
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Props para o AuthProvider
+const STORAGE_TOKEN_KEY = 'editaliza-auth-token';
+
 interface AuthProviderProps {
   children: ReactNode;
 }
 
-// Provider component
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
+  const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
-  // Funções auxiliares para cookies
   const setCookie = (name: string, value: string, days: number) => {
     const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
     const expires = `expires=${date.toUTCString()}`;
-    document.cookie = `${name}=${value};${expires};path=/;SameSite=Lax`;
+    const isHttps = typeof window !== 'undefined' && window.location.protocol === 'https:';
+    const sameSite = isHttps ? 'SameSite=None;Secure' : 'SameSite=Lax';
+    document.cookie = `${name}=${value};${expires};path=/;${sameSite}`;
   };
 
   const getCookie = (name: string): string | null => {
     if (typeof document === 'undefined') return null;
-    
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) {
-      const cookieValue = parts.pop()?.split(';').shift();
-      return cookieValue || null;
+      return parts.pop()?.split(';').shift() || null;
     }
     return null;
   };
 
   const deleteCookie = (name: string) => {
-    document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
+    const isHttps = typeof window !== 'undefined' && window.location.protocol === 'https:';
+    const sameSite = isHttps ? ';SameSite=None;Secure' : '';
+    document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/${sameSite}`;
   };
 
-  // Verificar autenticação ao carregar — dentro do effect para rodar
-  // só na montagem, sem reabrir sessão a cada render
+  const saveLocalToken = (value: string | null) => {
+    try {
+      if (value) {
+        localStorage.setItem(STORAGE_TOKEN_KEY, value);
+      } else {
+        localStorage.removeItem(STORAGE_TOKEN_KEY);
+      }
+    } catch {
+      // Ignora se localStorage estiver bloqueado
+    }
+  };
+
+  const readLocalToken = (): string | null => {
+    try {
+      return localStorage.getItem(STORAGE_TOKEN_KEY);
+    } catch {
+      return null;
+    }
+  };
+
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const token = getCookie('auth-token');
+        const storedToken = getCookie('auth-token') || readLocalToken();
 
-        if (token) {
-          const res = await fetch('/api/auth/me', { cache: 'no-store' });
+        if (storedToken) {
+          const res = await fetch('/api/auth/me', {
+            cache: 'no-store',
+            headers: {
+              Authorization: `Bearer ${storedToken}`,
+            },
+          });
 
           if (res.ok) {
             const data = await res.json();
             setUser(data.user);
+            setToken(storedToken);
           } else {
             deleteCookie('auth-token');
+            saveLocalToken(null);
             setUser(null);
+            setToken(null);
           }
         } else {
           setUser(null);
+          setToken(null);
         }
       } catch (error) {
         console.error('Auth check error:', error);
         deleteCookie('auth-token');
+        saveLocalToken(null);
         setUser(null);
+        setToken(null);
       } finally {
         setIsLoading(false);
       }
@@ -97,7 +146,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
     checkAuth();
   }, []);
 
-  // Função de login
   const login = async (email: string, password: string) => {
     try {
       const res = await fetch('/api/auth/login', {
@@ -108,34 +156,65 @@ export function AuthProvider({ children }: AuthProviderProps) {
       const result = await res.json();
 
       if (result.success && result.token) {
-        setCookie('auth-token', result.token, 1); // 1 dia
+        setCookie('auth-token', result.token, 1);
+        saveLocalToken(result.token);
+        setToken(result.token);
         setUser(result.user || null);
-        router.push('/');
+        router.replace('/');
       }
-      
+
       return result;
     } catch (error) {
       console.error('Login error:', error);
       return {
         success: false,
-        message: 'Erro interno do servidor'
+        message: 'Erro interno do servidor',
       };
     }
   };
 
-  // Função de logout
-  const logout = () => {
-    deleteCookie('auth-token');
-    setUser(null);
-    router.push('/login');
+  const register = async (payload: RegisterPayload) => {
+    try {
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const result = await res.json();
+
+      if (result.success && result.token) {
+        setCookie('auth-token', result.token, 1);
+        saveLocalToken(result.token);
+        setToken(result.token);
+        setUser(result.user || null);
+        router.replace('/');
+      }
+
+      return result;
+    } catch (error) {
+      console.error('Register error:', error);
+      return {
+        success: false,
+        message: 'Erro interno do servidor ao cadastrar',
+      };
+    }
   };
 
-  // Valor do contexto
+  const logout = () => {
+    deleteCookie('auth-token');
+    saveLocalToken(null);
+    setToken(null);
+    setUser(null);
+    router.replace('/login');
+  };
+
   const contextValue: AuthContextType = {
     user,
+    token,
     login,
+    register,
     logout,
-    isLoading
+    isLoading,
   };
 
   return createElement(
@@ -145,13 +224,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
   );
 }
 
-// Hook personalizado
 export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
-  
   if (context === undefined) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
-  
   return context;
 };

@@ -1,84 +1,101 @@
-import React, { useRef, useState } from 'react'
-import styles from './more.module.css'
+"use client";
 
+import React, { useState } from "react";
+import styles from "./more.module.css";
 import {
-    Share2,
-    BookmarkIcon,
-    BookmarkCheckIcon,
-    EyeOffIcon,
-    FlagIcon,
-} from 'lucide-react'
+  Share2,
+  BookmarkIcon,
+  BookmarkCheckIcon,
+  EyeOffIcon,
+  FlagIcon,
+  X,
+} from "lucide-react";
 
 type MoreProps = {
-    isSaved: boolean,
-    isOpen : boolean,
-}
+  isSaved: boolean;
+  isOpen: boolean;
+  onClose?: () => void;
+  title?: string;
+};
 
-export default function More({isSaved, isOpen}: MoreProps){
-    // Hooks sempre incondicionais: chamá-los por condicional troca a ordem
-    // entre renders e crasha o componente
-    const [ isCardSaved, setIsCardSaved ] = useState(isSaved);
-    // isOpen só semeia o estado inicial; a animação lê isMoreOpen
-    const [ isMoreOpen ] = useState(isOpen);
+export default function More({ isSaved, isOpen, onClose, title }: MoreProps) {
+  const [isCardSaved, setIsCardSaved] = useState(isSaved);
+  const [feedback, setFeedback] = useState<string | null>(null);
 
-    const [ isMoreDrag, setIsMoreDrag ] = useState(false);
-    const moreDivRef = useRef<HTMLDivElement | null> (null);
-    const posicaoAtualRef = useRef({y: 0});
-
-    const onMouseDown = (event: React.MouseEvent<HTMLButtonElement>) =>{
-        if(!moreDivRef.current) return 
-
-        setIsMoreDrag(true);
-
-        posicaoAtualRef.current = {y: event.clientY - moreDivRef.current.offsetTop}
+  const handleShare = async () => {
+    const url = typeof window !== "undefined" ? window.location.href : "";
+    try {
+      if (navigator.clipboard && url) {
+        await navigator.clipboard.writeText(url);
+        setFeedback("Link copiado para a área de transferência.");
+      }
+    } catch {
+      setFeedback(`Edital: ${title || "Editaliza"}`);
     }
+  };
 
-    const onMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
-        if( !isMoreDrag || !moreDivRef.current) return
+  return (
+    <div
+      role="dialog"
+      aria-label="Opções do edital"
+      className={`${styles.more} ${
+        isOpen ? styles.openMoreAnimation : styles.closeMoreAnimation
+      }`}
+    >
+      <div className={styles.sheetHeader}>
+        <div aria-hidden="true" className={styles.holdMore} />
+        {onClose && (
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Fechar menu"
+            className={styles.closeBtn}
+          >
+            <X size={18} />
+          </button>
+        )}
+      </div>
 
-        moreDivRef.current.style.top = `${event.clientY - posicaoAtualRef.current.y}px`
-        
-    }
-    const onMouseUp = () => {
-        setIsMoreDrag(false);
-    }
+      {feedback && <p className={styles.feedback}>{feedback}</p>}
 
-    
-    
-    return(
-        <div
-            ref={moreDivRef}
-            onMouseMove={onMouseMove}
-            onMouseUp={onMouseUp} 
-            className={`${styles.more} ${isMoreOpen ? styles.openMoreAnimation : styles.closeMoreAnimation}`}
-        >
-    
-            <button
-                onMouseDown={onMouseDown} 
-                className={styles.holdButton}
-            >
-                <div aria-hidden="true" className={styles.holdMore}></div>
-            </button>
+      <button type="button" className={styles.action} onClick={handleShare}>
+        <Share2 size={18} /> Compartilhar
+      </button>
 
-            <button className={styles.action}>
-                <Share2 /> Compartilhar
-            </button>
-            
-            {isCardSaved ? (
-                <button className={styles.action}
-                onClick={() => setIsCardSaved(!isCardSaved)}>
-                    <BookmarkCheckIcon /> Salvar
-                </button>
-            ) : (
-                <button className={styles.action} 
-                onClick={() => setIsCardSaved(!isCardSaved)}>
-                    <BookmarkIcon /> Salvar
-                </button>
-            )}
+      <button
+        type="button"
+        className={styles.action}
+        onClick={() => setIsCardSaved(!isCardSaved)}
+      >
+        {isCardSaved ? (
+          <>
+            <BookmarkCheckIcon size={18} /> Salvo nos favoritos
+          </>
+        ) : (
+          <>
+            <BookmarkIcon size={18} /> Salvar
+          </>
+        )}
+      </button>
 
-            <button className={styles.action}><EyeOffIcon /> Não tenho interesse</button>
-            
-            <button className={styles.action}><FlagIcon /> Denunciar</button>
-        </div>
-    )
+      <button
+        type="button"
+        className={styles.action}
+        onClick={() => {
+          setFeedback("Preferência registrada.");
+          setTimeout(() => onClose?.(), 800);
+        }}
+      >
+        <EyeOffIcon size={18} /> Não tenho interesse
+      </button>
+
+      <button
+        type="button"
+        className={styles.action}
+        onClick={() => setFeedback("Sinalização registrada para revisão.")}
+      >
+        <FlagIcon size={18} /> Denunciar
+      </button>
+    </div>
+  );
 }

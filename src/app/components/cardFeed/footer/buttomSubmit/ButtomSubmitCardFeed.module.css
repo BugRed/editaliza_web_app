@@ -1,29 +1,26 @@
-.ButtomSubmitCardFeed{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 7.25rem;
-    height: 2rem;
-    border-radius: var(--radius-md);
-    
-    background-color: var(--color-primary);
-    
-    gap: 0.45rem;
-    font-weight: 700;
-    
-    color: var(--color-on-primary);
-
-    user-select: none;
-
+.ButtomSubmitCardFeed {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.125rem;
+  border-radius: 8px;
+  background-color: var(--submit-bg-color);
+  color: var(--submit-text-color);
+  gap: 0.45rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-decoration: none;
+  user-select: none;
+  transition: background-color 180ms ease, transform 120ms ease;
 }
 
-.ButtomSubmitCardFeed:hover {    
-    cursor: pointer;
-    background-color: var(--color-primary-hover);
+.ButtomSubmitCardFeed:hover {
+  cursor: pointer;
+  background-color: var(--primary-hover);
 }
 
-.ButtomSubmitCardFeed:active{
-    position: relative;
-    top: 2px
+.ButtomSubmitCardFeed:active {
+  transform: translateY(1px);
 }

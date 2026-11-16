@@ -1,149 +1,185 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
+import Link from "next/link";
+import { AlertTriangle, PlusCircle } from "lucide-react";
 import { IEdital } from "@/app/types/Edital";
-import { Proposer } from "@/app/types/Proposer";
+import { TagData } from "@/app/types/TagData";
 import { mensagemDeErro } from "@/app/lib/erros";
 import BodyCardFeed from "@/app/components/cardFeed/BodyCardFeed";
-import Header from "../components/header/header";
-import Footer from "../components/footer/footer";
+import AppShell from "@/app/components/shell/AppShell";
+import { useAuth } from "@/app/hooks/useAuth";
+import { useSocialStore } from "@/app/hooks/useSocialStore";
+import { ArtistRankResult } from "@/shared/lib/artistrank";
 
-// Componente principal da página Feed
+interface RankedEditalItem {
+  edital: IEdital;
+  proposerName: string;
+  rank: ArtistRankResult | null;
+}
+
 export default function FeedPage() {
-  const [editals, setEditals] = useState<IEdital[]>([]);
-  const [proposers, setProposers] = useState<Proposer[]>([]);
+  const { user, token } = useAuth();
+  const { currentProfile, isProposer, rankingVersion, openEditalModal } =
+    useSocialStore();
+  const [rankedItems, setRankedItems] = useState<RankedEditalItem[]>([]);
+  const [avisoEscassez, setAvisoEscassez] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Busca dados de editais — mesma origem da página
-        const editalsRes = await fetch(`/api/editals`, {
-          cache: "no-store",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        if (!editalsRes.ok) {
-          throw new Error(
-            `Erro na busca de editais: ${editalsRes.status} ${editalsRes.statusText}`
-          );
-        }
-        const editalsData: IEdital[] = await editalsRes.json();
-        setEditals(editalsData);
+  const targetAccountId = user?.id ?? currentProfile.id;
 
-        // Busca dados de proponentes
-        const proposersRes = await fetch(`/api/proposers`, {
-          cache: "no-store",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        if (!proposersRes.ok) {
+  useEffect(() => {
+    let active = true;
+    const fetchRanked = async () => {
+      const headers: Record<string, string> = {
+        "Content-Type": "application/json",
+      };
+      if (token) {
+        headers.Authorization = `Bearer ${token}`;
+      }
+
+      try {
+        const res = await fetch(
+          `/api/ranking?artistId=${targetAccountId}`,
+          {
+            cache: "no-store",
+            headers,
+          }
+        );
+
+        if (!res.ok) {
           throw new Error(
-            `Erro na busca de proponentes: ${proposersRes.status} ${proposersRes.statusText}`
+            `Erro no ranqueamento de editais: ${res.status} ${res.statusText}`
           );
         }
-        const proposersData: Proposer[] = await proposersRes.json();
-        setProposers(proposersData);
-        
+
+        const payload = (await res.json()) as {
+          avisoEscassez: boolean;
+          ranked: RankedEditalItem[];
+        };
+
+        if (active) {
+          setRankedItems(payload.ranked ?? []);
+          setAvisoEscassez(Boolean(payload.avisoEscassez));
+          setError(null);
+        }
       } catch (err) {
-        setError(mensagemDeErro(err));
-        console.error("Falha ao buscar dados da API:", err);
+        if (active) {
+          setError(mensagemDeErro(err));
+        }
+        console.error("Falha ao buscar ranking da API:", err);
       } finally {
-        setLoading(false);
+        if (active) setLoading(false);
       }
     };
 
-    fetchData();
-  }, []);
+    fetchRanked();
+    return () => {
+      active = false;
+    };
+  }, [token, targetAccountId, rankingVersion]);
 
-  // Renderização do estado de loading
-  if (loading) {
-    return (
-      <>
-        <Header />
-        <div className="pt-20 pb-20 min-h-screen flex flex-col items-center justify-center p-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mb-4"></div>
-          <h1 className="text-3xl font-bold mb-4 text-center text-ink">Feed de Editais</h1>
-          <p className="text-ink-muted text-center">Carregando dados...</p>
+  const parseTags = (raw: unknown): TagData[] => {
+    if (Array.isArray(raw)) return raw as TagData[];
+    if (typeof raw === "string") {
+      try {
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch {
+        return [];
+      }
+    }
+    return [];
+  };
+
+  const getRankColor = (rank: ArtistRankResult | null) => {
+    if (!rank) return "#0E7C86";
+    if (rank.bloqueado) return "#B91C1C";
+    if (rank.rotulo === 3) return "#0E7C86";
+    if (rank.rotulo === 2) return "#B45309";
+    return "#6B8388";
+  };
+
+  return (
+    <AppShell title="Início">
+      {loading ? (
+        <div className="p-12 flex flex-col items-center justify-center gap-3">
+          <div className="animate-spin rounded-full h-8 w-8 border-2 border-[#DCE6E8] border-t-[#0E7C86]" />
+          <p className="text-sm text-[#4A656B]">
+            {isProposer ? "Carregando editais..." : "Calculando recomendações..."}
+          </p>
         </div>
-        <Footer />
-      </>
-    );
-  }
-
-  // Renderização do estado de erro
-  if (error) {
-    return (
-      <>
-        <Header />
-        <div className="pt-20 pb-20 min-h-screen flex flex-col items-center justify-center p-4">
-          <h1 className="text-3xl font-bold mb-4 text-center text-ink">Feed de Editais</h1>
-          <p className="text-danger text-center">
+      ) : error ? (
+        <div className="p-8 text-center">
+          <p className="text-sm text-red-700">
             {error || "Erro ao carregar dados. Tente novamente mais tarde."}
           </p>
         </div>
-        <Footer />
-      </>
-    );
-  }
-
-  // Renderização quando não há editais
-  if (editals.length === 0) {
-    return (
-      <>
-        <Header />
-        <div className="pt-20 pb-20 min-h-screen flex flex-col items-center justify-center p-4">
-          <h1 className="text-3xl font-bold mb-4 text-center text-ink">Feed de Editais</h1>
-          <p className="text-ink-muted text-center">
-            Nenhum edital encontrado. Tente importar os dados novamente.
+      ) : rankedItems.length === 0 ? (
+        <div className="p-10 text-center">
+          <p className="text-sm text-[#4A656B]">
+            Nenhum edital disponível no momento.
           </p>
         </div>
-        <Footer />
-      </>
-    );
-  }
+      ) : (
+        <div className="flex flex-col">
+          {isProposer && (
+            <div className="mx-4 mt-4 rounded-xl border border-[#CBE5E8] bg-[#E6F4F5] p-4 flex flex-wrap items-center justify-between gap-3">
+              <div className="text-xs sm:text-sm text-[#09585F]">
+                <p className="font-bold">Conta Propositor ativa</p>
+                <p>Publique um novo edital para alcançar artistas compatíveis na rede.</p>
+              </div>
+              <Link
+                href="/publicar-edital"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#0E7C86] text-white text-xs sm:text-sm font-bold hover:bg-[#0B656D] transition-colors shrink-0"
+              >
+                <PlusCircle size={16} />
+                <span>Publicar edital</span>
+              </Link>
+            </div>
+          )}
 
-  // Renderização principal com os editais
-  return (
-    <>
-      <Header />
-      
-      {/* Conteúdo principal - com padding para não sobrepor header e footer */}
-      <main className="pt-20 pb-20 min-h-screen">
-        <div className="flex flex-col items-center justify-center p-4 w-screen">
-          {editals.map((edital) => {
-            // Encontra o proponente correspondente
-            const proposer = proposers.find(p => p.id === Number(edital.proposer));
-            
-            
-            // Renderiza o BodyCardFeed apenas se o proponente for encontrado
-            if (proposer) {
-              return (
-                <div key={edital.id} className="my-10">
-                  <BodyCardFeed 
-                    percent="30" 
-                    colorPercent="#F2a900" 
-                    coverImage={edital.imgCoverUrl || '/assets/placeholder.png'} 
-                    title={edital.title}
-                    proposer={proposer.name}
-                    proposerLink={''}
-                    date={edital.publishDate}
-                    tags={typeof(edital.listTags) == "string" ? JSON.parse(edital.listTags) : edital.listTags}
-                    buttomSubmitLink={edital.inscriptionLink}
-                  />
-                </div>
-              );
-            }
-            return null; // Não renderiza se o proponente não for encontrado
-          })}
+          {!isProposer && avisoEscassez && (
+            <div className="mx-4 mt-4 rounded-xl border border-amber-200 bg-[#FFF8E1] p-4 flex items-start gap-3">
+              <AlertTriangle size={18} className="text-[#B45309] mt-0.5 shrink-0" />
+              <div className="text-xs sm:text-sm text-[#7A5400] space-y-1">
+                <p className="font-bold">
+                  Poucas opções aderentes ao seu perfil atual
+                </p>
+                <p>
+                  Nenhum edital elegível atingiu aderência moderada ou forte para as suas linguagens atuais. Complete seu portfólio ou revise suas linguagens em{" "}
+                  <Link href="/configuracoes" className="font-bold underline text-[#0E7C86]">
+                    Configurações
+                  </Link>
+                  .
+                </p>
+              </div>
+            </div>
+          )}
+
+          {rankedItems.map(({ edital, proposerName, rank }) => (
+            <BodyCardFeed
+              key={edital.id}
+              editalId={edital.id}
+              percent={rank ? String(Math.round(rank.scoreFinal)) : "Aberto"}
+              colorPercent={getRankColor(rank)}
+              coverImage={edital.imgCoverUrl || ""}
+              title={edital.title}
+              description={edital.description}
+              proposer={proposerName}
+              proposerLink=""
+              date={edital.publishDate}
+              tags={parseTags(edital.listTags)}
+              buttomSubmitLink={edital.inscriptionLink}
+              rank={rank ?? undefined}
+              onOpenSummary={() =>
+                openEditalModal(edital, proposerName, rank ?? undefined)
+              }
+            />
+          ))}
         </div>
-      </main>
-
-      <Footer />
-    </>
+      )}
+    </AppShell>
   );
 }

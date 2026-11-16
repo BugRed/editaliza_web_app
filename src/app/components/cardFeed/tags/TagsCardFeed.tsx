@@ -1,16 +1,20 @@
-//ARRAY DE TAGS ESCOLHIDA PELO PROPOSER PARA O CARD
+import TagData from "@/app/types/TagData";
+import styles from "./TagsCardFeed.module.css";
 
-import TagData from '@/app/types/TagData';
+type tagsProps = {
+  tags: TagData;
+  index?: number;
+};
 
-type tagsProps ={
-    tags: TagData;
-}
- 
-// Simulação do que é esperado receber na props "Tags: string[]":
-// ["Pintura", "Telas à oleo", "Exposição"];
-
-export default function TagsCardFeed({tags}: tagsProps){
-    return(
-        <p>{tags.name}</p>
-    )
+export default function TagsCardFeed({ tags, index = 0 }: tagsProps) {
+  return (
+    <span className={styles.tagItem}>
+      {index > 0 && (
+        <span aria-hidden="true" className={styles.separator}>
+          ·
+        </span>
+      )}
+      <span className={styles.tagName}>{tags.name}</span>
+    </span>
+  );
 }

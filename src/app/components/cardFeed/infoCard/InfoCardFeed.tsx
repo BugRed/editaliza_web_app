@@ -1,32 +1,48 @@
-import DateBox from './dateBox/DateBox';
-import Styles from './InfoCardFeed.module.css'
+import DateBox from "./dateBox/DateBox";
+import Styles from "./InfoCardFeed.module.css";
 import { CalendarDays } from "lucide-react";
-import Link from 'next/link';
-import { SafeDate } from '../../../lib/utils/SafeDate';
+import Link from "next/link";
+import { SafeDate } from "../../../lib/utils/SafeDate";
 
 type InfoCardFeedProps = {
-    title: string;
-    proposer: string;
-    date?: Date | null;
-    linkProposer: string;
-}
+  title: string;
+  proposer: string;
+  date?: Date | null;
+  linkProposer: string;
+};
 
-export default function InfoCardFeed({title, proposer, date, linkProposer}: InfoCardFeedProps) {
-    return (
-        <div className={Styles.infoCardFeed}>
-            <h1>{title}</h1>
-            
-            <Link href={linkProposer}>
-                <p>{proposer}</p>
-            </Link>
+export default function InfoCardFeed({
+  proposer,
+  date,
+  linkProposer,
+}: InfoCardFeedProps) {
+  const formattedDate = SafeDate(date);
 
-            <div className={Styles.date}>
-                <p>Data de postagem <CalendarDays size={14}/></p>
-                <span className={Styles.opacityController}>
-                  <DateBox date={SafeDate(date)} /> 
-                  {/* Agora sempre chega string legível */}
-                </span>
-            </div>
+  return (
+    <div className={Styles.infoCardFeed}>
+      <div className={Styles.metaRow}>
+        {linkProposer ? (
+          <Link href={linkProposer} className={Styles.proposerLink}>
+            {proposer}
+          </Link>
+        ) : (
+          <span className={Styles.proposer}>{proposer}</span>
+        )}
+
+        <span aria-hidden="true" className={Styles.separator}>
+          ·
+        </span>
+
+        <div className={Styles.date}>
+          <span className={Styles.dateTrigger}>
+            <CalendarDays size={13} aria-hidden="true" />
+            <span>{formattedDate}</span>
+          </span>
+          <span className={Styles.opacityController}>
+            <DateBox date={formattedDate} />
+          </span>
         </div>
-    )
+      </div>
+    </div>
+  );
 }

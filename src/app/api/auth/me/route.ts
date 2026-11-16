@@ -1,12 +1,16 @@
 import { NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import { authService } from '@/app/services/auth-service';
 
 // Sessão corrente para o AuthProvider montar o usuário na primeira carga.
-// Protegida pelo middleware como todo /api/* — o handler re-valida o token
-// e devolve o perfil.
 export async function GET() {
-  const token = (await cookies()).get('auth-token')?.value;
+  const cookieToken = (await cookies()).get('auth-token')?.value;
+  const authHeader = (await headers()).get('authorization');
+  const bearerToken = authHeader?.startsWith('Bearer ')
+    ? authHeader.slice(7).trim()
+    : undefined;
+
+  const token = cookieToken || bearerToken;
 
   if (!token || !(await authService.verifyToken(token))) {
     return NextResponse.json({ error: 'Não autenticado.' }, { status: 401 });

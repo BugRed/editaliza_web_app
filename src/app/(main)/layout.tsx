@@ -1,4 +1,4 @@
-import ProtectedRoute from '../components/auth/ProtectedRoute';
+import ProtectedRoute from "../components/auth/ProtectedRoute";
 
 export default function MainLayout({
   children,
@@ -6,10 +6,12 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ProtectedRoute 
+    <ProtectedRoute
       fallback={
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="text-gray-600">Verificando autenticação...</div>
+        <div className="min-h-screen flex items-center justify-center bg-[#F8FAFB]">
+          <div className="text-[#4A656B] text-sm font-medium">
+            Verificando autenticação...
+          </div>
         </div>
       }
     >

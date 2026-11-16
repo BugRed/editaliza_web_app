@@ -26,5 +26,22 @@ export async function POST(request: Request) {
     password: body.password,
   });
 
-  return NextResponse.json(result, { status: result.success ? 200 : 401 });
+  const response = NextResponse.json(result, {
+    status: result.success ? 200 : 401,
+  });
+
+  if (result.success && result.token) {
+    const forwardedProto = request.headers.get('x-forwarded-proto');
+    const isHttps = forwardedProto === 'https' || request.url.startsWith('https://');
+
+    response.cookies.set('auth-token', result.token, {
+      path: '/',
+      maxAge: 60 * 60,
+      sameSite: isHttps ? 'none' : 'lax',
+      secure: isHttps,
+      httpOnly: false,
+    });
+  }
+
+  return response;
 }

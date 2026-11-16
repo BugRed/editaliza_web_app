@@ -1,41 +1,33 @@
-.DateContainer{
-    position: relative;
+.DateContainer {
+  position: relative;
 }
 
-.DateBox{
-    position: absolute;
-    /* Uso de flex para centralizar a props "date" */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 0.85rem;
-    
-    width: 6rem;
-    height: 2.25rem;
-    border-radius: var(--radius-sm);
-    color: var(--color-on-primary);
-    font-weight: 700;
-    
-    background-color:var(--color-primary);
-    
-    transform: translateX(55%);
-    bottom: 1.15rem;
-    
-    box-shadow: var(--shadow-card);
-    
+.DateBox {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: #FFFFFF;
+  width: 6.5rem;
+  height: 2rem;
+  border-radius: 6px;
+  background-color: var(--primary);
+  transform: translateX(-50%);
+  left: 50%;
+  bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(14, 124, 134, 0.25);
+  white-space: nowrap;
 }
 
-
-.DateBoxArrow{
-    position: absolute;
-    
-    height: 0.5rem;
-    width: 0.5rem;
-    
-    background-color:var(--color-primary);
-    
-    right: 1.95rem;
-    bottom: 0.9rem;
-    transform: rotate(45deg);
+.DateBoxArrow {
+  position: absolute;
+  height: 0.5rem;
+  width: 0.5rem;
+  background-color: var(--primary);
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%) rotate(45deg);
 }
