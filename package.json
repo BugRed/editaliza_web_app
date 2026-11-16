@@ -4,6 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:db": "docker compose -f docker-compose.dev.yml up -d --wait",
+    "dev:db:setup": "node --env-file=.env.docker.example db/migrate.mjs && node --env-file=.env.docker.example db/seed.mjs && docker compose -f docker-compose.dev.yml exec -T db psql -U postgres -c \"NOTIFY pgrst, 'reload schema'\"",
+    "dev:db:down": "docker compose -f docker-compose.dev.yml down",
+    "dev:db:reset": "docker compose -f docker-compose.dev.yml down -v",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

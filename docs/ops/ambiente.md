@@ -28,16 +28,31 @@ import a partir de código de cliente vira **erro de build**, não valor
 - **Vercel/produção:** as quatro variáveis reais como project env. Nenhuma
   precisa ser "exposed to client" — todo consumo é server-side.
 
+## Banco local em Docker
+
+Alternativa ao Supabase da nuvem, sem rede: Postgres 17 + PostgREST + um nginx que expõe
+`/rest/v1` (o caminho do `supabase-js`). Só para desenvolvimento.
+
+```bash
+cp .env.docker.example .env.local   # o Next carrega .env.local por cima do .env
+npm run dev:db                      # sobe db, postgrest e gateway (aguarda ficarem saudáveis)
+npm run dev:db:setup                # migrations + seed + recarrega o schema do PostgREST
+npm run dev                         # reinicie se já estava rodando
+```
+
+Login de teste (vem de `mock/user_data.csv`): `maria.oliveira@email.com` / `senha_segura_2`
+(User) e `joao.silva@email.com` / `senha_segura_1` (Admin). `npm run dev:db:down` para; `dev:db:reset`
+apaga os dados. Para voltar ao Supabase da nuvem, apague `.env.local`.
+
+Portas: 54321 (gateway REST) e 54322 (Postgres), só em `127.0.0.1`. O gateway tira o header
+`Authorization` porque o PostgREST sem segredo JWT recusa qualquer token; tudo roda como `anon`.
+Não há RLS aqui: não serve para validar políticas do Supabase.
+
 ## Testes
 
 Rodam **em Docker, sem rede** (`network_mode: none`): `npm run test:docker` constrói
 `Dockerfile.test` e executa o Vitest (jsdom + Testing Library). `npm test` roda no host, só para
 iterar. Nenhum teste toca Supabase ou serviço externo.
-
-## Protótipo de telas
-
-`/prototipo/*` serve telas com dados fixos para aprovação de design. Existe só fora de produção:
-o layout responde 404 e o `src/middleware.ts` só o libera quando `NODE_ENV !== 'production'`.
 
 ## Rotas de API abertas no middleware
 
