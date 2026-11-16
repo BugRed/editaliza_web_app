@@ -16,12 +16,12 @@
 - [ ] service — não se aplica, sem regra de negócio
 - [ ] controller — não se aplica
 - [ ] route — não se aplica
-- [ ] ui — atoms e molecules em `src/shared/components/`, tokens em `globals.css`
-- [ ] teste — comportamento dos atoms e molecules; qualquer teste roda interno, em Docker
+- [x] ui — atoms e molecules em `src/shared/components/`, tokens em `globals.css`
+- [x] teste — comportamento dos atoms e molecules; qualquer teste roda interno, em Docker
 - [x] doc — mapa de telas e fluxo em `docs/`
 <!-- /kit:camadas -->
 
-**Próximo passo:** usuário aprova o mapa em [`docs/ui/mapa-de-telas.md`](../../ui/mapa-de-telas.md) (§7); depois, atoms e molecules (§5) e as telas de login e feed sobre os tokens.
+**Próximo passo:** telas de **login e cadastro** e depois **feed** sobre os atoms e molecules (mapa §6, aprovado), com protótipo navegável das demais telas em páginas Next com dados fixos.
 
 ## Problema / motivação
 A O1 do roadmap (`plano.md` §6.0) é a primeira onda: design fechado antes de qualquer tela entrar
@@ -43,8 +43,9 @@ protótipo navegável aprovado e os atoms/molecules sobre os tokens.
 
 ## Restrição de ambiente
 Qualquer teste ou verificação desta onda roda **interno, em Docker**: nada de serviço externo
-(Supabase, APIs) nem banco instalado no host. Hoje o repo não tem Dockerfile nem compose — só
-será criado quando um teste precisar de um (ex.: Postgres na O2), nunca como arquivo vazio.
+(Supabase, APIs) nem banco instalado no host. `npm run test:docker` constrói `Dockerfile.test` e
+roda o Vitest com `network_mode: none`. A config (Vitest 4, jsdom, Testing Library, `globals`)
+espelha a do `editaliza_true`. `npm test` também funciona no host, para iterar rápido.
 
 ## Comportamento / fluxos
 A definir no mapa de telas (entregável 1).
@@ -67,7 +68,10 @@ Nenhuma regra nova. Match e score ficam na O4 ([`plano.md`](../../../plano.md) �
 <!-- /kit:criterios -->
 
 ## Dívida / não exercitado
-Nada ainda.
+- `Dockerfile.test` usa `npm install`, não `npm ci`: o lock gerado no host omite `@emnapi/*`
+  (wasm opcional) e o `npm ci` o rejeita, mesmo com o mesmo npm. Não é reprodutível por lock.
+- Tema escuro definido nos tokens, mas sem verificação visual (só claro foi visto).
+- `Avatar` usa `<img>` e não `next/image` (origem arbitrária); regra do ESLint desligada na linha.
 
 ## Decisões em aberto
 - Forma do "protótipo navegável": páginas Next com dados fixos, ou Storybook. Padrão sugerido:
