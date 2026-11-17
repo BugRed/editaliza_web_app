@@ -1,124 +1,16 @@
 "use client";
 
-import Link from "next/link";
 import { useState, useEffect } from "react";
-import {
-  Share2,
-  Home,
-  Bookmark,
-  User,
-  Settings,
-  HelpCircle,
-  UserCircle2,
-  Menu
-} from "lucide-react";
-
 import { IEdital } from "@/app/types/Edital";
 import { Proposer } from "@/app/types/Proposer";
 import BodyCardFeed from "@/app/components/cardFeed/BodyCardFeed";
+import Header from "@/app/components/header/header";
+import Footer from "@/app/components/footer/footer";
 import { mensagemDeErro } from "@/app/lib/erros";
 
-// Componente Header fixo com logo e menu dropdown
-const Header = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg)] border-b border-[var(--color-line)] backdrop-blur-sm">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        {/* Logo à esquerda */}
-        <div className="flex items-center">
-          <div className="w-10 h-10 bg-line rounded-lg flex items-center justify-center">
-            <span className="text-ink font-bold text-lg">E</span>
-          </div>
-          <span className="ml-2 text-ink font-semibold text-lg">Editais</span>
-        </div>
-
-        {/* Menu dropdown à direita */}
-        <div className="relative">
-          <button
-            className="flex items-center space-x-2 text-ink hover:bg-surface px-3 py-2 rounded-lg transition-colors"
-            onMouseEnter={() => setIsDropdownOpen(true)}
-            onMouseLeave={() => setIsDropdownOpen(false)}
-          >
-            <Menu size={20} />
-            <span>Menu</span>
-          </button>
-
-          {/* Dropdown menu */}
-          {isDropdownOpen && (
-            <div
-              className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10"
-              onMouseEnter={() => setIsDropdownOpen(true)}
-              onMouseLeave={() => setIsDropdownOpen(false)}
-            >
-              <Link
-                href="/conta"
-                className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
-              >
-                <User size={16} className="mr-3" />
-                Conta
-              </Link>
-              <Link
-                href="/configuracoes"
-                className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
-              >
-                <Settings size={16} className="mr-3" />
-                Configurações
-              </Link>
-              <Link
-                href="/suporte"
-                className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
-              >
-                <HelpCircle size={16} className="mr-3" />
-                Suporte
-              </Link>
-            </div>
-          )}
-        </div>
-      </div>
-    </header>
-  );
-};
-
-// Componente Footer fixo com ícones de navegação
-const Footer = () => {
-  return (
-    <footer className="fixed bottom-0 left-0 right-0 z-50 bg-[var(--color-bg)] border-t border-[var(--color-line)] backdrop-blur-sm">
-      <div className="container mx-auto px-4 py-3">
-        <div className="flex justify-center items-center space-x-8">
-          {/* Ícone Home */}
-          <button className="flex flex-col items-center space-y-1 text-ink hover:bg-surface p-2 rounded-lg transition-colors">
-            <Home size={20} />
-            <span className="text-xs">Home</span>
-          </button>
-
-          {/* Ícone Salvar */}
-          <button className="flex flex-col items-center space-y-1 text-ink hover:bg-surface p-2 rounded-lg transition-colors">
-            <Bookmark size={20} />
-            <span className="text-xs">Salvar</span>
-          </button>
-
-          {/* Ícone Compartilhar */}
-          <button className="flex flex-col items-center space-y-1 text-ink hover:bg-surface p-2 rounded-lg transition-colors">
-            <Share2 size={20} />
-            <span className="text-xs">Compartilhar</span>
-          </button>
-
-          {/* Ícone do Perfil - imagem redonda */}
-          <button className="flex flex-col items-center space-y-1 text-ink hover:bg-surface p-2 rounded-lg transition-colors">
-            <div className="w-6 h-6 bg-line rounded-full flex items-center justify-center">
-              <UserCircle2 size={16} />
-            </div>
-            <span className="text-xs">Perfil</span>
-          </button>
-        </div>
-      </div>
-    </footer>
-  );
-};
-
-// Componente principal da página Feed
-export default function FeedPage() {
+export default function TesteFeedPage() {
+  
   const [editals, setEditals] = useState<IEdital[]>([]);
   const [proposers, setProposers] = useState<Proposer[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -126,40 +18,37 @@ export default function FeedPage() {
 
   useEffect(() => {
     const fetchData = async () => {
+      const headers: Record<string, string> = {
+        "Content-Type": "application/json",
+      };
+
       try {
-        // Busca dados de editais — mesma origem da página
-        const editalsRes = await fetch(`/api/editals`, {
-          cache: "no-store",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const [editalsRes, proposersRes] = await Promise.all([
+          fetch(`/api/editals`, {
+            cache: "no-store",
+            headers,
+          }),
+          fetch(`/api/proposers`, {
+            cache: "no-store",
+            headers,
+          }),
+        ]);
+
         if (!editalsRes.ok) {
           throw new Error(
             `Erro na busca de editais: ${editalsRes.status} ${editalsRes.statusText}`
           );
         }
-        const editalsData: IEdital[] = await editalsRes.json();
-        setEditals(editalsData);
-
-        // Busca dados de proponentes
-        const proposersRes = await fetch(`/api/proposers`, {
-          cache: "no-store",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
         if (!proposersRes.ok) {
           throw new Error(
             `Erro na busca de proponentes: ${proposersRes.status} ${proposersRes.statusText}`
           );
         }
-        const proposersData: Proposer[] = await proposersRes.json();
-        setProposers(proposersData);
-        
+
+        setEditals(await editalsRes.json());
+        setProposers(await proposersRes.json());
       } catch (err) {
         setError(mensagemDeErro(err));
-        console.error("Falha ao buscar dados da API:", err);
       } finally {
         setLoading(false);
       }
@@ -168,88 +57,59 @@ export default function FeedPage() {
     fetchData();
   }, []);
 
-  // Renderização do estado de loading
   if (loading) {
     return (
       <>
         <Header />
-        <div className="pt-20 pb-20 min-h-screen flex flex-col items-center justify-center p-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mb-4"></div>
-          <h1 className="text-3xl font-bold mb-4 text-center text-ink">Feed de Editais</h1>
-          <p className="text-ink-muted text-center">Carregando dados...</p>
+        <div className="pt-24 pb-24 min-h-screen flex flex-col items-center justify-center p-4 bg-[#F8FAFB]">
+          <div className="animate-spin rounded-full h-10 w-10 border-2 border-[#DCE6E8] border-t-[#0E7C86] mb-4" />
+          <h1 className="text-2xl font-bold mb-2 text-center text-[#102A30]">Feed de Editais</h1>
+          <p className="text-[#4A656B] text-center text-sm">Carregando dados...</p>
         </div>
         <Footer />
       </>
     );
   }
 
-  // Renderização do estado de erro
   if (error) {
     return (
       <>
         <Header />
-        <div className="pt-20 pb-20 min-h-screen flex flex-col items-center justify-center p-4">
-          <h1 className="text-3xl font-bold mb-4 text-center text-ink">Feed de Editais</h1>
-          <p className="text-danger text-center">
-            {error || "Erro ao carregar dados. Tente novamente mais tarde."}
-          </p>
+        <div className="pt-24 pb-24 min-h-screen flex flex-col items-center justify-center p-4 bg-[#F8FAFB]">
+          <h1 className="text-2xl font-bold mb-2 text-center text-[#102A30]">Feed de Editais</h1>
+          <p className="text-red-700 text-center text-sm">{error}</p>
         </div>
         <Footer />
       </>
     );
   }
 
-  // Renderização quando não há editais
-  if (editals.length === 0) {
-    return (
-      <>
-        <Header />
-        <div className="pt-20 pb-20 min-h-screen flex flex-col items-center justify-center p-4">
-          <h1 className="text-3xl font-bold mb-4 text-center text-ink">Feed de Editais</h1>
-          <p className="text-ink-muted text-center">
-            Nenhum edital encontrado. Tente importar os dados novamente.
-          </p>
-        </div>
-        <Footer />
-      </>
-    );
-  }
-
-  // Renderização principal com os editais
   return (
     <>
       <Header />
-      
-      {/* Conteúdo principal - com padding para não sobrepor header e footer */}
-      <main className="pt-20 pb-20 min-h-screen">
-        <div className="flex flex-col items-center justify-center p-4">
+      <main className="pt-24 pb-28 min-h-screen bg-[#F8FAFB]">
+        <div className="max-w-3xl mx-auto px-4 flex flex-col items-center gap-7">
           {editals.map((edital) => {
-            // Encontra o proponente correspondente
-            const proposer = proposers.find(p => p.id === Number(edital.proposer));
-            
-            // Renderiza o BodyCardFeed apenas se o proponente for encontrado
-            if (proposer) {
-              return (
-                <div key={edital.id} className="my-10">
-                  <BodyCardFeed 
-                    percent="30" 
-                    colorPercent="#258611" 
-                    coverImage={edital.imgCoverUrl || '/assets/placeholder.png'} 
-                    title={edital.title}
-                    proposer={proposer.name}
-                    proposerLink={''}
-                    date={edital.publishDate}
-                    tags={edital.listTags}
-                    buttomSubmitLink={edital.inscriptionLink}
-                  />
-                </div>
-              );
-            }
-            return null; // Não renderiza se o proponente não for encontrado
+            const proposer = proposers.find((p) => p.id === Number(edital.proposer));
+            if (!proposer) return null;
+            return (
+              <BodyCardFeed
+                key={edital.id}
+                percent="78"
+                colorPercent="#0E7C86"
+                coverImage={edital.imgCoverUrl || ""}
+                title={edital.title}
+                description={edital.description}
+                proposer={proposer.name}
+                proposerLink=""
+                date={edital.publishDate}
+                tags={Array.isArray(edital.listTags) ? edital.listTags : []}
+                buttomSubmitLink={edital.inscriptionLink}
+              />
+            );
           })}
         </div>
       </main>
-
       <Footer />
     </>
   );

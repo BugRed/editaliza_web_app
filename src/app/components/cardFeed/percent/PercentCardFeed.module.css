@@ -1,24 +1,21 @@
-.PercentCardFeed{
-    display: flex;
-    position: absolute;
-    
-    width: 6.25rem;
-    height: 1.55rem;
-    border-radius: var(--radius-pill);
-    
-    margin: 1rem;
-
-    background-color: var(--color-surface);
-
-    align-items: center;
-    justify-content: center;
-
-    box-shadow: var(--shadow-card);
-    border: 1.5px solid var(--cor-dinamica);
+.PercentCardFeed {
+  display: inline-flex;
+  position: absolute;
+  top: 0.875rem;
+  left: 0.875rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 6px;
+  background-color: var(--percent-bg-color);
+  border: 1px solid var(--border-subtle);
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(16, 42, 48, 0.12);
 }
 
-.PercentCardFeed span{
-    font-size: 0.85rem;
-    font-weight: 800;
-    color: var(--cor-dinamica);
+.PercentCardFeed span {
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--cor-dinamica, var(--primary));
+  white-space: nowrap;
 }

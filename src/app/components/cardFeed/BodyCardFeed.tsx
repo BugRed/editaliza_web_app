@@ -1,5 +1,8 @@
-//ESTRUTURA BASE DO CARDFEED
+"use client";
 
+import Link from "next/link";
+import { useState } from "react";
+import { AlertCircle, EllipsisVerticalIcon, ShieldAlert } from "lucide-react";
 import styles from "./bodyCardFeed.module.css";
 import CardImage from "./cardImage/CardImage";
 import InfoCardFeed from "./infoCard/InfoCardFeed";
@@ -8,83 +11,201 @@ import FooterCardFeed from "./footer/FooterCardFeed";
 import PercentCardFeed from "./percent/PercentCardFeed";
 import TagData from "../../types/TagData";
 import More from "./more/more";
-
-import { EllipsisVerticalIcon } from 'lucide-react'
-
-import { useState } from "react";
+import { ArtistRankResult } from "@/shared/lib/artistrank";
 
 type cardFeedProps = {
+  editalId?: number;
   percent: string;
   colorPercent: string;
   coverImage?: string | "";
   title: string;
+  description?: string;
   proposer: string;
   date?: Date | null;
   tags: TagData[];
   buttomSubmitLink?: string;
   proposerLink: string;
+  rank?: ArtistRankResult;
+  onOpenSummary?: () => void;
 };
 
-{
-  /* Recebe todos os componentes do card */
-}
-
 export default function BodyCardFeed({
+  editalId,
   percent,
   colorPercent,
   coverImage,
   title,
+  description,
   proposer,
   date,
   tags,
   buttomSubmitLink,
   proposerLink,
+  rank,
+  onOpenSummary,
 }: cardFeedProps) {
-  
   const [isMoreOpen, setOpenMore] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
-  
-  
+  const safeTags = Array.isArray(tags) ? tags : [];
+  const initials = proposer
+    .split(" ")
+    .map((w) => w[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+
+  const badgeLabel = rank
+    ? rank.bloqueado
+      ? "Inelegível"
+      : `${rank.scoreFinal.toFixed(1)}% Match`
+    : percent === "Aberto"
+    ? "Edital aberto"
+    : undefined;
+
   return (
-    <div className={styles.fullContent} >
+    <article className={styles.fullContent}>
       <div className={styles.bodyCardFeed}>
-        {/* percent: string (valor numerico 0 ~ 100)  -  cor: string (#258611(verde 0 ~ 45) - #864F11(amarelo 46 ~ 75) - #B71C1C(vermelho 76 ~ 100))*/}
-        <PercentCardFeed percent={percent} cor={colorPercent} />
+        {/* Post Header (X / Instagram style) */}
+        <div className={styles.postHeader}>
+          <div className={styles.proposerCluster}>
+            {proposerLink ? (
+              <Link
+                href={proposerLink}
+                tabIndex={-1}
+                aria-hidden="true"
+                className={`${styles.proposerAvatar} transition-colors hover:border-[#0E7C86]`}
+              >
+                {initials}
+              </Link>
+            ) : (
+              <div className={styles.proposerAvatar} aria-hidden="true">
+                {initials}
+              </div>
+            )}
+            <InfoCardFeed
+              title={title}
+              proposer={proposer}
+              date={date}
+              linkProposer={proposerLink}
+            />
+          </div>
 
-        
-        {/* img: any */}
-        <CardImage img={coverImage} />
-
-        {/* title: string  -  proposer: string  -  date: string ('DD-MM-AAAA')*/}
-        <InfoCardFeed
-          title={title}
-          proposer={proposer}
-          date={date}
-          linkProposer={proposerLink}
-          />
-        
-        <button className={styles.moreButton} onClick={() => setOpenMore(!isMoreOpen)}>
-          <EllipsisVerticalIcon/>
-        </button>
-
-        {/* Recebe as tags dos posts */}
-        <div className={styles.tagsCardFeed}>
-          {(Array.isArray(tags) ? tags : []).map((tag, i) => (
-            <TagsCardFeed key={i} tags={tag} />
-          ))}
+          <button
+            type="button"
+            aria-label="Mais opções"
+            className={styles.moreButton}
+            onClick={() => setOpenMore(!isMoreOpen)}
+          >
+            <EllipsisVerticalIcon size={19} />
+          </button>
         </div>
 
-        {/* Link para formulario de inscrição */}
-        <FooterCardFeed buttomSubmitLink={buttomSubmitLink} />
+        {/* Post Media (Instagram-like 16:9 image) */}
+        <div className={styles.mediaWrapper}>
+          <CardImage img={coverImage} title={title} />
+          {/* O clique vive só na imagem (e no título): o card inteiro não é um alvo, para não
+              disputar com curtir, salvar, compartilhar, menu e "Inscrever-se". */}
+          {onOpenSummary && (
+            <button
+              type="button"
+              onClick={onOpenSummary}
+              aria-label={`Ver resumo de ${title}`}
+              className="absolute inset-0 z-[1] cursor-pointer bg-transparent transition-colors hover:bg-[#102A30]/5 focus-visible:outline-offset-[-3px]"
+            />
+          )}
+          <PercentCardFeed
+            percent={percent}
+            cor={colorPercent}
+            label={badgeLabel}
+          />
+        </div>
+
+        {/* Post Body & Actions */}
+        <div className={styles.contentWrapper}>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h2 className={styles.postTitle}>
+              {onOpenSummary ? (
+                <button
+                  type="button"
+                  onClick={onOpenSummary}
+                  className="cursor-pointer text-left font-[inherit] transition-colors hover:text-[#0E7C86]"
+                >
+                  {title}
+                </button>
+              ) : (
+                title
+              )}
+            </h2>
+            {rank && (
+              <span className="text-xs font-medium text-[#4A656B] tabular-nums">
+                {rank.nivelAderencia} · Confiança {rank.confiancaC.toFixed(1)}
+              </span>
+            )}
+          </div>
+
+          {rank?.bloqueado && rank.motivoBloqueio && (
+            <div className="flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs font-medium text-red-800">
+              <ShieldAlert size={15} className="mt-0.5 shrink-0" />
+              <span>{rank.motivoBloqueio}</span>
+            </div>
+          )}
+
+          {!rank?.bloqueado && rank?.tetoAplicado && rank.motivoTeto && (
+            <div className="flex items-start gap-2 rounded-lg border border-amber-200 bg-[#FFF8E1] px-3 py-2 text-xs font-medium text-[#7A5400]">
+              <AlertCircle size={15} className="mt-0.5 shrink-0" />
+              <span>{rank.motivoTeto}</span>
+            </div>
+          )}
+
+          {description && (
+            <div className={styles.descriptionBlock}>
+              <p className={expanded ? styles.descriptionFull : styles.descriptionClamp}>
+                {description}
+              </p>
+              {description.length > 140 && (
+                <button
+                  type="button"
+                  onClick={() => setExpanded((prev) => !prev)}
+                  className={styles.readMoreBtn}
+                >
+                  {expanded ? "Ler menos" : "Continuar lendo"}
+                </button>
+              )}
+            </div>
+          )}
+
+          {safeTags.length > 0 && (
+            <div className={styles.tagsCardFeed} aria-label="Categorias">
+              {safeTags.map((tag, i) => (
+                <TagsCardFeed key={tag.id ?? i} tags={tag} index={i} />
+              ))}
+            </div>
+          )}
+
+          <FooterCardFeed
+            editalId={editalId}
+            buttomSubmitLink={buttomSubmitLink}
+            title={title}
+            onOpenSummary={onOpenSummary}
+          />
+        </div>
       </div>
-      {isMoreOpen ? (
+
+      {isMoreOpen && (
         <>
-          <div className={styles.overlay} onClick={() => setOpenMore(!isMoreOpen)}></div>
-          <More isSaved={false} isOpen={true}/>
+          <div
+            className={styles.overlay}
+            onClick={() => setOpenMore(false)}
+          />
+          <More
+            isSaved={false}
+            isOpen={true}
+            onClose={() => setOpenMore(false)}
+            title={title}
+          />
         </>
-        ) : (
-          <More isSaved={false} isOpen={false} />
-        )}
-    </div>
+      )}
+    </article>
   );
 }

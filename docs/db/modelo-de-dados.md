@@ -25,6 +25,27 @@ npm run db:seed      # popula com mock/*.csv (idempotente)
 | `comments_data` | comentários | `user`/`edital` bigint sem FK; `approved` boolean; `status` |
 | `_migrations` | infra do runner | nome + hash + `applied_at` |
 
+## Colunas do front (`0002_colunas_do_front.sql`)
+
+O front do `editaliza_prot` lê colunas que o baseline não tinha; sem elas `/api/artists` e
+`/api/proposers` davam 500 (`column artist_data.handle does not exist`).
+
+- `artist_data`: `handle`, `avatarUrl`, `bio`, `city`, `state`, `territoryScope`, `coreLanguages`,
+  `supportLanguages`, `experienceYears`, `profileLevel`, `hasCnpjOrMei`, `hasTechnicalFormation`,
+  `portfolioCompleteness`, `badges`, `works`, `savedEditalIds`, `likedEditalIds`. `password` deixa
+  de ser `NOT NULL` (o perfil do artista não guarda senha; a credencial é a de `user_data`).
+- `proposer_data`: `handle`, `bio`, `city`, `state`.
+- `editals_data`: `territoryScope`, `city`, `state`, `requiredLanguages`, `acceptedLanguages`,
+  `requiresPortfolio`, `requiresCnpj`, `requiresTechnicalFormation`, `minExperienceYears`,
+  `targetProfileLevels`, `plainSummary` (o resumo em linguagem simples, jsonb).
+
+Os `mock/*.csv` foram gerados a partir das tabelas em memória do protótipo (a função
+`createInitialMockTables`, que existia em `src/app/lib/supabase/client.ts` e foi removida junto com o modo sem
+banco; segue no commit `b6a96ad`). Hoje os CSVs são a fonte do seed, **tanto do Docker (`db/seed.mjs`) quanto do mock em memória de produção**
+([ADR 0020](../adr/0020-fonte-de-dados-por-env-mock-em-producao-docker-no-local.md)); a tipagem das colunas fica em
+`db/seed-columns.json`. As senhas nos CSVs são de exemplo e legíveis; o seed e o mock as gravam como hash scrypt
+([ADR 0021](../adr/0021-sessao-em-cookie-httponly-assinado-e-senha-com-scrypt.md)).
+
 ## Decisões da derivação do baseline
 
 - **Derivado dos CSVs + interfaces** (`mock/*.csv`, `src/app/types`): sem rede até o

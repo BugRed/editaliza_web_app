@@ -3,7 +3,7 @@ import { supabase } from '@/app/lib/supabase/client';
 
 // Este endpoint lida com requisições GET para a tabela 'proposer_data'
 // Coluna `password` nunca entra no select
-const PROPOSER_COLUMNS = 'id,name,email,imgUrl,createdAt,updatedAt,userType,listComment,cnpj,listEdital';
+const PROPOSER_COLUMNS = 'id,name,handle,email,imgUrl,bio,city,state,createdAt,updatedAt,userType,listComment,cnpj,listEdital';
 
 export async function GET() {
   try {

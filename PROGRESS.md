@@ -16,7 +16,7 @@ de feature mora na spec (`docs/features/`), o que já foi entregue mora no `CHAN
 | W1/T1.1 — migrations versionadas | [0001-migrations-versionadas](docs/features/dados/0001-migrations-versionadas.md) | commits feitos; falta push/PR (usuário); fidelidade ao schema real do Supabase pendente de rede |
 | dep-01 — deploy bloqueado por Next vulnerável | [0002-deploy-bloqueado-next](docs/features/seguranca/0002-deploy-bloqueado-next.md) | commits e push ok; falta PR/merge (usuário) e deploy Vercel com cache limpo |
 | infra-01 — envs server-only | [0001-envs-server-side](docs/features/infra/0001-envs-server-side.md) | commits feitos; falta login ponta-a-ponta com rede + push/PR (usuário); empilhada em `fix/dep-01` |
-| O1 — articulação de design | [0002-articulacao-design-o1](docs/features/ui/0002-articulacao-design-o1.md) | falta o usuário navegar `/prototipo` e aprovar; depois push/PR (usuário) |
+| O1 — front do editaliza_prot + galeria, mídia, selos, anúncios e ranking | [0002-articulacao-design-o1](docs/features/ui/0002-articulacao-design-o1.md) | falta o usuário conferir no navegador (celular e fluxos) e aceitar ou revisar o ADR 0019; depois push/PR (usuário), empilhada sobre o replanejamento |
 | replanejamento V1 | [0001-replanejamento-v1](docs/features/planejamento/0001-replanejamento-v1.md) | entregue; falta push/PR (usuário), empilhada sobre infra-01 |
 
 ## Fila (ordem de prioridade)

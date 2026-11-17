@@ -1,0 +1,16 @@
+{
+  "json": [
+    "listComment", "listTags", "listEdital",
+    "coreLanguages", "supportLanguages", "badges", "works", "savedEditalIds", "likedEditalIds",
+    "requiredLanguages", "acceptedLanguages", "targetProfileLevels", "plainSummary"
+  ],
+  "number": [
+    "id", "proposer", "user", "edital",
+    "experienceYears", "portfolioCompleteness", "minExperienceYears"
+  ],
+  "boolean": [
+    "approved", "hasCnpjOrMei", "hasTechnicalFormation",
+    "requiresPortfolio", "requiresCnpj", "requiresTechnicalFormation"
+  ],
+  "password": "password"
+}

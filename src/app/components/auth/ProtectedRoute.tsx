@@ -9,9 +9,9 @@ interface ProtectedRouteProps {
   fallback?: React.ReactNode;
 }
 
-export default function ProtectedRoute({ 
-  children, 
-  fallback 
+export default function ProtectedRoute({
+  children,
+  fallback,
 }: ProtectedRouteProps) {
   const { user, isLoading } = useAuth();
   const router = useRouter();
@@ -23,10 +23,12 @@ export default function ProtectedRoute({
   }, [user, isLoading, router]);
 
   if (isLoading) {
-    return fallback || (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-gray-600">Carregando...</div>
-      </div>
+    return (
+      fallback || (
+        <div className="min-h-screen flex items-center justify-center bg-[#F8FAFB]">
+          <div className="text-[#4A656B] text-sm font-medium">Carregando...</div>
+        </div>
+      )
     );
   }
 

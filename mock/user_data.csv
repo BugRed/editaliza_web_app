@@ -1,5 +1,4 @@
 id,password,name,email,imgUrl,createdAt,updatedAt,userType,listComment
-1,"senha_segura_1","João Silva","joao.silva@email.com","https://exemplo.com/img/joao.jpg","2023-01-15T10:00:00Z","2023-01-15T10:00:00Z","Admin","[]"
-2,"senha_segura_2","Maria Oliveira","maria.oliveira@email.com","https://exemplo.com/img/maria.png","2023-02-20T14:30:00Z","2023-02-20T14:30:00Z","User","[]"
-3,"senha_segura_3","Pedro Souza","pedro.souza@email.com","","2023-03-10T08:45:00Z","2023-03-10T08:45:00Z","User","[]"
-4,"senha_segura_4","Ana Costa","ana.costa@email.com","https://exemplo.com/img/ana.gif","2023-04-05T18:20:00Z","2023-04-05T18:20:00Z","Editor","[]"
+1,senha_segura_1,João Silva,joao.silva@email.com,/images/avatar_joao_1794791579584.jpg,2023-01-15T10:00:00Z,2023-01-15T10:00:00Z,ARTIST,[]
+2,senha_segura_2,Mariana Oliveira,maria.oliveira@email.com,/images/avatar_maria_1794791579527.jpg,2023-02-20T14:30:00Z,2023-02-20T14:30:00Z,ARTIST,[]
+3,senha_segura_3,Carlos Músico,carlos.musico@email.com,/images/avatar_carlos_1794791579626.jpg,2023-03-10T08:45:00Z,2023-03-10T08:45:00Z,ARTIST,[]

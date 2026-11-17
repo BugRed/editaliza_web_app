@@ -1,20 +1,16 @@
-.tagsCardFeed{
-    display: flex;
-    
-    padding: 0.25rem 0 0 1rem;
-    gap: 0.65rem;
+.tagItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.tagsCardFeed p{
-    
-    color: var(--color-on-accent);
-    font-weight: 700;
-    font-size: 0.75rem;
-    text-align: center;
-    
-    border-radius: var(--radius-pill);
-    
-    padding: 0 1rem ;
-    
-    background-color: var(--color-accent);
+.separator {
+  color: var(--text-subtle);
+}
+
+.tagName {
+  color: var(--primary-ink);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }

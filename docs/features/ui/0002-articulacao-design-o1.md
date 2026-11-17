@@ -1,4 +1,4 @@
-# Articulação de design (O1)
+# Front do editaliza_prot e galeria rica (O1)
 
 **Status:** em-desenvolvimento
 **Responsabilidade:** ui
@@ -12,93 +12,97 @@
 ## Estado
 
 <!-- kit:camadas -->
-- [x] prisma — não se aplica, onda de design sem banco
-- [x] service — não se aplica, sem regra de negócio
+- [x] prisma — não se aplica: sem Prisma; o schema é SQL (`db/migrations/0002_colunas_do_front.sql`, ver Impacto técnico)
+- [x] service — `src/app/services/auth-service.ts` (login por hash e sessão assinada), `src/app/lib/session.ts`, camada de dados em `src/server/db/mock/`; regras de autorização em `src/shared/lib/authorization.ts` (sem regra de negócio nova)
 - [x] controller — não se aplica
-- [x] route — só o `src/middleware.ts` (libera `/prototipo` fora de produção); sem route handler novo
-- [x] ui — atoms e molecules em `src/shared/components/`, tokens em `globals.css`
-- [x] teste — comportamento dos atoms e molecules; qualquer teste roda interno, em Docker
-- [x] doc — mapa de telas e fluxo em `docs/`
+- [x] route — rotas de API do protótipo endurecidas (dono, papel, sessão), `PATCH /api/artists/[id]` ampliado e `middleware.ts` com redirect de páginas
+- [x] ui — front do `editaliza_prot` e as telas e componentes acrescentados
+- [x] teste — testes de comportamento (Vitest + Testing Library), inclusive de autorização, sessão, hash de senha, mock e middleware (Vitest + Testing Library); rodam também em Docker, sem rede
+- [x] doc — CHANGELOG, ADR 0019, `docs/db`, `docs/ops`, `docs/ui`, dívida
 <!-- /kit:camadas -->
 
-**Próximo passo:** usuário navega o protótipo em `/prototipo` (`npm run dev`) e aprova ou pede ajustes; com a aprovação, marcar o critério pendente, mudar **Status** para `entregue` e abrir a O2.
+**Próximo passo:** na Vercel, criar a env `AUTH_SECRET` (`openssl rand -base64 32`) e conferir o primeiro deploy em
+mock (`docs/ops/ambiente.md`); localmente, quem tem banco Docker antigo roda `yarn dev:db:reset`, `yarn dev:db` e
+`yarn dev:db:setup`. O usuário confere o celular e os fluxos e aceita ou revisa o ADR 0019; depois push e PR (do usuário).
 
 ## Problema / motivação
-A O1 do roadmap (`plano.md` §6.0) é a primeira onda: design fechado antes de qualquer tela entrar
-no ar. Hoje há tokens Sol & Mar (cherry-pick de `feature/ui-01`) e um protótipo (`editaliza_prot`)
-com UX útil e código que não pode ser portado por cópia (§11.3). Falta o mapa de todas as telas, o
-protótipo navegável aprovado e os atoms/molecules sobre os tokens.
+A O1 do roadmap (`plano.md` §6.0) fecha o design antes de qualquer tela ir ao ar. O protótipo `editaliza_prot`
+é o guia: a primeira tentativa aqui o **adaptou** (tokens e componentes próprios) em vez de copiá-lo, e foi
+descartada. O `src` do protótipo foi trazido inteiro e é o front vigente; o banco precisou acompanhá-lo, e o
+usuário pediu melhorias de galeria, mídia, selos, anúncios e do ranking sobre ele.
 
 ## Escopo
 **Entra:**
-- Design system fechado: tokens claro e escuro, atoms e molecules (`primary-soft`, `accent-soft`,
-  `border-subtle`, foco visível acrescentados dos do protótipo).
-- Mapa e fluxo de todas as telas (§10) com a ordem de portagem.
-- Protótipo navegável para o usuário aprovar.
-- `/feed` e login usando só tokens; nenhuma cor ou raio literal fora de `globals.css`.
+- Front do `editaliza_prot` exato (login, cadastro, feed, salvos, perfil, configurações, publicar edital).
+- Banco compatível com o front: migration `0002`, seed a partir das tabelas do protótipo, banco local em Docker.
+- Obras expressivas (tipo, técnica, dimensões, texto, temas), vídeo e áudio tocáveis, reordenação na galeria.
+- Perfil do proponente com os editais publicados e página pública da empresa (`/empresas/[id]`), alcançada pelo post.
+- Selos que levam ao edital e à empresa (`/perfil/[id]/selos/[badgeId]`).
+- Publicidade (menu lateral, direita fixa ao rolar, timeline) e coluna da direita com lista recursiva de 4 em 4.
+- Barras do ranking no resumo do edital, com dropdown por grupo (ADR 0019).
+- yarn como único gerenciador.
+- Fonte de dados por env: mock em produção e Docker no local, com o seed no repositório ([ADR 0020](../../adr/0020-fonte-de-dados-por-env-mock-em-producao-docker-no-local.md)).
+- Sessão sem `localStorage` (cookie httpOnly assinado) e senha com scrypt ([ADR 0021](../../adr/0021-sessao-em-cookie-httponly-assinado-e-senha-com-scrypt.md)).
 
 **Não entra (fora de escopo):**
-- Organismos de tela completos, Prisma, Better Auth, deploy (O2).
-- Motor do protótipo (`artistrank.ts`) e qualquer score na UI (§6.0: sem porcentagem até a O4).
+- Better Auth, Prisma, Supabase, RLS (O2); upload de arquivos e rede de anúncios real (O3).
+- Telas ainda inexistentes do plano de ondas (admin, onboarding multi-etapas, trajetória, candidatos).
+- O motor ArtistRank de oito fatores (W5): as barras seguem o que o motor do protótipo devolve.
 
 ## Restrição de ambiente
-Qualquer teste ou verificação desta onda roda **interno, em Docker**: nada de serviço externo
-(Supabase, APIs) nem banco instalado no host. `npm run test:docker` constrói `Dockerfile.test` e
-roda o Vitest com `network_mode: none`. A config (Vitest 4, jsdom, Testing Library, `globals`)
-espelha a do `editaliza_true`. `npm test` também funciona no host, para iterar rápido.
+Qualquer teste ou verificação roda **interno, em Docker**: nada de serviço externo nem banco no host. `yarn test:docker`
+constrói `Dockerfile.test` e roda o Vitest com `network_mode: none`; `yarn test` roda no host só para iterar. O
+banco de desenvolvimento é o Postgres local de `docker-compose.dev.yml` (`docs/ops/ambiente.md`); o Supabase do
+`.env` não existe mais (tenant não encontrado no pooler), e o `.env.local` criado aqui o sobrepõe.
 
 ## Comportamento / fluxos
-A definir no mapa de telas (entregável 1).
+- **Feed:** o post abre o resumo do edital pela imagem, pelo título ou por "Inscrever-se"; o card inteiro não é
+  link. O nome e o avatar da empresa levam à página dela.
+- **Galeria do artista:** abas Todas, Imagens, Vídeos e Áudios; cada obra mostra técnica, dimensões, texto e temas;
+  vídeo e áudio tocam no diálogo. A ordem é a do perfil e se altera em Configurações (subir e descer).
+- **Resumo do edital:** barras por fator em dois grupos, cada um com dropdown fechado por padrão.
+- **Selo:** abre uma página com o edital e a empresa que o concedeu.
 
 ## Impacto técnico
-- **Banco:** nenhum.
-- **API:** nenhuma.
-- **UI:** `src/app/globals.css`, `src/shared/components/{atoms,molecules}`, `/feed` e login.
+- **Banco:** `db/migrations/0002_colunas_do_front.sql` ([modelo](../../db/modelo-de-dados.md)); `artist_data.password`
+  deixa de ser `NOT NULL`; o seed carrega as colunas jsonb novas.
+- **API:** `PATCH /api/artists/[id]` valida tipo, técnica, dimensões, temas e `mediaUrl` das obras e os campos de selo.
+- **UI:** `src/app/**` (front do protótipo e `components/{profile,ads,rank,shell}`), `src/shared/lib/{media,works,reorder,rank-view,edital-owner}.ts`.
 
 ## Regras de negócio relacionadas
-Nenhuma regra nova. Match e score ficam na O4 ([`plano.md`](../../../plano.md) §6.0).
+Nenhuma regra nova. O ranking segue o motor do protótipo; a apresentação é decidida no
+[ADR 0019](../../adr/0019-artistrank-mostra-barras-por-fator-e-confianca-a-parte.md) (proposto).
 
 ## Critérios de aceite
 
 <!-- kit:criterios -->
-- [x] Mapa de telas e fluxo aprovado pelo usuário
-- [ ] Protótipo navegável aprovado pelo usuário
-- [x] `/feed` e login usam só tokens; nenhuma cor/raio literal fora de `globals.css`
-- [x] Atoms e molecules testados (comportamento) e `yarn lint` passando
+- [x] Front do `editaliza_prot` no repo e rodando contra o banco local (login, feed, perfil, configurações, salvos e publicar edital respondem sem erro)
+- [x] Obras com tipo, técnica, dimensões, texto e temas; vídeo e áudio; reordenação refletida na galeria
+- [x] Perfil do proponente lista os editais publicados; empresa e selo acessíveis a partir do post e do perfil
+- [x] Publicidade nas três posições pedidas e barras do ranking com dropdowns fechados por padrão
+- [x] Correções de segurança da W0 e da infra-01 restauradas sobre o backend do protótipo, com teste (dono, papel, sessão, ranking)
+- [x] Nada em `localStorage`, `sessionStorage` nem `document.cookie`; sessão só em cookie `httpOnly` assinado; senha só como hash
+- [x] Produção roda em mock (`yarn build` e `yarn start` com `DATA_SOURCE=mock`, login e cadastro verificados) e o local em Docker
+- [x] `yarn typecheck`, `yarn lint`, `yarn test` e `yarn build` passando, também os testes em Docker
+- [ ] Usuário confere no navegador, inclusive celular, e aceita o ADR 0019
 <!-- /kit:criterios -->
 
 ## Dívida / não exercitado
-- `Dockerfile.test` usa `npm install`, não `npm ci`: o lock gerado no host omite `@emnapi/*`
-  (wasm opcional) e o `npm ci` o rejeita, mesmo com o mesmo npm. Não é reprodutível por lock.
-- Tema escuro definido nos tokens, mas sem verificação visual (só claro foi visto).
-- `Avatar` usa `<img>` e não `next/image` (origem arbitrária); regra do ESLint desligada na linha.
-
-- **Cadastro não grava nada:** a UI valida (e-mail, senha de 8+ com número, consentimento) e segue
-  para `/login`; a conta só é criada com o Better Auth (O2). O cadastro antigo fazia o mesmo e
-  ainda dava `console.log` da senha, removido.
-- Senha mínima passou de 6 (regex antiga) para 8 + 1 número, que era o `minLength` do campo.
-- Logo `/logoLogin.png` não existe mais no repo: o card usa o nome em texto.
-- `AuthForm` e `loginForm.tsx` antigos, sem uso, foram removidos.
-
-- **Protótipo em `/prototipo/*`:** 12 telas com dados fixos e inventados; o layout responde 404 em
-  produção e o `middleware.ts` só o libera fora de produção. Esse 404 em produção **não foi
-  exercitado** (sem `next build` nesta sessão).
-- **Rotas do mapa só existem como `/prototipo/<rota>`** até a tela ir ao ar; a nav real (`/feed`)
-  lista só o que existe.
-- `/feed` real ainda lê `/api/data` (Supabase) no cliente; a O2 troca por Prisma. Os cards não
-  têm mais a porcentagem de compatibilidade fixa (30%), que era falsa.
-- A página `/` (`(main)/page.tsx`) e `components/cardFeed/*` seguem como o feed duplicado da T7.1,
-  fora do shell novo.
-- Handlers de salvar, dispensar, exportar, excluir, concluir onboarding e salvar rascunho só
-  mudam estado local; ligam a serviços nas ondas O2–O5.
-- Tema escuro e shell responsivo (barra inferior no celular) sem verificação visual.
-
-- `tsconfig.json` passou a excluir `editaliza_prot/` (clone ignorado pelo git): o `tsc` varria os
-  84 erros dele. Resolve a linha correspondente de `docs/divida.md`.
-- Gate adaptado: o repo não tem `format:check`, `test:cov` nem Sonar. Rodaram `tsc`, `eslint src`
-  e Vitest (Docker); **cobertura, formatação e Sonar não rodaram**.
-- `Dockerfile.test` instala com `npm install` (o lock omite `@emnapi/*`), então o ambiente de
-  teste não é reprodutível por lock.
+Resumo; a lista viva está em [`docs/divida.md`](../../divida.md).
+- **Segurança restaurada e ampliada** (dono, papel, ranking pela sessão, redirect, cookie `httpOnly` assinado, senha com
+  scrypt, env no boot). Segue aberto até o Better Auth: logout não revoga o token, sem limite de tentativas de login,
+  sem token CSRF.
+- **Mock de produção não persiste escrita** (ADR 0020): demonstração apenas; não conferido numa Vercel real. **A env do mock
+  tem que sair de produção quando entrar o Supabase** (dívida registrada).
+- **Sem `Authorization: Bearer` e sem token em storage**, o que desativa o uso do app em iframe com cookie de terceiro
+  bloqueado, que o protótipo tolerava com `localStorage`.
+- **Não exercitado:** celular, vídeo e áudio no navegador real, embed de YouTube e Vimeo, `yarn build`, Supabase real.
+- **Decidido na hora:** limites de cor 40 e 70; dropdowns fechados; 4 perfis por página na direita; um anúncio a cada
+  3 posts; anúncio do menu lateral ocupa a altura livre; "Tipo de mídia" como campo novo; imagens originais (7,3 MB)
+  em `public/images`; `yarn.lock` resolvido de novo.
+- **Front sem tokens:** hex literal nas classes, como no protótipo.
 
 ## Decisões em aberto
-- Nenhuma. (Protótipo como páginas Next com dados fixos: decidido e aprovado.)
+- Aceitar o ADR 0019 (barras, faixas de cor e dropdowns) ou revisá-lo.
+- Quando e como sair do mock em produção (remover `DATA_SOURCE=mock` e trocar o padrão de produção por exigência explícita).
+- Se o uso em iframe (cookie de terceiro) precisa voltar, decidir como sem `localStorage`.

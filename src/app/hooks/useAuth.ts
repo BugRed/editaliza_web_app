@@ -1,157 +1,120 @@
 'use client';
 
-import { 
-  useState, 
-  useEffect, 
-  createContext, 
-  useContext, 
+import {
+  useState,
+  useEffect,
+  createContext,
+  useContext,
   ReactNode,
-  createElement 
+  createElement,
 } from 'react';
 import { useRouter } from 'next/navigation';
 
-// Sessão via /api/auth/* — o service de auth é server-only (consulta o
-// Supabase com a publishable key) e nunca é importado daqui.
-
-// Interfaces
 interface User {
-  id: number; // id de user_data no banco é numérico
+  id: number;
   email: string;
   name?: string;
+  userType?: 'ARTIST' | 'PROPOSER' | string;
+}
+
+export interface RegisterPayload {
+  userType: 'ARTIST' | 'PROPOSER';
+  name: string;
+  email: string;
+  password: string;
+  handle?: string;
+  bio?: string;
+  city?: string;
+  state?: string;
+  cpf?: string;
+  cnpj?: string;
+  territoryScope?: 'MUNICIPAL' | 'METROPOLITANO' | 'ESTADUAL' | 'NACIONAL';
+  coreLanguages?: string[];
+  supportLanguages?: string[];
+  experienceYears?: number;
+  profileLevel?: 'INICIANTE' | 'EMERGENTE' | 'CONSOLIDADO' | 'MESTRE';
+  hasCnpjOrMei?: boolean;
+  hasTechnicalFormation?: boolean;
 }
 
 interface AuthContextType {
   user: User | null;
   login: (email: string, password: string) => Promise<{ success: boolean; message?: string }>;
-  logout: () => void;
+  register: (payload: RegisterPayload) => Promise<{ success: boolean; message?: string }>;
+  logout: () => Promise<void>;
   isLoading: boolean;
 }
 
-// Criar o contexto
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Props para o AuthProvider
 interface AuthProviderProps {
   children: ReactNode;
 }
 
-// Provider component
+// A sessão é só o cookie httpOnly que o servidor grava: o JavaScript da página nunca vê o token e não
+// há nada em localStorage/sessionStorage nem em document.cookie. O navegador envia o cookie sozinho.
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
-  // Funções auxiliares para cookies
-  const setCookie = (name: string, value: string, days: number) => {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = `expires=${date.toUTCString()}`;
-    document.cookie = `${name}=${value};${expires};path=/;SameSite=Lax`;
-  };
-
-  const getCookie = (name: string): string | null => {
-    if (typeof document === 'undefined') return null;
-    
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) {
-      const cookieValue = parts.pop()?.split(';').shift();
-      return cookieValue || null;
-    }
-    return null;
-  };
-
-  const deleteCookie = (name: string) => {
-    document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
-  };
-
-  // Verificar autenticação ao carregar — dentro do effect para rodar
-  // só na montagem, sem reabrir sessão a cada render
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const token = getCookie('auth-token');
-
-        if (token) {
-          const res = await fetch('/api/auth/me', { cache: 'no-store' });
-
-          if (res.ok) {
-            const data = await res.json();
-            setUser(data.user);
-          } else {
-            deleteCookie('auth-token');
-            setUser(null);
-          }
-        } else {
-          setUser(null);
-        }
-      } catch (error) {
-        console.error('Auth check error:', error);
-        deleteCookie('auth-token');
+        const res = await fetch('/api/auth/me', { cache: 'no-store' });
+        setUser(res.ok ? ((await res.json()) as { user: User }).user : null);
+      } catch {
         setUser(null);
       } finally {
         setIsLoading(false);
       }
     };
 
-    checkAuth();
+    void checkAuth();
   }, []);
 
-  // Função de login
-  const login = async (email: string, password: string) => {
+  const authenticate = async (url: string, payload: unknown, failureMessage: string) => {
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(payload),
       });
-      const result = await res.json();
+      const result = (await res.json()) as { success: boolean; message?: string; user?: User };
 
-      if (result.success && result.token) {
-        setCookie('auth-token', result.token, 1); // 1 dia
+      if (result.success) {
         setUser(result.user || null);
-        router.push('/');
+        router.replace('/');
       }
-      
+
       return result;
-    } catch (error) {
-      console.error('Login error:', error);
-      return {
-        success: false,
-        message: 'Erro interno do servidor'
-      };
+    } catch {
+      return { success: false, message: failureMessage };
     }
   };
 
-  // Função de logout
-  const logout = () => {
-    deleteCookie('auth-token');
+  const login = (email: string, password: string) =>
+    authenticate('/api/auth/login', { email, password }, 'Erro interno do servidor');
+
+  const register = (payload: RegisterPayload) =>
+    authenticate('/api/auth/register', payload, 'Erro interno do servidor ao cadastrar');
+
+  const logout = async () => {
+    // O cookie é httpOnly: só o servidor o apaga. Falha de rede não deve prender o usuário na tela.
+    await fetch('/api/auth/logout', { method: 'POST' }).catch(() => undefined);
     setUser(null);
-    router.push('/login');
+    router.replace('/login');
   };
 
-  // Valor do contexto
-  const contextValue: AuthContextType = {
-    user,
-    login,
-    logout,
-    isLoading
-  };
+  const contextValue: AuthContextType = { user, login, register, logout, isLoading };
 
-  return createElement(
-    AuthContext.Provider,
-    { value: contextValue },
-    children
-  );
+  return createElement(AuthContext.Provider, { value: contextValue }, children);
 }
 
-// Hook personalizado
 export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
-  
   if (context === undefined) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
-  
   return context;
 };

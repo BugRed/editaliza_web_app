@@ -1,16 +1,17 @@
 # Mapa de telas e fluxo (O1)
 
-**Status:** aprovado pelo usuário em 2026-11-16 · protótipo navegável em `/prototipo` (só fora de produção) · **Spec:** [`0002-articulacao-design-o1`](../features/ui/0002-articulacao-design-o1.md)
+**Status:** vigente como plano de ondas · front do `editaliza_prot` já no repo (ver abaixo) · **Spec:** [`0002-articulacao-design-o1`](../features/ui/0002-articulacao-design-o1.md)
 **Fontes:** [`plano.md`](../../plano.md) §10 (telas) e §11 (protótipo `editaliza_prot`).
 
 Este documento fixa **quais telas existem, quem as vê, como se ligam e em que ordem entram**.
 Nenhuma tela é portada antes da aprovação. Onde o plano ou o protótipo divergem, vale o plano.
 
-> **Como navegar:** `npm run dev` e abra `/prototipo`. O protótipo espelha este inventário
-> (`src/shared/fixtures/screen-map.ts`), usa dados fixos e inventados, e cada tela com estado
-> especial tem link para ele (`?estado=vazio`, `?estado=carregando`). Login, cadastro e feed
-> são telas reais; as rotas finais da §2 só existem quando a tela vai ao ar, e até lá ficam em
-> `/prototipo/<rota>`.
+> **Estado real (2026-11-16):** o front do `editaliza_prot` foi trazido inteiro e é o design vigente. Já existem
+> como telas reais: `/login`, `/cadastro`, `/` (feed), `/salvos`, `/perfil`, `/perfil/[id]`, `/configuracoes`,
+> `/publicar-edital`, e, acrescentadas aqui, `/empresas/[id]` e `/perfil/[id]/selos/[badgeId]`. O resumo do
+> edital (com as barras do ranking) é um modal, não uma rota. A tabela da §2 segue como **plano de ondas**: o
+> que ainda não existe (admin, onboarding multi-etapas, trajetória, candidatos da organização, rejeição com
+> motivo) entra na onda indicada. Não há página de protótipo no app.
 
 ## 1. Papéis
 

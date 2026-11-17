@@ -1,22 +1,11 @@
 import { NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
-import { authService } from '@/app/services/auth-service';
+import { getSessionUser } from '@/app/lib/session';
 
-// Sessão corrente para o AuthProvider montar o usuário na primeira carga.
-// Protegida pelo middleware como todo /api/* — o handler re-valida o token
-// e devolve o perfil.
+// Protegida pelo middleware como todo /api/*; o handler devolve o perfil da sessão (cookie httpOnly).
 export async function GET() {
-  const token = (await cookies()).get('auth-token')?.value;
-
-  if (!token || !(await authService.verifyToken(token))) {
-    return NextResponse.json({ error: 'Não autenticado.' }, { status: 401 });
-  }
-
-  const user = await authService.getCurrentUser(token);
-
+  const user = await getSessionUser();
   if (!user) {
-    return NextResponse.json({ error: 'Não autenticado.' }, { status: 401 });
+    return NextResponse.json({ error: 'Sessão inválida.' }, { status: 401 });
   }
-
   return NextResponse.json({ user });
 }

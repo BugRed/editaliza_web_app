@@ -1,6 +1,9 @@
 id,name,description,color,createdAt,updatedAt
-1,Pintura,Obras feitas com tintas sobre tela,#FF5733,2024-01-01T00:00:00Z,2024-01-01T00:00:00Z
-2,Música,Projetos musicais,#3366FF,2024-01-02T00:00:00Z,2024-01-02T00:00:00Z
-3,Escultura,Criações tridimensionais,#33CC33,2024-01-03T00:00:00Z,2024-01-03T00:00:00Z
-4,Fotografia,Trabalhos de arte fotográfica.,#9933CC,2024-01-04T00:00:00Z,2024-01-04T00:00:00Z
-5,Performance,Arte performática,#FF8800,2024-01-05T00:00:00Z,2024-01-05T00:00:00Z
+1,Pintura,Obras feitas com tintas sobre tela,#0E7C86,2024-01-01T00:00:00Z,2024-01-01T00:00:00Z
+2,Música,Projetos musicais,#FFB800,2024-01-02T00:00:00Z,2024-01-02T00:00:00Z
+3,Escultura,Criações tridimensionais,#0E7C86,2024-01-03T00:00:00Z,2024-01-03T00:00:00Z
+4,Fotografia,Trabalhos de arte fotográfica.,#0B656D,2024-01-04T00:00:00Z,2024-01-04T00:00:00Z
+5,Performance,Arte performática,#D97706,2024-01-05T00:00:00Z,2024-01-05T00:00:00Z
+6,Teatro,Artes cênicas e dramaturgia,#0E7C86,2024-01-06T00:00:00Z,2024-01-06T00:00:00Z
+7,Dança,Artes do corpo e do movimento,#0B656D,2024-01-07T00:00:00Z,2024-01-07T00:00:00Z
+8,Literatura,"Poesia, conto e romance",#D97706,2024-01-08T00:00:00Z,2024-01-08T00:00:00Z

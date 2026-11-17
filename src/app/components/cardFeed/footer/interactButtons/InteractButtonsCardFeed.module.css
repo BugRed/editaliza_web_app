@@ -1,87 +1,106 @@
-.InteractButtonsCardFeed{
-    display: flex;
-    align-content: center;
-    justify-content: center;
-
-    gap: 0 0.5rem;
-    
-    color: var(--color-ink);
-
-    button{
-        cursor: pointer;
-    }
+.InteractButtonsCardFeed {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--text-muted);
 }
 
-
-.unLikedHeartWithNoAnimation{
-    fill: none;
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  padding: 0 0.375rem;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease;
 }
-.unLikedHeart{
-    fill: none;
-    animation: descurtir 325ms ease-out 1;
+
+.iconBtn:hover {
+  background-color: var(--surface-subtle);
+  color: var(--primary);
 }
 
-.likedHeartWithNoAnimation{
-    fill: var(--color-danger);
-    color: var(--color-danger);
-    fill: currentColor;
+.unLikedHeartWithNoAnimation {
+  fill: none;
 }
 
-.likedHeart{
-    fill: var(--color-danger);
-    color: var(--color-danger);
-    fill: currentColor;
-    animation: curtir 325ms ease-out 1 forwards;
+.unLikedHeart {
+  fill: none;
+  animation: descurtir 325ms ease-out 1;
+}
+
+.likedHeartWithNoAnimation {
+  color: #DC2626;
+  fill: #DC2626;
+}
+
+.likedHeart {
+  color: #DC2626;
+  fill: #DC2626;
+  animation: curtir 325ms ease-out 1 forwards;
 }
 
 @keyframes descurtir {
-    from{
-        transform: scale(0.6);
-    }
-    50%{
-        transform: scale(1.2);
-    }
-    to{
-        transform: scale(1);
-    }
+  from {
+    transform: scale(0.7);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 @keyframes curtir {
-    from{
-        transform: scale(0.6);
-    }
-    50%{
-        transform: scale(1.2);
-    }
-    to{
-        transform: scale(1);
-    }
+  from {
+    transform: scale(0.7);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
-
-.unSaved{
-    fill: none;
+.unSaved {
+  fill: none;
 }
-.saved{
-    fill: var(--color-primary);
-    color: var(--color-primary);
-    animation: salvar 300ms ease-in-out forwards;
-    fill: currentColor;
+
+.saved {
+  color: var(--primary);
+  fill: var(--accent);
+  animation: salvar 260ms ease-in-out forwards;
 }
 
 @keyframes salvar {
-    from{
-        transform: scale(0.8);
-    }
-    50%{
-        transform: scale(1.1);
-    }
-    to{
-        transform: scale(1);
-    }
+  from {
+    transform: scale(0.85);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
+.Share2 {
+  fill: none;
+}
 
-.Share2{
-    fill: none;
+.copiedLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
 }

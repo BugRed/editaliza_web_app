@@ -11,6 +11,13 @@ export enum EditalStatus {
   CANCELLED = 'CANCELLED'
 }
 
+export interface PlainEditalSummaryData {
+  whatIsIt: string;
+  whoCanApply: string[];
+  benefits: string[];
+  extraTags: string[];
+}
+
 // Interface para dados do edital
 export interface IEdital {
   id: number;
@@ -24,9 +31,20 @@ export interface IEdital {
   imgCoverUrl?: string;
   createdAt: Date;
   updatedAt: Date;
-  proposer: UserData;
+  proposer: UserData | number;
   listTags: TagData[];
   listComment: CommentData[];
+  territoryScope?: string;
+  city?: string | null;
+  state?: string | null;
+  requiredLanguages?: string[];
+  acceptedLanguages?: string[];
+  requiresPortfolio?: boolean;
+  requiresCnpj?: boolean;
+  requiresTechnicalFormation?: boolean;
+  minExperienceYears?: number;
+  targetProfileLevels?: string[];
+  plainSummary?: PlainEditalSummaryData | null;
 }
 
 // Classe Edital para Next.js

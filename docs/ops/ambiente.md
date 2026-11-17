@@ -21,23 +21,65 @@ import a partir de código de cliente vira **erro de build**, não valor
 
 ## Onde rodar
 
-- **Local:** `.env` preenchido (`.env.example` como molde) → `npm run dev`.
-  Migrations: `npm run db:migrate` (lê `DIRECT_URL`); seed: `npm run db:seed`.
+- **Local:** `.env` preenchido (`.env.example` como molde) → `yarn dev`.
+  Migrations: `yarn db:migrate` (lê `DIRECT_URL`); seed: `yarn db:seed`.
 - **CI (`.github/workflows/pr.yml`):** placeholders — o build valida o boot,
   não conecta em nada.
 - **Vercel/produção:** as quatro variáveis reais como project env. Nenhuma
   precisa ser "exposed to client" — todo consumo é server-side.
 
+## Fonte de dados e variáveis
+
+A fonte vem de `DATA_SOURCE` ([ADR 0020](../adr/0020-fonte-de-dados-por-env-mock-em-producao-docker-no-local.md)):
+
+| Onde | `DATA_SOURCE` | Dados |
+|---|---|---|
+| Local | `supabase` (padrão fora de produção) | Postgres + PostgREST do Docker, **sempre** |
+| Produção (Vercel), por enquanto | `mock` (padrão em produção) | seed em memória (`mock/*.csv`) |
+| Produção, depois | `supabase` | Supabase: **remover `DATA_SOURCE=mock` da Vercel**, definir `DATA_SOURCE=supabase` e as duas variáveis dele, sem tocar em rota (ver a dívida: o padrão de produção ainda é `mock`) |
+
+`AUTH_SECRET` (32 caracteres ou mais) é **obrigatória em qualquer ambiente**, sem padrão; sem ela o app não sobe
+([ADR 0021](../adr/0021-sessao-em-cookie-httponly-assinado-e-senha-com-scrypt.md)). `SUPABASE_URL` e
+`SUPABASE_API_KEY` só valem com `DATA_SOURCE=supabase`. Exemplos: `.env.example` e `.env.docker.example`.
+
+### Publicar na Vercel (mock)
+
+1. Project → Settings → Environment Variables: `AUTH_SECRET` = saída de `openssl rand -base64 32`, nos
+   ambientes Production e Preview. `DATA_SOURCE` é opcional (em produção o padrão já é `mock`).
+2. Deploy. As contas de exemplo estão em `mock/user_data.csv` e `mock/proposer_data.csv`.
+3. **Limite do mock:** escrita não persiste. Cada instância da função tem a sua memória e ela some no cold
+   start, então um cadastro pode não valer na próxima requisição. É demonstração, não produção real.
+
+## Banco local em Docker
+
+Local é **sempre** Docker: Postgres 17 + PostgREST + um nginx que expõe `/rest/v1` (o caminho do `supabase-js`).
+
+```bash
+command cp -f .env.docker.example .env.local   # .env.local sobrepõe o .env; já traz DATA_SOURCE e AUTH_SECRET de dev
+yarn dev:db                                    # sobe db, postgrest e gateway (aguarda ficarem saudáveis)
+yarn dev:db:setup                              # migrations + seed (senhas gravadas como hash) + recarrega o schema
+yarn dev                                       # reinicie se já estava rodando
+```
+
+**O seed fica no repositório para todo dev usar:** `mock/*.csv` (dados) + `db/seed.mjs` (carga) +
+`db/seed-columns.json` (tipos das colunas, lido também pelo mock). Rodar de novo não duplica.
+
+Contas de exemplo (as senhas legíveis só existem nos CSVs; no banco ficam como hash):
+`maria.oliveira@email.com` / `senha_segura_2` e `joao.silva@email.com` / `senha_segura_1` (artistas);
+os proponentes estão em `mock/proposer_data.csv`.
+
+`yarn dev:db:down` para; `yarn dev:db:reset` apaga os dados. **Banco criado antes do ADR 0021 tem senha em
+texto puro, que o app não aceita mais: rode `yarn dev:db:reset`, `yarn dev:db` e `yarn dev:db:setup`.**
+Para sair do Docker, apague o `.env.local` e configure o ambiente como na tabela acima.
+
+Portas: 54321 (gateway REST) e 54322 (Postgres), só em `127.0.0.1`. O gateway tira o header `Authorization`
+porque o PostgREST sem segredo JWT recusa qualquer token; tudo roda como `anon`. Não há RLS aqui.
+
 ## Testes
 
-Rodam **em Docker, sem rede** (`network_mode: none`): `npm run test:docker` constrói
-`Dockerfile.test` e executa o Vitest (jsdom + Testing Library). `npm test` roda no host, só para
+Rodam **em Docker, sem rede** (`network_mode: none`): `yarn test:docker` constrói
+`Dockerfile.test` e executa o Vitest (jsdom + Testing Library). `yarn test` roda no host, só para
 iterar. Nenhum teste toca Supabase ou serviço externo.
-
-## Protótipo de telas
-
-`/prototipo/*` serve telas com dados fixos para aprovação de design. Existe só fora de produção:
-o layout responde 404 e o `src/middleware.ts` só o libera quando `NODE_ENV !== 'production'`.
 
 ## Rotas de API abertas no middleware
 
