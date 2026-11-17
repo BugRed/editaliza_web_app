@@ -48,3 +48,6 @@ next-env.d.ts
 # clone local do repo-fonte do kit (referência para sync, tem .git próprio)
 /fh-kit-estado/
 /editaliza_prot/
+
+# marca: intermediários do gerador
+scripts/brand/.build/
