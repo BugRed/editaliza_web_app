@@ -36,7 +36,7 @@ Coluna "Protótipo" aponta o molde em `editaliza_prot` (referência de UX, nunca
 | 3 | Feed | `/feed` | artist | O3 | `(main)/feed` | vazio, carregando, poucos resultados |
 | 4 | Detalhe do edital + resumo em linguagem simples | `/editais/[id]` | artist | O3 | `EditalSummaryModal` (vira página) | resumo indisponível, edital encerrado |
 | 5 | Salvos | `/salvos` | artist | O3 | `(main)/salvos` | vazio |
-| 6 | Perfil e privacidade (exportar, excluir, visibilidade) | `/perfil` | artist | O2 | `(main)/perfil` | confirmação de exclusão |
+| 6 | Perfil e privacidade (exportar, excluir, visibilidade) | `/perfil` e `/perfil/privacidade` (prévia pronta, dados fixos) | artist | O2 | `(main)/perfil` | confirmação de exclusão |
 | 7 | Admin: edital (PDF, revisão, status) | `/admin/editais` | admin | O3 | sem molde | processando, falha de extração |
 | 8 | Onboarding do artista (multi-etapas) | `/onboarding` | artist | O4 | `configuracoes` (parte) | etapa pulada, campo "desconhecido" |
 | 9 | Trajetória | `/perfil/trajetoria` | artist | O4 | `configuracoes` (parte) | sem comprovação |

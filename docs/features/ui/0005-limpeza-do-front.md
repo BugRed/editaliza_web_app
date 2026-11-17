@@ -17,11 +17,11 @@
 - [x] controller — não se aplica
 - [x] route — não se aplica; só páginas, nenhum route handler novo
 - [ ] ui — limpeza (fase 1, feita) e telas das ondas O2 a O5 (fase 2, a fazer)
-- [ ] teste — fase 1 coberta (funções puras e organismos novos); telas da fase 2 ainda não
+- [ ] teste — fase 1 e lote O2 cobertos (funções puras e organismos novos); telas da fase 2 ainda não
 - [ ] doc — `docs/ui/mapa-de-telas.md`, CHANGELOG e dívida
 <!-- /kit:camadas -->
 
-**Próximo passo:** fase 2 (telas das ondas O2 a O5, dados fixos), começando por perfil e privacidade (O2). A fase 1 está feita, exceto a conferência em navegador real (celular, mídia, Open Graph).
+**Próximo passo:** fase 2, lote O3 (`/editais/[id]` e `/admin/editais`). O lote O2 (`/perfil/privacidade`) está pronto. A fase 1 está feita, exceto a conferência em navegador real (celular, mídia, Open Graph).
 
 ## Problema / motivação
 O front do protótipo veio inteiro e funciona, mas deixou resíduos (página de teste, feed duplicado, cores literais,
