@@ -41,16 +41,21 @@ describe("ArtistSettingsForm", () => {
     expect(screen.getAllByRole("button", { name: "Música" })[1]).toHaveAttribute("aria-pressed", "true");
   });
 
-  it("salva com o @ no usuário e nunca com anos negativos", async () => {
+  it("salva com o @ no usuário e avisa que o perfil foi salvo", async () => {
     render(<ArtistSettingsForm currentProfile={profile} />);
     await userEvent.clear(screen.getByLabelText("Usuário (@)"));
     await userEvent.type(screen.getByLabelText("Usuário (@)"), "ana_nova");
+    await userEvent.click(screen.getByRole("button", { name: "Salvar alterações" }));
+
+    expect(store.updateCurrentProfile).toHaveBeenCalledWith(expect.objectContaining({ handle: "@ana_nova" }));
+    expect(await screen.findByRole("status")).toHaveTextContent("Perfil salvo");
+  });
+
+  it("anos de atuação negativos bloqueiam o envio", async () => {
+    render(<ArtistSettingsForm currentProfile={profile} />);
     fireEvent.change(screen.getByLabelText("Anos de atuação artística"), { target: { value: "-4" } });
     await userEvent.click(screen.getByRole("button", { name: "Salvar alterações" }));
 
-    expect(store.updateCurrentProfile).toHaveBeenCalledWith(
-      expect.objectContaining({ handle: "@ana_nova", experienceYears: 0 })
-    );
-    expect(await screen.findByRole("status")).toHaveTextContent("Perfil salvo");
+    expect(store.updateCurrentProfile).not.toHaveBeenCalled();
   });
 });
