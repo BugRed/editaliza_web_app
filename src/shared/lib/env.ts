@@ -14,6 +14,9 @@ const envSchema = z
     SUPABASE_URL: z.url().optional(),
     SUPABASE_API_KEY: z.string().min(1).optional(),
 
+    // Endereço público (links absolutos de og-image e ícones). Sem ela vale o domínio de produção da Vercel.
+    SITE_URL: z.url().optional(),
+
     // Assina o cookie de sessão (HMAC-SHA256). Sem valor padrão, de propósito: um segredo conhecido
     // permitiria forjar sessão de qualquer usuário.
     AUTH_SECRET: z.string().min(32, 'AUTH_SECRET precisa de 32 caracteres ou mais (gere com: openssl rand -base64 32)'),

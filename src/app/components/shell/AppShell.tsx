@@ -1,5 +1,6 @@
 "use client";
 
+import { Logo, LogoMark } from "@/app/components/brand/Logo";
 import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,7 +11,6 @@ import {
   PlusCircle,
   Search,
   Settings,
-  Sun,
   User,
   X,
 } from "lucide-react";
@@ -110,14 +110,8 @@ export default function AppShell({ title, children }: AppShellProps) {
         {/* Left Sidebar (Instagram / X style) */}
         <aside className="hidden md:flex flex-col justify-between w-60 xl:w-64 shrink-0 sticky top-0 h-screen px-4 py-5">
           <div className="flex min-h-0 flex-1 flex-col gap-6">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2.5 px-3 py-1.5 text-xl font-bold text-[#0E7C86] tracking-tight"
-            >
-              <span className="w-9 h-9 rounded-xl bg-[#FFB800] text-[#102A30] flex items-center justify-center shrink-0">
-                <Sun size={20} strokeWidth={2.3} aria-hidden="true" />
-              </span>
-              <span>Editaliza</span>
+            <Link href="/" aria-label="Editaliza, página inicial" className="inline-flex items-center px-3 py-1.5">
+              <Logo />
             </Link>
 
             <nav className="flex flex-col gap-1" aria-label="Menu lateral">
@@ -197,12 +191,8 @@ export default function AppShell({ title, children }: AppShellProps) {
           <header className="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-[#DCE6E8] px-4 py-3">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2.5 min-w-0">
-                <Link
-                  href="/"
-                  className="md:hidden w-8 h-8 rounded-lg bg-[#FFB800] text-[#102A30] flex items-center justify-center shrink-0"
-                  aria-label="Editaliza"
-                >
-                  <Sun size={18} strokeWidth={2.3} />
+                <Link href="/" className="md:hidden shrink-0" aria-label="Editaliza, página inicial">
+                  <LogoMark size={32} />
                 </Link>
                 <h1 className="text-lg font-bold text-[#102A30] truncate">
                   {title}

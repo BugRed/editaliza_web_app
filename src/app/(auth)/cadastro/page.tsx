@@ -1,8 +1,9 @@
 "use client";
 
+import { LogoMark } from "@/app/components/brand/Logo";
 import { useState } from "react";
 import Link from "next/link";
-import { Building2, Palette, Sun } from "lucide-react";
+import { Building2, Palette } from "lucide-react";
 import { useAuth } from "@/app/hooks/useAuth";
 import { ALL_ART_TAGS, BRAZILIAN_STATES } from "@/app/lib/user-profiles";
 import { ProfileLevel, TerritoryScope } from "@/shared/lib/artistrank";
@@ -124,9 +125,7 @@ export default function CadastroPage() {
 
         <div className="p-6 sm:p-8 flex flex-col">
           <div className="flex flex-col items-center text-center mb-6">
-            <div className="w-12 h-12 rounded-xl bg-[#FFB800] text-[#102A30] flex items-center justify-center mb-3 shadow-xs">
-              <Sun size={26} strokeWidth={2.2} aria-hidden="true" />
-            </div>
+            <LogoMark size={56} className="mb-3" />
             <h1 className="text-2xl font-bold tracking-tight text-[#0E7C86]">
               Criar conta no Editaliza
             </h1>
