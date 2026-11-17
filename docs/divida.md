@@ -45,6 +45,9 @@ uma nem outra — é ADR.
 | 2026-11-16 | [`docs/features/ui/0002-articulacao-design-o1.md`](features/ui/0002-articulacao-design-o1.md) | **Anúncios e mídia sem backend:** os criativos são fictícios (sem rede de anúncios) e as capas de obra são presets (sem upload de arquivo) | Rede de anúncios e storage na O3 |
 | 2026-11-16 | [`docs/features/ui/0002-articulacao-design-o1.md`](features/ui/0002-articulacao-design-o1.md) | **ADR 0019 proposto, não aceito:** as barras usam os sete fatores do motor do protótipo, que ainda renormaliza fator ausente (a spec ArtistRank proíbe) | Aceitar ou revisar o ADR; a W5 reescreve o motor |
 | 2026-11-16 | [`docs/features/ui/0002-articulacao-design-o1.md`](features/ui/0002-articulacao-design-o1.md) | **`yarn.lock` novo:** resolveu as versões de novo ao substituir o `package-lock.json` | Rodar `yarn test` e `yarn build` antes do merge |
+| 2026-11-17 | doc-01 ([spec](features/ranking/0001-benchmark-real-artistrank.md)) | **Benchmark real sem o motor:** `docs/search/` tem dados e gerador, não o motor nem a calibração. | Os números da spec §29 são os do relatório, não reproduzidos. Fecha na O4 (T5.6), com os 14 editais como fixtures. |
+| 2026-11-17 | doc-01 ([spec](features/ranking/0001-benchmark-real-artistrank.md)) | **Circularidade e pool sintético:** linguagem dos ganhadores herdada do edital e concorrentes = outros ganhadores; o MRR 0,964 não mede discriminação dentro da linguagem (spec §29.3). | Listas de habilitados (pool real) e perfis com trajetória e posicionamento. |
+| 2026-11-17 | doc-01 ([spec](features/ranking/0001-benchmark-real-artistrank.md)) | **Nomes reais no repo:** `docs/search/` traz pessoas físicas ganhadoras, de resultados oficiais públicos; a spec §27.9 pede consentimento e dados minimizados. Há 2 cópias `(1)` idênticas não versionadas. | Decidir antes de abrir o repositório; apagar as cópias `(1)`. |
 
 ## Becos sem saída
 
