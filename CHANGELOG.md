@@ -2,13 +2,24 @@
 
 Impacto externo por entrega; app não versiona build. Novo no topo.
 
+## 2026-11-16 — cadastro: foto, senha forte, CPF e linguagens
+
+- **Foto obrigatória no cadastro** — artista envia a foto e instituição, o logo; recortada em quadrado e reduzida a 320×320 no navegador, e revalidada no servidor (JPEG, PNG ou WebP, nunca SVG).
+- **Senha forte** — 8 caracteres ou mais, com maiúscula, minúscula, número e símbolo, com lista de requisitos ao vivo no formulário e a mesma regra no servidor.
+- **Máscara no CPF e no CNPJ**, e o CPF informado agora é validado pelos dígitos verificadores.
+- **Muito mais linguagens** — cerca de 40 opções em 7 grupos, mais um campo para uma linguagem própria.
+- **Correção: quem se cadastrava via o perfil do João.** A store carregava os perfis uma vez só e, sem achar a conta nova, caía no primeiro da lista. Agora recarrega ao mudar o usuário e mostra um perfil vazio da própria pessoa.
+- **Logo opcional para empresas** — só o artista precisa de foto; a instituição pode cadastrar sem logo (usa uma imagem padrão) e enviar depois.
+- **Fotos no Supabase Storage (ADR 0022)** — `PHOTO_STORAGE=supabase` envia o arquivo ao bucket público e guarda só o endereço no perfil; o padrão `inline` mantém a imagem no registro, para o mock e o Docker local. Se o Storage falha, o cadastro responde 502 e não cria a conta.
+- **og-image alinhada ao endereço atual** — `SITE_URL=https://editaliza-five.vercel.app` define os links absolutos, e vence sobre o domínio que a Vercel informa.
+- ⚠️ No mock da Vercel a conta nova vive só na memória da instância: depois de um cold start ela some.
+
 ## 2026-11-16 — feature/ui-03: marca "ponto final", favicon e og-image
 
 - **Logo nova** — o nome "editaliza." em serifa (Fraunces) com o ponto final âmbar, e o símbolo "e." num quadrado teal. Substitui o sol do protótipo no menu, no cabeçalho de celular, no login e no cadastro. Guia em [`docs/ui/marca.md`](docs/ui/marca.md).
 - **Favicon, ícone de celular e og-image** — `favicon.ico`, `icon.svg` (muda com o tema do sistema), ícone Apple, ícones do app instalável (`manifest`) e imagem de compartilhamento 1200×630. Todos os SVGs em curvas, sem depender de fonte.
 - **Metatags** — título, descrição, Open Graph, Twitter e cor do tema; os links absolutos usam `SITE_URL` ou o domínio de produção da Vercel. A frase da og-image ("Editais culturais, em linguagem simples.") é provisória.
 - **Scripts** — `scripts/brand/` regenera tudo a partir das fontes.
-- **og-image alinhada ao endereço atual** — `SITE_URL=https://editaliza-five.vercel.app` define os links absolutos e vence sobre o domínio que a Vercel informa; precisa existir já no build.
 
 ## 2026-11-16 — feature/ui-02: front do editaliza_prot, galeria rica, mídia, selos, anúncios e barras do ranking
 

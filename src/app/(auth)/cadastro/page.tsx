@@ -5,7 +5,11 @@ import { useState } from "react";
 import Link from "next/link";
 import { Building2, Palette } from "lucide-react";
 import { useAuth } from "@/app/hooks/useAuth";
-import { ALL_ART_TAGS, BRAZILIAN_STATES } from "@/app/lib/user-profiles";
+import AvatarPicker from "@/app/components/forms/AvatarPicker";
+import PasswordChecklist from "@/app/components/forms/PasswordChecklist";
+import { ALL_ART_TAGS, ART_LANGUAGE_GROUPS, BRAZILIAN_STATES } from "@/app/lib/user-profiles";
+import { formatCnpj, formatCpf, isValidCpf, onlyDigits } from "@/shared/lib/documents";
+import { isStrongPassword, PASSWORD_MIN_LENGTH, PASSWORD_POLICY_MESSAGE } from "@/shared/lib/password-policy";
 import { ProfileLevel, TerritoryScope } from "@/shared/lib/artistrank";
 
 export default function CadastroPage() {
@@ -34,12 +38,25 @@ export default function CadastroPage() {
 
   const [erro, setErro] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [avatarDataUrl, setAvatarDataUrl] = useState("");
+  const [avatarError, setAvatarError] = useState("");
+  const [otherLanguage, setOtherLanguage] = useState("");
 
   const toggleLanguage = (tag: string) => {
     setCoreLanguages((prev) =>
       prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
     );
   };
+
+  const addOtherLanguage = () => {
+    const language = otherLanguage.trim().slice(0, 40);
+    if (!language) return;
+    const exists = coreLanguages.some((item) => item.toLowerCase() === language.toLowerCase());
+    if (!exists) setCoreLanguages((prev) => [...prev, language]);
+    setOtherLanguage("");
+  };
+
+  const customLanguages = coreLanguages.filter((language) => !ALL_ART_TAGS.includes(language));
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,16 +77,14 @@ export default function CadastroPage() {
       return;
     }
 
-    const senhaRegex = /^(?=.*\d).{6,}$/;
-    if (!senhaRegex.test(password)) {
-      setErro("A senha deve ter pelo menos 6 caracteres e 1 número.");
+    if (!isStrongPassword(password)) {
+      setErro(PASSWORD_POLICY_MESSAGE);
       return;
     }
 
     if (userType === "ARTIST") {
-      const cpfDigits = cpf.replace(/\D/g, "");
-      if (cpfDigits && cpfDigits.length !== 11) {
-        setErro("Se informado, o CPF deve ter 11 dígitos.");
+      if (onlyDigits(cpf) && !isValidCpf(cpf)) {
+        setErro("CPF inválido. Confira os números.");
         return;
       }
       if (coreLanguages.length === 0) {
@@ -86,6 +101,13 @@ export default function CadastroPage() {
       }
     }
 
+    // Foto só é obrigatória para artista; a empresa pode cadastrar sem logo e mandar depois.
+    if (userType === "ARTIST" && !avatarDataUrl) {
+      setAvatarError("Escolha uma foto sua para continuar.");
+      setErro("Falta a foto do perfil.");
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       const res = await register({
@@ -94,6 +116,7 @@ export default function CadastroPage() {
         handle: handle.trim() || undefined,
         email: email.trim(),
         password,
+        avatarDataUrl: avatarDataUrl || undefined,
         city: city.trim(),
         state: stateUf.trim(),
         bio: bio.trim(),
@@ -187,6 +210,18 @@ export default function CadastroPage() {
               </div>
             )}
 
+            <AvatarPicker
+              label={userType === "ARTIST" ? "Sua foto de perfil" : "Logo da instituição"}
+              required={userType === "ARTIST"}
+              hint={userType === "ARTIST" ? "Aparece no seu perfil e nos posts. JPG, PNG ou WebP; recortamos em quadrado." : "Opcional: aparece no perfil da empresa e nos editais. Sem logo, usamos uma imagem padrão. Você pode enviar depois."}
+              value={avatarDataUrl}
+              onChange={(value) => {
+                setAvatarDataUrl(value);
+                setAvatarError("");
+              }}
+              error={avatarError}
+            />
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <label htmlFor="cad-name" className="block text-sm font-medium text-[#102A30]">
@@ -247,13 +282,18 @@ export default function CadastroPage() {
                   id="cad-password"
                   type="password"
                   name="password"
-                  placeholder="Mínimo 6 caracteres e 1 número"
-                  minLength={6}
+                  placeholder="Crie uma senha forte"
+                  minLength={PASSWORD_MIN_LENGTH}
+                  autoComplete="new-password"
+                  aria-describedby="cad-password-rules"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                  className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86] focus:border-[#0E7C86] transition-colors"
                   required
                 />
+                <div id="cad-password-rules">
+                  <PasswordChecklist password={password} />
+                </div>
               </div>
             </div>
 
@@ -268,8 +308,11 @@ export default function CadastroPage() {
                     id="cad-cpf"
                     type="text"
                     placeholder="000.000.000-00"
+                    inputMode="numeric"
+                    autoComplete="off"
+                    maxLength={14}
                     value={cpf}
-                    onChange={(e) => setCpf(e.target.value)}
+                    onChange={(e) => setCpf(formatCpf(e.target.value))}
                     className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
                   />
                 </div>
@@ -317,8 +360,11 @@ export default function CadastroPage() {
                     id="cad-cnpj"
                     type="text"
                     placeholder="00.000.000/0001-00"
+                    inputMode="numeric"
+                    autoComplete="off"
+                    maxLength={18}
                     value={cnpj}
-                    onChange={(e) => setCnpj(e.target.value)}
+                    onChange={(e) => setCnpj(formatCnpj(e.target.value))}
                     className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
                     required
                   />
@@ -417,28 +463,84 @@ export default function CadastroPage() {
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <span className="block text-sm font-medium text-[#102A30]">
-                    Linguagens principais
-                  </span>
-                  <div className="flex flex-wrap gap-2">
-                    {ALL_ART_TAGS.map((tag) => {
-                      const active = coreLanguages.includes(tag);
-                      return (
-                        <button
-                          key={tag}
-                          type="button"
-                          onClick={() => toggleLanguage(tag)}
-                          className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors cursor-pointer ${
-                            active
-                              ? "bg-[#0E7C86] border-[#0E7C86] text-white"
-                              : "bg-white border-[#DCE6E8] text-[#4A656B] hover:border-[#0E7C86]"
-                          }`}
-                        >
-                          {tag}
-                        </button>
-                      );
-                    })}
+                <div className="space-y-3">
+                  <div>
+                    <span className="block text-sm font-medium text-[#102A30]">Linguagens principais</span>
+                    <p className="text-xs text-[#6B8388]">
+                      Escolha todas que fazem parte do seu trabalho. {coreLanguages.length}{" "}
+                      {coreLanguages.length === 1 ? "selecionada" : "selecionadas"}.
+                    </p>
+                  </div>
+                  {ART_LANGUAGE_GROUPS.map((group) => (
+                    <fieldset key={group.group} className="space-y-1.5">
+                      <legend className="text-[11px] font-bold uppercase tracking-wider text-[#6B8388]">{group.group}</legend>
+                      <div className="flex flex-wrap gap-2">
+                        {group.languages.map((tag) => {
+                          const active = coreLanguages.includes(tag);
+                          return (
+                          <button
+                            key={tag}
+                            type="button"
+                            aria-pressed={active}
+                            onClick={() => toggleLanguage(tag)}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors cursor-pointer ${
+                              active
+                                ? "bg-[#0E7C86] border-[#0E7C86] text-white"
+                                : "bg-white border-[#DCE6E8] text-[#4A656B] hover:border-[#0E7C86]"
+                            }`}
+                          >
+                            {tag}
+                          </button>
+                          );
+                        })}
+                      </div>
+                    </fieldset>
+                  ))}
+                  {customLanguages.length > 0 && (
+                    <fieldset className="space-y-1.5">
+                      <legend className="text-[11px] font-bold uppercase tracking-wider text-[#6B8388]">Suas linguagens</legend>
+                      <div className="flex flex-wrap gap-2">
+                        {customLanguages.map((tag) => (
+                          <button
+                            key={tag}
+                            type="button"
+                            aria-pressed="true"
+                            aria-label={`Remover ${tag}`}
+                            onClick={() => toggleLanguage(tag)}
+                            className="px-3 py-1.5 rounded-lg text-xs font-semibold border bg-[#0E7C86] border-[#0E7C86] text-white cursor-pointer"
+                          >
+                            {tag} ×
+                          </button>
+                        ))}
+                      </div>
+                    </fieldset>
+                  )}
+                  <div className="flex gap-2">
+                    <label htmlFor="cad-other-language" className="sr-only">
+                      Outra linguagem
+                    </label>
+                    <input
+                      id="cad-other-language"
+                      type="text"
+                      maxLength={40}
+                      placeholder="Não achou a sua? Digite outra (ex: Cordel)"
+                      value={otherLanguage}
+                      onChange={(e) => setOtherLanguage(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          addOtherLanguage();
+                        }
+                      }}
+                      className="min-w-0 flex-1 px-3.5 py-2 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                    />
+                    <button
+                      type="button"
+                      onClick={addOtherLanguage}
+                      className="px-4 py-2 rounded-lg bg-[#FFB800] text-[#102A30] text-sm font-bold hover:bg-[#E5A500] cursor-pointer"
+                    >
+                      Adicionar
+                    </button>
                   </div>
                 </div>
 

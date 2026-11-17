@@ -69,16 +69,20 @@ export interface ArtistProfile {
   likedEditalIds?: number[];
 }
 
-export const ALL_ART_TAGS = [
-  "Pintura",
-  "Teatro",
-  "Música",
-  "Escultura",
-  "Performance",
-  "Fotografia",
-  "Dança",
-  "Literatura",
+// Catálogo de linguagens artísticas do cadastro e das configurações. Os nomes já usados pelos editais e pelo
+// ranking (Pintura, Teatro, Música, Escultura, Performance, Fotografia, Dança, Literatura) seguem iguais, porque o
+// ranking compara por nome. Quem não achar a sua adiciona uma "outra linguagem" no formulário.
+export const ART_LANGUAGE_GROUPS: Array<{ group: string; languages: string[] }> = [
+  { group: "Artes visuais", languages: ["Pintura", "Desenho", "Gravura", "Escultura", "Fotografia", "Ilustração", "Quadrinhos", "Arte urbana e grafite", "Cerâmica", "Arte têxtil", "Instalação", "Arte digital"] },
+  { group: "Artes cênicas", languages: ["Teatro", "Dança", "Circo", "Performance", "Teatro de bonecos", "Contação de histórias"] },
+  { group: "Música", languages: ["Música", "Canto e coral", "Música instrumental", "Hip hop"] },
+  { group: "Audiovisual", languages: ["Cinema", "Audiovisual", "Videoarte", "Animação", "Podcast e rádio"] },
+  { group: "Literatura e palavra", languages: ["Literatura", "Poesia", "Slam"] },
+  { group: "Cultura e território", languages: ["Cultura popular", "Capoeira", "Cultura afro-brasileira", "Cultura indígena", "Patrimônio e memória", "Artesanato"] },
+  { group: "Outras linguagens", languages: ["Design", "Moda", "Games e cultura digital", "Arte e educação", "Artes integradas"] },
 ];
+
+export const ALL_ART_TAGS: string[] = ART_LANGUAGE_GROUPS.flatMap((group) => group.languages);
 
 export const BRAZILIAN_STATES = [
   "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA",
@@ -567,4 +571,47 @@ export function getPlainEditalSummary(
     ],
     extraTags: ["Cultura", "Fomento", "Inscrição Online"],
   };
+}
+
+export interface SessionIdentity {
+  id: number;
+  email: string;
+  name?: string;
+  imgUrl?: string | null;
+}
+
+const DEFAULT_AVATAR = "/images/avatar_joao_1794791579584.jpg";
+
+/**
+ * Perfil mínimo de quem acabou de entrar mas ainda não aparece na lista de artistas (conta nova, ou lista ainda
+ * carregando). Existe para o app nunca mostrar o perfil de OUTRA pessoa (antes caía no primeiro da lista).
+ */
+export function buildFallbackProfile(user: SessionIdentity): ArtistProfile {
+  const name = user.name?.trim() || "Artista";
+  const slug = name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "").slice(0, 20);
+  const profile: ArtistProfile = {
+    id: user.id,
+    name,
+    handle: `@${slug || "artista"}`,
+    email: user.email,
+    city: "",
+    state: "",
+    territoryScope: "ESTADUAL",
+    bio: "",
+    avatarUrl: user.imgUrl || DEFAULT_AVATAR,
+    tags: [],
+    coreLanguages: [],
+    supportLanguages: [],
+    experienceYears: 0,
+    profileLevel: "INICIANTE",
+    hasCnpjOrMei: false,
+    hasTechnicalFormation: false,
+    portfolioCompleteness: 0,
+    badges: [],
+    works: [],
+    savedEditalIds: [],
+    likedEditalIds: [],
+  };
+  profile.portfolioCompleteness = calculatePortfolioCompleteness(profile);
+  return profile;
 }

@@ -51,6 +51,20 @@ A fonte vem de `DATA_SOURCE` ([ADR 0020](../adr/0020-fonte-de-dados-por-env-mock
 3. **Limite do mock:** escrita não persiste. Cada instância da função tem a sua memória e ela some no cold
    start, então um cadastro pode não valer na próxima requisição. É demonstração, não produção real.
 
+### Fotos de perfil no Supabase Storage (opcional)
+
+Por padrão (`PHOTO_STORAGE=inline`) a foto vai no próprio registro. Para guardá-la no Supabase Storage
+([ADR 0022](../adr/0022-fotos-de-perfil-no-supabase-storage-com-fallback-no-registro.md)):
+
+1. No painel do Supabase: **Storage → New bucket**, nome `avatars`, marcado como **Public**. Em *Restrict file size* use 200 KB
+   e em *Allowed MIME types*, `image/jpeg, image/png, image/webp`.
+2. Na Vercel, nos ambientes Production e Preview: `PHOTO_STORAGE=supabase`, `SUPABASE_URL`, e `SUPABASE_SERVICE_ROLE_KEY`
+   (Project Settings → API → *service_role*, marcada **Sensitive**). `SUPABASE_STORAGE_BUCKET` só se o bucket tiver outro nome.
+3. Redeploy. Sem as variáveis, o app **não sobe** (o contrato falha no boot), então o erro aparece no deploy, não no cadastro.
+
+A chave de serviço dá acesso total ao projeto: nunca vai em `NEXT_PUBLIC_`, em arquivo versionado nem no navegador.
+Local e mock seguem em `inline`: nem o Docker nem o mock têm Storage.
+
 ## Banco local em Docker
 
 Local é **sempre** Docker: Postgres 17 + PostgREST + um nginx que expõe `/rest/v1` (o caminho do `supabase-js`).

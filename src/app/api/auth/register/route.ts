@@ -5,6 +5,10 @@ import { env } from '@/shared/lib/env';
 import { createSessionToken } from '@/shared/lib/auth-token';
 import { isHttpsRequest, SESSION_COOKIE, sessionCookieOptions } from '@/server/auth/session-cookie';
 import { hashPassword } from '@db/password.mjs';
+import { isValidAvatarDataUrl } from '@/shared/lib/avatar-image';
+import { storeAvatar } from '@/server/storage/avatar-storage';
+import { isValidCpf } from '@/shared/lib/documents';
+import { isStrongPassword, PASSWORD_MAX_LENGTH, PASSWORD_POLICY_MESSAGE } from '@/shared/lib/password-policy';
 import { calculatePortfolioCompleteness } from '@/app/lib/user-profiles';
 
 const registerBaseSchema = z.object({
@@ -13,8 +17,14 @@ const registerBaseSchema = z.object({
   email: z.string().trim().email('Digite um e-mail válido.'),
   password: z
     .string()
-    .min(6, 'A senha deve ter pelo menos 6 caracteres.')
-    .regex(/\d/, 'A senha deve incluir pelo menos 1 número.'),
+    .max(PASSWORD_MAX_LENGTH, 'A senha é longa demais.')
+    .refine(isStrongPassword, PASSWORD_POLICY_MESSAGE),
+  // Foto: obrigatória para artista (conferido abaixo), opcional para empresa. Vai como data URL pequena (JPEG/PNG/WebP,
+  // nunca SVG) e é guardada por storeAvatar (no registro ou no Supabase Storage, conforme PHOTO_STORAGE).
+  avatarDataUrl: z.preprocess(
+    (value) => (value === '' || value === null ? undefined : value),
+    z.string().refine(isValidAvatarDataUrl, 'A foto enviada não é válida. Use JPG, PNG ou WebP.').optional()
+  ),
   handle: z.string().trim().optional(),
   bio: z.string().trim().max(600).optional(),
   city: z.string().trim().max(100).optional(),
@@ -24,8 +34,8 @@ const registerBaseSchema = z.object({
   territoryScope: z
     .enum(['MUNICIPAL', 'METROPOLITANO', 'ESTADUAL', 'NACIONAL'])
     .optional(),
-  coreLanguages: z.array(z.string()).optional(),
-  supportLanguages: z.array(z.string()).optional(),
+  coreLanguages: z.array(z.string().trim().min(1).max(40)).max(30).optional(),
+  supportLanguages: z.array(z.string().trim().min(1).max(40)).max(30).optional(),
   experienceYears: z.number().min(0).max(80).optional(),
   profileLevel: z
     .enum(['INICIANTE', 'EMERGENTE', 'CONSOLIDADO', 'MESTRE'])
@@ -35,6 +45,8 @@ const registerBaseSchema = z.object({
   // Campos de Propositor
   cnpj: z.string().trim().optional(),
 });
+
+const DEFAULT_PROPOSER_AVATAR = '/images/edital_ocupacao_1794791581648.jpg';
 
 function cleanDigits(value?: string): string {
   return (value ?? '').replace(/\D/g, '');
@@ -57,10 +69,16 @@ export async function POST(request: Request) {
     const normalizedEmail = data.email.toLowerCase();
 
     if (data.userType === 'ARTIST') {
-      const cpfDigits = cleanDigits(data.cpf);
-      if (cpfDigits && cpfDigits.length !== 11) {
+      if (!data.avatarDataUrl) {
         return NextResponse.json(
-          { success: false, message: 'CPF inválido. Informe 11 dígitos.' },
+          { success: false, message: 'Envie uma foto para o perfil.' },
+          { status: 400 }
+        );
+      }
+      const cpfDigits = cleanDigits(data.cpf);
+      if (cpfDigits && !isValidCpf(cpfDigits)) {
+        return NextResponse.json(
+          { success: false, message: 'CPF inválido. Confira os números.' },
           { status: 400 }
         );
       }
@@ -123,17 +141,27 @@ export async function POST(request: Request) {
             .replace(/[^a-z0-9]/g, '')
             .slice(0, 20) || 'perfil'}`;
 
-    const defaultAvatar =
-      data.userType === 'PROPOSER'
-        ? '/images/edital_ocupacao_1794791581648.jpg'
-        : '/images/avatar_joao_1794791579584.jpg';
+    // Empresa sem logo usa a imagem padrão; artista sempre tem foto (garantido acima). O envio ao armazenamento
+    // vem ANTES de criar a conta: se falhar, nada foi gravado.
+    let avatar = DEFAULT_PROPOSER_AVATAR;
+    if (data.avatarDataUrl) {
+      try {
+        avatar = await storeAvatar(newId, data.avatarDataUrl);
+      } catch (error) {
+        console.error('Erro ao guardar a foto do perfil:', error);
+        return NextResponse.json(
+          { success: false, message: 'Não foi possível salvar a foto agora. Tente novamente em instantes.' },
+          { status: 502 }
+        );
+      }
+    }
 
     const { error: userErr } = await supabase.from('user_data').insert({
       id: newId,
       name: data.name,
       email: normalizedEmail,
       password: passwordHash,
-      imgUrl: defaultAvatar,
+      imgUrl: avatar,
       userType: data.userType,
       listComment: [],
       createdAt: now,
@@ -173,8 +201,8 @@ export async function POST(request: Request) {
         email: normalizedEmail,
         password: passwordHash,
         cpf: cleanDigits(data.cpf) || null,
-        imgUrl: defaultAvatar,
-        avatarUrl: defaultAvatar,
+        imgUrl: avatar,
+        avatarUrl: avatar,
         bio: data.bio || 'Artista cadastrado na rede Editaliza.',
         city: data.city || '',
         state: data.state || '',
@@ -213,7 +241,7 @@ export async function POST(request: Request) {
           handle: slugHandle,
           email: normalizedEmail,
           password: passwordHash,
-          imgUrl: defaultAvatar,
+          imgUrl: avatar,
           bio:
             data.bio ||
             'Instituição propositora cadastrada para divulgar editais e chamadas culturais.',
