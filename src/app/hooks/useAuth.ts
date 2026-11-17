@@ -23,6 +23,8 @@ export interface RegisterPayload {
   name: string;
   email: string;
   password: string;
+  /** Foto do perfil (data URL JPEG/PNG/WebP já recortada e reduzida). Obrigatória para artista, opcional para empresa. */
+  avatarDataUrl?: string;
   handle?: string;
   bio?: string;
   city?: string;
