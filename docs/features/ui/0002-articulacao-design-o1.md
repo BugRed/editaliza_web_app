@@ -1,6 +1,6 @@
 # Front do editaliza_prot e galeria rica (O1)
 
-**Status:** em-desenvolvimento
+**Status:** entregue
 **Responsabilidade:** ui
 **Branch:** feature/ui-02/articulacao-design-o1
 **Autor:** BugRed · **Data:** 2026-11-16
@@ -84,7 +84,7 @@ Nenhuma regra nova. O ranking segue o motor do protótipo; a apresentação é d
 - [x] Nada em `localStorage`, `sessionStorage` nem `document.cookie`; sessão só em cookie `httpOnly` assinado; senha só como hash
 - [x] Produção roda em mock (`yarn build` e `yarn start` com `DATA_SOURCE=mock`, login e cadastro verificados) e o local em Docker
 - [x] `yarn typecheck`, `yarn lint`, `yarn test` e `yarn build` passando, também os testes em Docker
-- [ ] Usuário confere no navegador, inclusive celular, e aceita o ADR 0019
+- [x] Usuário conferiu no navegador e aprovou o protótipo (2026-11-16). O ADR 0019 segue `Proposto` até o usuário aceitá-lo de forma explícita
 <!-- /kit:criterios -->
 
 ## Dívida / não exercitado
@@ -100,7 +100,7 @@ Resumo; a lista viva está em [`docs/divida.md`](../../divida.md).
 - **Decidido na hora:** limites de cor 40 e 70; dropdowns fechados; 4 perfis por página na direita; um anúncio a cada
   3 posts; anúncio do menu lateral ocupa a altura livre; "Tipo de mídia" como campo novo; imagens originais (7,3 MB)
   em `public/images`; `yarn.lock` resolvido de novo.
-- **Front sem tokens:** hex literal nas classes, como no protótipo.
+- **Front sem tokens:** resolvido na ui-04 (modo escuro): as cores literais viraram tokens.
 
 ## Decisões em aberto
 - Aceitar o ADR 0019 (barras, faixas de cor e dropdowns) ou revisá-lo.

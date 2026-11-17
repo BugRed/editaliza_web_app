@@ -1,6 +1,6 @@
 # Modo escuro
 
-**Status:** em-desenvolvimento
+**Status:** entregue
 **Responsabilidade:** ui
 **Branch:** feature/ui-04/modo-escuro
 **Autor:** BugRed · **Data:** 2026-11-16
@@ -21,7 +21,7 @@
 - [x] doc — `docs/ui/`, ADR do cookie de tema, CHANGELOG e fecho da O1 no PROGRESS
 <!-- /kit:camadas -->
 
-**Próximo passo:** o usuário conferir o escuro no navegador (celular e desktop, login ao modal); depois `/fechar`.
+**Próximo passo:** nenhum. Entregue; usuário conferiu o escuro no ar em 2026-11-16.
 
 ## Problema / motivação
 O tema escuro estava previsto desde a spec 0001 (mesmos nomes de token, outros valores) e a marca já tem as versões
@@ -57,14 +57,14 @@ Nenhuma. Guia visual em [`docs/ui/`](../../ui/).
 <!-- kit:criterios -->
 - [x] Sem cookie, o app acompanha o tema do sistema (claro e escuro)
 - [x] O botão alterna sistema / claro / escuro e a escolha sobrevive a recarregar
-- [ ] A primeira pintura já vem no tema escolhido (sem flash), pelo cookie lido no servidor
-- [ ] Nenhuma tela fica com texto ilegível ou fundo claro solto no escuro (login, cadastro, feed, perfil, configurações, publicar, modal)
+- [x] A primeira pintura já vem no tema escolhido (sem flash), pelo cookie lido no servidor
+- [x] Nenhuma tela fica com texto ilegível ou fundo claro solto no escuro (login, cadastro, feed, perfil, configurações, publicar, modal)
 - [x] Logo e `theme-color` trocam com o tema
 - [x] Contraste mínimo AA nos pares texto/fundo dos tokens
 <!-- /kit:criterios -->
 
 ## Dívida / não exercitado
-Escuro não visto no navegador; `theme-color` só segue o sistema; `--text-subtle` claro a 4,0:1. Ver `docs/divida.md`.
+Usuário conferiu no ar. `theme-color` só segue o sistema; `--text-subtle` claro a 4,0:1. Ver `docs/divida.md`.
 Tomado na hora: botão também em login/cadastro (via `(auth)/layout.tsx`); a checagem de "nenhuma tela ilegível" está marcada pela troca total de cores literais por token (nenhum `#hex` restante em `.tsx`/`.css` fora de `globals.css`, `layout.tsx` e o `theme-color`), não por inspeção visual.
 
 ## Decisões em aberto
