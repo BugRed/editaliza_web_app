@@ -1,10 +1,12 @@
 import 'server-only';
-import { createClient } from '@supabase/supabase-js';
+import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { env } from '@/shared/lib/env';
+import { createMockClient } from '@/server/db/mock/client';
 
-// Crie uma única instância do cliente Supabase para ser reutilizada
-// por toda a sua aplicação. Isso garante eficiência de recursos.
-// A validação das variáveis mora em @/shared/lib/env — este arquivo só consome.
-// Server-only: este cliente nunca pode chegar ao bundle de cliente; a
-// publishable key não é embutida em página nenhuma.
-export const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_API_KEY);
+// Único ponto de acesso a dados do app. A fonte vem de DATA_SOURCE (ver env.ts): as rotas só importam
+// `supabase` e não sabem se atrás dele há o mock em memória, o PostgREST do Docker ou o Supabase.
+// Server-only: este cliente nunca pode chegar ao bundle de cliente.
+export const supabase: SupabaseClient =
+  env.DATA_SOURCE === 'mock'
+    ? (createMockClient() as unknown as SupabaseClient)
+    : createClient(env.SUPABASE_URL as string, env.SUPABASE_API_KEY as string);

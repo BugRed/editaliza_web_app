@@ -4,6 +4,7 @@
 import { readFile } from 'node:fs/promises';
 import { parse } from 'csv-parse/sync';
 import postgres from 'postgres';
+import { hashPassword } from './password.mjs';
 
 const url = process.env.DATABASE_URL;
 if (!url) {
@@ -14,12 +15,12 @@ if (!url) {
 const sql = postgres(url, { prepare: false, onnotice: () => {} });
 
 // Colunas jsonb: o CSV guarda texto JSON, mas o driver só serializa objeto —
-// string crua viraria jsonb escalar do tipo "string" (dupla codificação)
-const COLUNAS_JSON = new Set([
-  'listComment', 'listTags', 'listEdital',
-  'coreLanguages', 'supportLanguages', 'badges', 'works', 'savedEditalIds', 'likedEditalIds',
-  'requiredLanguages', 'acceptedLanguages', 'targetProfileLevels', 'plainSummary',
-]);
+// string crua viraria jsonb escalar do tipo "string" (dupla codificação).
+// A lista mora em seed-columns.json, que o mock em memória do app também lê.
+const { json: COLUNAS_JSON_LISTA, password: COLUNA_SENHA } = JSON.parse(
+  await readFile(new URL('./seed-columns.json', import.meta.url), 'utf8')
+);
+const COLUNAS_JSON = new Set(COLUNAS_JSON_LISTA);
 
 // Ordem das inserções segue a leitura lógica dos dados (as referências entre
 // tabelas não são FK — ver baseline —, mas a ordem mantém o seed previsível)
@@ -51,13 +52,15 @@ try {
       const colunas = Object.keys(row);
       // Campo vazio no CSV vira NULL, não string vazia
       const valores = Object.fromEntries(
-        colunas.map((coluna) => {
-          const bruto = row[coluna] === '' ? null : row[coluna];
-          const valor = bruto !== null && COLUNAS_JSON.has(coluna)
-            ? JSON.parse(bruto)
-            : bruto;
-          return [coluna, valor];
-        })
+        await Promise.all(
+          colunas.map(async (coluna) => {
+            const bruto = row[coluna] === '' ? null : row[coluna];
+            if (bruto === null) return [coluna, null];
+            // O CSV traz a senha de exemplo legível para o dev; o banco só recebe o hash.
+            if (coluna === COLUNA_SENHA) return [coluna, await hashPassword(bruto)];
+            return [coluna, COLUNAS_JSON.has(coluna) ? JSON.parse(bruto) : bruto];
+          })
+        )
       );
 
       const resultado = await sql`
