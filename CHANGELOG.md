@@ -2,6 +2,14 @@
 
 Impacto externo por entrega; app não versiona build. Novo no topo.
 
+## 2026-11-16 — feature/ui-03: marca "ponto final", favicon e og-image
+
+- **Logo nova** — o nome "editaliza." em serifa (Fraunces) com o ponto final âmbar, e o símbolo "e." num quadrado teal. Substitui o sol do protótipo no menu, no cabeçalho de celular, no login e no cadastro. Guia em [`docs/ui/marca.md`](docs/ui/marca.md).
+- **Favicon, ícone de celular e og-image** — `favicon.ico`, `icon.svg` (muda com o tema do sistema), ícone Apple, ícones do app instalável (`manifest`) e imagem de compartilhamento 1200×630. Todos os SVGs em curvas, sem depender de fonte.
+- **Metatags** — título, descrição, Open Graph, Twitter e cor do tema; os links absolutos usam `SITE_URL` ou o domínio de produção da Vercel. A frase da og-image ("Editais culturais, em linguagem simples.") é provisória.
+- **Scripts** — `scripts/brand/` regenera tudo a partir das fontes.
+- **og-image alinhada ao endereço atual** — `SITE_URL=https://editaliza-five.vercel.app` define os links absolutos e vence sobre o domínio que a Vercel informa; precisa existir já no build.
+
 ## 2026-11-16 — feature/ui-02: front do editaliza_prot, galeria rica, mídia, selos, anúncios e barras do ranking
 
 - **Front do `editaliza_prot` aqui, exato** — paleta, Roboto, shell em três colunas, feed estilo post, login, perfil, configurações, salvos e publicar edital. O `src` do protótipo foi trazido inteiro; o design anterior (atoms/molecules próprios) foi descartado.

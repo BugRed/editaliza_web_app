@@ -44,6 +44,7 @@ A fonte vem de `DATA_SOURCE` ([ADR 0020](../adr/0020-fonte-de-dados-por-env-mock
 
 ### Publicar na Vercel (mock)
 
+0. `SITE_URL` = `https://editaliza-five.vercel.app` (o endereço público atual). Define a base dos links absolutos da og-image e dos ícones; sem ela vale o domínio de produção que a Vercel informa (`VERCEL_PROJECT_PRODUCTION_URL`), que pode ser o de um nome antigo do projeto. **Precisa existir também no Preview e já no build**, porque o `/login` é gerado estático. Depois de mudar, force um novo deploy e confira no Sharing Debugger do Facebook (raspar de novo) e no LinkedIn Post Inspector, que guardam a imagem antiga em cache.
 1. Project → Settings → Environment Variables: `AUTH_SECRET` = saída de `openssl rand -base64 32`, nos
    ambientes Production e Preview. `DATA_SOURCE` é opcional (em produção o padrão já é `mock`).
 2. Deploy. As contas de exemplo estão em `mock/user_data.csv` e `mock/proposer_data.csv`.
