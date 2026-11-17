@@ -2,6 +2,10 @@
 
 Impacto externo por entrega; app não versiona build. Novo no topo.
 
+## 2026-11-16 — onda O1 fechada
+
+- Protótipo aprovado, código no ar e modo escuro conferido pelo usuário. A próxima onda é a O2 (no ar de verdade: Prisma, Better Auth, deploy, LGPD).
+
 ## 2026-11-16 — feature/ui-04: modo escuro
 
 - **Modo escuro** — segue o tema do sistema por padrão. Um botão (menu lateral, cabeçalho de celular, login e cadastro) alterna sistema, claro e escuro, e a escolha é lembrada em cookie, sem piscar no tema errado ao abrir. Guia em [`docs/ui/tema.md`](docs/ui/tema.md), decisão no [ADR 0023](docs/adr/0023-tema-segue-o-sistema-e-a-escolha-fica-em-cookie.md).

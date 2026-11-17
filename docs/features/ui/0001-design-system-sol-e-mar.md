@@ -40,7 +40,7 @@ O CSS tinha 24 cores soltas de cinco famílias, dois temas sem parentesco, cinco
 <!-- kit:criterios -->
 - [x] Nenhum hex ou variável antiga nos `.css` fora de `globals.css`
 - [x] `tsc` e lint sem erro
-- [ ] Usuário confirma o visual do feed no navegador
+- [x] Usuário confirma o visual do feed no navegador
 <!-- /kit:criterios -->
 
 ## Dívida / não exercitado
