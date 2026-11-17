@@ -75,9 +75,19 @@ precedência), §9.3.1, §9.3.2, §27.5 e §29.5. Não reescrevo a regra aqui.
 - Os números da spec (§27.5, §29) são do relatório; só aqui serão reproduzidos pela primeira vez.
 - Os perfis reais são mínimos e circulares (§29.3): o teste dos 14 editais protege contra regressão, não prova qualidade.
 
+## Decisões da entrevista (2026-11-17)
+Respondidas pelo usuário na `grill-regra-negocio`. Falta a confirmação final do resumo e o registro em `docs/negocio/`.
+- **Entrada (B2):** o motor novo nasce em `src/server/ranking/` com o contrato rico (`strength`, `role`, obras,
+  estados de elegibilidade). O protótipo (`shared/lib/artistrank.ts`) fica como está até uma feature de UI trocar um
+  pelo outro. O plano §6.0 cita `src/server/artistrank/`: alinhar o nome ao registrar a regra.
+- **Alpha:** parâmetro configurável, padrão 0,6; varredura em 0,0 · 0,4 · 0,6 · 0,8 · 1,0 sobre o corpus multi-obra
+  do benchmark v3 (`docs/search/prompt_benchmark_v3.md`). Até lá, só casos sintéticos.
+- **Escala:** nota interna contínua de 0 a 1 (100 = 1); fator sem dado é `null` em `fatores[]` e vale 0,5 no cálculo.
+- **Teto de 45:** só com requisito artístico `explicit_mandatory` em `FAIL`; campo vazio é `UNKNOWN` e não ativa;
+  linguagem `core` obrigatória só casa com `core`; o resultado diz qual requisito, a evidência e a nota antes do teto.
+- **Fatores textuais:** fração dos itens exigidos que o perfil cobre, por igualdade normalizada, com a similaridade
+  injetada como função. O adaptador do Voyage e o A/B ficam para a feature seguinte.
+- **Benchmark v3:** em andamento em outra sessão, a partir do prompt acima; as fixtures reais passam a ser as dele.
+
 ## Decisões em aberto
-Para a `grill-regra-negocio`, antes do código:
-- Como o edital estruturado e o perfil entram no motor sem a taxonomia da O3 (formato de entrada provisório)?
-- Valor de `alpha` do portfólio: usar 0,6, o único exercitado?
-- Escala das notas por fator: só os cinco degraus 0/0,25/0,5/0,75/1?
-- Onde fica a fronteira de "requisito artístico obrigatório" frente ao `UNKNOWN`?
+- Nenhuma de regra, além da confirmação final do resumo.
