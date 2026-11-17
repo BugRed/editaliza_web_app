@@ -1,10 +1,10 @@
 # CI do app (ADR-0012: verificação automática antes do revisor).
 #
-# Roda lint + typecheck + build em pull request e push para master — sem isto,
-# quebra só aparece depois do merge. Sem passo de teste de propósito: o repo
-# ainda não tem suite (nasce na W2/T2.3); quando existir, entra aqui.
+# Roda lint + typecheck + testes + build em pull request e push para master — sem isto,
+# quebra só aparece depois do merge. Os testes rodam no Node, sem banco nem rede.
 # O build recebe env de placeholder porque src/shared/lib/env.ts valida as
-# variáveis no boot — sem elas o próprio `next build` falha.
+# variáveis no boot — sem elas o próprio `next build` falha. DATA_SOURCE=mock: o CI
+# não tem banco; o segredo abaixo é só do CI e não assina sessão de ninguém real.
 name: CI
 
 on:
@@ -30,19 +30,22 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
+          cache: yarn
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Lint
-        run: npm run lint
+        run: yarn lint
 
       - name: Type check
-        run: npm run typecheck
+        run: yarn typecheck
+
+      - name: Test
+        run: yarn test
 
       - name: Build
-        run: npm run build
+        run: yarn build
         env:
-          SUPABASE_URL: https://ci-placeholder.supabase.co
-          SUPABASE_API_KEY: sb_publishable_ci-placeholder
+          DATA_SOURCE: mock
+          AUTH_SECRET: ci-placeholder-nao-assina-sessao-real-0123456789
