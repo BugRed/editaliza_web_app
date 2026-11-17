@@ -104,6 +104,9 @@ export default function EditalDetailView({ edital, proposerName, proposerHref, s
           <Bookmark size={16} className={saved ? "fill-(--accent) text-(--accent-ink)" : ""} />
           <span>{saved ? "Salvo nos seus editais" : "Salvar edital"}</span>
         </button>
+        <Link href={`/editais/${edital.id}/porque`} className="text-sm font-semibold text-(--primary-fg) hover:underline">
+          Por que essa nota?
+        </Link>
         <a
           href={resolveExternalUrl(edital)}
           target="_blank"

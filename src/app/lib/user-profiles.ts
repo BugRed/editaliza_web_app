@@ -1,5 +1,6 @@
 import { ProfileLevel, RankArtistInput, TerritoryScope } from "@/shared/lib/artistrank";
 import { isWorkKind, type WorkKind } from "@/shared/lib/media";
+import type { PortfolioVisibility } from "@/shared/lib/privacy";
 
 export interface UserBadge {
   id: string;
@@ -67,6 +68,8 @@ export interface ArtistProfile {
   works: ArtWork[];
   savedEditalIds?: number[];
   likedEditalIds?: number[];
+  /** Ausente vale PUBLIC. Ainda sem tela que grave; a página pública já respeita PRIVATE. */
+  portfolioVisibility?: PortfolioVisibility;
 }
 
 // Catálogo de linguagens artísticas do cadastro e das configurações. Os nomes já usados pelos editais e pelo
