@@ -3,9 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Check, X } from "lucide-react";
-import AppShell from "@/app/components/shell/AppShell";
-import BadgeManager from "@/app/components/profile/BadgeManager";
-import WorkManager from "@/app/components/profile/WorkManager";
+import AppShell from "@/shared/components/organisms/AppShell";
+import BadgeManager from "@/shared/components/organisms/BadgeManager";
+import WorkManager from "@/shared/components/organisms/WorkManager";
 import { useSocialStore, ProposerProfile } from "@/app/hooks/useSocialStore";
 import {
   ALL_ART_TAGS,

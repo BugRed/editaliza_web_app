@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Check, FilePlus2, Sparkles } from "lucide-react";
-import AppShell from "@/app/components/shell/AppShell";
+import AppShell from "@/shared/components/organisms/AppShell";
 import { useSocialStore } from "@/app/hooks/useSocialStore";
 import { ALL_ART_TAGS, BRAZILIAN_STATES } from "@/app/lib/user-profiles";
 import { ProfileLevel, TerritoryScope } from "@/shared/lib/artistrank";

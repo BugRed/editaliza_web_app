@@ -1,7 +1,7 @@
 'use client';
 
-import { LogoMark, Wordmark } from "@/app/components/brand/Logo";
-import AuthForm from "../../components/forms/AuthForm";
+import { LogoMark, Wordmark } from "@/shared/components/atoms/Logo";
+import AuthForm from "@/shared/components/organisms/AuthForm";
 import { useAuth } from "../../hooks/useAuth";
 import { useRouter } from "next/navigation";
 import Link from "next/link";

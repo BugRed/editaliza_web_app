@@ -1,8 +1,8 @@
 "use client";
 
-import AppShell from "@/app/components/shell/AppShell";
-import ProfileView from "@/app/components/profile/ProfileView";
-import ProposerProfileView from "@/app/components/profile/ProposerProfileView";
+import AppShell from "@/shared/components/organisms/AppShell";
+import ProfileView from "@/shared/components/organisms/ProfileView";
+import ProposerProfileView from "@/shared/components/organisms/ProposerProfileView";
 import { useEditals } from "@/app/hooks/useEditals";
 import { useSocialStore } from "@/app/hooks/useSocialStore";
 

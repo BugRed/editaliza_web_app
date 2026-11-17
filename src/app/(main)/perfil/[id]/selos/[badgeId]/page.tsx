@@ -3,7 +3,7 @@
 import { use } from "react";
 import Link from "next/link";
 import { Award, Building2, ChevronLeft, FileText } from "lucide-react";
-import AppShell from "@/app/components/shell/AppShell";
+import AppShell from "@/shared/components/organisms/AppShell";
 import { useEditals } from "@/app/hooks/useEditals";
 import { useSocialStore } from "@/app/hooks/useSocialStore";
 

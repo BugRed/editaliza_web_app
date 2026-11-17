@@ -1,12 +1,12 @@
 "use client";
 
-import { LogoMark } from "@/app/components/brand/Logo";
+import { LogoMark } from "@/shared/components/atoms/Logo";
 import { useState } from "react";
 import Link from "next/link";
 import { Building2, Palette } from "lucide-react";
 import { useAuth } from "@/app/hooks/useAuth";
-import AvatarPicker from "@/app/components/forms/AvatarPicker";
-import PasswordChecklist from "@/app/components/forms/PasswordChecklist";
+import AvatarPicker from "@/shared/components/molecules/AvatarPicker";
+import PasswordChecklist from "@/shared/components/molecules/PasswordChecklist";
 import { ALL_ART_TAGS, ART_LANGUAGE_GROUPS, BRAZILIAN_STATES } from "@/app/lib/user-profiles";
 import { formatCnpj, formatCpf, isValidCpf, onlyDigits } from "@/shared/lib/documents";
 import { isStrongPassword, PASSWORD_MIN_LENGTH, PASSWORD_POLICY_MESSAGE } from "@/shared/lib/password-policy";
