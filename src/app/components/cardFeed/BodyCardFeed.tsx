@@ -74,7 +74,7 @@ export default function BodyCardFeed({
                 href={proposerLink}
                 tabIndex={-1}
                 aria-hidden="true"
-                className={`${styles.proposerAvatar} transition-colors hover:border-[#0E7C86]`}
+                className={`${styles.proposerAvatar} transition-colors hover:border-(--primary-fg)`}
               >
                 {initials}
               </Link>
@@ -111,7 +111,7 @@ export default function BodyCardFeed({
               type="button"
               onClick={onOpenSummary}
               aria-label={`Ver resumo de ${title}`}
-              className="absolute inset-0 z-[1] cursor-pointer bg-transparent transition-colors hover:bg-[#102A30]/5 focus-visible:outline-offset-[-3px]"
+              className="absolute inset-0 z-[1] cursor-pointer bg-transparent transition-colors hover:bg-(--foreground)/5 focus-visible:outline-offset-[-3px]"
             />
           )}
           <PercentCardFeed
@@ -129,7 +129,7 @@ export default function BodyCardFeed({
                 <button
                   type="button"
                   onClick={onOpenSummary}
-                  className="cursor-pointer text-left font-[inherit] transition-colors hover:text-[#0E7C86]"
+                  className="cursor-pointer text-left font-[inherit] transition-colors hover:text-(--primary-fg)"
                 >
                   {title}
                 </button>
@@ -138,21 +138,21 @@ export default function BodyCardFeed({
               )}
             </h2>
             {rank && (
-              <span className="text-xs font-medium text-[#4A656B] tabular-nums">
+              <span className="text-xs font-medium text-(--text-muted) tabular-nums">
                 {rank.nivelAderencia} · Confiança {rank.confiancaC.toFixed(1)}
               </span>
             )}
           </div>
 
           {rank?.bloqueado && rank.motivoBloqueio && (
-            <div className="flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs font-medium text-red-800">
+            <div className="flex items-start gap-2 rounded-lg border border-(--danger-border) bg-(--danger-soft) px-3 py-2 text-xs font-medium text-(--danger)">
               <ShieldAlert size={15} className="mt-0.5 shrink-0" />
               <span>{rank.motivoBloqueio}</span>
             </div>
           )}
 
           {!rank?.bloqueado && rank?.tetoAplicado && rank.motivoTeto && (
-            <div className="flex items-start gap-2 rounded-lg border border-amber-200 bg-[#FFF8E1] px-3 py-2 text-xs font-medium text-[#7A5400]">
+            <div className="flex items-start gap-2 rounded-lg border border-(--warning-border) bg-(--accent-softer) px-3 py-2 text-xs font-medium text-(--accent-ink)">
               <AlertCircle size={15} className="mt-0.5 shrink-0" />
               <span>{rank.motivoTeto}</span>
             </div>

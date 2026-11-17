@@ -96,20 +96,15 @@ describe("RankBars", () => {
   });
 
   it.each([
-    [20, "Pouco", "#C62828"],
-    [55, "Médio", "#E5A500"],
-    [90, "Alto", "#2F9E6B"],
+    [20, "Pouco", "var(--danger)"],
+    [55, "Médio", "var(--accent-hover)"],
+    [90, "Alto", "var(--success)"],
   ])("nota %s aparece como %s, com cor própria e o nome da faixa no texto (não só na cor)", async (nota, band, color) => {
     const factors = rank().fatores.map((f) => (f.id === "linguagem" ? { ...f, nota } : f));
     render(<RankBars rank={rank({ fatores: factors })} />);
     await openAllGroups();
     const meter = screen.getByRole("meter", { name: "Linguagem artística" });
     expect(meter).toHaveAttribute("aria-valuetext", expect.stringContaining(band.toLowerCase()));
-    expect((meter.firstElementChild as HTMLElement).style.backgroundColor).toBe(hexToRgb(color));
+    expect((meter.firstElementChild as HTMLElement).style.backgroundColor).toBe(color);
   });
 });
-
-function hexToRgb(hex: string): string {
-  const n = parseInt(hex.slice(1), 16);
-  return `rgb(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255})`;
-}

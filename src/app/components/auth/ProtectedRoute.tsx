@@ -25,8 +25,8 @@ export default function ProtectedRoute({
   if (isLoading) {
     return (
       fallback || (
-        <div className="min-h-screen flex items-center justify-center bg-[#F8FAFB]">
-          <div className="text-[#4A656B] text-sm font-medium">Carregando...</div>
+        <div className="min-h-screen flex items-center justify-center bg-(--background)">
+          <div className="text-(--text-muted) text-sm font-medium">Carregando...</div>
         </div>
       )
     );

@@ -61,10 +61,10 @@ export default function TesteFeedPage() {
     return (
       <>
         <Header />
-        <div className="pt-24 pb-24 min-h-screen flex flex-col items-center justify-center p-4 bg-[#F8FAFB]">
-          <div className="animate-spin rounded-full h-10 w-10 border-2 border-[#DCE6E8] border-t-[#0E7C86] mb-4" />
-          <h1 className="text-2xl font-bold mb-2 text-center text-[#102A30]">Feed de Editais</h1>
-          <p className="text-[#4A656B] text-center text-sm">Carregando dados...</p>
+        <div className="pt-24 pb-24 min-h-screen flex flex-col items-center justify-center p-4 bg-(--background)">
+          <div className="animate-spin rounded-full h-10 w-10 border-2 border-(--border-subtle) border-t-(--primary-fg) mb-4" />
+          <h1 className="text-2xl font-bold mb-2 text-center text-(--foreground)">Feed de Editais</h1>
+          <p className="text-(--text-muted) text-center text-sm">Carregando dados...</p>
         </div>
         <Footer />
       </>
@@ -75,9 +75,9 @@ export default function TesteFeedPage() {
     return (
       <>
         <Header />
-        <div className="pt-24 pb-24 min-h-screen flex flex-col items-center justify-center p-4 bg-[#F8FAFB]">
-          <h1 className="text-2xl font-bold mb-2 text-center text-[#102A30]">Feed de Editais</h1>
-          <p className="text-red-700 text-center text-sm">{error}</p>
+        <div className="pt-24 pb-24 min-h-screen flex flex-col items-center justify-center p-4 bg-(--background)">
+          <h1 className="text-2xl font-bold mb-2 text-center text-(--foreground)">Feed de Editais</h1>
+          <p className="text-(--danger) text-center text-sm">{error}</p>
         </div>
         <Footer />
       </>
@@ -87,7 +87,7 @@ export default function TesteFeedPage() {
   return (
     <>
       <Header />
-      <main className="pt-24 pb-28 min-h-screen bg-[#F8FAFB]">
+      <main className="pt-24 pb-28 min-h-screen bg-(--background)">
         <div className="max-w-3xl mx-auto px-4 flex flex-col items-center gap-7">
           {editals.map((edital) => {
             const proposer = proposers.find((p) => p.id === Number(edital.proposer));

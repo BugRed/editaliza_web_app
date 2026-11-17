@@ -19,15 +19,15 @@ export default function OutroPerfilPage({
     return (
       <AppShell title="Perfil">
         <div className="p-8 text-center space-y-3">
-          <p className="text-base font-bold text-[#102A30]">
+          <p className="text-base font-bold text-(--foreground)">
             Artista não encontrado
           </p>
-          <p className="text-sm text-[#4A656B]">
+          <p className="text-sm text-(--text-muted)">
             O perfil solicitado não existe na base de teste.
           </p>
           <Link
             href="/"
-            className="inline-flex px-4 py-2 rounded-xl bg-[#0E7C86] text-white text-sm font-semibold"
+            className="inline-flex px-4 py-2 rounded-xl bg-(--primary) text-white text-sm font-semibold"
           >
             Voltar ao início
           </Link>

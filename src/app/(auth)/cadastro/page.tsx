@@ -142,17 +142,17 @@ export default function CadastroPage() {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-[#F8FAFB] px-4 py-10">
-      <div className="w-full max-w-xl bg-white border border-[#DCE6E8] rounded-xl shadow-sm overflow-hidden">
-        <div className="h-1.5 w-full bg-gradient-to-r from-[#0E7C86] via-[#0E7C86] to-[#FFB800]" />
+    <div className="min-h-screen w-full flex items-center justify-center bg-(--background) px-4 py-10">
+      <div className="w-full max-w-xl bg-(--bg-card) border border-(--border-subtle) rounded-xl shadow-sm overflow-hidden">
+        <div className="h-1.5 w-full bg-gradient-to-r from-(--primary) via-(--primary) to-(--accent)" />
 
         <div className="p-6 sm:p-8 flex flex-col">
           <div className="flex flex-col items-center text-center mb-6">
             <LogoMark size={56} className="mb-3" />
-            <h1 className="text-2xl font-bold tracking-tight text-[#0E7C86]">
+            <h1 className="text-2xl font-bold tracking-tight text-(--primary-fg)">
               Criar conta no Editaliza
             </h1>
-            <p className="text-sm text-[#4A656B] mt-1">
+            <p className="text-sm text-(--text-muted) mt-1">
               Escolha o tipo de perfil para acessar oportunidades ou divulgar editais.
             </p>
           </div>
@@ -173,8 +173,8 @@ export default function CadastroPage() {
               }}
               className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl border text-sm font-bold transition-colors cursor-pointer ${
                 userType === "ARTIST"
-                  ? "bg-[#E6F4F5] border-[#0E7C86] text-[#0E7C86]"
-                  : "bg-[#F8FAFB] border-[#DCE6E8] text-[#4A656B] hover:border-[#0E7C86]"
+                  ? "bg-(--primary-soft) border-(--primary-fg) text-(--primary-fg)"
+                  : "bg-(--background) border-(--border-subtle) text-(--text-muted) hover:border-(--primary-fg)"
               }`}
             >
               <Palette size={18} />
@@ -191,8 +191,8 @@ export default function CadastroPage() {
               }}
               className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl border text-sm font-bold transition-colors cursor-pointer ${
                 userType === "PROPOSER"
-                  ? "bg-[#FFF6D6] border-[#FFB800] text-[#7A5400]"
-                  : "bg-[#F8FAFB] border-[#DCE6E8] text-[#4A656B] hover:border-[#FFB800]"
+                  ? "bg-(--accent-soft) border-(--accent) text-(--accent-ink)"
+                  : "bg-(--background) border-(--border-subtle) text-(--text-muted) hover:border-(--accent)"
               }`}
             >
               <Building2 size={18} />
@@ -204,7 +204,7 @@ export default function CadastroPage() {
             {erro && (
               <div
                 role="alert"
-                className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg text-sm"
+                className="bg-(--danger-soft) border border-(--danger-border) text-(--danger) px-4 py-3 rounded-lg text-sm"
               >
                 {erro}
               </div>
@@ -224,7 +224,7 @@ export default function CadastroPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label htmlFor="cad-name" className="block text-sm font-medium text-[#102A30]">
+                <label htmlFor="cad-name" className="block text-sm font-medium text-(--foreground)">
                   {userType === "ARTIST" ? "Nome completo" : "Nome da instituição"}
                 </label>
                 <input
@@ -237,13 +237,13 @@ export default function CadastroPage() {
                   }
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                  className="w-full px-3.5 py-2.5 rounded-lg bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) placeholder-(--text-subtle) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
                   required
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="cad-handle" className="block text-sm font-medium text-[#102A30]">
+                <label htmlFor="cad-handle" className="block text-sm font-medium text-(--foreground)">
                   Usuário (@)
                 </label>
                 <input
@@ -252,14 +252,14 @@ export default function CadastroPage() {
                   placeholder="@seu.usuario"
                   value={handle}
                   onChange={(e) => setHandle(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                  className="w-full px-3.5 py-2.5 rounded-lg bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) placeholder-(--text-subtle) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label htmlFor="cad-email" className="block text-sm font-medium text-[#102A30]">
+                <label htmlFor="cad-email" className="block text-sm font-medium text-(--foreground)">
                   E-mail
                 </label>
                 <input
@@ -269,13 +269,13 @@ export default function CadastroPage() {
                   placeholder="seu@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                  className="w-full px-3.5 py-2.5 rounded-lg bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) placeholder-(--text-subtle) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
                   required
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="cad-password" className="block text-sm font-medium text-[#102A30]">
+                <label htmlFor="cad-password" className="block text-sm font-medium text-(--foreground)">
                   Senha
                 </label>
                 <input
@@ -288,7 +288,7 @@ export default function CadastroPage() {
                   aria-describedby="cad-password-rules"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86] focus:border-[#0E7C86] transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-lg bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) placeholder-(--text-subtle) focus:outline-none focus:ring-2 focus:ring-(--primary-fg) focus:border-(--primary-fg) transition-colors"
                   required
                 />
                 <div id="cad-password-rules">
@@ -301,7 +301,7 @@ export default function CadastroPage() {
             {userType === "ARTIST" ? (
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="space-y-1.5">
-                  <label htmlFor="cad-cpf" className="block text-sm font-medium text-[#102A30]">
+                  <label htmlFor="cad-cpf" className="block text-sm font-medium text-(--foreground)">
                     CPF (opcional)
                   </label>
                   <input
@@ -313,12 +313,12 @@ export default function CadastroPage() {
                     maxLength={14}
                     value={cpf}
                     onChange={(e) => setCpf(formatCpf(e.target.value))}
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) placeholder-(--text-subtle) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="cad-city" className="block text-sm font-medium text-[#102A30]">
+                  <label htmlFor="cad-city" className="block text-sm font-medium text-(--foreground)">
                     Cidade
                   </label>
                   <input
@@ -327,19 +327,19 @@ export default function CadastroPage() {
                     placeholder="Ex: Recife"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) placeholder-(--text-subtle) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="cad-uf" className="block text-sm font-medium text-[#102A30]">
+                  <label htmlFor="cad-uf" className="block text-sm font-medium text-(--foreground)">
                     Estado (UF)
                   </label>
                   <select
                     id="cad-uf"
                     value={stateUf}
                     onChange={(e) => setStateUf(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
                   >
                     <option value="">UF</option>
                     {BRAZILIAN_STATES.map((uf) => (
@@ -353,7 +353,7 @@ export default function CadastroPage() {
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="space-y-1.5">
-                  <label htmlFor="cad-cnpj" className="block text-sm font-medium text-[#102A30]">
+                  <label htmlFor="cad-cnpj" className="block text-sm font-medium text-(--foreground)">
                     CNPJ da organização
                   </label>
                   <input
@@ -365,13 +365,13 @@ export default function CadastroPage() {
                     maxLength={18}
                     value={cnpj}
                     onChange={(e) => setCnpj(formatCnpj(e.target.value))}
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) placeholder-(--text-subtle) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
                     required
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="cad-p-city" className="block text-sm font-medium text-[#102A30]">
+                  <label htmlFor="cad-p-city" className="block text-sm font-medium text-(--foreground)">
                     Cidade sede
                   </label>
                   <input
@@ -380,19 +380,19 @@ export default function CadastroPage() {
                     placeholder="Ex: São Paulo"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) placeholder-(--text-subtle) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="cad-p-uf" className="block text-sm font-medium text-[#102A30]">
+                  <label htmlFor="cad-p-uf" className="block text-sm font-medium text-(--foreground)">
                     Estado (UF)
                   </label>
                   <select
                     id="cad-p-uf"
                     value={stateUf}
                     onChange={(e) => setStateUf(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
                   >
                     <option value="">UF</option>
                     {BRAZILIAN_STATES.map((uf) => (
@@ -410,7 +410,7 @@ export default function CadastroPage() {
               <>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="space-y-1.5">
-                    <label htmlFor="cad-scope" className="block text-sm font-medium text-[#102A30]">
+                    <label htmlFor="cad-scope" className="block text-sm font-medium text-(--foreground)">
                       Atuação
                     </label>
                     <select
@@ -419,7 +419,7 @@ export default function CadastroPage() {
                       onChange={(e) =>
                         setTerritoryScope(e.target.value as TerritoryScope)
                       }
-                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
                     >
                       <option value="MUNICIPAL">Municipal</option>
                       <option value="METROPOLITANO">Metropolitano</option>
@@ -429,7 +429,7 @@ export default function CadastroPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label htmlFor="cad-level" className="block text-sm font-medium text-[#102A30]">
+                    <label htmlFor="cad-level" className="block text-sm font-medium text-(--foreground)">
                       Momento
                     </label>
                     <select
@@ -438,7 +438,7 @@ export default function CadastroPage() {
                       onChange={(e) =>
                         setProfileLevel(e.target.value as ProfileLevel)
                       }
-                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
                     >
                       <option value="INICIANTE">Iniciante</option>
                       <option value="EMERGENTE">Emergente</option>
@@ -448,7 +448,7 @@ export default function CadastroPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label htmlFor="cad-exp" className="block text-sm font-medium text-[#102A30]">
+                    <label htmlFor="cad-exp" className="block text-sm font-medium text-(--foreground)">
                       Anos de prática
                     </label>
                     <input
@@ -458,22 +458,22 @@ export default function CadastroPage() {
                       max={70}
                       value={experienceYears}
                       onChange={(e) => setExperienceYears(Number(e.target.value))}
-                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] tabular-nums focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) tabular-nums focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-3">
                   <div>
-                    <span className="block text-sm font-medium text-[#102A30]">Linguagens principais</span>
-                    <p className="text-xs text-[#6B8388]">
+                    <span className="block text-sm font-medium text-(--foreground)">Linguagens principais</span>
+                    <p className="text-xs text-(--text-subtle)">
                       Escolha todas que fazem parte do seu trabalho. {coreLanguages.length}{" "}
                       {coreLanguages.length === 1 ? "selecionada" : "selecionadas"}.
                     </p>
                   </div>
                   {ART_LANGUAGE_GROUPS.map((group) => (
                     <fieldset key={group.group} className="space-y-1.5">
-                      <legend className="text-[11px] font-bold uppercase tracking-wider text-[#6B8388]">{group.group}</legend>
+                      <legend className="text-[11px] font-bold uppercase tracking-wider text-(--text-subtle)">{group.group}</legend>
                       <div className="flex flex-wrap gap-2">
                         {group.languages.map((tag) => {
                           const active = coreLanguages.includes(tag);
@@ -485,8 +485,8 @@ export default function CadastroPage() {
                             onClick={() => toggleLanguage(tag)}
                             className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors cursor-pointer ${
                               active
-                                ? "bg-[#0E7C86] border-[#0E7C86] text-white"
-                                : "bg-white border-[#DCE6E8] text-[#4A656B] hover:border-[#0E7C86]"
+                                ? "bg-(--primary) border-(--primary-fg) text-white"
+                                : "bg-(--bg-card) border-(--border-subtle) text-(--text-muted) hover:border-(--primary-fg)"
                             }`}
                           >
                             {tag}
@@ -498,7 +498,7 @@ export default function CadastroPage() {
                   ))}
                   {customLanguages.length > 0 && (
                     <fieldset className="space-y-1.5">
-                      <legend className="text-[11px] font-bold uppercase tracking-wider text-[#6B8388]">Suas linguagens</legend>
+                      <legend className="text-[11px] font-bold uppercase tracking-wider text-(--text-subtle)">Suas linguagens</legend>
                       <div className="flex flex-wrap gap-2">
                         {customLanguages.map((tag) => (
                           <button
@@ -507,7 +507,7 @@ export default function CadastroPage() {
                             aria-pressed="true"
                             aria-label={`Remover ${tag}`}
                             onClick={() => toggleLanguage(tag)}
-                            className="px-3 py-1.5 rounded-lg text-xs font-semibold border bg-[#0E7C86] border-[#0E7C86] text-white cursor-pointer"
+                            className="px-3 py-1.5 rounded-lg text-xs font-semibold border bg-(--primary) border-(--primary-fg) text-white cursor-pointer"
                           >
                             {tag} ×
                           </button>
@@ -532,12 +532,12 @@ export default function CadastroPage() {
                           addOtherLanguage();
                         }
                       }}
-                      className="min-w-0 flex-1 px-3.5 py-2 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                      className="min-w-0 flex-1 px-3.5 py-2 rounded-lg bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) placeholder-(--text-subtle) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
                     />
                     <button
                       type="button"
                       onClick={addOtherLanguage}
-                      className="px-4 py-2 rounded-lg bg-[#FFB800] text-[#102A30] text-sm font-bold hover:bg-[#E5A500] cursor-pointer"
+                      className="px-4 py-2 rounded-lg bg-(--accent) text-(--on-accent) text-sm font-bold hover:bg-(--accent-hover) cursor-pointer"
                     >
                       Adicionar
                     </button>
@@ -545,22 +545,22 @@ export default function CadastroPage() {
                 </div>
 
                 <div className="flex flex-wrap gap-5 pt-1">
-                  <label className="inline-flex items-center gap-2 text-xs sm:text-sm text-[#102A30] cursor-pointer">
+                  <label className="inline-flex items-center gap-2 text-xs sm:text-sm text-(--foreground) cursor-pointer">
                     <input
                       type="checkbox"
                       checked={hasCnpjOrMei}
                       onChange={(e) => setHasCnpjOrMei(e.target.checked)}
-                      className="w-4 h-4 accent-[#0E7C86] rounded"
+                      className="w-4 h-4 accent-(--primary-fg) rounded"
                     />
                     <span>Possuo CNPJ ou MEI cultural</span>
                   </label>
 
-                  <label className="inline-flex items-center gap-2 text-xs sm:text-sm text-[#102A30] cursor-pointer">
+                  <label className="inline-flex items-center gap-2 text-xs sm:text-sm text-(--foreground) cursor-pointer">
                     <input
                       type="checkbox"
                       checked={hasTechnicalFormation}
                       onChange={(e) => setHasTechnicalFormation(e.target.checked)}
-                      className="w-4 h-4 accent-[#0E7C86] rounded"
+                      className="w-4 h-4 accent-(--primary-fg) rounded"
                     />
                     <span>Possuo formação técnica</span>
                   </label>
@@ -569,7 +569,7 @@ export default function CadastroPage() {
             )}
 
             <div className="space-y-1.5">
-              <label htmlFor="cad-bio" className="block text-sm font-medium text-[#102A30]">
+              <label htmlFor="cad-bio" className="block text-sm font-medium text-(--foreground)">
                 {userType === "ARTIST"
                   ? "Sobre seu trabalho artístico"
                   : "Sobre a organização propositora"}
@@ -584,14 +584,14 @@ export default function CadastroPage() {
                 }
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
-                className="w-full px-3.5 py-2 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                className="w-full px-3.5 py-2 rounded-lg bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) placeholder-(--text-subtle) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               />
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-2.5 px-4 rounded-lg bg-[#0E7C86] text-white font-semibold hover:bg-[#0B656D] disabled:opacity-50 transition-colors cursor-pointer"
+              className="w-full py-2.5 px-4 rounded-lg bg-(--primary) text-white font-semibold hover:bg-(--primary-hover) disabled:opacity-50 transition-colors cursor-pointer"
             >
               {isSubmitting
                 ? "Criando conta..."
@@ -601,9 +601,9 @@ export default function CadastroPage() {
             </button>
           </form>
 
-          <p className="mt-6 text-center text-[#4A656B] text-sm">
+          <p className="mt-6 text-center text-(--text-muted) text-sm">
             Já possui uma conta?{" "}
-            <Link href="/login" className="text-[#0E7C86] font-semibold hover:underline">
+            <Link href="/login" className="text-(--primary-fg) font-semibold hover:underline">
               Entrar
             </Link>
           </p>

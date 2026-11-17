@@ -11,7 +11,7 @@
   border: 1px solid var(--border-subtle);
   border-bottom: none;
   border-radius: 16px 16px 0 0;
-  box-shadow: 0 -8px 30px rgba(16, 42, 48, 0.12);
+  box-shadow: 0 -8px 30px color-mix(in srgb, var(--scrim) 12%, transparent);
   overflow: hidden;
   padding: 0 0 1.25rem 0;
   z-index: 1010;

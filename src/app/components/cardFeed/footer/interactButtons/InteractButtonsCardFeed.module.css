@@ -35,13 +35,13 @@
 }
 
 .likedHeartWithNoAnimation {
-  color: #DC2626;
-  fill: #DC2626;
+  color: var(--danger);
+  fill: var(--danger);
 }
 
 .likedHeart {
-  color: #DC2626;
-  fill: #DC2626;
+  color: var(--danger);
+  fill: var(--danger);
   animation: curtir 325ms ease-out 1 forwards;
 }
 

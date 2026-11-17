@@ -2,6 +2,11 @@
 
 Impacto externo por entrega; app não versiona build. Novo no topo.
 
+## 2026-11-16 — feature/ui-04: modo escuro
+
+- **Modo escuro** — segue o tema do sistema por padrão. Um botão (menu lateral, cabeçalho de celular, login e cadastro) alterna sistema, claro e escuro, e a escolha é lembrada em cookie, sem piscar no tema errado ao abrir. Guia em [`docs/ui/tema.md`](docs/ui/tema.md), decisão no [ADR 0023](docs/adr/0023-tema-segue-o-sistema-e-a-escolha-fica-em-cookie.md).
+- **Logo e cor da barra do navegador** trocam com o tema; todas as cores das telas passaram a vir de tokens.
+
 ## 2026-11-16 — cadastro: foto, senha forte, CPF e linguagens
 
 - **Foto obrigatória no cadastro** — artista envia a foto e instituição, o logo; recortada em quadrado e reduzida a 320×320 no navegador, e revalidada no servidor (JPEG, PNG ou WebP, nunca SVG).

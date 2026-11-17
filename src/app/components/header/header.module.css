@@ -43,7 +43,7 @@
   height: 2rem;
   border-radius: 8px;
   background-color: var(--accent);
-  color: #102A30;
+  color: var(--foreground);
 }
 
 .nav {

@@ -38,44 +38,44 @@ export default function AvatarPicker({ label, hint, value, onChange, error, requ
 
   return (
     <div className="space-y-1.5">
-      <span className="block text-sm font-medium text-[#102A30]">
+      <span className="block text-sm font-medium text-(--foreground)">
         {label}{" "}
         {required ? (
-          <span className="font-normal text-[#B91C1C]" aria-hidden="true">
+          <span className="font-normal text-(--danger)" aria-hidden="true">
             *
           </span>
         ) : (
-          <span className="font-normal text-[#6B8388]">(opcional)</span>
+          <span className="font-normal text-(--text-subtle)">(opcional)</span>
         )}
       </span>
       <div className="flex items-center gap-4">
         <div
-          className={`flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 bg-[#F0F6F7] ${
-            shownError ? "border-[#B91C1C]" : value ? "border-[#0E7C86]" : "border-dashed border-[#C2D3D7]"
+          className={`flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 bg-(--surface-subtle) ${
+            shownError ? "border-(--danger)" : value ? "border-(--primary-fg)" : "border-dashed border-(--border-strong)"
           }`}
         >
           {value ? (
             // eslint-disable-next-line @next/next/no-img-element -- data URL local, sem domínio para o next/image
             <img src={value} alt="Prévia da sua foto" className="h-full w-full object-cover" />
           ) : (
-            <Camera size={26} className="text-[#6B8388]" aria-hidden="true" />
+            <Camera size={26} className="text-(--text-subtle)" aria-hidden="true" />
           )}
         </div>
         <div className="min-w-0 space-y-1">
           <label
             htmlFor={inputId}
-            className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-[#DCE6E8] bg-white px-3.5 py-2 text-sm font-semibold text-[#102A30] transition-colors hover:bg-[#F0F6F7] focus-within:outline-2 focus-within:outline-[#0E7C86]"
+            className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-(--border-subtle) bg-(--bg-card) px-3.5 py-2 text-sm font-semibold text-(--foreground) transition-colors hover:bg-(--surface-subtle) focus-within:outline-2 focus-within:outline-(--primary-fg)"
           >
             {busy ? "Preparando..." : value ? "Trocar foto" : "Escolher foto"}
           </label>
           <input id={inputId} type="file" accept="image/jpeg,image/png,image/webp" onChange={handleFile} className="sr-only" aria-describedby={`${inputId}-hint`} />
-          <p id={`${inputId}-hint`} className="text-xs text-[#6B8388]">
+          <p id={`${inputId}-hint`} className="text-xs text-(--text-subtle)">
             {hint ?? "JPG, PNG ou WebP. Recortamos em quadrado."}
           </p>
         </div>
       </div>
       {shownError && (
-        <p role="alert" className="text-xs font-semibold text-[#B91C1C]">
+        <p role="alert" className="text-xs font-semibold text-(--danger)">
           {shownError}
         </p>
       )}
