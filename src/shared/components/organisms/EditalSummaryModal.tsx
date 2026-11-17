@@ -4,21 +4,10 @@ import Link from "next/link";
 import { getEditalProposerHref } from "@/shared/lib/edital-owner";
 import RankBars from "@/shared/components/organisms/RankBars";
 import { useEffect } from "react";
-import {
-  Bookmark,
-  CalendarDays,
-  CheckCircle2,
-  ExternalLink,
-  Sparkles,
-  Tag,
-  Users,
-  X,
-} from "lucide-react";
+import { Bookmark, ExternalLink, X } from "lucide-react";
 import { useSocialStore } from "@/app/hooks/useSocialStore";
-import { getPlainEditalSummary } from "@/app/lib/user-profiles";
-import { SafeDate } from "@/app/lib/utils/SafeDate";
-import { PlainEditalSummaryData } from "@/app/types/Edital";
-import { TagData } from "@/app/types/TagData";
+import { resolveExternalUrl } from "@/app/lib/edital-detail";
+import EditalDetailBody from "@/shared/components/organisms/EditalDetailBody";
 
 export default function EditalSummaryModal() {
   const {
@@ -48,46 +37,7 @@ export default function EditalSummaryModal() {
   const saved = isEditalSaved(edital.id);
   const proposerHref = getEditalProposerHref(edital);
 
-  const dbPlainSummary: PlainEditalSummaryData | null = (() => {
-    if (!edital.plainSummary) return null;
-    if (typeof edital.plainSummary === "string") {
-      try {
-        return JSON.parse(edital.plainSummary) as PlainEditalSummaryData;
-      } catch {
-        return null;
-      }
-    }
-    return edital.plainSummary as PlainEditalSummaryData;
-  })();
-
-  const summary: PlainEditalSummaryData =
-    dbPlainSummary && dbPlainSummary.whatIsIt
-      ? dbPlainSummary
-      : getPlainEditalSummary(edital.id, edital.title, edital.description);
-
-  const rawTags: TagData[] = Array.isArray(edital.listTags)
-    ? edital.listTags
-    : typeof edital.listTags === "string"
-    ? (() => {
-        try {
-          return JSON.parse(edital.listTags);
-        } catch {
-          return [];
-        }
-      })()
-    : [];
-
-  const allTagNames = Array.from(
-    new Set([
-      ...rawTags.map((t) => t.name).filter(Boolean),
-      ...(Array.isArray(summary.extraTags) ? summary.extraTags : []),
-    ])
-  );
-
-  const externalUrl =
-    (edital.inscriptionLink && edital.inscriptionLink.trim()) ||
-    (edital.completeEditalLink && edital.completeEditalLink.trim()) ||
-    "#";
+  const externalUrl = resolveExternalUrl(edital);
 
   return (
     <div
@@ -142,90 +92,7 @@ export default function EditalSummaryModal() {
         {/* Body well distributed */}
         <div className="p-6 space-y-6">
           {rank && <RankBars rank={rank} />}
-
-          {/* O que é */}
-          <section className="bg-(--background) border border-(--border-subtle) rounded-xl p-4 sm:p-5">
-            <div className="flex items-center gap-2 text-sm font-bold text-(--primary-fg) mb-2">
-              <Sparkles size={16} aria-hidden="true" />
-              <span>O que é este edital na prática?</span>
-            </div>
-            <p className="text-[15px] text-(--foreground) leading-relaxed">
-              {summary.whatIsIt}
-            </p>
-          </section>
-
-          {/* 2-column structured details */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <section className="border border-(--border-subtle) rounded-xl p-4 bg-(--bg-card)">
-              <div className="flex items-center gap-2 text-sm font-bold text-(--foreground) mb-2.5">
-                <Users size={16} className="text-(--primary-fg)" aria-hidden="true" />
-                <span>Quem pode participar</span>
-              </div>
-              <ul className="space-y-2 text-sm text-(--text-muted) leading-relaxed">
-                {summary.whoCanApply.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-(--primary) shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            <section className="border border-(--border-subtle) rounded-xl p-4 bg-(--bg-card)">
-              <div className="flex items-center gap-2 text-sm font-bold text-(--foreground) mb-2.5">
-                <CheckCircle2 size={16} className="text-(--primary-fg)" aria-hidden="true" />
-                <span>O que você recebe</span>
-              </div>
-              <ul className="space-y-2 text-sm text-(--text-muted) leading-relaxed">
-                {summary.benefits.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-(--accent) shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          </div>
-
-          {/* Dates grid */}
-          <section className="grid grid-cols-2 gap-4 border border-(--border-subtle) rounded-xl p-4 bg-(--background)">
-            <div>
-              <span className="text-xs font-medium text-(--text-subtle) block">
-                Publicado em
-              </span>
-              <span className="mt-1 inline-flex items-center gap-1.5 text-sm font-bold text-(--foreground) tabular-nums">
-                <CalendarDays size={15} className="text-(--primary-fg)" aria-hidden="true" />
-                {SafeDate(edital.publishDate)}
-              </span>
-            </div>
-            <div>
-              <span className="text-xs font-medium text-(--text-subtle) block">
-                Prazo de inscrição
-              </span>
-              <span className="mt-1 inline-flex items-center gap-1.5 text-sm font-bold text-(--foreground) tabular-nums">
-                <CalendarDays size={15} className="text-(--warning)" aria-hidden="true" />
-                {edital.endDate ? SafeDate(edital.endDate) : "Fluxo contínuo"}
-              </span>
-            </div>
-          </section>
-
-          {/* All tags well distributed */}
-          <section>
-            <div className="flex items-center gap-2 text-sm font-bold text-(--foreground) mb-3">
-              <Tag size={15} className="text-(--primary-fg)" aria-hidden="true" />
-              <span>Todas as tags deste edital</span>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-              {allTagNames.map((tagName) => (
-                <div
-                  key={tagName}
-                  className="px-3 py-2 rounded-lg bg-(--primary-soft) border border-(--primary-border) text-(--primary-ink) text-xs font-semibold text-center truncate"
-                >
-                  {tagName}
-                </div>
-              ))}
-            </div>
-          </section>
+          <EditalDetailBody edital={edital} />
         </div>
 
         {/* Footer CTA */}
@@ -244,6 +111,13 @@ export default function EditalSummaryModal() {
           </button>
 
           <div className="flex items-center gap-2.5 ml-auto">
+            <Link
+              href={`/editais/${edital.id}`}
+              onClick={closeEditalModal}
+              className="px-4 py-2.5 rounded-xl text-sm font-medium text-(--primary-fg) hover:bg-(--surface-subtle) transition-colors"
+            >
+              Ver página completa
+            </Link>
             <button
               type="button"
               onClick={closeEditalModal}
