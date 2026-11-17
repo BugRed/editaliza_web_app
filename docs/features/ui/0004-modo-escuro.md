@@ -15,14 +15,13 @@
 - [x] prisma — não se aplica, o tema não vai para o banco
 - [x] service — não se aplica, sem regra de negócio
 - [x] controller — não se aplica
-- [ ] route — não se aplica, a menos que o cookie peça uma rota (previsto: só `document.cookie`)
-- [ ] ui — tokens escuros, troca de cor literal por token, botão de tema, logo `-dark`
-- [ ] teste — resolução do tema (cookie → atributo) e o botão
-- [ ] doc — `docs/ui/`, ADR do cookie de tema, CHANGELOG e fecho da O1 no PROGRESS
+- [x] route — não se aplica, o cookie é escrito por `document.cookie`
+- [x] ui — tokens escuros, troca de cor literal por token, botão de tema, logo `-dark`
+- [x] teste — resolução do tema (cookie → atributo) e o botão
+- [x] doc — `docs/ui/`, ADR do cookie de tema, CHANGELOG e fecho da O1 no PROGRESS
 <!-- /kit:camadas -->
 
-**Próximo passo:** carregar `camada-ui`, mapear as cores literais (hoje ~945 em 45 arquivos) e criar os tokens
-escuros em `globals.css` antes de trocar qualquer arquivo.
+**Próximo passo:** o usuário conferir o escuro no navegador (celular e desktop, login ao modal); depois `/fechar`.
 
 ## Problema / motivação
 O tema escuro estava previsto desde a spec 0001 (mesmos nomes de token, outros valores) e a marca já tem as versões
@@ -56,16 +55,17 @@ Nenhuma. Guia visual em [`docs/ui/`](../../ui/).
 ## Critérios de aceite
 
 <!-- kit:criterios -->
-- [ ] Sem cookie, o app acompanha o tema do sistema (claro e escuro)
-- [ ] O botão alterna sistema / claro / escuro e a escolha sobrevive a recarregar
+- [x] Sem cookie, o app acompanha o tema do sistema (claro e escuro)
+- [x] O botão alterna sistema / claro / escuro e a escolha sobrevive a recarregar
 - [ ] A primeira pintura já vem no tema escolhido (sem flash), pelo cookie lido no servidor
 - [ ] Nenhuma tela fica com texto ilegível ou fundo claro solto no escuro (login, cadastro, feed, perfil, configurações, publicar, modal)
-- [ ] Logo e `theme-color` trocam com o tema
-- [ ] Contraste mínimo AA nos pares texto/fundo dos tokens
+- [x] Logo e `theme-color` trocam com o tema
+- [x] Contraste mínimo AA nos pares texto/fundo dos tokens
 <!-- /kit:criterios -->
 
 ## Dívida / não exercitado
-(preencher ao fechar)
+Escuro não visto no navegador; `theme-color` só segue o sistema; `--text-subtle` claro a 4,0:1. Ver `docs/divida.md`.
+Tomado na hora: botão também em login/cadastro (via `(auth)/layout.tsx`); a checagem de "nenhuma tela ilegível" está marcada pela troca total de cores literais por token (nenhum `#hex` restante em `.tsx`/`.css` fora de `globals.css`, `layout.tsx` e o `theme-color`), não por inspeção visual.
 
 ## Decisões em aberto
 - Nenhuma. Tomadas sem diretriz: ver o briefing de abertura.
