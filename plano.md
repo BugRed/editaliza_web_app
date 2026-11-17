@@ -223,7 +223,7 @@ da §5, que continuam sendo o detalhamento das tarefas.
 | **O1** | **Articulação de design** (entregue em 2026-11-16) | Design system fechado (tokens, atoms, molecules, claro e escuro), **mapa e fluxo de todas as telas**, protótipo navegável aprovado pelo usuário; código só de atoms e molecules em `src/shared/components/` | W-UI (parte), D16, §10, §11 | Usuário aprova o protótipo; `/feed` e login usam só os tokens; nenhuma cor/raio literal fora de `globals.css` |
 | **O2** | **No ar** | Merge das 4 branches empilhadas, Prisma, Better Auth com papéis, env validada, deploy Vercel + Supabase, CI, headers, rate limit, LGPD mínima (consentimento, exportar e excluir); **marco final: alinhar o cadastro com o usuário** (hoje tudo numa tela só; decidir etapas, campos obrigatórios e o que vira opcional, já com o banco e o Better Auth reais) | W0, W1, W1b, T4.6, T7.2–T7.3 | URL pública com cadastro, login e feed funcionando; sem senha em texto puro; checklist de segurança aprovado; **cadastro alinhado com o usuário** (marco que fecha a O2, depois de o cadastro rodar no banco real) |
 | **O3** | **Editais reais** | Admin cadastra edital (PDF + formulário), conector Mapa Cultural PE, feed por data, filtro e tags, detalhe do edital e **resumo IA em linguagem simples** | W2, T3.2–T3.5 (sem ranking) | ≥100 editais reais; resumo com link ao trecho oficial; coleta idempotente |
-| **O4** | **ArtistRank v1** | Taxonomia, perfil profundo, obras, trajetória, motor determinístico, confiança C, "por quê" | W3 (T3.1), W4, W5 | Casos de regressão da spec §27.5 passam; feed passa a ordenar por compatibilidade |
+| **O4** | **ArtistRank v1** (motor puro em paralelo à O2) | **Em paralelo à O2:** motor determinístico como funções puras, sem banco (elegibilidade, oito fatores e pesos versionados, teto de 45, confiança C separada, casos de regressão da §27.5). **Depois da O3:** taxonomia, perfil profundo, obras, trajetória, persistência das recomendações e o "por quê" | W5 (T5.1–T5.4, T5.6) em paralelo à O2; W3 (T3.1), W4 e T5.5 depois | Casos de regressão da spec §27.5 passam no CI (parte pura); feed passa a ordenar por compatibilidade (parte completa) |
 | **O5** | **Semântica e organizações** | Embeddings Voyage (após A/B), candidatura dentro do app, área da organização, feedback com motivo, projeção da banca; depois nível 3 e revisão do projeto | W6, W6b, Pós-V1 | Organização só vê quem se candidatou (teste); A/B registrado em ADR |
 
 Consequências:
@@ -231,6 +231,12 @@ Consequências:
 - **"V1 publicável" = O1 a O3.** O D17 (escopo da V1 com fases 1–3 do ArtistRank) passa a valer para **o ciclo completo O1–O5**; o primeiro lançamento (gratuito, D22) acontece ao fim da O3, com o feed ordenado por data e filtros, **sem score de compatibilidade**. A UI não exibe porcentagem enquanto o motor não existe.
 - O protótipo `editaliza_prot` (§11) alimenta a O1; o motor dele não entra no ar (§11.2).
 - As 4 branches empilhadas (W0, T1.1, dep-01, infra-01) são o **primeiro bloqueio da O2** e dependem do usuário (PR e merge).
+- **O1 fechada em 2026-11-16** (protótipo aprovado, código no ar, modo escuro conferido, ADR 0019 aceito). Segue a O2.
+- **O4 se divide em duas partes (decidido em 2026-11-16).** A parte **pura** do motor (T5.1–T5.4 e T5.6) não depende de
+  banco e corre **em paralelo à O2**, em branch própria (`src/shared/lib/` e `src/server/artistrank/`), sem tocar
+  `prisma/`, auth, borda ou env. Começa pela entrevista de regra de negócio. A parte **dependente de banco** (T3.1,
+  W4, T5.5, feed ordenado) espera a W1b e a O3, na ordem original.
+- **A UI continua sem porcentagem** até o motor existir de ponta a ponta, mesmo com a parte pura pronta.
 - Ordem das telas dentro da O1: definida no mapa de telas, aprovado pelo usuário antes de portar qualquer uma.
 
 ### 6.1 Grafo técnico original (histórico)
