@@ -4,7 +4,7 @@ type ChipVariant = "core" | "support";
 
 interface LanguageChipsProps {
   title: string;
-  hint: string;
+  hint?: string;
   tags: string[];
   selected: string[];
   variant: ChipVariant;
@@ -32,8 +32,8 @@ export default function LanguageChips({
   return (
     <div>
       <p className="block text-sm font-bold text-(--foreground)">{title}</p>
-      <p className="text-xs text-(--text-subtle) mb-2">{hint}</p>
-      <div className="flex flex-wrap gap-2">
+      {hint && <p className="text-xs text-(--text-subtle)">{hint}</p>}
+      <div className="flex flex-wrap gap-2 mt-2">
         {tags.map((tag) => {
           const isSelected = selected.includes(tag);
           return (

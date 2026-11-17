@@ -8,6 +8,7 @@ import { ALL_ART_TAGS, ArtistProfile, BRAZILIAN_STATES } from "@/app/lib/user-pr
 import { ProfileLevel, TerritoryScope } from "@/shared/lib/artistrank";
 import { TextInput, SelectInput, TextAreaInput } from "@/shared/components/atoms/FormControls";
 import SubmitButton from "@/shared/components/atoms/SubmitButton";
+import CheckboxField from "@/shared/components/molecules/CheckboxField";
 import FormField from "@/shared/components/molecules/FormField";
 import SavedNotice from "@/shared/components/molecules/SavedNotice";
 import LanguageChips from "@/shared/components/molecules/LanguageChips";
@@ -183,24 +184,16 @@ export default function ArtistSettingsForm({ currentProfile }: { currentProfile:
         </div>
 
         <div className="flex flex-wrap gap-5 pt-1">
-          <label className="inline-flex items-center gap-2 text-sm text-(--foreground) cursor-pointer">
-            <input
-              type="checkbox"
-              checked={hasCnpjOrMei}
-              onChange={(e) => setHasCnpjOrMei(e.target.checked)}
-              className="w-4 h-4 accent-(--primary-fg) rounded"
-            />
-            <span>Possuo CNPJ ou MEI cultural ativo</span>
-          </label>
-          <label className="inline-flex items-center gap-2 text-sm text-(--foreground) cursor-pointer">
-            <input
-              type="checkbox"
-              checked={hasTechnicalFormation}
-              onChange={(e) => setHasTechnicalFormation(e.target.checked)}
-              className="w-4 h-4 accent-(--primary-fg) rounded"
-            />
-            <span>Possuo formação técnica comprovada</span>
-          </label>
+          <CheckboxField
+            label="Possuo CNPJ ou MEI cultural ativo"
+            checked={hasCnpjOrMei}
+            onChange={setHasCnpjOrMei}
+          />
+          <CheckboxField
+            label="Possuo formação técnica comprovada"
+            checked={hasTechnicalFormation}
+            onChange={setHasTechnicalFormation}
+          />
         </div>
 
         <div className="space-y-3 pt-2 border-t border-(--border-subtle)">

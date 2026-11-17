@@ -1,4 +1,5 @@
 import { TextInput, SelectInput } from "@/shared/components/atoms/FormControls";
+import CheckboxField from "@/shared/components/molecules/CheckboxField";
 import FormField from "@/shared/components/molecules/FormField";
 import LanguageGroupPicker from "@/shared/components/molecules/LanguageGroupPicker";
 import { ProfileLevel, TerritoryScope } from "@/shared/lib/artistrank";
@@ -16,9 +17,6 @@ interface SignupArtistFieldsProps {
   values: SignupArtistValues;
   onChange: (patch: Partial<SignupArtistValues>) => void;
 }
-
-const CHECKBOX_LABEL = "inline-flex items-center gap-2 text-xs sm:text-sm text-(--foreground) cursor-pointer";
-const CHECKBOX = "w-4 h-4 accent-(--primary-fg) rounded";
 
 export default function SignupArtistFields({ values, onChange }: SignupArtistFieldsProps) {
   return (
@@ -67,24 +65,16 @@ export default function SignupArtistFields({ values, onChange }: SignupArtistFie
       />
 
       <div className="flex flex-wrap gap-5 pt-1">
-        <label className={CHECKBOX_LABEL}>
-          <input
-            type="checkbox"
-            checked={values.hasCnpjOrMei}
-            onChange={(e) => onChange({ hasCnpjOrMei: e.target.checked })}
-            className={CHECKBOX}
-          />
-          <span>Possuo CNPJ ou MEI cultural</span>
-        </label>
-        <label className={CHECKBOX_LABEL}>
-          <input
-            type="checkbox"
-            checked={values.hasTechnicalFormation}
-            onChange={(e) => onChange({ hasTechnicalFormation: e.target.checked })}
-            className={CHECKBOX}
-          />
-          <span>Possuo formação técnica</span>
-        </label>
+        <CheckboxField
+          label="Possuo CNPJ ou MEI cultural"
+          checked={values.hasCnpjOrMei}
+          onChange={(hasCnpjOrMei) => onChange({ hasCnpjOrMei })}
+        />
+        <CheckboxField
+          label="Possuo formação técnica"
+          checked={values.hasTechnicalFormation}
+          onChange={(hasTechnicalFormation) => onChange({ hasTechnicalFormation })}
+        />
       </div>
     </>
   );
