@@ -2,6 +2,13 @@
 
 Impacto externo por entrega; app não versiona build. Novo no topo.
 
+## 2026-11-17 — feature/ui-05: limpeza do front
+
+- **Removidos** a página `/teste` e o cabeçalho e rodapé antigos, que só ela usava.
+- **Imagens do protótipo de 7,3 MB para 0,8 MB**, no tamanho em que aparecem.
+- **Componentes em `src/shared/components/`** por camada (atoms, molecules, organisms).
+- **Cadastro, configurações, publicar edital e menu lateral** quebrados em partes menores; os campos de formulário passam a ter a mesma aparência nas três telas (raio e peso do rótulo iguais).
+
 ## 2026-11-16 — onda O1 fechada
 
 - Protótipo aprovado, código no ar e modo escuro conferido pelo usuário. A próxima onda é a O2 (no ar de verdade: Prisma, Better Auth, deploy, LGPD).

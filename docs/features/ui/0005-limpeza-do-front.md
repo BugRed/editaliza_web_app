@@ -16,12 +16,12 @@
 - [x] service — não se aplica, sem regra de negócio; as telas novas usam dados fixos
 - [x] controller — não se aplica
 - [x] route — não se aplica; só páginas, nenhum route handler novo
-- [ ] ui — limpeza (fase 1) e telas das ondas O2 a O5 (fase 2)
-- [ ] teste — componentes e telas novas
+- [ ] ui — limpeza (fase 1, feita) e telas das ondas O2 a O5 (fase 2, a fazer)
+- [ ] teste — fase 1 coberta (funções puras e organismos novos); telas da fase 2 ainda não
 - [ ] doc — `docs/ui/mapa-de-telas.md`, CHANGELOG e dívida
 <!-- /kit:camadas -->
 
-**Próximo passo:** fase 1, item 1 (remover `/teste`), carregando antes as skills `camada-ui` e `next16`.
+**Próximo passo:** fase 2 (telas das ondas O2 a O5, dados fixos), começando por perfil e privacidade (O2). A fase 1 está feita, exceto a conferência em navegador real (celular, mídia, Open Graph).
 
 ## Problema / motivação
 O front do protótipo veio inteiro e funciona, mas deixou resíduos (página de teste, feed duplicado, cores literais,
@@ -65,19 +65,30 @@ Nenhuma nova. Ver [`docs/ui/mapa-de-telas.md`](../../ui/mapa-de-telas.md) e o AD
 ## Critérios de aceite
 
 <!-- kit:criterios -->
-- [ ] `/teste` não existe e nada o referencia
-- [ ] Uma única rota de feed; o `cardFeed` só usa Tailwind
-- [ ] Nenhuma cor literal fora de `globals.css`
-- [ ] `public/images/` bem abaixo de 7,3 MB, sem queda visível de qualidade
-- [ ] `cadastro`, `configuracoes`, `publicar-edital` e `AppShell` sem arquivo acima do limite do lint; sem `useSocialStore`
-- [ ] Componentes em `src/shared/components/` por camada, e os imports `@/` atualizados
-- [ ] `yarn lint`, `yarn test` e `yarn build` passam
+- [x] `/teste` não existe e nada o referencia
+- [x] Uma única rota de feed (`/feed` só redireciona para `/`). O `cardFeed` segue com CSS Modules, por decisão registrada abaixo
+- [x] Nenhuma cor literal fora de `globals.css`, salvo as que não podem ser variável CSS (ver dívida)
+- [x] `public/images/` de 7,3 MB para 0,8 MB
+- [x] `cadastro` (613 → 17 linhas de página), `configuracoes` (592 → 28), `publicar-edital` (545 → 12) e `AppShell` (361 → 115) quebrados
+- [ ] Sem `useSocialStore`: **não feito**, ver decisões tomadas sem diretriz
+- [x] Componentes em `src/shared/components/` por camada, e os imports `@/` atualizados
+- [x] `yarn lint`, `yarn test` e `yarn build` passam (280 testes)
 - [ ] Cada tela da fase 2 existe, tem estado vazio e de carregamento, e funciona em claro e escuro
 <!-- /kit:criterios -->
 
 ## Dívida / não exercitado
 - Telas da fase 2 usam dados fixos: nenhuma foi conferida contra backend real.
 - O mapa de telas diz que "sem molde" para admin, "por quê" e candidatos: o desenho é desta feature, sem protótipo.
+
+## Decisões tomadas sem diretriz (fase 1)
+- **`useSocialStore` não saiu:** 14 consumidores (sessão, perfis, salvos, publicação). Trocar por servidor é O2/O3. Está na dívida.
+- **CSS Modules do `cardFeed` ficam:** usam só tokens, e converter 9 arquivos para Tailwind sem conferência visual
+  arrisca regressão sem ganho de comportamento.
+- **Campos de formulário unificados** (`FormControls`, `FormField`): cadastro, configurações e publicar edital passam a
+  ter o mesmo raio e o rótulo em negrito; antes o cadastro usava raio menor e rótulo médio. Mudança visual pequena.
+- **Validação virou função pura testada** (`signup-validation`, `edital-draft`, `user-search`) em `src/shared/lib/`.
+- **Código morto removido:** cabeçalho, rodapé, `authForm.tsx` e `AllDatas`, que só a página `/teste` ou ninguém usava.
+- **Conferido por teste, lint, build e um `next start` local** (`/login` e `/cadastro` renderizam). Ainda sem conferência em navegador.
 
 ## Decisões em aberto
 - Nenhuma de regra de negócio.
