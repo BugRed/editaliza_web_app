@@ -24,7 +24,7 @@ interface RankedEditalItem {
 const AD_EVERY = 3;
 
 export default function FeedPage() {
-  const { user, token } = useAuth();
+  const { user } = useAuth();
   const { currentProfile, isProposer, rankingVersion, openEditalModal } =
     useSocialStore();
   const [rankedItems, setRankedItems] = useState<RankedEditalItem[]>([]);
@@ -40,13 +40,10 @@ export default function FeedPage() {
       const headers: Record<string, string> = {
         "Content-Type": "application/json",
       };
-      if (token) {
-        headers.Authorization = `Bearer ${token}`;
-      }
 
       try {
         const res = await fetch(
-          `/api/ranking?artistId=${targetAccountId}`,
+          "/api/ranking",
           {
             cache: "no-store",
             headers,
@@ -83,7 +80,7 @@ export default function FeedPage() {
     return () => {
       active = false;
     };
-  }, [token, targetAccountId, rankingVersion]);
+  }, [targetAccountId, rankingVersion]);
 
   const parseTags = (raw: unknown): TagData[] => {
     if (Array.isArray(raw)) return raw as TagData[];

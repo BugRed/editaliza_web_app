@@ -1,7 +1,10 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { supabase } from '@/app/lib/supabase/client';
-import { generateToken } from '@/shared/lib/auth-token';
+import { env } from '@/shared/lib/env';
+import { createSessionToken } from '@/shared/lib/auth-token';
+import { isHttpsRequest, SESSION_COOKIE, sessionCookieOptions } from '@/server/auth/session-cookie';
+import { hashPassword } from '@db/password.mjs';
 import { calculatePortfolioCompleteness } from '@/app/lib/user-profiles';
 
 const registerBaseSchema = z.object({
@@ -105,6 +108,8 @@ export async function POST(request: Request) {
     }
 
     const now = new Date().toISOString();
+    // Só o hash vai ao banco: a senha em texto puro nunca é gravada.
+    const passwordHash = await hashPassword(data.password);
     const newId = Math.floor(1000 + (Date.now() % 900000));
     const slugHandle =
       data.handle && data.handle.length > 0
@@ -127,7 +132,7 @@ export async function POST(request: Request) {
       id: newId,
       name: data.name,
       email: normalizedEmail,
-      password: data.password,
+      password: passwordHash,
       imgUrl: defaultAvatar,
       userType: data.userType,
       listComment: [],
@@ -166,7 +171,7 @@ export async function POST(request: Request) {
         name: data.name,
         handle: slugHandle,
         email: normalizedEmail,
-        password: data.password,
+        password: passwordHash,
         cpf: cleanDigits(data.cpf) || null,
         imgUrl: defaultAvatar,
         avatarUrl: defaultAvatar,
@@ -207,7 +212,7 @@ export async function POST(request: Request) {
           name: data.name,
           handle: slugHandle,
           email: normalizedEmail,
-          password: data.password,
+          password: passwordHash,
           imgUrl: defaultAvatar,
           bio:
             data.bio ||
@@ -231,11 +236,11 @@ export async function POST(request: Request) {
       }
     }
 
-    const token = generateToken(newId, normalizedEmail);
+    const token = await createSessionToken(newId, normalizedEmail, env.AUTH_SECRET);
+    // O token só existe no cookie httpOnly; o corpo da resposta não o carrega.
     const response = NextResponse.json(
       {
         success: true,
-        token,
         user: {
           id: newId,
           email: normalizedEmail,
@@ -245,18 +250,7 @@ export async function POST(request: Request) {
       },
       { status: 201 }
     );
-
-    const forwardedProto = request.headers.get('x-forwarded-proto');
-    const isHttps =
-      forwardedProto === 'https' || request.url.startsWith('https://');
-
-    response.cookies.set('auth-token', token, {
-      path: '/',
-      maxAge: 60 * 60,
-      sameSite: 'lax',
-      secure: isHttps,
-      httpOnly: false,
-    });
+    response.cookies.set(SESSION_COOKIE, token, sessionCookieOptions(isHttpsRequest(request)));
 
     return response;
   } catch (err) {

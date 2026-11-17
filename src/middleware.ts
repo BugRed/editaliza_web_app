@@ -1,74 +1,53 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { verifyToken } from './shared/lib/auth-token';
+import { readSessionToken } from './shared/lib/auth-token';
+
+const SESSION_COOKIE = 'auth-token';
 
 // Rotas públicas que NÃO requerem autenticação
-const publicRoutes = [
-  '/login',
-  '/cadastro',
-];
+const publicRoutes = ['/login', '/cadastro'];
 
-// Rotas de API abertas
-const publicApiRoutes = ['/api/health', '/api/auth/login', '/api/auth/register'];
+// Rotas de API abertas: liveness, entrada da sessão (login e cadastro) e saída (logout)
+const publicApiRoutes = ['/api/health', '/api/auth/login', '/api/auth/register', '/api/auth/logout'];
 
-function extractToken(request: NextRequest): string | undefined {
-  const cookieToken = request.cookies.get('auth-token')?.value;
-  if (cookieToken) return cookieToken;
-
-  const authHeader = request.headers.get('authorization');
-  if (authHeader && authHeader.toLowerCase().startsWith('bearer ')) {
-    return authHeader.slice(7).trim();
-  }
-  return undefined;
+// Só o cookie httpOnly conta: não há Authorization Bearer nem token em storage do navegador.
+// Sem AUTH_SECRET utilizável a verificação falha fechada (ninguém autentica).
+async function hasValidSession(request: NextRequest): Promise<boolean> {
+  const token = request.cookies.get(SESSION_COOKIE)?.value;
+  return (await readSessionToken(token, process.env.AUTH_SECRET)) !== null;
 }
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const token = extractToken(request);
 
-  // API responde 401 em JSON se não houver token válido (cookie ou Bearer)
+  // API responde 401 em JSON, nunca redirect: cliente de API não deve seguir para /login
   if (pathname.startsWith('/api')) {
-    if (publicApiRoutes.some((route) => pathname === route)) {
-      return NextResponse.next();
-    }
-    const isAuthenticated = token ? verifyToken(token) !== null : false;
-    if (!isAuthenticated) {
+    if (publicApiRoutes.includes(pathname)) return NextResponse.next();
+    if (!(await hasValidSession(request))) {
       return NextResponse.json({ error: 'Não autenticado.' }, { status: 401 });
     }
     return NextResponse.next();
   }
 
   // Rotas estáticas - permitir acesso
-  if (
-    pathname.startsWith('/_next/') ||
-    pathname.startsWith('/favicon.ico') ||
-    pathname.includes('.')
-  ) {
+  if (pathname.startsWith('/_next/') || pathname.startsWith('/favicon.ico') || pathname.includes('.')) {
     return NextResponse.next();
   }
 
-  const isPublicRoute = publicRoutes.some(
-    (route) => pathname === route || pathname.startsWith(route + '/')
-  );
+  const authenticated = await hasValidSession(request);
+  const isPublicRoute = publicRoutes.some((route) => pathname === route || pathname.startsWith(route + '/'));
 
   if (isPublicRoute) {
-    if (token && verifyToken(token) !== null) {
-      return NextResponse.redirect(new URL('/', request.url));
-    }
-    return NextResponse.next();
+    return authenticated ? NextResponse.redirect(new URL('/', request.url)) : NextResponse.next();
   }
 
-  // Toda página que não é pública exige sessão válida: sem token vai para o login (guardando o
-  // destino) e token inválido é limpo. A API já responde 401 acima; isto fecha a casca das páginas.
-  if (!token) {
+  // Toda página que não é pública exige sessão válida: sem ela vai ao login (guardando o destino) e o
+  // cookie inválido é limpo. A API já responde 401 acima; isto fecha a casca das páginas.
+  if (!authenticated) {
     const loginUrl = new URL('/login', request.url);
     loginUrl.searchParams.set('redirect', pathname);
-    return NextResponse.redirect(loginUrl);
-  }
-
-  if (verifyToken(token) === null) {
-    const response = NextResponse.redirect(new URL('/login', request.url));
-    response.cookies.delete('auth-token');
+    const response = NextResponse.redirect(loginUrl);
+    if (request.cookies.has(SESSION_COOKIE)) response.cookies.delete(SESSION_COOKIE);
     return response;
   }
 
@@ -76,7 +55,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    '/((?!_next/static|_next/image|favicon.ico).*)',
-  ],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
 };

@@ -8,10 +8,9 @@ import Header from "@/app/components/header/header";
 import Footer from "@/app/components/footer/footer";
 import { mensagemDeErro } from "@/app/lib/erros";
 
-import { useAuth } from "@/app/hooks/useAuth";
 
 export default function TesteFeedPage() {
-  const { token } = useAuth();
+  
   const [editals, setEditals] = useState<IEdital[]>([]);
   const [proposers, setProposers] = useState<Proposer[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -22,9 +21,6 @@ export default function TesteFeedPage() {
       const headers: Record<string, string> = {
         "Content-Type": "application/json",
       };
-      if (token) {
-        headers.Authorization = `Bearer ${token}`;
-      }
 
       try {
         const [editalsRes, proposersRes] = await Promise.all([
@@ -59,7 +55,7 @@ export default function TesteFeedPage() {
     };
 
     fetchData();
-  }, [token]);
+  }, []);
 
   if (loading) {
     return (

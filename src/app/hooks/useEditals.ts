@@ -1,12 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useAuth } from "./useAuth";
 import type { IEdital } from "../types/Edital";
 
 // Lista de editais para telas que não passam pelo ranking (perfil do proponente, página do selo).
 export function useEditals(): { editais: IEdital[]; loading: boolean } {
-  const { token } = useAuth();
   const [editais, setEditais] = useState<IEdital[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -14,10 +12,7 @@ export function useEditals(): { editais: IEdital[]; loading: boolean } {
     let active = true;
     async function load(): Promise<void> {
       try {
-        const res = await fetch("/api/editals", {
-          cache: "no-store",
-          headers: token ? { Authorization: `Bearer ${token}` } : undefined,
-        });
+        const res = await fetch("/api/editals", { cache: "no-store" });
         if (!res.ok) return;
         const data = (await res.json()) as IEdital[];
         if (active && Array.isArray(data)) setEditais(data);
@@ -31,7 +26,7 @@ export function useEditals(): { editais: IEdital[]; loading: boolean } {
     return () => {
       active = false;
     };
-  }, [token]);
+  }, []);
 
   return { editais, loading };
 }

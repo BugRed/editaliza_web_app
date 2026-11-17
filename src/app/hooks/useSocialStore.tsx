@@ -145,7 +145,7 @@ export function SocialStoreProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const { user, token } = useAuth();
+  const { user } = useAuth();
   const [profiles, setProfiles] = useState<ArtistProfile[]>(SEEDED_PROFILES);
   const [proposers, setProposers] = useState<ProposerProfile[]>([]);
   const [proposerSavedIds, setProposerSavedIds] = useState<number[]>([]);
@@ -157,14 +157,7 @@ export function SocialStoreProvider({
 
   const fetchProposers = useCallback(async () => {
     try {
-      const headers: Record<string, string> = {};
-      if (token) {
-        headers.Authorization = `Bearer ${token}`;
-      }
-      const res = await fetch("/api/proposers", {
-        cache: "no-store",
-        headers,
-      });
+      const res = await fetch("/api/proposers", { cache: "no-store" });
       if (!res.ok) return;
       const data = (await res.json()) as Array<Record<string, unknown>>;
       if (Array.isArray(data)) {
@@ -173,20 +166,16 @@ export function SocialStoreProvider({
     } catch (err) {
       console.error("Falha ao buscar propositores do banco:", err);
     }
-  }, [token]);
+  }, []);
 
   useEffect(() => {
     let active = true;
     const fetchAll = async () => {
       setProfilesLoading(true);
       try {
-        const headers: Record<string, string> = {};
-        if (token) {
-          headers.Authorization = `Bearer ${token}`;
-        }
         const [artistsRes, proposersRes] = await Promise.all([
-          fetch("/api/artists", { cache: "no-store", headers }),
-          fetch("/api/proposers", { cache: "no-store", headers }),
+          fetch("/api/artists", { cache: "no-store" }),
+          fetch("/api/proposers", { cache: "no-store" }),
         ]);
 
         if (artistsRes.ok) {
@@ -214,7 +203,7 @@ export function SocialStoreProvider({
     return () => {
       active = false;
     };
-  }, [token]);
+  }, []);
 
   const isProposer = user?.userType === "PROPOSER";
   const currentUserId = user?.id ?? 1;
@@ -276,9 +265,6 @@ export function SocialStoreProvider({
         const headers: Record<string, string> = {
           "Content-Type": "application/json",
         };
-        if (token) {
-          headers.Authorization = `Bearer ${token}`;
-        }
         const res = await fetch(`/api/artists/${artistId}`, {
           method: "PATCH",
           headers,
@@ -295,7 +281,7 @@ export function SocialStoreProvider({
         console.error("Erro ao persistir perfil no banco:", err);
       }
     },
-    [token]
+    []
   );
 
   const updateCurrentProfile = useCallback(
@@ -338,9 +324,6 @@ export function SocialStoreProvider({
         const headers: Record<string, string> = {
           "Content-Type": "application/json",
         };
-        if (token) {
-          headers.Authorization = `Bearer ${token}`;
-        }
         const res = await fetch(`/api/proposers/${targetId}`, {
           method: "PATCH",
           headers,
@@ -362,7 +345,7 @@ export function SocialStoreProvider({
         console.error("Erro ao atualizar propositor no banco:", err);
       }
     },
-    [currentProposer, token]
+    [currentProposer]
   );
 
   const publishEdital = useCallback(
@@ -371,9 +354,6 @@ export function SocialStoreProvider({
         const headers: Record<string, string> = {
           "Content-Type": "application/json",
         };
-        if (token) {
-          headers.Authorization = `Bearer ${token}`;
-        }
         const res = await fetch("/api/editals", {
           method: "POST",
           headers,
@@ -394,7 +374,7 @@ export function SocialStoreProvider({
         return { success: false, error: "Erro de conexão ao publicar edital." };
       }
     },
-    [token, fetchProposers]
+    [fetchProposers]
   );
 
   const addArtWorkToCurrentProfile = useCallback(

@@ -20,7 +20,7 @@ interface RankedEditalItem {
 }
 
 export default function SalvosPage() {
-  const { user, token } = useAuth();
+  const { user } = useAuth();
   const { currentProfile, rankingVersion, savedEditalIds, openEditalModal } =
     useSocialStore();
   const [rankedItems, setRankedItems] = useState<RankedEditalItem[]>([]);
@@ -35,13 +35,10 @@ export default function SalvosPage() {
       const headers: Record<string, string> = {
         "Content-Type": "application/json",
       };
-      if (token) {
-        headers.Authorization = `Bearer ${token}`;
-      }
 
       try {
         const res = await fetch(
-          `/api/ranking?artistId=${targetAccountId}`,
+          "/api/ranking",
           { cache: "no-store", headers }
         );
 
@@ -65,7 +62,7 @@ export default function SalvosPage() {
     return () => {
       active = false;
     };
-  }, [token, targetAccountId, rankingVersion]);
+  }, [targetAccountId, rankingVersion]);
 
   const parseTags = (raw: unknown): TagData[] => {
     if (Array.isArray(raw)) return raw as TagData[];
