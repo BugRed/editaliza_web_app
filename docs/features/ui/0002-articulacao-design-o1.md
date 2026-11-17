@@ -84,7 +84,7 @@ Nenhuma regra nova. O ranking segue o motor do protótipo; a apresentação é d
 - [x] Nada em `localStorage`, `sessionStorage` nem `document.cookie`; sessão só em cookie `httpOnly` assinado; senha só como hash
 - [x] Produção roda em mock (`yarn build` e `yarn start` com `DATA_SOURCE=mock`, login e cadastro verificados) e o local em Docker
 - [x] `yarn typecheck`, `yarn lint`, `yarn test` e `yarn build` passando, também os testes em Docker
-- [x] Usuário conferiu no navegador e aprovou o protótipo (2026-11-16). O ADR 0019 segue `Proposto` até o usuário aceitá-lo de forma explícita
+- [x] Usuário conferiu no navegador e aprovou o protótipo (2026-11-16). O ADR 0019 foi aceito pelo usuário em 2026-11-16
 <!-- /kit:criterios -->
 
 ## Dívida / não exercitado

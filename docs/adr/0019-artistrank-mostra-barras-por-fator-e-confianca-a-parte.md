@@ -1,6 +1,6 @@
 # ADR 0019 — O ranking mostra barras por fator e a confiança fora do score
 
-**Status:** Proposto · 2026-11-16
+**Status:** Aceito · 2026-11-16
 
 ## Contexto
 
