@@ -13,17 +13,17 @@
 
 <!-- kit:camadas -->
 - [x] prisma — não se aplica: sem Prisma; o schema é SQL (`db/migrations/0002_colunas_do_front.sql`, ver Impacto técnico)
-- [x] service — `src/app/services/auth-service.ts` e `src/app/lib/session.ts`; regras de autorização em `src/shared/lib/authorization.ts` (sem regra de negócio nova)
+- [x] service — `src/app/services/auth-service.ts` (login por hash e sessão assinada), `src/app/lib/session.ts`, camada de dados em `src/server/db/mock/`; regras de autorização em `src/shared/lib/authorization.ts` (sem regra de negócio nova)
 - [x] controller — não se aplica
 - [x] route — rotas de API do protótipo endurecidas (dono, papel, sessão), `PATCH /api/artists/[id]` ampliado e `middleware.ts` com redirect de páginas
 - [x] ui — front do `editaliza_prot` e as telas e componentes acrescentados
-- [x] teste — 92 testes de comportamento, inclusive de autorização das rotas (Vitest + Testing Library); rodam também em Docker, sem rede
+- [x] teste — testes de comportamento (Vitest + Testing Library), inclusive de autorização, sessão, hash de senha, mock e middleware (Vitest + Testing Library); rodam também em Docker, sem rede
 - [x] doc — CHANGELOG, ADR 0019, `docs/db`, `docs/ops`, `docs/ui`, dívida
 <!-- /kit:camadas -->
 
-**Próximo passo:** usuário confere no navegador (`yarn dev:db`, `yarn dev:db:setup`, `yarn dev`) o celular e os
-fluxos que não foram exercitados, e aceita ou revisa o [ADR 0019](../../adr/0019-artistrank-mostra-barras-por-fator-e-confianca-a-parte.md);
-depois push e PR (do usuário).
+**Próximo passo:** na Vercel, criar a env `AUTH_SECRET` (`openssl rand -base64 32`) e conferir o primeiro deploy em
+mock (`docs/ops/ambiente.md`); localmente, quem tem banco Docker antigo roda `yarn dev:db:reset`, `yarn dev:db` e
+`yarn dev:db:setup`. O usuário confere o celular e os fluxos e aceita ou revisa o ADR 0019; depois push e PR (do usuário).
 
 ## Problema / motivação
 A O1 do roadmap (`plano.md` §6.0) fecha o design antes de qualquer tela ir ao ar. O protótipo `editaliza_prot`
@@ -41,9 +41,11 @@ usuário pediu melhorias de galeria, mídia, selos, anúncios e do ranking sobre
 - Publicidade (menu lateral, direita fixa ao rolar, timeline) e coluna da direita com lista recursiva de 4 em 4.
 - Barras do ranking no resumo do edital, com dropdown por grupo (ADR 0019).
 - yarn como único gerenciador.
+- Fonte de dados por env: mock em produção e Docker no local, com o seed no repositório ([ADR 0020](../../adr/0020-fonte-de-dados-por-env-mock-em-producao-docker-no-local.md)).
+- Sessão sem `localStorage` (cookie httpOnly assinado) e senha com scrypt ([ADR 0021](../../adr/0021-sessao-em-cookie-httponly-assinado-e-senha-com-scrypt.md)).
 
 **Não entra (fora de escopo):**
-- Better Auth, Prisma, deploy, RLS (O2); upload de arquivos e rede de anúncios real (O3).
+- Better Auth, Prisma, Supabase, RLS (O2); upload de arquivos e rede de anúncios real (O3).
 - Telas ainda inexistentes do plano de ondas (admin, onboarding multi-etapas, trajetória, candidatos).
 - O motor ArtistRank de oito fatores (W5): as barras seguem o que o motor do protótipo devolve.
 
@@ -79,17 +81,21 @@ Nenhuma regra nova. O ranking segue o motor do protótipo; a apresentação é d
 - [x] Perfil do proponente lista os editais publicados; empresa e selo acessíveis a partir do post e do perfil
 - [x] Publicidade nas três posições pedidas e barras do ranking com dropdowns fechados por padrão
 - [x] Correções de segurança da W0 e da infra-01 restauradas sobre o backend do protótipo, com teste (dono, papel, sessão, ranking)
-- [x] `yarn typecheck`, `yarn lint` e `yarn test` passando (92 testes), também em Docker
+- [x] Nada em `localStorage`, `sessionStorage` nem `document.cookie`; sessão só em cookie `httpOnly` assinado; senha só como hash
+- [x] Produção roda em mock (`yarn build` e `yarn start` com `DATA_SOURCE=mock`, login e cadastro verificados) e o local em Docker
+- [x] `yarn typecheck`, `yarn lint`, `yarn test` e `yarn build` passando, também os testes em Docker
 - [ ] Usuário confere no navegador, inclusive celular, e aceita o ADR 0019
 <!-- /kit:criterios -->
 
 ## Dívida / não exercitado
 Resumo; a lista viva está em [`docs/divida.md`](../../divida.md).
-- **Segurança restaurada** (dono, papel, ranking pela sessão, redirect, cookie `Lax`, env no boot, client sem mock). Segue
-  aberto, como na W0: senha em texto puro, token sem assinatura e o token também em `localStorage` (Better Auth, O2).
-- **Modo sem banco do protótipo removido:** o app exige Supabase configurado (o banco local em Docker serve).
-- **Páginas sem sessão redirecionam ao login**, o que desativa o uso do app em iframe com cookie de terceiro bloqueado,
-  que o protótipo tolerava.
+- **Segurança restaurada e ampliada** (dono, papel, ranking pela sessão, redirect, cookie `httpOnly` assinado, senha com
+  scrypt, env no boot). Segue aberto até o Better Auth: logout não revoga o token, sem limite de tentativas de login,
+  sem token CSRF.
+- **Mock de produção não persiste escrita** (ADR 0020): demonstração apenas; não conferido numa Vercel real. **A env do mock
+  tem que sair de produção quando entrar o Supabase** (dívida registrada).
+- **Sem `Authorization: Bearer` e sem token em storage**, o que desativa o uso do app em iframe com cookie de terceiro
+  bloqueado, que o protótipo tolerava com `localStorage`.
 - **Não exercitado:** celular, vídeo e áudio no navegador real, embed de YouTube e Vimeo, `yarn build`, Supabase real.
 - **Decidido na hora:** limites de cor 40 e 70; dropdowns fechados; 4 perfis por página na direita; um anúncio a cada
   3 posts; anúncio do menu lateral ocupa a altura livre; "Tipo de mídia" como campo novo; imagens originais (7,3 MB)
@@ -98,4 +104,5 @@ Resumo; a lista viva está em [`docs/divida.md`](../../divida.md).
 
 ## Decisões em aberto
 - Aceitar o ADR 0019 (barras, faixas de cor e dropdowns) ou revisá-lo.
-- Se o uso em iframe (cookie de terceiro) precisa voltar, decidir como sem enfraquecer a sessão.
+- Quando e como sair do mock em produção (remover `DATA_SOURCE=mock` e trocar o padrão de produção por exigência explícita).
+- Se o uso em iframe (cookie de terceiro) precisa voltar, decidir como sem `localStorage`.

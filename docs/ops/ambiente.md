@@ -28,31 +28,52 @@ import a partir de código de cliente vira **erro de build**, não valor
 - **Vercel/produção:** as quatro variáveis reais como project env. Nenhuma
   precisa ser "exposed to client" — todo consumo é server-side.
 
-## Variáveis obrigatórias
+## Fonte de dados e variáveis
 
-O app **não sobe** sem `SUPABASE_URL` e `SUPABASE_API_KEY` (validadas em `src/shared/lib/env.ts`, falham no boot).
-O protótipo tinha um modo sem banco, com tabelas em memória; ele foi removido porque carregava senhas no código.
-Para desenvolver sem a nuvem, use o banco local abaixo.
+A fonte vem de `DATA_SOURCE` ([ADR 0020](../adr/0020-fonte-de-dados-por-env-mock-em-producao-docker-no-local.md)):
+
+| Onde | `DATA_SOURCE` | Dados |
+|---|---|---|
+| Local | `supabase` (padrão fora de produção) | Postgres + PostgREST do Docker, **sempre** |
+| Produção (Vercel), por enquanto | `mock` (padrão em produção) | seed em memória (`mock/*.csv`) |
+| Produção, depois | `supabase` | Supabase: **remover `DATA_SOURCE=mock` da Vercel**, definir `DATA_SOURCE=supabase` e as duas variáveis dele, sem tocar em rota (ver a dívida: o padrão de produção ainda é `mock`) |
+
+`AUTH_SECRET` (32 caracteres ou mais) é **obrigatória em qualquer ambiente**, sem padrão; sem ela o app não sobe
+([ADR 0021](../adr/0021-sessao-em-cookie-httponly-assinado-e-senha-com-scrypt.md)). `SUPABASE_URL` e
+`SUPABASE_API_KEY` só valem com `DATA_SOURCE=supabase`. Exemplos: `.env.example` e `.env.docker.example`.
+
+### Publicar na Vercel (mock)
+
+1. Project → Settings → Environment Variables: `AUTH_SECRET` = saída de `openssl rand -base64 32`, nos
+   ambientes Production e Preview. `DATA_SOURCE` é opcional (em produção o padrão já é `mock`).
+2. Deploy. As contas de exemplo estão em `mock/user_data.csv` e `mock/proposer_data.csv`.
+3. **Limite do mock:** escrita não persiste. Cada instância da função tem a sua memória e ela some no cold
+   start, então um cadastro pode não valer na próxima requisição. É demonstração, não produção real.
 
 ## Banco local em Docker
 
-Alternativa ao Supabase da nuvem, sem rede: Postgres 17 + PostgREST + um nginx que expõe
-`/rest/v1` (o caminho do `supabase-js`). Só para desenvolvimento.
+Local é **sempre** Docker: Postgres 17 + PostgREST + um nginx que expõe `/rest/v1` (o caminho do `supabase-js`).
 
 ```bash
-cp .env.docker.example .env.local   # o Next carrega .env.local por cima do .env
-yarn dev:db                      # sobe db, postgrest e gateway (aguarda ficarem saudáveis)
-yarn dev:db:setup                # migrations + seed + recarrega o schema do PostgREST
-yarn dev                         # reinicie se já estava rodando
+command cp -f .env.docker.example .env.local   # .env.local sobrepõe o .env; já traz DATA_SOURCE e AUTH_SECRET de dev
+yarn dev:db                                    # sobe db, postgrest e gateway (aguarda ficarem saudáveis)
+yarn dev:db:setup                              # migrations + seed (senhas gravadas como hash) + recarrega o schema
+yarn dev                                       # reinicie se já estava rodando
 ```
 
-Login de teste (vem de `mock/user_data.csv`): `maria.oliveira@email.com` / `senha_segura_2` e
-`joao.silva@email.com` / `senha_segura_1` (ambos `ARTIST`). `yarn dev:db:down` para; `dev:db:reset`
-apaga os dados. Para voltar ao Supabase da nuvem, apague `.env.local`.
+**O seed fica no repositório para todo dev usar:** `mock/*.csv` (dados) + `db/seed.mjs` (carga) +
+`db/seed-columns.json` (tipos das colunas, lido também pelo mock). Rodar de novo não duplica.
 
-Portas: 54321 (gateway REST) e 54322 (Postgres), só em `127.0.0.1`. O gateway tira o header
-`Authorization` porque o PostgREST sem segredo JWT recusa qualquer token; tudo roda como `anon`.
-Não há RLS aqui: não serve para validar políticas do Supabase.
+Contas de exemplo (as senhas legíveis só existem nos CSVs; no banco ficam como hash):
+`maria.oliveira@email.com` / `senha_segura_2` e `joao.silva@email.com` / `senha_segura_1` (artistas);
+os proponentes estão em `mock/proposer_data.csv`.
+
+`yarn dev:db:down` para; `yarn dev:db:reset` apaga os dados. **Banco criado antes do ADR 0021 tem senha em
+texto puro, que o app não aceita mais: rode `yarn dev:db:reset`, `yarn dev:db` e `yarn dev:db:setup`.**
+Para sair do Docker, apague o `.env.local` e configure o ambiente como na tabela acima.
+
+Portas: 54321 (gateway REST) e 54322 (Postgres), só em `127.0.0.1`. O gateway tira o header `Authorization`
+porque o PostgREST sem segredo JWT recusa qualquer token; tudo roda como `anon`. Não há RLS aqui.
 
 ## Testes
 
