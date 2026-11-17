@@ -568,3 +568,46 @@ export function getPlainEditalSummary(
     extraTags: ["Cultura", "Fomento", "Inscrição Online"],
   };
 }
+
+export interface SessionIdentity {
+  id: number;
+  email: string;
+  name?: string;
+  imgUrl?: string | null;
+}
+
+const DEFAULT_AVATAR = "/images/avatar_joao_1794791579584.jpg";
+
+/**
+ * Perfil mínimo de quem acabou de entrar mas ainda não aparece na lista de artistas (conta nova, ou lista ainda
+ * carregando). Existe para o app nunca mostrar o perfil de OUTRA pessoa (antes caía no primeiro da lista).
+ */
+export function buildFallbackProfile(user: SessionIdentity): ArtistProfile {
+  const name = user.name?.trim() || "Artista";
+  const slug = name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "").slice(0, 20);
+  const profile: ArtistProfile = {
+    id: user.id,
+    name,
+    handle: `@${slug || "artista"}`,
+    email: user.email,
+    city: "",
+    state: "",
+    territoryScope: "ESTADUAL",
+    bio: "",
+    avatarUrl: user.imgUrl || DEFAULT_AVATAR,
+    tags: [],
+    coreLanguages: [],
+    supportLanguages: [],
+    experienceYears: 0,
+    profileLevel: "INICIANTE",
+    hasCnpjOrMei: false,
+    hasTechnicalFormation: false,
+    portfolioCompleteness: 0,
+    badges: [],
+    works: [],
+    savedEditalIds: [],
+    likedEditalIds: [],
+  };
+  profile.portfolioCompleteness = calculatePortfolioCompleteness(profile);
+  return profile;
+}

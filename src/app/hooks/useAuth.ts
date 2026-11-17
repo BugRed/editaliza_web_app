@@ -15,6 +15,7 @@ interface User {
   email: string;
   name?: string;
   userType?: 'ARTIST' | 'PROPOSER' | string;
+  imgUrl?: string | null;
 }
 
 export interface RegisterPayload {

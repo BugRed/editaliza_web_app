@@ -14,6 +14,8 @@ export interface AuthUserSummary {
   email: string;
   name: string;
   userType: 'ARTIST' | 'PROPOSER' | string;
+  /** Foto do perfil (caminho ou data URL); pode faltar em conta antiga. */
+  imgUrl?: string | null;
 }
 
 export interface AuthResponse {
@@ -37,13 +39,14 @@ function toSummary(row: Record<string, unknown>, fallbackType?: 'ARTIST' | 'PROP
     email: String(row.email),
     name: String(row.name),
     userType: fallbackType ?? String(row.userType || 'ARTIST'),
+    imgUrl: typeof row.imgUrl === 'string' ? row.imgUrl : null,
   };
 }
 
 async function findAccountByCredentials(email: string, password: string): Promise<AuthUserSummary | null> {
   for (const { table, fallbackType } of ACCOUNT_TABLES) {
     // A senha é lida só aqui, para comparar o hash; nenhuma outra rota seleciona essa coluna.
-    const { data } = await supabase.from(table).select('id, email, name, userType, password').eq('email', email).single();
+    const { data } = await supabase.from(table).select('id, email, name, userType, imgUrl, password').eq('email', email).single();
     if (!data) continue;
     const row = data as unknown as Record<string, unknown>;
     if (await verifyPassword(password, row.password)) return toSummary(row, fallbackType);
@@ -77,7 +80,7 @@ export const authService = {
       for (const { table, fallbackType } of ACCOUNT_TABLES) {
         const { data } = await supabase
           .from(table)
-          .select('id, email, name, userType')
+          .select('id, email, name, userType, imgUrl')
           .eq('id', Number(session.userId))
           .eq('email', session.email)
           .single();

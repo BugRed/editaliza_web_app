@@ -15,6 +15,7 @@ import {
   ArtWork,
   UserBadge,
   calculatePortfolioCompleteness,
+  buildFallbackProfile,
 } from "../lib/user-profiles";
 import { IEdital, PlainEditalSummaryData } from "../types/Edital";
 import { ArtistRankResult, ProfileLevel, TerritoryScope } from "@/shared/lib/artistrank";
@@ -203,18 +204,22 @@ export function SocialStoreProvider({
     return () => {
       active = false;
     };
-  }, []);
+    // Recarrega quando muda o usuário: a lista é protegida por sessão, então a carga feita antes do login
+    // volta vazia, e uma conta recém-cadastrada só aparece depois dela.
+  }, [user?.id]);
 
   const isProposer = user?.userType === "PROPOSER";
   const currentUserId = user?.id ?? 1;
 
-  const currentProfile = useMemo(
-    () =>
+  const currentProfile = useMemo(() => {
+    const found =
       profiles.find((p) => p.id === currentUserId) ||
-      profiles.find((p) => p.email === user?.email) ||
-      profiles[0],
-    [profiles, currentUserId, user?.email]
-  );
+      profiles.find((p) => p.email === user?.email);
+    if (found) return found;
+    // Logado mas ainda fora da lista (conta nova): perfil mínimo da própria pessoa, nunca o de outra.
+    if (user) return buildFallbackProfile(user);
+    return profiles[0];
+  }, [profiles, currentUserId, user]);
 
   const currentProposer = useMemo(() => {
     if (!isProposer) return null;
