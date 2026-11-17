@@ -34,8 +34,146 @@
   --more-hover-color: #F0F6F7;
   --percent-bg-color: #FFFFFF;
 
+  /* Papéis novos do tema: mesmo nome nos dois temas, valor muda. "-fg" é a cor para texto, borda e anel
+     (no escuro clareia); sem sufixo é preenchimento sólido com texto branco por cima (não clareia). */
+  --primary-fg: #0E7C86;
+  --primary-fg-hover: #0B656D;
+  --primary-border: #CBE5E8;
+  --primary-soft-hover: #D5ECEE;
+  --accent-softer: #FFF8E1;
+  --accent-soft-hover: #FFE99E;
+  --accent-border: #F5D67B;
+  --on-accent: #102A30;
+  --scrim: #102A30;
+  --track: #E6EEF0;
+  --danger: #B91C1C;
+  --danger-soft: #FEF2F2;
+  --danger-border: #FECACA;
+  --warning: #B45309;
+  --warning-border: #FDE68A;
+  --success: #2F9E6B;
+
+  color-scheme: light;
+
   font-size: 16px;
 }
+
+/* O escuro existe duas vezes porque CSS não compartilha bloco entre @media e seletor de atributo: o
+   primeiro vale quando o sistema pede escuro e ninguém escolheu claro; o segundo, quando o usuário
+   escolheu escuro (cookie "theme", lido no servidor e posto em <html data-theme>). Altere os dois juntos. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+  --background: #0B1417;
+  --foreground: #E6EEF0;
+
+  --primary: #0E7C86;
+  --primary-hover: #0B656D;
+  --primary-soft: #12373B;
+  --primary-ink: #8FD8DE;
+
+  --accent: #FFB800;
+  --accent-hover: #E5A500;
+  --accent-soft: #3A2F0E;
+  --accent-ink: #FFD666;
+
+  --header-footer-bg-color: rgba(11, 20, 23, 0.94);
+
+  --bg-card: #111E22;
+  --surface-subtle: #16272C;
+  --border-subtle: #26393E;
+  --border-strong: #35505A;
+
+  --text-muted: #A3BBC0;
+  --text-subtle: #7E989E;
+
+  --tag-bg-card: #12373B;
+  --tag-color-card: #8FD8DE;
+  --submit-bg-color: #0E7C86;
+  --submit-text-color: #FFFFFF;
+  --more-bg-color: #111E22;
+  --more-hover-color: #16272C;
+  --percent-bg-color: #111E22;
+
+  --primary-fg: #4FC3CC;
+  --primary-fg-hover: #7ADAE2;
+  --primary-border: #1F5156;
+  --primary-soft-hover: #184549;
+  --accent-softer: #33290C;
+  --accent-soft-hover: #4A3C12;
+  --accent-border: #6B5416;
+  --on-accent: #102A30;
+  --scrim: #05090A;
+  --track: #26393E;
+  --danger: #F87171;
+  --danger-soft: #3B1518;
+  --danger-border: #7F1D1D;
+  --warning: #FBBF24;
+  --warning-border: #78531A;
+  --success: #4ADE9B;
+
+  color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --background: #0B1417;
+  --foreground: #E6EEF0;
+
+  --primary: #0E7C86;
+  --primary-hover: #0B656D;
+  --primary-soft: #12373B;
+  --primary-ink: #8FD8DE;
+
+  --accent: #FFB800;
+  --accent-hover: #E5A500;
+  --accent-soft: #3A2F0E;
+  --accent-ink: #FFD666;
+
+  --header-footer-bg-color: rgba(11, 20, 23, 0.94);
+
+  --bg-card: #111E22;
+  --surface-subtle: #16272C;
+  --border-subtle: #26393E;
+  --border-strong: #35505A;
+
+  --text-muted: #A3BBC0;
+  --text-subtle: #7E989E;
+
+  --tag-bg-card: #12373B;
+  --tag-color-card: #8FD8DE;
+  --submit-bg-color: #0E7C86;
+  --submit-text-color: #FFFFFF;
+  --more-bg-color: #111E22;
+  --more-hover-color: #16272C;
+  --percent-bg-color: #111E22;
+
+  --primary-fg: #4FC3CC;
+  --primary-fg-hover: #7ADAE2;
+  --primary-border: #1F5156;
+  --primary-soft-hover: #184549;
+  --accent-softer: #33290C;
+  --accent-soft-hover: #4A3C12;
+  --accent-border: #6B5416;
+  --on-accent: #102A30;
+  --scrim: #05090A;
+  --track: #26393E;
+  --danger: #F87171;
+  --danger-soft: #3B1518;
+  --danger-border: #7F1D1D;
+  --warning: #FBBF24;
+  --warning-border: #78531A;
+  --success: #4ADE9B;
+
+  color-scheme: dark;
+}
+
+.only-dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .only-light { display: none; }
+  :root:not([data-theme="light"]) .only-dark { display: inline-block; }
+}
+:root[data-theme="dark"] .only-light { display: none; }
+:root[data-theme="dark"] .only-dark { display: inline-block; }
 
 @theme inline {
   --color-background: var(--background);

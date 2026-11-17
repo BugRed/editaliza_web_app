@@ -9,7 +9,7 @@
   border: 1px solid var(--border-subtle);
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(16, 42, 48, 0.12);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--scrim) 12%, transparent);
 }
 
 .PercentCardFeed span {

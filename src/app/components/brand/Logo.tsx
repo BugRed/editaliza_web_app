@@ -7,9 +7,14 @@ interface LogoMarkProps {
   className?: string;
 }
 
-/** Símbolo: o "e" com o ponto final âmbar. O arquivo é o mesmo do favicon (public/brand/mark.svg). */
+/** Símbolo: o "e" com o ponto final âmbar. Duas imagens e o CSS (globals.css) mostra a do tema ativo: assim o servidor não precisa saber o tema do sistema. */
 export function LogoMark({ size = 36, className }: LogoMarkProps) {
-  return <Image src="/brand/mark.svg" alt="" width={size} height={size} unoptimized className={className} priority />;
+  return (
+    <>
+      <Image src="/brand/mark.svg" alt="" width={size} height={size} unoptimized className={`only-light ${className ?? ""}`} priority />
+      <Image src="/brand/mark-dark.svg" alt="" width={size} height={size} unoptimized className={`only-dark ${className ?? ""}`} priority />
+    </>
+  );
 }
 
 interface WordmarkProps {
@@ -22,8 +27,8 @@ interface WordmarkProps {
  */
 export function Wordmark({ className = "" }: WordmarkProps) {
   return (
-    <span className={`${fraunces.className} font-semibold tracking-[-0.02em] text-[#0E7C86] ${className}`}>
-      editaliza<span className="text-[#FFB800]">.</span>
+    <span className={`${fraunces.className} font-semibold tracking-[-0.02em] text-(--primary-fg) ${className}`}>
+      editaliza<span className="text-(--accent)">.</span>
     </span>
   );
 }

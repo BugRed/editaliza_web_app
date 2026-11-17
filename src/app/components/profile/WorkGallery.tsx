@@ -50,7 +50,7 @@ export default function WorkGallery({ works }: WorkGalleryProps) {
               aria-selected={active}
               onClick={() => setFilter(tab.id)}
               className={`cursor-pointer rounded-full border px-3.5 py-1.5 text-xs font-bold transition-colors ${
-                active ? "border-[#0E7C86] bg-[#0E7C86] text-white" : "border-[#DCE6E8] bg-white text-[#4A656B] hover:bg-[#F0F6F7]"
+                active ? "border-(--primary-fg) bg-(--primary) text-white" : "border-(--border-subtle) bg-(--bg-card) text-(--text-muted) hover:bg-(--surface-subtle)"
               }`}
             >
               {tab.label} <span className="tabular-nums opacity-80">{counts[tab.id]}</span>
@@ -60,7 +60,7 @@ export default function WorkGallery({ works }: WorkGalleryProps) {
       </div>
 
       {visible.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-[#DCE6E8] p-8 text-center text-sm text-[#6B8388]">
+        <div className="rounded-xl border border-dashed border-(--border-subtle) p-8 text-center text-sm text-(--text-subtle)">
           Nenhuma obra neste tipo ainda.
         </div>
       ) : (
@@ -73,17 +73,17 @@ export default function WorkGallery({ works }: WorkGalleryProps) {
 
       {selected && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#102A30]/60 p-4 backdrop-blur-xs"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-(--scrim)/60 p-4 backdrop-blur-xs"
           role="dialog"
           aria-modal="true"
           aria-label={selected.title}
           onClick={() => setSelected(null)}
         >
           <div
-            className="max-h-[92vh] w-full max-w-xl overflow-y-auto rounded-2xl border border-[#DCE6E8] bg-white shadow-xl"
+            className="max-h-[92vh] w-full max-w-xl overflow-y-auto rounded-2xl border border-(--border-subtle) bg-(--bg-card) shadow-xl"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="relative bg-[#F0F6F7]">
+            <div className="relative bg-(--surface-subtle)">
               {isPlayableKind(kind) ? (
                 <div className="p-3">
                   <MediaPlayer url={selected.mediaUrl ?? ""} title={selected.title} poster={selected.imageUrl} />
@@ -96,38 +96,38 @@ export default function WorkGallery({ works }: WorkGalleryProps) {
                 type="button"
                 onClick={() => setSelected(null)}
                 aria-label="Fechar visualização da obra"
-                className="absolute right-3 top-3 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-white/90 text-[#102A30] shadow-sm hover:bg-white"
+                className="absolute right-3 top-3 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-(--bg-card)/90 text-(--foreground) shadow-sm hover:bg-(--bg-card)"
               >
                 <X size={18} />
               </button>
             </div>
             <div className="space-y-3 p-5">
               <div className="flex items-start justify-between gap-3">
-                <h4 className="text-lg font-bold leading-snug text-[#102A30]">{selected.title}</h4>
-                <span className="shrink-0 text-xs font-bold tabular-nums text-[#0E7C86]">{selected.year}</span>
+                <h4 className="text-lg font-bold leading-snug text-(--foreground)">{selected.title}</h4>
+                <span className="shrink-0 text-xs font-bold tabular-nums text-(--primary-fg)">{selected.year}</span>
               </div>
-              <p className="text-xs font-bold uppercase tracking-wider text-[#0E7C86]">
+              <p className="text-xs font-bold uppercase tracking-wider text-(--primary-fg)">
                 {WORK_KIND_LABELS[kind]} · {selected.category}
               </p>
               <dl className="grid grid-cols-1 gap-2 text-sm sm:grid-cols-2">
                 {selected.technique && (
                   <div>
-                    <dt className="text-xs font-bold text-[#6B8388]">Técnica</dt>
-                    <dd className="text-[#102A30]">{selected.technique}</dd>
+                    <dt className="text-xs font-bold text-(--text-subtle)">Técnica</dt>
+                    <dd className="text-(--foreground)">{selected.technique}</dd>
                   </div>
                 )}
                 {selected.dimensions && (
                   <div>
-                    <dt className="text-xs font-bold text-[#6B8388]">Dimensões</dt>
-                    <dd className="text-[#102A30]">{selected.dimensions}</dd>
+                    <dt className="text-xs font-bold text-(--text-subtle)">Dimensões</dt>
+                    <dd className="text-(--foreground)">{selected.dimensions}</dd>
                   </div>
                 )}
               </dl>
-              <p className="text-sm leading-relaxed text-[#4A656B]">{selected.description}</p>
+              <p className="text-sm leading-relaxed text-(--text-muted)">{selected.description}</p>
               {(selected.tags?.length ?? 0) > 0 && (
                 <ul className="flex flex-wrap gap-1.5" aria-label="Temas da obra">
                   {selected.tags?.map((tag) => (
-                    <li key={tag} className="rounded-md border border-[#CBE5E8] bg-[#E6F4F5] px-2 py-0.5 text-xs font-semibold text-[#09585F]">
+                    <li key={tag} className="rounded-md border border-(--primary-border) bg-(--primary-soft) px-2 py-0.5 text-xs font-semibold text-(--primary-ink)">
                       {tag}
                     </li>
                   ))}

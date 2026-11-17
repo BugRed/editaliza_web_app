@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
+import { cookies } from "next/headers";
 import "./globals.css";
 import { AuthProvider } from "./hooks/useAuth";
 import { SocialStoreProvider } from "./hooks/useSocialStore";
 import { fraunces } from "./lib/brand-font";
 import { env } from "@/shared/lib/env";
 import { resolveSiteUrl } from "@/shared/lib/site-url";
+import { parseThemePreference, themeAttribute, THEME_COOKIE } from "@/shared/lib/theme";
 
 const TITLE = "Editaliza: editais culturais, em linguagem simples";
 const DESCRIPTION =
@@ -22,17 +24,22 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0E7C86",
+  // Só acompanha o sistema: com tema escolhido à mão o navegador não deixa o servidor trocar isso por cookie.
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0E7C86" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B1417" },
+  ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const theme = themeAttribute(parseThemePreference((await cookies()).get(THEME_COOKIE)?.value));
   return (
-    <html lang="pt-BR" className={`${fraunces.variable} bg-[#F8FAFB] text-[#102A30]`}>
-      <body className="antialiased min-h-screen bg-[#F8FAFB] text-[#102A30]">
+    <html lang="pt-BR" data-theme={theme} className={`${fraunces.variable} bg-(--background) text-(--foreground)`}>
+      <body className="antialiased min-h-screen bg-(--background) text-(--foreground)">
         <AuthProvider>
           <SocialStoreProvider>
             {children}

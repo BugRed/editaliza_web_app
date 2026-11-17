@@ -31,18 +31,18 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-[#F8FAFB] px-4 py-10">
-      <div className="w-full max-w-md bg-white border border-[#DCE6E8] rounded-xl shadow-sm overflow-hidden">
-        <div className="h-1.5 w-full bg-gradient-to-r from-[#0E7C86] via-[#0E7C86] to-[#FFB800]" />
+    <div className="min-h-screen w-full flex items-center justify-center bg-(--background) px-4 py-10">
+      <div className="w-full max-w-md bg-(--bg-card) border border-(--border-subtle) rounded-xl shadow-sm overflow-hidden">
+        <div className="h-1.5 w-full bg-gradient-to-r from-(--primary) via-(--primary) to-(--accent)" />
         <div className="p-8 flex flex-col items-center">
           <div className="flex flex-col items-center mb-6">
             <Link
               href="/"
-              className="w-12 h-12 rounded-xl bg-[#FFB800] text-[#102A30] flex items-center justify-center mb-3"
+              className="w-12 h-12 rounded-xl bg-(--accent) text-(--on-accent) flex items-center justify-center mb-3"
             >
               <Sun size={26} strokeWidth={2.2} aria-hidden="true" />
             </Link>
-            <h1 className="text-2xl font-bold text-[#0E7C86]">Editaliza</h1>
+            <h1 className="text-2xl font-bold text-(--primary-fg)">Editaliza</h1>
           </div>
 
           <form onSubmit={handleSubmit} className="w-full flex flex-col space-y-3">
@@ -52,7 +52,7 @@ export default function LoginForm() {
               placeholder="E-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+              className="w-full px-4 py-2.5 rounded-lg bg-(--background) border border-(--border-subtle) text-(--foreground) placeholder-(--text-subtle) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               required
             />
             <input
@@ -62,21 +62,21 @@ export default function LoginForm() {
               minLength={6}
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+              className="w-full px-4 py-2.5 rounded-lg bg-(--background) border border-(--border-subtle) text-(--foreground) placeholder-(--text-subtle) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               required
             />
             <button
               type="submit"
-              className="w-full py-2.5 rounded-lg bg-[#0E7C86] text-white font-semibold hover:bg-[#0B656D] transition-colors cursor-pointer"
+              className="w-full py-2.5 rounded-lg bg-(--primary) text-white font-semibold hover:bg-(--primary-hover) transition-colors cursor-pointer"
             >
               Entrar
             </button>
-            {erro && <p className="text-red-600 text-sm">{erro}</p>}
+            {erro && <p className="text-(--danger) text-sm">{erro}</p>}
           </form>
 
-          <p className="mt-6 text-[#4A656B] text-sm">
+          <p className="mt-6 text-(--text-muted) text-sm">
             Ainda não tem cadastro?{" "}
-            <Link href="/cadastro" className="text-[#0E7C86] font-semibold hover:underline">
+            <Link href="/cadastro" className="text-(--primary-fg) font-semibold hover:underline">
               Cadastre-se
             </Link>
           </p>

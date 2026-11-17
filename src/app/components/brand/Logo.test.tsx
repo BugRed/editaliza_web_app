@@ -19,7 +19,7 @@ describe("Logo", () => {
     const word = screen.getByText(/editaliza/);
     expect(word).toHaveTextContent("editaliza.");
     expect(word.querySelector("span")).toHaveTextContent(".");
-    expect(word.querySelector("span")?.className).toContain("#FFB800");
+    expect(word.querySelector("span")?.className).toContain("--accent");
   });
 
   it("a logo completa traz símbolo e nome juntos", () => {

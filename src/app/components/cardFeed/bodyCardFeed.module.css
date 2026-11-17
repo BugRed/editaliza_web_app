@@ -35,7 +35,7 @@
   border-radius: 9999px;
   background-color: var(--primary-soft);
   color: var(--primary);
-  border: 1px solid #CBE5E8;
+  border: 1px solid var(--primary-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -134,7 +134,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(16, 42, 48, 0.38);
+  background: color-mix(in srgb, var(--scrim) 38%, transparent);
   backdrop-filter: blur(2px);
   z-index: 1005;
 }

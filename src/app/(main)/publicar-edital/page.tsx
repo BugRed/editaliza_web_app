@@ -176,9 +176,9 @@ export default function PublicarEditalPage() {
   return (
     <AppShell title="Publicar edital">
       <div className="p-5 sm:p-6 space-y-6">
-        <div className="rounded-xl border border-[#CBE5E8] bg-[#E6F4F5] p-4 flex items-start gap-3">
-          <FilePlus2 size={20} className="text-[#0E7C86] mt-0.5 shrink-0" />
-          <div className="text-xs sm:text-sm text-[#09585F] space-y-1">
+        <div className="rounded-xl border border-(--primary-border) bg-(--primary-soft) p-4 flex items-start gap-3">
+          <FilePlus2 size={20} className="text-(--primary-fg) mt-0.5 shrink-0" />
+          <div className="text-xs sm:text-sm text-(--primary-ink) space-y-1">
             <p className="font-bold">Novo edital no banco de oportunidades</p>
             <p>
               Os critérios abaixo alimentam diretamente o ranqueamento{" "}
@@ -188,15 +188,15 @@ export default function PublicarEditalPage() {
         </div>
 
         {createdTitle && (
-          <div className="rounded-xl border border-[#0E7C86]/30 bg-[#E6F4F5] p-4 flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-2 text-sm font-semibold text-[#09585F]">
+          <div className="rounded-xl border border-(--primary-fg)/30 bg-(--primary-soft) p-4 flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-2 text-sm font-semibold text-(--primary-ink)">
               <Check size={18} />
               <span>Edital &ldquo;{createdTitle}&rdquo; publicado com sucesso!</span>
             </div>
             <button
               type="button"
               onClick={() => router.push("/")}
-              className="px-4 py-1.5 rounded-lg bg-[#0E7C86] text-white text-xs font-bold hover:bg-[#0B656D] cursor-pointer"
+              className="px-4 py-1.5 rounded-lg bg-(--primary) text-white text-xs font-bold hover:bg-(--primary-hover) cursor-pointer"
             >
               Ver no Início
             </button>
@@ -206,7 +206,7 @@ export default function PublicarEditalPage() {
         {error && (
           <div
             role="alert"
-            className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
+            className="rounded-xl border border-(--danger-border) bg-(--danger-soft) px-4 py-3 text-sm text-(--danger)"
           >
             {error}
           </div>
@@ -214,7 +214,7 @@ export default function PublicarEditalPage() {
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-1.5">
-            <label htmlFor="ed-title" className="block text-sm font-bold text-[#102A30]">
+            <label htmlFor="ed-title" className="block text-sm font-bold text-(--foreground)">
               Título do edital
             </label>
             <input
@@ -223,13 +223,13 @@ export default function PublicarEditalPage() {
               placeholder="Ex: Chamada Aberta de Artes Visuais 2026"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               required
             />
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="ed-desc" className="block text-sm font-bold text-[#102A30]">
+            <label htmlFor="ed-desc" className="block text-sm font-bold text-(--foreground)">
               Descrição para o feed
             </label>
             <textarea
@@ -238,20 +238,20 @@ export default function PublicarEditalPage() {
               placeholder="Apresente o objetivo do edital, bolsas ou cachês e formato da seleção..."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               required
             />
           </div>
 
           {/* Resumo sem academiquês */}
-          <div className="rounded-xl border border-[#DCE6E8] bg-[#F8FAFB] p-4 space-y-4">
-            <div className="flex items-center gap-2 text-sm font-bold text-[#0E7C86]">
+          <div className="rounded-xl border border-(--border-subtle) bg-(--background) p-4 space-y-4">
+            <div className="flex items-center gap-2 text-sm font-bold text-(--primary-fg)">
               <Sparkles size={16} />
               <span>Resumo direto (sem academiquês) para o modal</span>
             </div>
 
             <div className="space-y-1.5">
-              <label htmlFor="ed-what" className="block text-xs font-bold text-[#102A30]">
+              <label htmlFor="ed-what" className="block text-xs font-bold text-(--foreground)">
                 O que é este edital na prática?
               </label>
               <textarea
@@ -260,13 +260,13 @@ export default function PublicarEditalPage() {
                 placeholder="Explique de forma simples o que o artista vai fazer e ganhar..."
                 value={whatIsIt}
                 onChange={(e) => setWhatIsIt(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-white border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                className="w-full px-3 py-2 rounded-xl bg-(--bg-card) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div className="space-y-1.5">
-                <label htmlFor="ed-who" className="block text-xs font-bold text-[#102A30]">
+                <label htmlFor="ed-who" className="block text-xs font-bold text-(--foreground)">
                   Quem pode participar (1 item por linha)
                 </label>
                 <textarea
@@ -274,12 +274,12 @@ export default function PublicarEditalPage() {
                   rows={3}
                   value={whoCanApplyText}
                   onChange={(e) => setWhoCanApplyText(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-white border border-[#DCE6E8] text-xs sm:text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                  className="w-full px-3 py-2 rounded-xl bg-(--bg-card) border border-(--border-subtle) text-xs sm:text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="ed-ben" className="block text-xs font-bold text-[#102A30]">
+                <label htmlFor="ed-ben" className="block text-xs font-bold text-(--foreground)">
                   O que você recebe (1 item por linha)
                 </label>
                 <textarea
@@ -287,7 +287,7 @@ export default function PublicarEditalPage() {
                   rows={3}
                   value={benefitsText}
                   onChange={(e) => setBenefitsText(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-white border border-[#DCE6E8] text-xs sm:text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                  className="w-full px-3 py-2 rounded-xl bg-(--bg-card) border border-(--border-subtle) text-xs sm:text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
                 />
               </div>
             </div>
@@ -296,7 +296,7 @@ export default function PublicarEditalPage() {
           {/* Abrangência territorial */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="space-y-1.5">
-              <label htmlFor="ed-scope" className="block text-sm font-bold text-[#102A30]">
+              <label htmlFor="ed-scope" className="block text-sm font-bold text-(--foreground)">
                 Abrangência
               </label>
               <select
@@ -305,7 +305,7 @@ export default function PublicarEditalPage() {
                 onChange={(e) =>
                   setTerritoryScope(e.target.value as TerritoryScope)
                 }
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               >
                 <option value="NACIONAL">Nacional</option>
                 <option value="ESTADUAL">Estadual</option>
@@ -315,7 +315,7 @@ export default function PublicarEditalPage() {
             </div>
 
             <div className="space-y-1.5">
-              <label htmlFor="ed-city" className="block text-sm font-bold text-[#102A30]">
+              <label htmlFor="ed-city" className="block text-sm font-bold text-(--foreground)">
                 Cidade (se regional)
               </label>
               <input
@@ -324,19 +324,19 @@ export default function PublicarEditalPage() {
                 placeholder="Ex: Recife"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               />
             </div>
 
             <div className="space-y-1.5">
-              <label htmlFor="ed-state" className="block text-sm font-bold text-[#102A30]">
+              <label htmlFor="ed-state" className="block text-sm font-bold text-(--foreground)">
                 Estado (UF)
               </label>
               <select
                 id="ed-state"
                 value={stateUf}
                 onChange={(e) => setStateUf(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               >
                 <option value="">Todos</option>
                 {BRAZILIAN_STATES.map((uf) => (
@@ -351,10 +351,10 @@ export default function PublicarEditalPage() {
           {/* Linguagens */}
           <div className="space-y-3 pt-1">
             <div>
-              <p className="text-sm font-bold text-[#102A30]">
+              <p className="text-sm font-bold text-(--foreground)">
                 Linguagens obrigatórias
               </p>
-              <p className="text-xs text-[#6B8388] mb-2">
+              <p className="text-xs text-(--text-subtle) mb-2">
                 O artista precisa atuar em pelo menos uma destas áreas para não receber bloqueio.
               </p>
               <div className="flex flex-wrap gap-2">
@@ -367,8 +367,8 @@ export default function PublicarEditalPage() {
                       onClick={() => toggleRequired(tag)}
                       className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors cursor-pointer ${
                         selected
-                          ? "bg-[#0E7C86] border-[#0E7C86] text-white"
-                          : "bg-white border-[#DCE6E8] text-[#4A656B] hover:border-[#0E7C86]"
+                          ? "bg-(--primary) border-(--primary-fg) text-white"
+                          : "bg-(--bg-card) border-(--border-subtle) text-(--text-muted) hover:border-(--primary-fg)"
                       }`}
                     >
                       {tag}
@@ -379,7 +379,7 @@ export default function PublicarEditalPage() {
             </div>
 
             <div>
-              <p className="text-sm font-bold text-[#102A30]">
+              <p className="text-sm font-bold text-(--foreground)">
                 Todas as linguagens aceitas no edital
               </p>
               <div className="flex flex-wrap gap-2 mt-2">
@@ -392,8 +392,8 @@ export default function PublicarEditalPage() {
                       onClick={() => toggleAccepted(tag)}
                       className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors cursor-pointer ${
                         selected
-                          ? "bg-[#FFB800] border-[#FFB800] text-[#102A30]"
-                          : "bg-white border-[#DCE6E8] text-[#4A656B] hover:border-[#FFB800]"
+                          ? "bg-(--accent) border-(--accent) text-(--on-accent)"
+                          : "bg-(--bg-card) border-(--border-subtle) text-(--text-muted) hover:border-(--accent)"
                       }`}
                     >
                       {tag}
@@ -407,7 +407,7 @@ export default function PublicarEditalPage() {
           {/* Elegibilidade & Prazos */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="space-y-1.5">
-              <label htmlFor="ed-exp" className="block text-sm font-bold text-[#102A30]">
+              <label htmlFor="ed-exp" className="block text-sm font-bold text-(--foreground)">
                 Experiência mínima (anos)
               </label>
               <input
@@ -417,12 +417,12 @@ export default function PublicarEditalPage() {
                 max={30}
                 value={minExperienceYears}
                 onChange={(e) => setMinExperienceYears(Number(e.target.value))}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] tabular-nums focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) tabular-nums focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               />
             </div>
 
             <div className="space-y-1.5">
-              <label htmlFor="ed-end" className="block text-sm font-bold text-[#102A30]">
+              <label htmlFor="ed-end" className="block text-sm font-bold text-(--foreground)">
                 Prazo final de inscrição
               </label>
               <input
@@ -430,19 +430,19 @@ export default function PublicarEditalPage() {
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] tabular-nums focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) tabular-nums focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               />
             </div>
 
             <div className="space-y-1.5">
-              <label htmlFor="ed-cover" className="block text-sm font-bold text-[#102A30]">
+              <label htmlFor="ed-cover" className="block text-sm font-bold text-(--foreground)">
                 Capa do edital
               </label>
               <select
                 id="ed-cover"
                 value={imgCoverUrl}
                 onChange={(e) => setImgCoverUrl(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               >
                 {COVER_OPTIONS.map((opt) => (
                   <option key={opt.url} value={opt.url}>
@@ -454,7 +454,7 @@ export default function PublicarEditalPage() {
           </div>
 
           <div className="space-y-2">
-            <p className="text-sm font-bold text-[#102A30]">
+            <p className="text-sm font-bold text-(--foreground)">
               Momentos de carreira contemplados
             </p>
             <div className="flex flex-wrap gap-2">
@@ -467,8 +467,8 @@ export default function PublicarEditalPage() {
                     onClick={() => toggleLevel(lvl.value)}
                     className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors cursor-pointer ${
                       active
-                        ? "bg-[#E6F4F5] border-[#0E7C86] text-[#0E7C86]"
-                        : "bg-white border-[#DCE6E8] text-[#4A656B]"
+                        ? "bg-(--primary-soft) border-(--primary-fg) text-(--primary-fg)"
+                        : "bg-(--bg-card) border-(--border-subtle) text-(--text-muted)"
                     }`}
                   >
                     {lvl.label}
@@ -479,39 +479,39 @@ export default function PublicarEditalPage() {
           </div>
 
           <div className="flex flex-wrap gap-5 pt-1">
-            <label className="inline-flex items-center gap-2 text-sm text-[#102A30] cursor-pointer">
+            <label className="inline-flex items-center gap-2 text-sm text-(--foreground) cursor-pointer">
               <input
                 type="checkbox"
                 checked={requiresPortfolio}
                 onChange={(e) => setRequiresPortfolio(e.target.checked)}
-                className="w-4 h-4 accent-[#0E7C86] rounded"
+                className="w-4 h-4 accent-(--primary-fg) rounded"
               />
               <span>Exige portfólio</span>
             </label>
 
-            <label className="inline-flex items-center gap-2 text-sm text-[#102A30] cursor-pointer">
+            <label className="inline-flex items-center gap-2 text-sm text-(--foreground) cursor-pointer">
               <input
                 type="checkbox"
                 checked={requiresCnpj}
                 onChange={(e) => setRequiresCnpj(e.target.checked)}
-                className="w-4 h-4 accent-[#0E7C86] rounded"
+                className="w-4 h-4 accent-(--primary-fg) rounded"
               />
               <span>Exige CNPJ ou MEI</span>
             </label>
 
-            <label className="inline-flex items-center gap-2 text-sm text-[#102A30] cursor-pointer">
+            <label className="inline-flex items-center gap-2 text-sm text-(--foreground) cursor-pointer">
               <input
                 type="checkbox"
                 checked={requiresTechnicalFormation}
                 onChange={(e) => setRequiresTechnicalFormation(e.target.checked)}
-                className="w-4 h-4 accent-[#0E7C86] rounded"
+                className="w-4 h-4 accent-(--primary-fg) rounded"
               />
               <span>Exige formação técnica</span>
             </label>
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="ed-link" className="block text-sm font-bold text-[#102A30]">
+            <label htmlFor="ed-link" className="block text-sm font-bold text-(--foreground)">
               Link oficial de inscrição
             </label>
             <input
@@ -519,7 +519,7 @@ export default function PublicarEditalPage() {
               type="url"
               value={inscriptionLink}
               onChange={(e) => setInscriptionLink(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
             />
           </div>
 
@@ -527,13 +527,13 @@ export default function PublicarEditalPage() {
             <button
               type="submit"
               disabled={submitting}
-              className="px-6 py-2.5 rounded-xl bg-[#0E7C86] text-white text-sm font-bold hover:bg-[#0B656D] disabled:opacity-60 transition-colors cursor-pointer"
+              className="px-6 py-2.5 rounded-xl bg-(--primary) text-white text-sm font-bold hover:bg-(--primary-hover) disabled:opacity-60 transition-colors cursor-pointer"
             >
               {submitting ? "Publicando edital..." : "Publicar edital"}
             </button>
             <Link
               href="/"
-              className="px-4 py-2.5 rounded-xl border border-[#DCE6E8] text-sm font-semibold text-[#4A656B] hover:bg-[#F0F6F7]"
+              className="px-4 py-2.5 rounded-xl border border-(--border-subtle) text-sm font-semibold text-(--text-muted) hover:bg-(--surface-subtle)"
             >
               Cancelar
             </Link>

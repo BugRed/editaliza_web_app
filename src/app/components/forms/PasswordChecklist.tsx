@@ -9,7 +9,7 @@ export default function PasswordChecklist({ password }: { password: string }) {
       {PASSWORD_RULES.map((rule) => {
         const ok = rule.test(password);
         return (
-          <li key={rule.id} className={`flex items-center gap-1.5 text-xs ${ok ? "font-semibold text-[#0E7C86]" : "text-[#6B8388]"}`}>
+          <li key={rule.id} className={`flex items-center gap-1.5 text-xs ${ok ? "font-semibold text-(--primary-fg)" : "text-(--text-subtle)"}`}>
             {ok ? <Check size={13} aria-hidden="true" /> : <Circle size={13} aria-hidden="true" />}
             <span>
               {rule.label}

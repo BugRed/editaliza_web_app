@@ -19,6 +19,7 @@ import { useSocialStore } from "@/app/hooks/useSocialStore";
 import EditalSummaryModal from "@/app/components/modal/EditalSummaryModal";
 import AdSlot from "@/app/components/ads/AdSlot";
 import ArtistList from "@/app/components/shell/ArtistList";
+import ThemeToggle from "@/app/components/shell/ThemeToggle";
 
 interface AppShellProps {
   title: string;
@@ -105,7 +106,7 @@ export default function AppShell({ title, children }: AppShellProps) {
       : currentProfile.handle;
 
   return (
-    <div className="min-h-screen bg-[#F8FAFB] text-[#102A30]">
+    <div className="min-h-screen bg-(--background) text-(--foreground)">
       <div className="max-w-[1200px] mx-auto flex justify-center">
         {/* Left Sidebar (Instagram / X style) */}
         <aside className="hidden md:flex flex-col justify-between w-60 xl:w-64 shrink-0 sticky top-0 h-screen px-4 py-5">
@@ -123,20 +124,20 @@ export default function AppShell({ title, children }: AppShellProps) {
                     href={item.href}
                     className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-[15px] transition-colors whitespace-nowrap ${
                       item.active
-                        ? "bg-[#E6F4F5] text-[#0E7C86] font-bold"
-                        : "text-[#102A30] font-medium hover:bg-[#F0F6F7]"
+                        ? "bg-(--primary-soft) text-(--primary-fg) font-bold"
+                        : "text-(--foreground) font-medium hover:bg-(--surface-subtle)"
                     }`}
                   >
                     <span className="flex items-center gap-3.5">
                       <Icon
                         size={21}
                         strokeWidth={item.active ? 2.4 : 1.9}
-                        className={item.active ? "text-[#0E7C86]" : "text-[#4A656B]"}
+                        className={item.active ? "text-(--primary-fg)" : "text-(--text-muted)"}
                       />
                       <span>{item.label}</span>
                     </span>
                     {typeof item.count === "number" && item.count > 0 && (
-                      <span className="text-xs font-bold tabular-nums px-2 py-0.5 rounded-full bg-[#FFB800] text-[#102A30]">
+                      <span className="text-xs font-bold tabular-nums px-2 py-0.5 rounded-full bg-(--accent) text-(--on-accent)">
                         {item.count}
                       </span>
                     )}
@@ -153,31 +154,36 @@ export default function AppShell({ title, children }: AppShellProps) {
           </div>
 
           {/* Current user mini-card + logout */}
-          <div className="border-t border-[#DCE6E8] pt-4 space-y-2">
+          <div className="border-t border-(--border-subtle) pt-4 space-y-2">
             <Link
               href="/perfil"
-              className="flex items-center gap-3 p-2 rounded-xl hover:bg-[#F0F6F7] transition-colors"
+              className="flex items-center gap-3 p-2 rounded-xl hover:bg-(--surface-subtle) transition-colors"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={activeAvatar}
                 alt={activeName}
-                className="w-10 h-10 rounded-full object-cover border border-[#DCE6E8] shrink-0"
+                className="w-10 h-10 rounded-full object-cover border border-(--border-subtle) shrink-0"
               />
               <div className="min-w-0">
-                <p className="text-sm font-bold text-[#102A30] truncate">
+                <p className="text-sm font-bold text-(--foreground) truncate">
                   {activeName}
                 </p>
-                <p className="text-xs text-[#6B8388] truncate">
+                <p className="text-xs text-(--text-subtle) truncate">
                   {activeSubtitle}
                 </p>
               </div>
             </Link>
 
+            <ThemeToggle
+              showLabel
+              className="w-full flex items-center gap-3 px-3.5 py-2 rounded-xl text-sm font-medium text-(--text-muted) hover:bg-(--surface-subtle) hover:text-(--foreground) transition-colors cursor-pointer"
+            />
+
             <button
               type="button"
               onClick={logout}
-              className="w-full flex items-center gap-3 px-3.5 py-2 rounded-xl text-sm font-medium text-[#4A656B] hover:bg-red-50 hover:text-red-700 transition-colors cursor-pointer"
+              className="w-full flex items-center gap-3 px-3.5 py-2 rounded-xl text-sm font-medium text-(--text-muted) hover:bg-(--danger-soft) hover:text-(--danger) transition-colors cursor-pointer"
             >
               <LogOut size={18} />
               <span>Sair da conta</span>
@@ -186,26 +192,27 @@ export default function AppShell({ title, children }: AppShellProps) {
         </aside>
 
         {/* Center Feed / Main Stream */}
-        <div className="flex-1 max-w-[640px] min-w-0 bg-white md:border-x border-[#DCE6E8] min-h-screen pb-20 md:pb-10">
+        <div className="flex-1 max-w-[640px] min-w-0 bg-(--bg-card) md:border-x border-(--border-subtle) min-h-screen pb-20 md:pb-10">
           {/* Sticky Top Header */}
-          <header className="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-[#DCE6E8] px-4 py-3">
+          <header className="sticky top-0 z-30 bg-(--bg-card)/95 backdrop-blur border-b border-(--border-subtle) px-4 py-3">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2.5 min-w-0">
                 <Link href="/" className="md:hidden shrink-0" aria-label="Editaliza, página inicial">
                   <LogoMark size={32} />
                 </Link>
-                <h1 className="text-lg font-bold text-[#102A30] truncate">
+                <h1 className="text-lg font-bold text-(--foreground) truncate">
                   {title}
                 </h1>
               </div>
 
               {/* Mobile / Tablet search trigger */}
               <div className="flex items-center gap-2 lg:hidden">
+                <ThemeToggle className="md:hidden inline-flex h-8 w-8 items-center justify-center rounded-full bg-(--surface-subtle) text-(--text-muted) hover:text-(--foreground) cursor-pointer" />
                 <button
                   type="button"
                   onClick={() => setMobileSearchOpen((v) => !v)}
                   aria-label="Buscar artistas"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F0F6F7] text-sm font-medium text-[#4A656B] hover:text-[#0E7C86] cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-(--surface-subtle) text-sm font-medium text-(--text-muted) hover:text-(--primary-fg) cursor-pointer"
                 >
                   <Search size={16} />
                   <span>Buscar</span>
@@ -215,33 +222,33 @@ export default function AppShell({ title, children }: AppShellProps) {
 
             {/* Expandable search drawer on mobile/tablet */}
             {mobileSearchOpen && (
-              <div className="mt-3 pt-3 border-t border-[#DCE6E8] lg:hidden">
+              <div className="mt-3 pt-3 border-t border-(--border-subtle) lg:hidden">
                 <div className="relative">
                   <Search
                     size={16}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 text-[#6B8388]"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-(--text-subtle)"
                   />
                   <input
                     type="search"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Buscar usuário, @handle ou arte (ex: Pintura)..."
-                    className="w-full pl-9 pr-9 py-2 rounded-full bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                    className="w-full pl-9 pr-9 py-2 rounded-full bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) placeholder-(--text-subtle) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
                   />
                   {searchQuery && (
                     <button
                       type="button"
                       onClick={() => setSearchQuery("")}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-[#6B8388]"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-(--text-subtle)"
                     >
                       <X size={15} />
                     </button>
                   )}
                 </div>
 
-                <div className="mt-2.5 divide-y divide-[#DCE6E8] border border-[#DCE6E8] rounded-xl bg-white">
+                <div className="mt-2.5 divide-y divide-(--border-subtle) border border-(--border-subtle) rounded-xl bg-(--bg-card)">
                   {filteredUsers.length === 0 ? (
-                    <p className="p-3 text-sm text-[#6B8388]">
+                    <p className="p-3 text-sm text-(--text-subtle)">
                       Nenhum artista encontrado.
                     </p>
                   ) : (
@@ -250,19 +257,19 @@ export default function AppShell({ title, children }: AppShellProps) {
                         key={artist.id}
                         href={`/perfil/${artist.id}`}
                         onClick={() => setMobileSearchOpen(false)}
-                        className="flex items-center gap-3 p-3 hover:bg-[#F8FAFB] transition-colors"
+                        className="flex items-center gap-3 p-3 hover:bg-(--background) transition-colors"
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={artist.avatarUrl}
                           alt={artist.name}
-                          className="w-10 h-10 rounded-full object-cover border border-[#DCE6E8]"
+                          className="w-10 h-10 rounded-full object-cover border border-(--border-subtle)"
                         />
                         <div className="min-w-0 flex-1">
-                          <p className="text-sm font-bold text-[#102A30] truncate">
+                          <p className="text-sm font-bold text-(--foreground) truncate">
                             {artist.name}
                           </p>
-                          <p className="text-xs text-[#6B8388] truncate">
+                          <p className="text-xs text-(--text-subtle) truncate">
                             {artist.handle} · {artist.tags.join(", ")}
                           </p>
                         </div>
@@ -284,7 +291,7 @@ export default function AppShell({ title, children }: AppShellProps) {
             <div className="relative">
               <Search
                 size={17}
-                className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#6B8388]"
+                className="absolute left-3.5 top-1/2 -translate-y-1/2 text-(--text-subtle)"
                 aria-hidden="true"
               />
               <input
@@ -293,19 +300,19 @@ export default function AppShell({ title, children }: AppShellProps) {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Buscar outros usuários..."
                 aria-label="Buscar outros usuários"
-                className="w-full pl-10 pr-4 py-2.5 rounded-full bg-white border border-[#DCE6E8] text-sm text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86] focus:border-[#0E7C86]"
+                className="w-full pl-10 pr-4 py-2.5 rounded-full bg-(--bg-card) border border-(--border-subtle) text-sm text-(--foreground) placeholder-(--text-subtle) focus:outline-none focus:ring-2 focus:ring-(--primary-fg) focus:border-(--primary-fg)"
               />
             </div>
 
-            <section aria-label="Artistas na rede" className="overflow-hidden rounded-2xl border border-[#DCE6E8] bg-white">
-              <div className="flex items-center justify-between border-b border-[#DCE6E8] px-4 py-3">
-                <h2 className="text-sm font-bold text-[#102A30]">
+            <section aria-label="Artistas na rede" className="overflow-hidden rounded-2xl border border-(--border-subtle) bg-(--bg-card)">
+              <div className="flex items-center justify-between border-b border-(--border-subtle) px-4 py-3">
+                <h2 className="text-sm font-bold text-(--foreground)">
                   {searchQuery.trim() ? "Resultados da busca" : "Artistas na rede"}
                 </h2>
-                <span className="text-xs font-medium tabular-nums text-[#6B8388]">{filteredUsers.length}</span>
+                <span className="text-xs font-medium tabular-nums text-(--text-subtle)">{filteredUsers.length}</span>
               </div>
               {filteredUsers.length === 0 ? (
-                <div className="p-4 text-sm text-[#6B8388]">Nenhum perfil encontrado para &ldquo;{searchQuery}&rdquo;.</div>
+                <div className="p-4 text-sm text-(--text-subtle)">Nenhum perfil encontrado para &ldquo;{searchQuery}&rdquo;.</div>
               ) : (
                 <ArtistList key={searchQuery.trim()} artists={filteredUsers} />
               )}
@@ -323,7 +330,7 @@ export default function AppShell({ title, children }: AppShellProps) {
       {/* Mobile Bottom Navigation */}
       <nav
         aria-label="Navegação inferior"
-        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur border-t border-[#DCE6E8] h-15 flex items-center justify-around px-2"
+        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-(--bg-card)/95 backdrop-blur border-t border-(--border-subtle) h-15 flex items-center justify-around px-2"
       >
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -332,13 +339,13 @@ export default function AppShell({ title, children }: AppShellProps) {
               key={item.href}
               href={item.href}
               className={`relative flex flex-col items-center justify-center gap-0.5 px-3 py-1.5 rounded-lg text-[11px] font-medium ${
-                item.active ? "text-[#0E7C86] font-bold" : "text-[#4A656B]"
+                item.active ? "text-(--primary-fg) font-bold" : "text-(--text-muted)"
               }`}
             >
               <Icon size={20} />
               <span>{item.label}</span>
               {typeof item.count === "number" && item.count > 0 && (
-                <span className="absolute top-0.5 right-1.5 min-w-4 h-4 px-1 rounded-full bg-[#FFB800] text-[#102A30] text-[10px] font-bold flex items-center justify-center tabular-nums">
+                <span className="absolute top-0.5 right-1.5 min-w-4 h-4 px-1 rounded-full bg-(--accent) text-(--on-accent) text-[10px] font-bold flex items-center justify-center tabular-nums">
                   {item.count}
                 </span>
               )}

@@ -32,7 +32,7 @@ export default function ProfileView({ profile, isOwnProfile }: ProfileViewProps)
   );
 
   return (
-    <div className="divide-y divide-[#DCE6E8]">
+    <div className="divide-y divide-(--border-subtle)">
       {/* Topo do perfil: foto à esquerda + dados e tags do lado */}
       <section className="p-5 sm:p-6">
         <div className="flex flex-col sm:flex-row items-start gap-5">
@@ -42,7 +42,7 @@ export default function ProfileView({ profile, isOwnProfile }: ProfileViewProps)
             <img
               src={profile.avatarUrl}
               alt={`Foto de ${profile.name}`}
-              className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border-2 border-[#0E7C86] bg-[#F0F6F7]"
+              className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border-2 border-(--primary-fg) bg-(--surface-subtle)"
             />
           </div>
 
@@ -50,10 +50,10 @@ export default function ProfileView({ profile, isOwnProfile }: ProfileViewProps)
           <div className="flex-1 min-w-0 space-y-3">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div className="min-w-0">
-                <h2 className="text-xl font-bold text-[#102A30] leading-tight">
+                <h2 className="text-xl font-bold text-(--foreground) leading-tight">
                   {profile.name}
                 </h2>
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-[#6B8388] mt-0.5">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-(--text-subtle) mt-0.5">
                   <span>{profile.handle}</span>
                   {(profile.city || profile.state) && (
                     <span className="inline-flex items-center gap-1">
@@ -61,7 +61,7 @@ export default function ProfileView({ profile, isOwnProfile }: ProfileViewProps)
                       {[profile.city, profile.state].filter(Boolean).join(", ")}
                     </span>
                   )}
-                  <span className="text-xs font-medium text-[#09585F]">
+                  <span className="text-xs font-medium text-(--primary-ink)">
                     {SCOPE_LABELS[profile.territoryScope] ?? profile.territoryScope}
                   </span>
                 </div>
@@ -70,7 +70,7 @@ export default function ProfileView({ profile, isOwnProfile }: ProfileViewProps)
               {isOwnProfile && (
                 <Link
                   href="/configuracoes"
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-[#DCE6E8] bg-white hover:bg-[#F0F6F7] text-sm font-semibold text-[#102A30] transition-colors shrink-0"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-(--border-subtle) bg-(--bg-card) hover:bg-(--surface-subtle) text-sm font-semibold text-(--foreground) transition-colors shrink-0"
                 >
                   <Settings size={15} />
                   <span>Configurar perfil</span>
@@ -78,26 +78,26 @@ export default function ProfileView({ profile, isOwnProfile }: ProfileViewProps)
               )}
             </div>
 
-            <p className="text-sm text-[#4A656B] leading-relaxed">
+            <p className="text-sm text-(--text-muted) leading-relaxed">
               {profile.bio}
             </p>
 
             {/* Metadados de trajetória e elegibilidade usados pelo ArtistRank */}
-            <div className="flex flex-wrap items-center gap-2 text-xs text-[#4A656B]">
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#F8FAFB] border border-[#DCE6E8] font-medium">
-                <Briefcase size={12} className="text-[#0E7C86]" />
+            <div className="flex flex-wrap items-center gap-2 text-xs text-(--text-muted)">
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-(--background) border border-(--border-subtle) font-medium">
+                <Briefcase size={12} className="text-(--primary-fg)" />
                 {LEVEL_LABELS[profile.profileLevel] ?? profile.profileLevel} ·{" "}
                 {profile.experienceYears}{" "}
                 {profile.experienceYears === 1 ? "ano" : "anos"} de prática
               </span>
               {profile.hasCnpjOrMei && (
-                <span className="px-2.5 py-1 rounded-md bg-[#F8FAFB] border border-[#DCE6E8] font-medium">
+                <span className="px-2.5 py-1 rounded-md bg-(--background) border border-(--border-subtle) font-medium">
                   CNPJ / MEI ativo
                 </span>
               )}
               {profile.hasTechnicalFormation && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#F8FAFB] border border-[#DCE6E8] font-medium">
-                  <GraduationCap size={13} className="text-[#0E7C86]" />
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-(--background) border border-(--border-subtle) font-medium">
+                  <GraduationCap size={13} className="text-(--primary-fg)" />
                   Formação técnica
                 </span>
               )}
@@ -105,7 +105,7 @@ export default function ProfileView({ profile, isOwnProfile }: ProfileViewProps)
 
             {/* Todas as tags artísticas ao lado da foto */}
             <div className="space-y-2">
-              <p className="text-xs font-bold uppercase tracking-wider text-[#6B8388]">
+              <p className="text-xs font-bold uppercase tracking-wider text-(--text-subtle)">
                 Linguagens e áreas de atuação
               </p>
               <div className="flex flex-wrap gap-2">
@@ -113,7 +113,7 @@ export default function ProfileView({ profile, isOwnProfile }: ProfileViewProps)
                   <span
                     key={`core-${tag}`}
                     title="Linguagem principal (núcleo)"
-                    className="px-3 py-1 rounded-lg bg-[#E6F4F5] border border-[#CBE5E8] text-[#09585F] text-xs font-semibold"
+                    className="px-3 py-1 rounded-lg bg-(--primary-soft) border border-(--primary-border) text-(--primary-ink) text-xs font-semibold"
                   >
                     {tag}
                   </span>
@@ -122,7 +122,7 @@ export default function ProfileView({ profile, isOwnProfile }: ProfileViewProps)
                   <span
                     key={`sup-${tag}`}
                     title="Linguagem de suporte"
-                    className="px-3 py-1 rounded-lg bg-[#FFF8E1] border border-[#F5D67B] text-[#7A5400] text-xs font-semibold"
+                    className="px-3 py-1 rounded-lg bg-(--accent-softer) border border-(--accent-border) text-(--accent-ink) text-xs font-semibold"
                   >
                     {tag} (suporte)
                   </span>
@@ -134,21 +134,21 @@ export default function ProfileView({ profile, isOwnProfile }: ProfileViewProps)
       </section>
 
       {/* Abaixo da foto: Badges conquistadas quando passa em editais */}
-      <section className="p-5 sm:p-6 bg-[#F8FAFB]/60">
+      <section className="p-5 sm:p-6 bg-(--background)/60">
         <div className="flex items-center justify-between gap-2 mb-3.5">
           <div className="flex items-center gap-2">
-            <Award size={18} className="text-[#0E7C86]" aria-hidden="true" />
-            <h3 className="text-sm font-bold text-[#102A30]">
+            <Award size={18} className="text-(--primary-fg)" aria-hidden="true" />
+            <h3 className="text-sm font-bold text-(--foreground)">
               Badges conquistadas em editais
             </h3>
           </div>
-          <span className="text-xs font-semibold text-[#6B8388] tabular-nums">
+          <span className="text-xs font-semibold text-(--text-subtle) tabular-nums">
             {profile.badges.length} {profile.badges.length === 1 ? "conquista" : "conquistas"}
           </span>
         </div>
 
         {profile.badges.length === 0 ? (
-          <p className="text-sm text-[#6B8388]">
+          <p className="text-sm text-(--text-subtle)">
             Nenhuma badge conquistada ainda. Ao ser aprovado em um edital, a conquista aparece aqui.
           </p>
         ) : (
@@ -158,23 +158,23 @@ export default function ProfileView({ profile, isOwnProfile }: ProfileViewProps)
                 key={badge.id}
                 href={`/perfil/${profile.id}/selos/${badge.id}`}
                 aria-label={`Ver o selo ${badge.title}: ${badge.editalName}`}
-                className="group flex items-start gap-3 rounded-xl border border-[#DCE6E8] bg-white p-3.5 transition-colors hover:border-[#0E7C86]/50 hover:bg-[#F8FAFB]"
+                className="group flex items-start gap-3 rounded-xl border border-(--border-subtle) bg-(--bg-card) p-3.5 transition-colors hover:border-(--primary-fg)/50 hover:bg-(--background)"
               >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#FFB800]/50 bg-[#FFF6D6] text-[#7A5400]">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-(--accent)/50 bg-(--accent-soft) text-(--accent-ink)">
                   <Award size={20} strokeWidth={2.2} aria-hidden="true" />
                 </span>
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
-                    <span className="text-xs font-bold text-[#0E7C86]">{badge.title}</span>
-                    <span className="text-xs tabular-nums text-[#6B8388]">· {badge.year}</span>
+                    <span className="text-xs font-bold text-(--primary-fg)">{badge.title}</span>
+                    <span className="text-xs tabular-nums text-(--text-subtle)">· {badge.year}</span>
                   </div>
-                  <p className="mt-0.5 break-words text-sm font-bold leading-snug text-[#102A30]">{badge.editalName}</p>
-                  <p className="mt-0.5 text-xs text-[#6B8388]">
+                  <p className="mt-0.5 break-words text-sm font-bold leading-snug text-(--foreground)">{badge.editalName}</p>
+                  <p className="mt-0.5 text-xs text-(--text-subtle)">
                     Área: {badge.category}
                     {badge.issuerName ? ` · ${badge.issuerName}` : ""}
                   </p>
                 </div>
-                <ChevronRight size={16} className="mt-1 shrink-0 text-[#6B8388] group-hover:text-[#0E7C86]" aria-hidden="true" />
+                <ChevronRight size={16} className="mt-1 shrink-0 text-(--text-subtle) group-hover:text-(--primary-fg)" aria-hidden="true" />
               </Link>
             ))}
           </div>
@@ -184,13 +184,13 @@ export default function ProfileView({ profile, isOwnProfile }: ProfileViewProps)
       {/* Galeria de trabalhos artísticos (estilo Instagram) */}
       <section className="p-5 sm:p-6">
         <div className="flex items-center justify-between gap-3 mb-4">
-          <h3 className="text-sm font-bold text-[#102A30]">
+          <h3 className="text-sm font-bold text-(--foreground)">
             Trabalhos artísticos ({profile.works.length})
           </h3>
           {isOwnProfile && (
             <Link
               href="/configuracoes#novo-trabalho"
-              className="inline-flex items-center gap-1 text-xs font-bold text-[#0E7C86] hover:underline"
+              className="inline-flex items-center gap-1 text-xs font-bold text-(--primary-fg) hover:underline"
             >
               <Plus size={14} />
               <span>Adicionar obra</span>
@@ -199,8 +199,8 @@ export default function ProfileView({ profile, isOwnProfile }: ProfileViewProps)
         </div>
 
         {profile.works.length === 0 ? (
-          <div className="rounded-xl border border-dashed border-[#DCE6E8] p-8 text-center">
-            <p className="text-sm text-[#6B8388]">Nenhum trabalho artístico publicado ainda.</p>
+          <div className="rounded-xl border border-dashed border-(--border-subtle) p-8 text-center">
+            <p className="text-sm text-(--text-subtle)">Nenhum trabalho artístico publicado ainda.</p>
           </div>
         ) : (
           <WorkGallery works={profile.works} />

@@ -99,45 +99,45 @@ export default function FeedPage() {
   const adIndexes = adPositions(rankedItems.length, AD_EVERY);
 
   const getRankColor = (rank: ArtistRankResult | null) => {
-    if (!rank) return "#0E7C86";
-    if (rank.bloqueado) return "#B91C1C";
-    if (rank.rotulo === 3) return "#0E7C86";
-    if (rank.rotulo === 2) return "#B45309";
-    return "#6B8388";
+    if (!rank) return "var(--primary-fg)";
+    if (rank.bloqueado) return "var(--danger)";
+    if (rank.rotulo === 3) return "var(--primary-fg)";
+    if (rank.rotulo === 2) return "var(--warning)";
+    return "var(--text-subtle)";
   };
 
   return (
     <AppShell title="Início">
       {loading ? (
         <div className="p-12 flex flex-col items-center justify-center gap-3">
-          <div className="animate-spin rounded-full h-8 w-8 border-2 border-[#DCE6E8] border-t-[#0E7C86]" />
-          <p className="text-sm text-[#4A656B]">
+          <div className="animate-spin rounded-full h-8 w-8 border-2 border-(--border-subtle) border-t-(--primary-fg)" />
+          <p className="text-sm text-(--text-muted)">
             {isProposer ? "Carregando editais..." : "Calculando recomendações..."}
           </p>
         </div>
       ) : error ? (
         <div className="p-8 text-center">
-          <p className="text-sm text-red-700">
+          <p className="text-sm text-(--danger)">
             {error || "Erro ao carregar dados. Tente novamente mais tarde."}
           </p>
         </div>
       ) : rankedItems.length === 0 ? (
         <div className="p-10 text-center">
-          <p className="text-sm text-[#4A656B]">
+          <p className="text-sm text-(--text-muted)">
             Nenhum edital disponível no momento.
           </p>
         </div>
       ) : (
         <div className="flex flex-col">
           {isProposer && (
-            <div className="mx-4 mt-4 rounded-xl border border-[#CBE5E8] bg-[#E6F4F5] p-4 flex flex-wrap items-center justify-between gap-3">
-              <div className="text-xs sm:text-sm text-[#09585F]">
+            <div className="mx-4 mt-4 rounded-xl border border-(--primary-border) bg-(--primary-soft) p-4 flex flex-wrap items-center justify-between gap-3">
+              <div className="text-xs sm:text-sm text-(--primary-ink)">
                 <p className="font-bold">Conta Propositor ativa</p>
                 <p>Publique um novo edital para alcançar artistas compatíveis na rede.</p>
               </div>
               <Link
                 href="/publicar-edital"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#0E7C86] text-white text-xs sm:text-sm font-bold hover:bg-[#0B656D] transition-colors shrink-0"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-(--primary) text-white text-xs sm:text-sm font-bold hover:bg-(--primary-hover) transition-colors shrink-0"
               >
                 <PlusCircle size={16} />
                 <span>Publicar edital</span>
@@ -146,15 +146,15 @@ export default function FeedPage() {
           )}
 
           {!isProposer && avisoEscassez && (
-            <div className="mx-4 mt-4 rounded-xl border border-amber-200 bg-[#FFF8E1] p-4 flex items-start gap-3">
-              <AlertTriangle size={18} className="text-[#B45309] mt-0.5 shrink-0" />
-              <div className="text-xs sm:text-sm text-[#7A5400] space-y-1">
+            <div className="mx-4 mt-4 rounded-xl border border-(--warning-border) bg-(--accent-softer) p-4 flex items-start gap-3">
+              <AlertTriangle size={18} className="text-(--warning) mt-0.5 shrink-0" />
+              <div className="text-xs sm:text-sm text-(--accent-ink) space-y-1">
                 <p className="font-bold">
                   Poucas opções aderentes ao seu perfil atual
                 </p>
                 <p>
                   Nenhum edital elegível atingiu aderência moderada ou forte para as suas linguagens atuais. Complete seu portfólio ou revise suas linguagens em{" "}
-                  <Link href="/configuracoes" className="font-bold underline text-[#0E7C86]">
+                  <Link href="/configuracoes" className="font-bold underline text-(--primary-fg)">
                     Configurações
                   </Link>
                   .

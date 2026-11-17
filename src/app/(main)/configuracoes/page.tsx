@@ -28,8 +28,8 @@ export default function ConfiguracoesPage() {
     <AppShell title="Configurações do perfil">
       {profilesLoading ? (
         <div className="p-12 flex flex-col items-center justify-center gap-3">
-          <div className="animate-spin rounded-full h-8 w-8 border-2 border-[#DCE6E8] border-t-[#0E7C86]" />
-          <p className="text-sm text-[#4A656B]">Carregando dados do perfil...</p>
+          <div className="animate-spin rounded-full h-8 w-8 border-2 border-(--border-subtle) border-t-(--primary-fg)" />
+          <p className="text-sm text-(--text-muted)">Carregando dados do perfil...</p>
         </div>
       ) : isProposer && currentProposer ? (
         <ProposerConfiguracoesContent
@@ -82,7 +82,7 @@ function ProposerConfiguracoesContent({
   return (
     <form onSubmit={handleSave} className="p-5 sm:p-6 space-y-5">
       {savedNotice && (
-        <div className="flex items-center justify-between gap-3 p-3.5 rounded-xl bg-[#E6F4F5] border border-[#0E7C86]/30 text-sm text-[#09585F] font-medium">
+        <div className="flex items-center justify-between gap-3 p-3.5 rounded-xl bg-(--primary-soft) border border-(--primary-fg)/30 text-sm text-(--primary-ink) font-medium">
           <span className="inline-flex items-center gap-2">
             <Check size={16} />
             Dados do propositor atualizados no banco.
@@ -95,7 +95,7 @@ function ProposerConfiguracoesContent({
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-1.5">
-          <label htmlFor="prop-name" className="block text-sm font-bold text-[#102A30]">
+          <label htmlFor="prop-name" className="block text-sm font-bold text-(--foreground)">
             Nome da instituição
           </label>
           <input
@@ -103,12 +103,12 @@ function ProposerConfiguracoesContent({
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+            className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
           />
         </div>
 
         <div className="space-y-1.5">
-          <label htmlFor="prop-handle" className="block text-sm font-bold text-[#102A30]">
+          <label htmlFor="prop-handle" className="block text-sm font-bold text-(--foreground)">
             Usuário (@)
           </label>
           <input
@@ -116,14 +116,14 @@ function ProposerConfiguracoesContent({
             type="text"
             value={handle}
             onChange={(e) => setHandle(e.target.value)}
-            className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+            className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
           />
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="space-y-1.5">
-          <label htmlFor="prop-cnpj" className="block text-sm font-bold text-[#102A30]">
+          <label htmlFor="prop-cnpj" className="block text-sm font-bold text-(--foreground)">
             CNPJ
           </label>
           <input
@@ -131,12 +131,12 @@ function ProposerConfiguracoesContent({
             type="text"
             value={cnpj}
             onChange={(e) => setCnpj(e.target.value)}
-            className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] tabular-nums focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+            className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) tabular-nums focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
           />
         </div>
 
         <div className="space-y-1.5">
-          <label htmlFor="prop-city" className="block text-sm font-bold text-[#102A30]">
+          <label htmlFor="prop-city" className="block text-sm font-bold text-(--foreground)">
             Cidade sede
           </label>
           <input
@@ -144,19 +144,19 @@ function ProposerConfiguracoesContent({
             type="text"
             value={city}
             onChange={(e) => setCity(e.target.value)}
-            className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+            className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
           />
         </div>
 
         <div className="space-y-1.5">
-          <label htmlFor="prop-state" className="block text-sm font-bold text-[#102A30]">
+          <label htmlFor="prop-state" className="block text-sm font-bold text-(--foreground)">
             Estado (UF)
           </label>
           <select
             id="prop-state"
             value={stateUf}
             onChange={(e) => setStateUf(e.target.value)}
-            className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+            className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
           >
             <option value="">Selecione</option>
             {BRAZILIAN_STATES.map((uf) => (
@@ -169,7 +169,7 @@ function ProposerConfiguracoesContent({
       </div>
 
       <div className="space-y-1.5">
-        <label htmlFor="prop-bio" className="block text-sm font-bold text-[#102A30]">
+        <label htmlFor="prop-bio" className="block text-sm font-bold text-(--foreground)">
           Sobre a organização propositora
         </label>
         <textarea
@@ -177,14 +177,14 @@ function ProposerConfiguracoesContent({
           rows={3}
           value={bio}
           onChange={(e) => setBio(e.target.value)}
-          className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+          className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
         />
       </div>
 
       <button
         type="submit"
         disabled={saving}
-        className="px-6 py-2.5 rounded-xl bg-[#0E7C86] text-white text-sm font-bold hover:bg-[#0B656D] disabled:opacity-60 transition-colors cursor-pointer"
+        className="px-6 py-2.5 rounded-xl bg-(--primary) text-white text-sm font-bold hover:bg-(--primary-hover) disabled:opacity-60 transition-colors cursor-pointer"
       >
         {saving ? "Salvando..." : "Salvar alterações"}
       </button>
@@ -290,11 +290,11 @@ function ConfiguracoesContent({
   );
 
   return (
-    <div className="divide-y divide-[#DCE6E8]">
+    <div className="divide-y divide-(--border-subtle)">
         {/* Form principal de perfil + parâmetros ArtistRank */}
         <form onSubmit={handleSaveProfile} className="p-5 sm:p-6 space-y-5">
           {savedNotice && (
-            <div className="flex items-center justify-between gap-3 p-3.5 rounded-xl bg-[#E6F4F5] border border-[#0E7C86]/30 text-sm text-[#09585F] font-medium">
+            <div className="flex items-center justify-between gap-3 p-3.5 rounded-xl bg-(--primary-soft) border border-(--primary-fg)/30 text-sm text-(--primary-ink) font-medium">
               <span className="inline-flex items-center gap-2">
                 <Check size={16} />
                 Perfil salvo no banco e recomendações recalculadas.
@@ -307,7 +307,7 @@ function ConfiguracoesContent({
 
           {/* Foto do perfil */}
           <div className="space-y-2.5">
-            <label className="block text-sm font-bold text-[#102A30]">
+            <label className="block text-sm font-bold text-(--foreground)">
               Foto do perfil
             </label>
             <div className="flex flex-wrap items-center gap-4">
@@ -315,7 +315,7 @@ function ConfiguracoesContent({
               <img
                 src={avatarUrl}
                 alt="Prévia do avatar"
-                className="w-16 h-16 rounded-full object-cover border-2 border-[#0E7C86]"
+                className="w-16 h-16 rounded-full object-cover border-2 border-(--primary-fg)"
               />
               <div className="flex items-center gap-2">
                 {PRESET_AVATARS.map((preset, i) => (
@@ -325,8 +325,8 @@ function ConfiguracoesContent({
                     onClick={() => setAvatarUrl(preset)}
                     className={`rounded-full p-0.5 border-2 cursor-pointer transition-colors ${
                       avatarUrl === preset
-                        ? "border-[#FFB800]"
-                        : "border-transparent hover:border-[#DCE6E8]"
+                        ? "border-(--accent)"
+                        : "border-transparent hover:border-(--border-subtle)"
                     }`}
                     title={`Selecionar foto ${i + 1}`}
                   >
@@ -344,7 +344,7 @@ function ConfiguracoesContent({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label htmlFor="cfg-name" className="block text-sm font-bold text-[#102A30]">
+              <label htmlFor="cfg-name" className="block text-sm font-bold text-(--foreground)">
                 Nome
               </label>
               <input
@@ -352,12 +352,12 @@ function ConfiguracoesContent({
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               />
             </div>
 
             <div className="space-y-1.5">
-              <label htmlFor="cfg-handle" className="block text-sm font-bold text-[#102A30]">
+              <label htmlFor="cfg-handle" className="block text-sm font-bold text-(--foreground)">
                 Usuário (@)
               </label>
               <input
@@ -365,7 +365,7 @@ function ConfiguracoesContent({
                 type="text"
                 value={handle}
                 onChange={(e) => setHandle(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               />
             </div>
           </div>
@@ -373,7 +373,7 @@ function ConfiguracoesContent({
           {/* Localização e atuação territorial */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="space-y-1.5 sm:col-span-1">
-              <label htmlFor="cfg-city" className="block text-sm font-bold text-[#102A30]">
+              <label htmlFor="cfg-city" className="block text-sm font-bold text-(--foreground)">
                 Cidade
               </label>
               <input
@@ -382,19 +382,19 @@ function ConfiguracoesContent({
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
                 placeholder="Ex: Salvador"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               />
             </div>
 
             <div className="space-y-1.5">
-              <label htmlFor="cfg-state" className="block text-sm font-bold text-[#102A30]">
+              <label htmlFor="cfg-state" className="block text-sm font-bold text-(--foreground)">
                 Estado (UF)
               </label>
               <select
                 id="cfg-state"
                 value={stateUf}
                 onChange={(e) => setStateUf(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               >
                 <option value="">Selecione</option>
                 {BRAZILIAN_STATES.map((uf) => (
@@ -406,7 +406,7 @@ function ConfiguracoesContent({
             </div>
 
             <div className="space-y-1.5">
-              <label htmlFor="cfg-scope" className="block text-sm font-bold text-[#102A30]">
+              <label htmlFor="cfg-scope" className="block text-sm font-bold text-(--foreground)">
                 Alcance de atuação
               </label>
               <select
@@ -415,7 +415,7 @@ function ConfiguracoesContent({
                 onChange={(e) =>
                   setTerritoryScope(e.target.value as TerritoryScope)
                 }
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               >
                 <option value="MUNICIPAL">Municipal</option>
                 <option value="METROPOLITANO">Metropolitano</option>
@@ -426,7 +426,7 @@ function ConfiguracoesContent({
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="cfg-bio" className="block text-sm font-bold text-[#102A30]">
+            <label htmlFor="cfg-bio" className="block text-sm font-bold text-(--foreground)">
               Sobre você
             </label>
             <textarea
@@ -434,14 +434,14 @@ function ConfiguracoesContent({
               rows={3}
               value={bio}
               onChange={(e) => setBio(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
             />
           </div>
 
           {/* Trajetória e Elegibilidade */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label htmlFor="cfg-level" className="block text-sm font-bold text-[#102A30]">
+              <label htmlFor="cfg-level" className="block text-sm font-bold text-(--foreground)">
                 Momento de carreira
               </label>
               <select
@@ -450,7 +450,7 @@ function ConfiguracoesContent({
                 onChange={(e) =>
                   setProfileLevel(e.target.value as ProfileLevel)
                 }
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               >
                 <option value="INICIANTE">Iniciante</option>
                 <option value="EMERGENTE">Emergente</option>
@@ -460,7 +460,7 @@ function ConfiguracoesContent({
             </div>
 
             <div className="space-y-1.5">
-              <label htmlFor="cfg-exp" className="block text-sm font-bold text-[#102A30]">
+              <label htmlFor="cfg-exp" className="block text-sm font-bold text-(--foreground)">
                 Anos de atuação artística
               </label>
               <input
@@ -470,40 +470,40 @@ function ConfiguracoesContent({
                 max={70}
                 value={experienceYears}
                 onChange={(e) => setExperienceYears(Number(e.target.value))}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] tabular-nums focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) tabular-nums focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               />
             </div>
           </div>
 
           <div className="flex flex-wrap gap-5 pt-1">
-            <label className="inline-flex items-center gap-2 text-sm text-[#102A30] cursor-pointer">
+            <label className="inline-flex items-center gap-2 text-sm text-(--foreground) cursor-pointer">
               <input
                 type="checkbox"
                 checked={hasCnpjOrMei}
                 onChange={(e) => setHasCnpjOrMei(e.target.checked)}
-                className="w-4 h-4 accent-[#0E7C86] rounded"
+                className="w-4 h-4 accent-(--primary-fg) rounded"
               />
               <span>Possuo CNPJ ou MEI cultural ativo</span>
             </label>
 
-            <label className="inline-flex items-center gap-2 text-sm text-[#102A30] cursor-pointer">
+            <label className="inline-flex items-center gap-2 text-sm text-(--foreground) cursor-pointer">
               <input
                 type="checkbox"
                 checked={hasTechnicalFormation}
                 onChange={(e) => setHasTechnicalFormation(e.target.checked)}
-                className="w-4 h-4 accent-[#0E7C86] rounded"
+                className="w-4 h-4 accent-(--primary-fg) rounded"
               />
               <span>Possuo formação técnica comprovada</span>
             </label>
           </div>
 
           {/* Linguagens núcleo (peso 1.0) vs suporte (peso 0.65) */}
-          <div className="space-y-3 pt-2 border-t border-[#DCE6E8]">
+          <div className="space-y-3 pt-2 border-t border-(--border-subtle)">
             <div>
-              <label className="block text-sm font-bold text-[#102A30]">
+              <label className="block text-sm font-bold text-(--foreground)">
                 Linguagens principais (peso 1,0 no ranqueamento)
               </label>
-              <p className="text-xs text-[#6B8388] mb-2">
+              <p className="text-xs text-(--text-subtle) mb-2">
                 Áreas centrais do seu portfólio.
               </p>
               <div className="flex flex-wrap gap-2">
@@ -516,8 +516,8 @@ function ConfiguracoesContent({
                       onClick={() => toggleCoreLanguage(tag)}
                       className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors cursor-pointer ${
                         selected
-                          ? "bg-[#0E7C86] border-[#0E7C86] text-white"
-                          : "bg-white border-[#DCE6E8] text-[#4A656B] hover:border-[#0E7C86]"
+                          ? "bg-(--primary) border-(--primary-fg) text-white"
+                          : "bg-(--bg-card) border-(--border-subtle) text-(--text-muted) hover:border-(--primary-fg)"
                       }`}
                     >
                       <span>{tag}</span>
@@ -529,10 +529,10 @@ function ConfiguracoesContent({
             </div>
 
             <div>
-              <label className="block text-sm font-bold text-[#102A30]">
+              <label className="block text-sm font-bold text-(--foreground)">
                 Linguagens de suporte (peso 0,65)
               </label>
-              <p className="text-xs text-[#6B8388] mb-2">
+              <p className="text-xs text-(--text-subtle) mb-2">
                 Áreas complementares em que você também participa.
               </p>
               <div className="flex flex-wrap gap-2">
@@ -545,8 +545,8 @@ function ConfiguracoesContent({
                       onClick={() => toggleSupportLanguage(tag)}
                       className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors cursor-pointer ${
                         selected
-                          ? "bg-[#FFB800] border-[#FFB800] text-[#102A30]"
-                          : "bg-white border-[#DCE6E8] text-[#4A656B] hover:border-[#FFB800]"
+                          ? "bg-(--accent) border-(--accent) text-(--on-accent)"
+                          : "bg-(--bg-card) border-(--border-subtle) text-(--text-muted) hover:border-(--accent)"
                       }`}
                     >
                       <span>{tag}</span>
@@ -563,12 +563,12 @@ function ConfiguracoesContent({
                 value={customTag}
                 onChange={(e) => setCustomTag(e.target.value)}
                 placeholder="Adicionar outra linguagem (ex: Circo, Grafite)"
-                className="flex-1 px-3.5 py-2 rounded-xl bg-[#F8FAFB] border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+                className="flex-1 px-3.5 py-2 rounded-xl bg-(--background) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
               />
               <button
                 type="button"
                 onClick={handleAddCustomTag}
-                className="px-4 py-2 rounded-xl bg-[#FFB800] text-[#102A30] text-sm font-bold hover:bg-[#E5A500] transition-colors cursor-pointer"
+                className="px-4 py-2 rounded-xl bg-(--accent) text-(--on-accent) text-sm font-bold hover:bg-(--accent-hover) transition-colors cursor-pointer"
               >
                 Adicionar
               </button>
@@ -578,7 +578,7 @@ function ConfiguracoesContent({
           <button
             type="submit"
             disabled={savingProfile}
-            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-[#0E7C86] text-white text-sm font-bold hover:bg-[#0B656D] disabled:opacity-60 transition-colors cursor-pointer"
+            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-(--primary) text-white text-sm font-bold hover:bg-(--primary-hover) disabled:opacity-60 transition-colors cursor-pointer"
           >
             {savingProfile ? "Salvando..." : "Salvar alterações"}
           </button>

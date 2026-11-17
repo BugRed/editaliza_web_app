@@ -9,7 +9,7 @@ import type { ArtistProfile } from "@/app/lib/user-profiles";
 import { getEditalProposerId } from "@/shared/lib/edital-owner";
 
 const FIELD =
-  "w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#DCE6E8] text-sm text-[#102A30] focus:outline-none focus:ring-2 focus:ring-[#0E7C86] focus:border-[#0E7C86]";
+  "w-full px-3.5 py-2.5 rounded-xl bg-(--bg-card) border border-(--border-subtle) text-sm text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--primary-fg) focus:border-(--primary-fg)";
 const OTHER_EDITAL = "outro";
 
 interface BadgeManagerProps {
@@ -52,21 +52,21 @@ export default function BadgeManager({ profile, availableCategories }: BadgeMana
   return (
     <form onSubmit={handleSubmit} className="space-y-4 p-5 sm:p-6">
       <div className="flex items-center gap-2">
-        <Award size={18} className="text-[#0E7C86]" aria-hidden="true" />
-        <h2 className="text-base font-bold text-[#102A30]">Badges conquistadas em editais ({profile.badges.length})</h2>
+        <Award size={18} className="text-(--primary-fg)" aria-hidden="true" />
+        <h2 className="text-base font-bold text-(--foreground)">Badges conquistadas em editais ({profile.badges.length})</h2>
       </div>
 
-      {added && <div className="rounded-xl border border-[#0E7C86]/30 bg-[#E6F4F5] p-3 text-sm font-medium text-[#09585F]">Badge registrada no perfil!</div>}
+      {added && <div className="rounded-xl border border-(--primary-fg)/30 bg-(--primary-soft) p-3 text-sm font-medium text-(--primary-ink)">Badge registrada no perfil!</div>}
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <div>
-          <label htmlFor="badge-result" className="mb-1 block text-xs font-bold text-[#6B8388]">
+          <label htmlFor="badge-result" className="mb-1 block text-xs font-bold text-(--text-subtle)">
             Resultado
           </label>
           <input id="badge-result" type="text" value={result} onChange={(e) => setResult(e.target.value)} placeholder="Ex.: Contemplado" className={FIELD} />
         </div>
         <div>
-          <label htmlFor="badge-edital" className="mb-1 block text-xs font-bold text-[#6B8388]">
+          <label htmlFor="badge-edital" className="mb-1 block text-xs font-bold text-(--text-subtle)">
             Edital
           </label>
           <select id="badge-edital" value={editalChoice} onChange={(e) => setEditalChoice(e.target.value)} className={FIELD}>
@@ -81,12 +81,12 @@ export default function BadgeManager({ profile, availableCategories }: BadgeMana
       </div>
 
       {chosen ? (
-        <p className="text-xs text-[#4A656B]">
+        <p className="text-xs text-(--text-muted)">
           Este selo vai ligar ao edital{issuer ? <> e à empresa <strong>{issuer.name}</strong></> : ""}.
         </p>
       ) : (
         <div>
-          <label htmlFor="badge-name" className="mb-1 block text-xs font-bold text-[#6B8388]">
+          <label htmlFor="badge-name" className="mb-1 block text-xs font-bold text-(--text-subtle)">
             Nome do edital
           </label>
           <input id="badge-name" type="text" value={editalName} onChange={(e) => setEditalName(e.target.value)} className={FIELD} required />
@@ -95,7 +95,7 @@ export default function BadgeManager({ profile, availableCategories }: BadgeMana
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_8rem]">
         <div>
-          <label htmlFor="badge-category" className="mb-1 block text-xs font-bold text-[#6B8388]">
+          <label htmlFor="badge-category" className="mb-1 block text-xs font-bold text-(--text-subtle)">
             Área
           </label>
           <select id="badge-category" value={category} onChange={(e) => setCategory(e.target.value)} className={FIELD}>
@@ -107,7 +107,7 @@ export default function BadgeManager({ profile, availableCategories }: BadgeMana
           </select>
         </div>
         <div>
-          <label htmlFor="badge-year" className="mb-1 block text-xs font-bold text-[#6B8388]">
+          <label htmlFor="badge-year" className="mb-1 block text-xs font-bold text-(--text-subtle)">
             Ano
           </label>
           <input id="badge-year" type="text" inputMode="numeric" value={year} onChange={(e) => setYear(e.target.value)} className={`${FIELD} tabular-nums`} />
@@ -116,7 +116,7 @@ export default function BadgeManager({ profile, availableCategories }: BadgeMana
 
       <button
         type="submit"
-        className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[#0E7C86] px-4 py-2 text-sm font-bold text-[#0E7C86] transition-colors hover:bg-[#E6F4F5]"
+        className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-(--primary-fg) px-4 py-2 text-sm font-bold text-(--primary-fg) transition-colors hover:bg-(--primary-soft)"
       >
         <Plus size={16} />
         <span>Adicionar conquista</span>
@@ -125,12 +125,12 @@ export default function BadgeManager({ profile, availableCategories }: BadgeMana
       {profile.badges.length > 0 && (
         <ul className="space-y-2 pt-1">
           {profile.badges.map((badge) => (
-            <li key={badge.id} className="flex items-center justify-between gap-3 rounded-xl border border-[#DCE6E8] bg-[#F8FAFB] p-2.5">
+            <li key={badge.id} className="flex items-center justify-between gap-3 rounded-xl border border-(--border-subtle) bg-(--background) p-2.5">
               <Link href={`/perfil/${profile.id}/selos/${badge.id}`} className="min-w-0 flex-1 hover:underline">
-                <p className="break-words text-sm font-bold text-[#102A30]">
+                <p className="break-words text-sm font-bold text-(--foreground)">
                   {badge.title} — {badge.editalName}
                 </p>
-                <p className="text-xs text-[#6B8388]">
+                <p className="text-xs text-(--text-subtle)">
                   {badge.category} · <span className="tabular-nums">{badge.year}</span>
                   {badge.issuerName ? ` · ${badge.issuerName}` : ""}
                 </p>
@@ -139,7 +139,7 @@ export default function BadgeManager({ profile, availableCategories }: BadgeMana
                 type="button"
                 onClick={() => void removeBadgeFromCurrentProfile(badge.id)}
                 aria-label={`Remover badge ${badge.editalName}`}
-                className="shrink-0 cursor-pointer rounded-lg p-2 text-[#6B8388] transition-colors hover:bg-red-50 hover:text-red-700"
+                className="shrink-0 cursor-pointer rounded-lg p-2 text-(--text-subtle) transition-colors hover:bg-(--danger-soft) hover:text-(--danger)"
               >
                 <Trash2 size={15} />
               </button>

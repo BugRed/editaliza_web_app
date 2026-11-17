@@ -33,7 +33,7 @@ export default function AuthForm({ onSuccess }: { onSuccess?: () => void }) {
         placeholder="E-mail"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="w-full px-4 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+        className="w-full px-4 py-2.5 rounded-lg bg-(--background) border border-(--border-subtle) text-(--foreground) placeholder-(--text-subtle) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
         required
       />
       <input
@@ -41,16 +41,16 @@ export default function AuthForm({ onSuccess }: { onSuccess?: () => void }) {
         placeholder="Senha"
         value={senha}
         onChange={(e) => setSenha(e.target.value)}
-        className="w-full px-4 py-2.5 rounded-lg bg-[#F8FAFB] border border-[#DCE6E8] text-[#102A30] placeholder-[#6B8388] focus:outline-none focus:ring-2 focus:ring-[#0E7C86]"
+        className="w-full px-4 py-2.5 rounded-lg bg-(--background) border border-(--border-subtle) text-(--foreground) placeholder-(--text-subtle) focus:outline-none focus:ring-2 focus:ring-(--primary-fg)"
         required
       />
       <button
         type="submit"
-        className="w-full py-2.5 rounded-lg bg-[#0E7C86] text-white font-semibold hover:bg-[#0B656D] transition-colors cursor-pointer"
+        className="w-full py-2.5 rounded-lg bg-(--primary) text-white font-semibold hover:bg-(--primary-hover) transition-colors cursor-pointer"
       >
         Entrar
       </button>
-      {erro && <p className="text-red-600 text-sm">{erro}</p>}
+      {erro && <p className="text-(--danger) text-sm">{erro}</p>}
     </form>
   );
 }

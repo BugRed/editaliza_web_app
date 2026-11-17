@@ -10,7 +10,7 @@ export default function MediaPlayer({ url, title, poster }: MediaPlayerProps) {
 
   if (!source) {
     return (
-      <p className="rounded-xl border border-dashed border-[#DCE6E8] bg-[#F8FAFB] p-4 text-sm text-[#6B8388]">
+      <p className="rounded-xl border border-dashed border-(--border-subtle) bg-(--background) p-4 text-sm text-(--text-subtle)">
         Esta obra ainda não tem mídia para reproduzir.
       </p>
     );
@@ -24,14 +24,14 @@ export default function MediaPlayer({ url, title, poster }: MediaPlayerProps) {
         loading="lazy"
         allow="accelerometer; encrypted-media; picture-in-picture"
         allowFullScreen
-        className="aspect-video w-full rounded-xl border border-[#DCE6E8] bg-[#102A30]"
+        className="aspect-video w-full rounded-xl border border-(--border-subtle) bg-(--scrim)"
       />
     );
   }
 
   if (source.type === "video-file") {
     return (
-      <video controls preload="metadata" poster={poster} aria-label={title} className="aspect-video w-full rounded-xl bg-[#102A30]">
+      <video controls preload="metadata" poster={poster} aria-label={title} className="aspect-video w-full rounded-xl bg-(--scrim)">
         <source src={source.src} />
         Seu navegador não reproduz este vídeo.
       </video>

@@ -17,11 +17,11 @@ export default function EmpresaPage({ params }: { params: Promise<{ id: string }
     return (
       <AppShell title="Empresa">
         <div className="space-y-3 p-8 text-center">
-          <p className="text-base font-bold text-[#102A30]">{profilesLoading ? "Carregando..." : "Empresa não encontrada"}</p>
+          <p className="text-base font-bold text-(--foreground)">{profilesLoading ? "Carregando..." : "Empresa não encontrada"}</p>
           {!profilesLoading && (
             <>
-              <p className="text-sm text-[#4A656B]">Este proponente não existe ou ainda não publicou no Editaliza.</p>
-              <Link href="/" className="inline-flex rounded-xl bg-[#0E7C86] px-4 py-2 text-sm font-semibold text-white">
+              <p className="text-sm text-(--text-muted)">Este proponente não existe ou ainda não publicou no Editaliza.</p>
+              <Link href="/" className="inline-flex rounded-xl bg-(--primary) px-4 py-2 text-sm font-semibold text-white">
                 Voltar ao início
               </Link>
             </>
