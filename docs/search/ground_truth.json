@@ -1,0 +1,118 @@
+{
+ "anchors": {
+  "sic2024_fic_audiovisual": [
+   "jaqueline_brandao",
+   "diego_lopes"
+  ],
+  "sic2024_fic_musica": [
+   "inst_ricardo_brenand",
+   "mr_plot"
+  ],
+  "sic2024_fic_cultura_popular": [
+   "maracatu_porto_rico",
+   "alzenide_simoes"
+  ],
+  "sic2024_fic_teatro": [
+   "junior_artes_belo",
+   "edivane_aguiar"
+  ],
+  "sic2024_fic_artes_visuais": [
+   "marcelo_buarque",
+   "julio_vasconcelos"
+  ],
+  "sic2024_fic_circo": [
+   "maria_fatima_pontes",
+   "luiza_fontes"
+  ],
+  "sic2023_fic_integradas": [
+   "jessica_miranda",
+   "valeria_fagundes"
+  ],
+  "multilinguagens_pnab2026": [
+   "joao_fernando_silva",
+   "joao_lucas_cavalcanti"
+  ],
+  "virado_pnab2026_hiphop": [
+   "kananda_silva",
+   "rarynne_barros"
+  ],
+  "solo_do_outro_2026": [
+   "claudemilson_souza"
+  ],
+  "aprendiz_em_cena_2026": [
+   "maria_pepe"
+  ],
+  "bolsa_escola_frevo_2026": [
+   "shermison_silva",
+   "amanda_colaco"
+  ],
+  "observa3_malakoff_2025": [
+   "ana_neves",
+   "geoneide_brandao"
+  ],
+  "fidr_2026": [
+   "maria_emilia_gomes",
+   "roberto_macedo"
+  ]
+ },
+ "excluded": {
+  "sic2023_fic_integradas": [
+   "robsmar_silva"
+  ],
+  "observa3_malakoff_2025": [
+   "icaro_galvao",
+   "luciana_borre",
+   "paulo_oliveira"
+  ]
+ },
+ "pendentes": [
+  {
+   "id": "caruaru_sao_joao_2025_musica",
+   "titulo": "Edital de Chamamento São João 2025 — Música",
+   "municipio": "Caruaru",
+   "fonte": "mapacultural.caruaru.pe.gov.br (LISTA DE HABILITADOS — 51 páginas)",
+   "url": "https://mapacultural.caruaru.pe.gov.br/storage/anexoEditais/EDITAL%20DE%20CHAMAMENTO%20S%C3%83O%20JO%C3%83O%202025/LISTA%20DE%20HABILITADOS%20DO%20EDITAL%20DE%20MUSICA%20-%20S%C3%83O%20JO%C3%83O%202025.pdf",
+   "status": "resultado identificado; portal inacessível pelo sandbox"
+  },
+  {
+   "id": "caruaru_sao_joao_2025_linguagens",
+   "titulo": "Edital de Chamamento São João 2025 — Demais Linguagens",
+   "municipio": "Caruaru",
+   "fonte": "mapacultural.caruaru.pe.gov.br (LISTA DE HABILITADOS)",
+   "url": "https://mapacultural.caruaru.pe.gov.br/storage/anexoEditais/EDITAL%20DE%20CHAMAMENTO%20S%C3%83O%20JO%C3%83O%202025/LISTA%20DE%20HABILITADOS%20DO%20EDITAL%20DEMAIS%20LINGUAGENS%20-%20S%C3%83O%20JO%C3%83O%202025.pdf",
+   "status": "resultado identificado; portal inacessível pelo sandbox"
+  },
+  {
+   "id": "caruaru_pnab2026_anastacio",
+   "titulo": "PNAB nº 001/2026 — Edital Anastácio Rodrigues",
+   "municipio": "Caruaru",
+   "fonte": "mapacultural.caruaru.pe.gov.br (lista final de contemplados)",
+   "url": "https://mapacultural.caruaru.pe.gov.br/storage/anexoEditais/PNAB%20CICLO%202/lista_final_de_contemplados_pnab_2026_edital_001_anastacio_rodrigues_anexo_1790693383.pdf",
+   "status": "lista final publicada; portal inacessível pelo sandbox"
+  },
+  {
+   "id": "caruaru_pnab2024_criativo",
+   "titulo": "PNAB nº 001/2024 — Caruaru Criativo (resultado do mérito)",
+   "municipio": "Caruaru",
+   "fonte": "mapacultural.caruaru.pe.gov.br + Scribd (RELACAO-EDITAL-1)",
+   "url": "https://mapacultural.caruaru.pe.gov.br/storage/anexoEditais/PNAB/RESULTADO%20DOCUMENTAL%20EDITAL%2001.pdf",
+   "status": "resultado publicado; portal inacessível pelo sandbox"
+  },
+  {
+   "id": "olinda_premiacao_001_2026",
+   "titulo": "Edital de Premiação Cultural nº 001/2026 — PNAB Olinda",
+   "municipio": "Olinda",
+   "fonte": "comunicação oficial da Prefeitura de Olinda (resultado preliminar de análise)",
+   "url": "https://olinda.pe.gov.br/pagina/cultura",
+   "status": "resultado preliminar publicado; portal inacessível pelo sandbox"
+  },
+  {
+   "id": "olinda_pontos_cultura_004_2026",
+   "titulo": "Chamamento nº 004/2026 — Premiação de Pontos de Cultura (PNAB Olinda)",
+   "municipio": "Olinda",
+   "fonte": "PNCP — compra 2026/494 do CNPJ 10.404.184/0001-09 (edital com anexos baixado)",
+   "url": "https://pncp.gov.br/pncp-api/v1/orgaos/10404184000109/compras/2026/494/arquivos/1",
+   "status": "edital completo capturado; resultado ainda não publicado no PNCP"
+  }
+ ]
+}

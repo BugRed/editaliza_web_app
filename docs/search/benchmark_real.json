@@ -1,0 +1,486 @@
+[
+ {
+  "label": "v0 — especificação literal (nulos 0 + renormalização, sem teto)",
+  "rows": [
+   {
+    "edital": "sic2024_fic_audiovisual",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_musica",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_cultura_popular",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_teatro",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_artes_visuais",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_circo",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2023_fic_integradas",
+    "best_anchor_rank": 1,
+    "n_candidates": 29,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "multilinguagens_pnab2026",
+    "best_anchor_rank": 4,
+    "n_candidates": 30,
+    "hit1": false,
+    "hit3": false,
+    "rr": 0.25
+   },
+   {
+    "edital": "virado_pnab2026_hiphop",
+    "best_anchor_rank": 2,
+    "n_candidates": 30,
+    "hit1": false,
+    "hit3": true,
+    "rr": 0.5
+   },
+   {
+    "edital": "solo_do_outro_2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "aprendiz_em_cena_2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "bolsa_escola_frevo_2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "observa3_malakoff_2025",
+    "best_anchor_rank": 1,
+    "n_candidates": 27,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "fidr_2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   }
+  ],
+  "mrr": 0.9107142857142857,
+  "hit1": 0.8571428571428571,
+  "hit3": 0.9285714285714286,
+  "mean_rank": 1.2857142857142858
+ },
+ {
+  "label": "v2 — teto por requisito explícito (nulos renormalizados)",
+  "rows": [
+   {
+    "edital": "sic2024_fic_audiovisual",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_musica",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_cultura_popular",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_teatro",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_artes_visuais",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_circo",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2023_fic_integradas",
+    "best_anchor_rank": 1,
+    "n_candidates": 29,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "multilinguagens_pnab2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "virado_pnab2026_hiphop",
+    "best_anchor_rank": 2,
+    "n_candidates": 30,
+    "hit1": false,
+    "hit3": true,
+    "rr": 0.5
+   },
+   {
+    "edital": "solo_do_outro_2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "aprendiz_em_cena_2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "bolsa_escola_frevo_2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "observa3_malakoff_2025",
+    "best_anchor_rank": 1,
+    "n_candidates": 27,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "fidr_2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   }
+  ],
+  "mrr": 0.9642857142857143,
+  "hit1": 0.9285714285714286,
+  "hit3": 1.0,
+  "mean_rank": 1.0714285714285714
+ },
+ {
+  "label": "v4 — nulos neutros 0,5 + teto + papéis",
+  "rows": [
+   {
+    "edital": "sic2024_fic_audiovisual",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_musica",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_cultura_popular",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_teatro",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_artes_visuais",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_circo",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2023_fic_integradas",
+    "best_anchor_rank": 1,
+    "n_candidates": 29,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "multilinguagens_pnab2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "virado_pnab2026_hiphop",
+    "best_anchor_rank": 2,
+    "n_candidates": 30,
+    "hit1": false,
+    "hit3": true,
+    "rr": 0.5
+   },
+   {
+    "edital": "solo_do_outro_2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "aprendiz_em_cena_2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "bolsa_escola_frevo_2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "observa3_malakoff_2025",
+    "best_anchor_rank": 1,
+    "n_candidates": 27,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "fidr_2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   }
+  ],
+  "mrr": 0.9642857142857143,
+  "hit1": 0.9285714285714286,
+  "hit3": 1.0,
+  "mean_rank": 1.0714285714285714
+ },
+ {
+  "label": "v4 com pesos iguais",
+  "rows": [
+   {
+    "edital": "sic2024_fic_audiovisual",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_musica",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_cultura_popular",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_teatro",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_artes_visuais",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2024_fic_circo",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "sic2023_fic_integradas",
+    "best_anchor_rank": 1,
+    "n_candidates": 29,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "multilinguagens_pnab2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "virado_pnab2026_hiphop",
+    "best_anchor_rank": 2,
+    "n_candidates": 30,
+    "hit1": false,
+    "hit3": true,
+    "rr": 0.5
+   },
+   {
+    "edital": "solo_do_outro_2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "aprendiz_em_cena_2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "bolsa_escola_frevo_2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "observa3_malakoff_2025",
+    "best_anchor_rank": 1,
+    "n_candidates": 27,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   },
+   {
+    "edital": "fidr_2026",
+    "best_anchor_rank": 1,
+    "n_candidates": 30,
+    "hit1": true,
+    "hit3": true,
+    "rr": 1.0
+   }
+  ],
+  "mrr": 0.9642857142857143,
+  "hit1": 0.9285714285714286,
+  "hit3": 1.0,
+  "mean_rank": 1.0714285714285714
+ }
+]

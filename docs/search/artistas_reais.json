@@ -1,0 +1,1364 @@
+[
+ {
+  "id": "jaqueline_brandao",
+  "nome": "Jaqueline Cristina Macedo Brandão",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: SIC 2024 FIC Audiovisual (resultado final 3ª fase)).",
+  "languages_main": [
+   "cinema"
+  ],
+  "languages_secondary": [
+   "documentario"
+  ],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "cidade",
+    "violencia"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "OS GUERREIROS DA RUA - O FILME",
+    "language": "documentario",
+    "techniques": [],
+    "supports": [],
+    "concepts": [
+     "cidade",
+     "violencia"
+    ],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "SIC 2024 FIC Audiovisual (resultado final 3ª fase)"
+ },
+ {
+  "id": "diego_lopes",
+  "nome": "Diego Fernandes Gomes Lopes",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: SIC 2024 FIC Audiovisual (resultado final 3ª fase)).",
+  "languages_main": [
+   "cinema"
+  ],
+  "languages_secondary": [
+   "documentario"
+  ],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "memoria",
+    "patrimonio"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "OS PIONEIROS DA AVIAÇÃO",
+    "language": "documentario",
+    "techniques": [],
+    "supports": [],
+    "concepts": [
+     "memoria",
+     "patrimonio"
+    ],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "SIC 2024 FIC Audiovisual (resultado final 3ª fase)"
+ },
+ {
+  "id": "inst_ricardo_brenand",
+  "nome": "Instituto Ricardo Brennand",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: SIC 2024 FIC Música (resultado final 3ª fase)).",
+  "languages_main": [
+   "musica"
+  ],
+  "languages_secondary": [],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "patrimonio"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "FESTIVAL ACORDES PARA O MUSEU",
+    "language": "musica",
+    "techniques": [],
+    "supports": [],
+    "concepts": [
+     "patrimonio"
+    ],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "SIC 2024 FIC Música (resultado final 3ª fase)"
+ },
+ {
+  "id": "mr_plot",
+  "nome": "Mr. Plot Produções",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: SIC 2024 FIC Música (resultado final 3ª fase)).",
+  "languages_main": [
+   "musica"
+  ],
+  "languages_secondary": [],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "CIRCULAÇÃO SHOW DO BITA - CRESCER E APRENDER",
+    "language": "musica",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "SIC 2024 FIC Música (resultado final 3ª fase)"
+ },
+ {
+  "id": "maracatu_porto_rico",
+  "nome": "Nação do Maracatu Porto Rico",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: SIC 2024 FIC Cultura Popular (resultado final 3ª fase)).",
+  "languages_main": [
+   "cultura_popular"
+  ],
+  "languages_secondary": [
+   "musica"
+  ],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "cultura_popular"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "MARACATU PORTO RICO SINFÔNICO",
+    "language": "cultura_popular",
+    "techniques": [
+     "percussao"
+    ],
+    "supports": [],
+    "concepts": [
+     "cultura_popular"
+    ],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "SIC 2024 FIC Cultura Popular (resultado final 3ª fase)"
+ },
+ {
+  "id": "alzenide_simoes",
+  "nome": "Alzenide Prazeres Simões",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: SIC 2024 FIC Cultura Popular (resultado final 3ª fase)).",
+  "languages_main": [
+   "cultura_popular"
+  ],
+  "languages_secondary": [
+   "artes_visuais"
+  ],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "cultura_popular",
+    "identidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "MARACATU – ANTROPOLOGIA VISUAL",
+    "language": "cultura_popular",
+    "techniques": [
+     "percussao"
+    ],
+    "supports": [],
+    "concepts": [
+     "cultura_popular",
+     "identidade"
+    ],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "SIC 2024 FIC Cultura Popular (resultado final 3ª fase)"
+ },
+ {
+  "id": "junior_artes_belo",
+  "nome": "Junior Artes e Produções (J.A. Taveira Belo)",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: SIC 2024 FIC Teatro (resultado final 3ª fase)).",
+  "languages_main": [
+   "teatro"
+  ],
+  "languages_secondary": [],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "religiosidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "OS AMBULANTES DE DEUS",
+    "language": "teatro",
+    "techniques": [],
+    "supports": [],
+    "concepts": [
+     "religiosidade"
+    ],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "SIC 2024 FIC Teatro (resultado final 3ª fase)"
+ },
+ {
+  "id": "edivane_aguiar",
+  "nome": "Edivane Batista Tavares Aguiar",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: SIC 2024 FIC Teatro (resultado final 3ª fase)).",
+  "languages_main": [
+   "teatro"
+  ],
+  "languages_secondary": [],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "22.º FESTIVAL DE TEATRO PARA CRIANÇAS DE PERNAMBUCO",
+    "language": "teatro",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "SIC 2024 FIC Teatro (resultado final 3ª fase)"
+ },
+ {
+  "id": "marcelo_buarque",
+  "nome": "Marcelo Victor Silva Buarque",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: SIC 2024 FIC Artes Visuais (resultado final 3ª fase)).",
+  "languages_main": [
+   "artes_visuais"
+  ],
+  "languages_secondary": [
+   "pintura"
+  ],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "trabalho",
+    "cidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "PÃO E TINTA - COR E COMÉRCIO",
+    "language": "artes_visuais",
+    "techniques": [
+     "pintura"
+    ],
+    "supports": [],
+    "concepts": [
+     "trabalho",
+     "cidade"
+    ],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "SIC 2024 FIC Artes Visuais (resultado final 3ª fase)"
+ },
+ {
+  "id": "julio_vasconcelos",
+  "nome": "Julio Cesar Bacelar de Vasconcelos",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: SIC 2024 FIC Artes Visuais (resultado final 3ª fase)).",
+  "languages_main": [
+   "artes_visuais"
+  ],
+  "languages_secondary": [],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "O SONHO E O RISO",
+    "language": "artes_visuais",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "SIC 2024 FIC Artes Visuais (resultado final 3ª fase)"
+ },
+ {
+  "id": "maria_fatima_pontes",
+  "nome": "Maria de Fátima Pontes",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: SIC 2024 FIC Circo (resultado final 3ª fase)).",
+  "languages_main": [
+   "circo"
+  ],
+  "languages_secondary": [],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "I FESTIVAL VIRADES NUM MÓI DE CUENTRO - FAZENDO CIRCO EM RECIFE COMO RESISTÊNCIA!",
+    "language": "circo",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "SIC 2024 FIC Circo (resultado final 3ª fase)"
+ },
+ {
+  "id": "luiza_fontes",
+  "nome": "Luíza Santa Cruz Fontes",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: SIC 2024 FIC Circo (resultado final 3ª fase)).",
+  "languages_main": [
+   "circo"
+  ],
+  "languages_secondary": [],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "A BOBA: UMA JORNADA",
+    "language": "circo",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "SIC 2024 FIC Circo (resultado final 3ª fase)"
+ },
+ {
+  "id": "jessica_miranda",
+  "nome": "Jessica Evelyn Claudino Lobo de Miranda",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: SIC 2023 FIC Artes Integradas e Arte e Tecnologia (projetos aprovados)).",
+  "languages_main": [
+   "multilinguagens"
+  ],
+  "languages_secondary": [
+   "arte_digital"
+  ],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "contemporaneidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "PARA ADIAR O FIM DO MUNDO (Encontros de Ideias)",
+    "language": "arte_digital",
+    "techniques": [],
+    "supports": [],
+    "concepts": [
+     "contemporaneidade"
+    ],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "SIC 2023 FIC Artes Integradas e Arte e Tecnologia (projetos aprovados)"
+ },
+ {
+  "id": "valeria_fagundes",
+  "nome": "Valeria Pereira Fagundes",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: SIC 2023 FIC Artes Integradas e Arte e Tecnologia (projetos aprovados)).",
+  "languages_main": [
+   "musica"
+  ],
+  "languages_secondary": [
+   "artes_visuais"
+  ],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "memoria"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "ROCK PERNAMBUCANO EM 50 CAPAS",
+    "language": "musica",
+    "techniques": [],
+    "supports": [],
+    "concepts": [
+     "memoria"
+    ],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "SIC 2023 FIC Artes Integradas e Arte e Tecnologia (projetos aprovados)"
+ },
+ {
+  "id": "robsmar_silva",
+  "nome": "Robsmar da Silva (Mostra DNA Afro)",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: SIC 2023 FIC Artes Integradas e Arte e Tecnologia (projetos aprovados)).",
+  "languages_main": [
+   "cultura_popular"
+  ],
+  "languages_secondary": [],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "memoria",
+    "ancestralidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "MOSTRA DNA AFRO",
+    "language": "cultura_popular",
+    "techniques": [],
+    "supports": [],
+    "concepts": [
+     "memoria",
+     "ancestralidade"
+    ],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "SIC 2023 FIC Artes Integradas e Arte e Tecnologia (projetos aprovados)"
+ },
+ {
+  "id": "joao_fernando_silva",
+  "nome": "João Fernando Dias da Silva",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: Multilinguagens Recife Criativo PNAB 2026 (resultado final, nota 10,0000)).",
+  "languages_main": [
+   "circo"
+  ],
+  "languages_secondary": [
+   "performance"
+  ],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "genero",
+    "sexualidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "MOSTRA QUEER DE ARTES PERFORMATIVAS - MAIS DO QUE LETRAS, PESSOAS! MAIS QUE ORGULHO, LUTA!",
+    "language": "circo",
+    "techniques": [],
+    "supports": [],
+    "concepts": [
+     "genero",
+     "sexualidade"
+    ],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "Multilinguagens Recife Criativo PNAB 2026 (resultado final, nota 10,0000)"
+ },
+ {
+  "id": "joao_lucas_cavalcanti",
+  "nome": "João Lucas de Sá Leitão Cavalcanti",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: Multilinguagens Recife Criativo PNAB 2026 (resultado final, nota 9,9500)).",
+  "languages_main": [
+   "circo"
+  ],
+  "languages_secondary": [],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "APRESENTAÇÕES NOVE TENTATIVAS DE NÃO SUCUMBIR",
+    "language": "circo",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "Multilinguagens Recife Criativo PNAB 2026 (resultado final, nota 9,9500)"
+ },
+ {
+  "id": "kananda_silva",
+  "nome": "Kananda Maria Correia da Silva",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: Virado na Periferia PNAB 2026 (resultado preliminar com nota 8,5500)).",
+  "languages_main": [
+   "musica"
+  ],
+  "languages_secondary": [],
+  "positioning": [
+   "comunitaria"
+  ],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "genero",
+    "cidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "1º ENCONTRO MUNICIPAL DE FORMAÇÃO DA FRENTE DE MULHERES NO HIP HOP - RECIFE",
+    "language": "musica",
+    "techniques": [],
+    "supports": [],
+    "concepts": [
+     "genero",
+     "cidade"
+    ],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "Virado na Periferia PNAB 2026 (resultado preliminar com nota 8,5500)"
+ },
+ {
+  "id": "rarynne_barros",
+  "nome": "Rarynne Francynne de Jesus Profiro Barros",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: Virado na Periferia PNAB 2026 (resultado preliminar com nota 8,2333)).",
+  "languages_main": [
+   "musica"
+  ],
+  "languages_secondary": [],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "cidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "CIDADE SONORA",
+    "language": "musica",
+    "techniques": [],
+    "supports": [],
+    "concepts": [
+     "cidade"
+    ],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "Virado na Periferia PNAB 2026 (resultado preliminar com nota 8,2333)"
+ },
+ {
+  "id": "claudemilson_souza",
+  "nome": "Claudemilson Soares de Souza",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: O Solo do Outro 2026 (resultado preliminar, 1º selecionado)).",
+  "languages_main": [
+   "danca"
+  ],
+  "languages_secondary": [],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "CARREGO",
+    "language": "danca",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "O Solo do Outro 2026 (resultado preliminar, 1º selecionado)"
+ },
+ {
+  "id": "maria_pepe",
+  "nome": "Maria Eduarda Sousa Pepe",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: O Aprendiz em Cena 2026 (resultado preliminar, 1º selecionado)).",
+  "languages_main": [
+   "teatro"
+  ],
+  "languages_secondary": [],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "sexualidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "ORGIA",
+    "language": "teatro",
+    "techniques": [],
+    "supports": [],
+    "concepts": [
+     "sexualidade"
+    ],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "O Aprendiz em Cena 2026 (resultado preliminar, 1º selecionado)"
+ },
+ {
+  "id": "shermison_silva",
+  "nome": "Shermison Henrique da Silva",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: Edital Interno de Bolsas Escola de Frevo 2026 (resultado final, 1º selecionado)).",
+  "languages_main": [
+   "danca"
+  ],
+  "languages_secondary": [],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "patrimonio",
+    "cultura_popular"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "Bolsa de Formação Escola de Frevo — Pesquisa-Criação: Frevo como Metodologia Contemporânea",
+    "language": "danca",
+    "techniques": [],
+    "supports": [],
+    "concepts": [
+     "patrimonio",
+     "cultura_popular"
+    ],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "Edital Interno de Bolsas Escola de Frevo 2026 (resultado final, 1º selecionado)"
+ },
+ {
+  "id": "amanda_colaco",
+  "nome": "Amanda Carolina Colaço",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: Edital Interno de Bolsas Escola de Frevo 2026 (resultado final, 2ª selecionada)).",
+  "languages_main": [
+   "danca"
+  ],
+  "languages_secondary": [],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "patrimonio"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "Bolsa de Formação Escola de Frevo — Pesquisa-Criação em Dança",
+    "language": "danca",
+    "techniques": [],
+    "supports": [],
+    "concepts": [
+     "patrimonio"
+    ],
+    "scale": "medio",
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "Edital Interno de Bolsas Escola de Frevo 2026 (resultado final, 2ª selecionada)"
+ },
+ {
+  "id": "ana_neves",
+  "nome": "Ana Neves",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: OBSERVA 3 — Torre Malakoff 2025 (selecionados; TV Guararapes 17/06/2025)).",
+  "languages_main": [
+   "artes_visuais"
+  ],
+  "languages_secondary": [],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "memoria",
+    "territorio"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "Tropical Trópico: aqui tudo derrete",
+    "language": "artes_visuais",
+    "techniques": [],
+    "supports": [],
+    "concepts": [
+     "memoria",
+     "territorio"
+    ],
+    "scale": "medio",
+    "availability": "obras_prontas"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "OBSERVA 3 — Torre Malakoff 2025 (selecionados; TV Guararapes 17/06/2025)"
+ },
+ {
+  "id": "geoneide_brandao",
+  "nome": "Geoneide Brandão",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: OBSERVA 3 — Torre Malakoff 2025 (selecionados; TV Guararapes 17/06/2025)).",
+  "languages_main": [
+   "artes_visuais"
+  ],
+  "languages_secondary": [
+   "pintura"
+  ],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "genero",
+    "sexualidade",
+    "identidade",
+    "afetividade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "Entre nós todo o indizível se faz presente",
+    "language": "pintura",
+    "techniques": [
+     "pintura"
+    ],
+    "supports": [],
+    "concepts": [
+     "genero",
+     "sexualidade",
+     "identidade",
+     "afetividade"
+    ],
+    "scale": "medio",
+    "availability": "obras_prontas"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "OBSERVA 3 — Torre Malakoff 2025 (selecionados; TV Guararapes 17/06/2025)"
+ },
+ {
+  "id": "icaro_galvao",
+  "nome": "Ícaro Galvão",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: OBSERVA 3 — Torre Malakoff 2025 (selecionados; TV Guararapes 17/06/2025)).",
+  "languages_main": [
+   "artes_visuais"
+  ],
+  "languages_secondary": [
+   "fotografia"
+  ],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "memoria",
+    "natureza"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "Encontros Monumentais",
+    "language": "fotografia",
+    "techniques": [
+     "fotografia_analogica",
+     "video",
+     "instalacao"
+    ],
+    "supports": [],
+    "concepts": [
+     "memoria",
+     "natureza"
+    ],
+    "scale": "medio",
+    "availability": "obras_prontas"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "OBSERVA 3 — Torre Malakoff 2025 (selecionados; TV Guararapes 17/06/2025)"
+ },
+ {
+  "id": "luciana_borre",
+  "nome": "Luciana Borre",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: OBSERVA 3 — Torre Malakoff 2025 (selecionados; TV Guararapes 17/06/2025)).",
+  "languages_main": [
+   "artes_visuais"
+  ],
+  "languages_secondary": [
+   "multilinguagens"
+  ],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "afetividade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "?Toda vez que me perco de mim?",
+    "language": "multilinguagens",
+    "techniques": [
+     "bordado",
+     "gravura",
+     "videoarte",
+     "instalacao"
+    ],
+    "supports": [],
+    "concepts": [
+     "afetividade"
+    ],
+    "scale": "medio",
+    "availability": "obras_prontas"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "OBSERVA 3 — Torre Malakoff 2025 (selecionados; TV Guararapes 17/06/2025)"
+ },
+ {
+  "id": "paulo_oliveira",
+  "nome": "Paulo Oliveira Quacula",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: OBSERVA 3 — Torre Malakoff 2025 (selecionados; TV Guararapes 17/06/2025)).",
+  "languages_main": [
+   "artes_visuais"
+  ],
+  "languages_secondary": [
+   "escultura"
+  ],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "ancestralidade",
+    "natureza"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 30,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "Acervo escultórico em madeiras naturais",
+    "language": "escultura",
+    "techniques": [
+     "escultura",
+     "madeira"
+    ],
+    "supports": [],
+    "concepts": [
+     "ancestralidade",
+     "natureza"
+    ],
+    "scale": "medio",
+    "availability": "obras_prontas"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "OBSERVA 3 — Torre Malakoff 2025 (selecionados; TV Guararapes 17/06/2025)"
+ },
+ {
+  "id": "maria_emilia_gomes",
+  "nome": "Maria Emília da Cruz Gomes",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: 29º FIDR 2026 (resultado final pós-recursos, 1ª classificada espetáculo)).",
+  "languages_main": [
+   "danca"
+  ],
+  "languages_secondary": [],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "COLIBRI",
+    "language": "danca",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "obras_prontas"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "29º FIDR 2026 (resultado final pós-recursos, 1ª classificada espetáculo)"
+ },
+ {
+  "id": "roberto_macedo",
+  "nome": "Roberto Alexandre Macedo",
+  "resume": "Proponente contemplado(a) em edital municipal (fonte: 29º FIDR 2026 (resultado final pós-recursos, 2º classificado espetáculo)).",
+  "languages_main": [
+   "danca"
+  ],
+  "languages_secondary": [],
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "cidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 6,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "O DONO DA RUA",
+    "language": "danca",
+    "techniques": [],
+    "supports": [],
+    "concepts": [
+     "cidade"
+    ],
+    "scale": "medio",
+    "availability": "obras_prontas"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "fonte": "29º FIDR 2026 (resultado final pós-recursos, 2º classificado espetáculo)"
+ }
+]
