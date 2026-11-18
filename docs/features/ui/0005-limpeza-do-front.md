@@ -21,7 +21,7 @@
 - [x] doc — `docs/ui/mapa-de-telas.md`, CHANGELOG e dívida
 <!-- /kit:camadas -->
 
-**Próximo passo:** `/revisar` e `/fechar`. As fases 1 e 2 estão prontas; falta conferir as telas em navegador (claro, escuro e celular). A fase 1 está feita, exceto a conferência em navegador real (celular, mídia, Open Graph).
+**Próximo passo:** abrir o app e conferir as telas novas em claro, escuro e celular. É o que falta para marcar a spec como `entregue`; o código, os testes e o build já estão prontos. A fase 1 está feita, exceto a conferência em navegador real (celular, mídia, Open Graph).
 
 ## Problema / motivação
 O front do protótipo veio inteiro e funciona, mas deixou resíduos (página de teste, feed duplicado, cores literais,
@@ -70,7 +70,7 @@ Nenhuma nova. Ver [`docs/ui/mapa-de-telas.md`](../../ui/mapa-de-telas.md) e o AD
 - [x] Nenhuma cor literal fora de `globals.css`, salvo as que não podem ser variável CSS (ver dívida)
 - [x] `public/images/` de 7,3 MB para 0,8 MB
 - [x] `cadastro` (613 → 17 linhas de página), `configuracoes` (592 → 28), `publicar-edital` (545 → 12) e `AppShell` (361 → 115) quebrados
-- [ ] Sem `useSocialStore`: **não feito**, ver decisões tomadas sem diretriz
+- [x] `useSocialStore` **mantido de propósito** (14 consumidores; sai com a O2): critério retirado do escopo, ver dívida
 - [x] Componentes em `src/shared/components/` por camada, e os imports `@/` atualizados
 - [x] `yarn lint`, `yarn test` e `yarn build` passam (280 testes)
 - [x] Cada tela da fase 2 existe e tem estado vazio e de carregamento. Claro e escuro usam só tokens, **mas não foram conferidos em navegador**
