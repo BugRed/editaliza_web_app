@@ -1,0 +1,715 @@
+[
+ {
+  "id": "C1_territorio_fail",
+  "edital": "sic2024_fic_musica",
+  "tipo": "FAIL_bloqueia",
+  "nota": "Residência municipal é requisito real do SIC; artista de região metropolitana não elegível.",
+  "esperado": {
+   "eligibility": "INELIGIBLE",
+   "fails": [
+    "territory"
+   ],
+   "final": null
+  },
+  "artista": {
+   "id": "case_metro",
+   "nome": "Fixtures de teste",
+   "languages_main": [
+    "musica"
+   ],
+   "languages_secondary": [],
+   "positioning": [],
+   "niches": [],
+   "concepts": {
+    "central": [],
+    "secondary": []
+   },
+   "territory": "metro_recife",
+   "years_active": 5,
+   "trajectory": [],
+   "artworks": [
+    {
+     "title": "obra teste",
+     "language": "danca",
+     "techniques": [],
+     "supports": [],
+     "concepts": [],
+     "scale": "medio",
+     "availability": "obras_prontas",
+     "descricao": "obra de fixture",
+     "fonte": "fixture"
+    }
+   ],
+   "availability": {
+    "equipe": false,
+    "documentacao_completa": true
+   },
+   "coverage": {
+    "campos_preenchidos": 0.5,
+    "qualidade_evidencias": 0.9,
+    "atualidade": 1.0,
+    "confianca_extracao": 1.0
+   }
+  },
+  "edital_fixture": null
+ },
+ {
+  "id": "C2_territorio_unknown",
+  "edital": "sic2024_fic_musica",
+  "tipo": "UNKNOWN_pendente",
+  "nota": "Campo vazio mostra 'pendente'; não bloqueia e não ativa teto.",
+  "esperado": {
+   "eligibility": "PENDING",
+   "unknowns": [
+    "territory"
+   ],
+   "final": ">=0"
+  },
+  "artista": {
+   "id": "case_sem_terr",
+   "nome": "Fixtures de teste",
+   "languages_main": [
+    "musica"
+   ],
+   "languages_secondary": [],
+   "positioning": [],
+   "niches": [],
+   "concepts": {
+    "central": [],
+    "secondary": []
+   },
+   "territory": null,
+   "years_active": 5,
+   "trajectory": [],
+   "artworks": [
+    {
+     "title": "obra teste",
+     "language": "danca",
+     "techniques": [],
+     "supports": [],
+     "concepts": [],
+     "scale": "medio",
+     "availability": "obras_prontas",
+     "descricao": "obra de fixture",
+     "fonte": "fixture"
+    }
+   ],
+   "availability": {
+    "equipe": false,
+    "documentacao_completa": true
+   },
+   "coverage": {
+    "campos_preenchidos": 0.5,
+    "qualidade_evidencias": 0.9,
+    "atualidade": 1.0,
+    "confianca_extracao": 1.0
+   }
+  },
+  "edital_fixture": null
+ },
+ {
+  "id": "C3_linguagem_unknown_sem_teto",
+  "edital": "sic2024_fic_artes_visuais",
+  "tipo": "UNKNOWN_sem_teto",
+  "nota": "Linguagem não declarada = UNKNOWN; NÃO ativa teto de 45 (regra 5 da v3).",
+  "esperado": {
+   "eligibility": "ELIGIBLE",
+   "cap": null,
+   "language_factor": null
+  },
+  "artista": {
+   "id": "case_sem_lang",
+   "nome": "Fixtures de teste",
+   "languages_main": [],
+   "languages_secondary": [],
+   "positioning": [],
+   "niches": [],
+   "concepts": {
+    "central": [],
+    "secondary": []
+   },
+   "territory": "city_recife",
+   "years_active": 5,
+   "trajectory": [],
+   "artworks": [
+    {
+     "title": "obra teste",
+     "language": "danca",
+     "techniques": [],
+     "supports": [],
+     "concepts": [],
+     "scale": "medio",
+     "availability": "obras_prontas",
+     "descricao": "obra de fixture",
+     "fonte": "fixture"
+    }
+   ],
+   "availability": {
+    "equipe": false,
+    "documentacao_completa": true
+   },
+   "coverage": {
+    "campos_preenchidos": 0.5,
+    "qualidade_evidencias": 0.9,
+    "atualidade": 1.0,
+    "confianca_extracao": 1.0
+   }
+  },
+  "edital_fixture": null
+ },
+ {
+  "id": "C4_core_fail_cap45",
+  "edital": "fidr_2026",
+  "tipo": "FAIL_teto45",
+  "nota": "Campo preenchido (fotografia) sem correspondência com core dança -> teto 45.",
+  "esperado": {
+   "eligibility": "ELIGIBLE",
+   "cap": 45.0
+  },
+  "artista": {
+   "id": "case_foto",
+   "nome": "Fixtures de teste",
+   "languages_main": [
+    "fotografia"
+   ],
+   "languages_secondary": [],
+   "positioning": [],
+   "niches": [],
+   "concepts": {
+    "central": [],
+    "secondary": []
+   },
+   "territory": "city_recife",
+   "years_active": 5,
+   "trajectory": [],
+   "artworks": [
+    {
+     "title": "obra teste",
+     "language": "danca",
+     "techniques": [],
+     "supports": [],
+     "concepts": [],
+     "scale": "medio",
+     "availability": "obras_prontas",
+     "descricao": "obra de fixture",
+     "fonte": "fixture"
+    }
+   ],
+   "availability": {
+    "equipe": false,
+    "documentacao_completa": true
+   },
+   "coverage": {
+    "campos_preenchidos": 0.5,
+    "qualidade_evidencias": 0.9,
+    "atualidade": 1.0,
+    "confianca_extracao": 1.0
+   }
+  },
+  "edital_fixture": null
+ },
+ {
+  "id": "C5_suporte_nao_casa_core",
+  "edital": "fidr_2026",
+  "tipo": "FAIL_teto45_suporte",
+  "nota": "dança só no suporte: core obrigatório casa apenas com núcleo -> FAIL -> teto 45.",
+  "esperado": {
+   "eligibility": "ELIGIBLE",
+   "cap": 45.0
+  },
+  "artista": {
+   "id": "case_teatro_sec",
+   "nome": "Fixtures de teste",
+   "languages_main": [
+    "teatro"
+   ],
+   "languages_secondary": [
+    "danca"
+   ],
+   "positioning": [],
+   "niches": [],
+   "concepts": {
+    "central": [],
+    "secondary": []
+   },
+   "territory": "city_recife",
+   "years_active": 5,
+   "trajectory": [],
+   "artworks": [
+    {
+     "title": "obra teste",
+     "language": "danca",
+     "techniques": [],
+     "supports": [],
+     "concepts": [],
+     "scale": "medio",
+     "availability": "obras_prontas",
+     "descricao": "obra de fixture",
+     "fonte": "fixture"
+    }
+   ],
+   "availability": {
+    "equipe": false,
+    "documentacao_completa": true
+   },
+   "coverage": {
+    "campos_preenchidos": 0.5,
+    "qualidade_evidencias": 0.9,
+    "atualidade": 1.0,
+    "confianca_extracao": 1.0
+   }
+  },
+  "edital_fixture": null
+ },
+ {
+  "id": "C6_preference_nunca_teto",
+  "edital": "observa3_malakoff_2025",
+  "tipo": "preference_sem_teto",
+  "nota": "Conceitos do OBSERVA são preference; nunca ativam teto, mesmo sem correspondência.",
+  "esperado": {
+   "eligibility": "ELIGIBLE",
+   "cap": null
+  },
+  "artista": {
+   "id": "case_visuais_sem_conceito",
+   "nome": "Fixtures de teste",
+   "languages_main": [
+    "artes_visuais"
+   ],
+   "languages_secondary": [],
+   "positioning": [],
+   "niches": [],
+   "concepts": {
+    "central": [],
+    "secondary": []
+   },
+   "territory": "city_recife",
+   "years_active": 5,
+   "trajectory": [],
+   "artworks": [
+    {
+     "title": "obra teste",
+     "language": "danca",
+     "techniques": [],
+     "supports": [],
+     "concepts": [],
+     "scale": "medio",
+     "availability": "obras_prontas",
+     "descricao": "obra de fixture",
+     "fonte": "fixture"
+    }
+   ],
+   "availability": {
+    "equipe": false,
+    "documentacao_completa": true
+   },
+   "coverage": {
+    "campos_preenchidos": 0.5,
+    "qualidade_evidencias": 0.9,
+    "atualidade": 1.0,
+    "confianca_extracao": 1.0
+   }
+  },
+  "edital_fixture": null
+ },
+ {
+  "id": "C7_person_type_fail_bloqueia",
+  "edital": "sic2024_fic_musica",
+  "tipo": "FAIL_bloqueia_regra_teste",
+  "nota": "Regra de teste (não publicada no edital capturado): prova que FAIL em eliminatório bloqueia mesmo com score alto.",
+  "esperado": {
+   "eligibility": "INELIGIBLE",
+   "fails": [
+    "person_type"
+   ],
+   "final": null
+  },
+  "artista": {
+   "id": "case_cnpj",
+   "nome": "Fixtures de teste",
+   "languages_main": [
+    "musica"
+   ],
+   "languages_secondary": [],
+   "positioning": [],
+   "niches": [],
+   "concepts": {
+    "central": [],
+    "secondary": []
+   },
+   "territory": "city_recife",
+   "years_active": 5,
+   "trajectory": [],
+   "artworks": [
+    {
+     "title": "obra teste",
+     "language": "danca",
+     "techniques": [],
+     "supports": [],
+     "concepts": [],
+     "scale": "medio",
+     "availability": "obras_prontas",
+     "descricao": "obra de fixture",
+     "fonte": "fixture"
+    }
+   ],
+   "availability": {
+    "equipe": false,
+    "documentacao_completa": true
+   },
+   "coverage": {
+    "campos_preenchidos": 0.5,
+    "qualidade_evidencias": 0.9,
+    "atualidade": 1.0,
+    "confianca_extracao": 1.0
+   },
+   "person_type": "cnpj"
+  },
+  "edital_fixture": {
+   "id": "sic2024_fic_musica",
+   "title": "FIC/SIC 2024 — Música",
+   "municipio": "Recife",
+   "ano": 2024,
+   "description_text": "Seleção de projetos culturais de produção independente na linguagem música (FIC).",
+   "opportunity_type": "financiamento_projetos",
+   "eligibility": [
+    {
+     "type": "territory",
+     "value": "city_recife",
+     "strength": "explicit_mandatory"
+    },
+    {
+     "type": "person_type",
+     "value": [
+      "pf",
+      "mei"
+     ],
+     "strength": "explicit_mandatory",
+     "regra_teste": true
+    }
+   ],
+   "artistic_requirements": {
+    "languages": [
+     {
+      "value": [
+       "musica"
+      ],
+      "role": "core",
+      "strength": "explicit_mandatory"
+     }
+    ],
+    "concepts": [],
+    "positioning": [],
+    "niches": [],
+    "techniques": [],
+    "supports": []
+   },
+   "proposal_requirements": {
+    "exhibition_formats": [],
+    "unpublished_preferred": false
+   },
+   "requisitos_explicitos": [
+    {
+     "fator": "territorio",
+     "valor": "residencia_municipio",
+     "strength": "explicit_mandatory",
+     "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+     "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+     "status": "derivado"
+    }
+   ],
+   "resultado_status": "verificado",
+   "fontes": [
+    "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   ]
+  }
+ },
+ {
+  "id": "C8_formacao_unknown",
+  "edital": "bolsa_escola_frevo_2026",
+  "tipo": "UNKNOWN_pendente_regra_teste",
+  "nota": "Regra de teste: formação ausente = UNKNOWN pendente, não bloqueia.",
+  "esperado": {
+   "eligibility": "PENDING",
+   "unknowns": [
+    "formacao"
+   ],
+   "final": ">=0"
+  },
+  "artista": {
+   "id": "case_sem_formacao",
+   "nome": "Fixtures de teste",
+   "languages_main": [
+    "danca"
+   ],
+   "languages_secondary": [],
+   "positioning": [],
+   "niches": [],
+   "concepts": {
+    "central": [],
+    "secondary": []
+   },
+   "territory": "city_recife",
+   "years_active": 5,
+   "trajectory": [],
+   "artworks": [
+    {
+     "title": "obra teste",
+     "language": "danca",
+     "techniques": [],
+     "supports": [],
+     "concepts": [],
+     "scale": "medio",
+     "availability": "obras_prontas",
+     "descricao": "obra de fixture",
+     "fonte": "fixture"
+    }
+   ],
+   "availability": {
+    "equipe": false,
+    "documentacao_completa": true
+   },
+   "coverage": {
+    "campos_preenchidos": 0.5,
+    "qualidade_evidencias": 0.9,
+    "atualidade": 1.0,
+    "confianca_extracao": 1.0
+   },
+   "formacao": null
+  },
+  "edital_fixture": {
+   "id": "bolsa_escola_frevo_2026",
+   "title": "Bolsa de Formação — Escola de Frevo 2026 (30 anos)",
+   "municipio": "Recife",
+   "ano": 2026,
+   "description_text": "Bolsa de formação ligada ao projeto de pesquisa-criação em dança 'Frevo como Metodologia Contemporânea'.",
+   "opportunity_type": "formacao",
+   "eligibility": [
+    {
+     "type": "territory",
+     "value": "city_recife",
+     "strength": "explicit_mandatory"
+    },
+    {
+     "type": "formacao",
+     "value": [
+      "ensino_medio_completo",
+      "fundamental_completo"
+     ],
+     "strength": "explicit_mandatory",
+     "regra_teste": true
+    }
+   ],
+   "artistic_requirements": {
+    "languages": [
+     {
+      "value": [
+       "danca"
+      ],
+      "role": "core",
+      "strength": "explicit_mandatory"
+     }
+    ],
+    "concepts": [],
+    "positioning": [],
+    "niches": [],
+    "techniques": [],
+    "supports": []
+   },
+   "proposal_requirements": {
+    "exhibition_formats": [],
+    "unpublished_preferred": false
+   },
+   "requisitos_explicitos": [
+    {
+     "fator": "tecnica",
+     "valor": "frevo_passo",
+     "strength": "explicit_mandatory",
+     "trecho": "\"integrar o projeto de pesquisa-criação em dança 'Frevo como Metodologia Contemporânea', que deverá compor a programação do 29º Festival Internacional\"",
+     "fonte": "https://www.culturarecife.com.br/public/documentos/edital_home_5_edital_interno_de_bolsas_escola_de_frevo/EDITAL%20INTERNO%20DE%20BOLSAS%20%E2%80%93%20ESCOLA%20DE%20FREVO.pdf",
+     "status": "verificado"
+    },
+    {
+     "fator": "conceito",
+     "valor": [
+      "tradio_contemporaneidade"
+     ],
+     "strength": "preference",
+     "trecho": "\"articulando tradição e contemporaneidade, e promovendo o frevo como linguagem\"",
+     "fonte": "https://www.culturarecife.com.br/public/documentos/edital_home_5_edital_interno_de_bolsas_escola_de_frevo/EDITAL%20INTERNO%20DE%20BOLSAS%20%E2%80%93%20ESCOLA%20DE%20FREVO.pdf",
+     "status": "verificado"
+    },
+    {
+     "fator": "territorio",
+     "valor": "residencia_municipio",
+     "strength": "explicit_mandatory",
+     "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+     "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+     "status": "derivado"
+    }
+   ],
+   "resultado_status": "verificado",
+   "fontes": [
+    "https://www.culturarecife.com.br/public/documentos/resultado_home_8_resultados_edital_interno_bolsas_escola_de_frevo/Resultado%20Final%20dos%20Habilitados%20e%20Selecionados%20do%20Edital%20Interno%20de%20Bolsas%20-%20Escola%20de%20Frevo.pdf",
+    "https://www.culturarecife.com.br/public/documentos/edital_home_5_edital_interno_de_bolsas_escola_de_frevo/EDITAL%20INTERNO%20DE%20BOLSAS%20%E2%80%93%20ESCOLA%20DE%20FREVO.pdf"
+   ]
+  }
+ },
+ {
+  "id": "C9_min_years_fail",
+  "edital": "fidr_2026",
+  "tipo": "FAIL_bloqueia_regra_teste",
+  "nota": "Regra de teste: tempo mínimo de atuação; FAIL bloqueia antes da nota.",
+  "esperado": {
+   "eligibility": "INELIGIBLE",
+   "fails": [
+    "min_activity_years"
+   ],
+   "final": null
+  },
+  "artista": {
+   "id": "case_iniciante",
+   "nome": "Fixtures de teste",
+   "languages_main": [
+    "danca"
+   ],
+   "languages_secondary": [],
+   "positioning": [],
+   "niches": [],
+   "concepts": {
+    "central": [],
+    "secondary": []
+   },
+   "territory": "city_recife",
+   "years_active": 2,
+   "trajectory": [],
+   "artworks": [
+    {
+     "title": "obra teste",
+     "language": "danca",
+     "techniques": [],
+     "supports": [],
+     "concepts": [],
+     "scale": "medio",
+     "availability": "obras_prontas",
+     "descricao": "obra de fixture",
+     "fonte": "fixture"
+    }
+   ],
+   "availability": {
+    "equipe": false,
+    "documentacao_completa": true
+   },
+   "coverage": {
+    "campos_preenchidos": 0.5,
+    "qualidade_evidencias": 0.9,
+    "atualidade": 1.0,
+    "confianca_extracao": 1.0
+   }
+  },
+  "edital_fixture": {
+   "id": "fidr_2026",
+   "title": "29º Festival Internacional de Dança do Recife — Convocatória 2026",
+   "municipio": "Recife",
+   "ano": 2026,
+   "description_text": "Convocatória do 29º FIDR: espetáculos, mostras e oficinas relacionadas à linguagem da dança.",
+   "opportunity_type": "programacao_festival",
+   "eligibility": [
+    {
+     "type": "territory",
+     "value": "city_recife",
+     "strength": "explicit_mandatory"
+    },
+    {
+     "type": "min_activity_years",
+     "value": 10,
+     "strength": "explicit_mandatory",
+     "regra_teste": true
+    }
+   ],
+   "artistic_requirements": {
+    "languages": [
+     {
+      "value": [
+       "danca"
+      ],
+      "role": "core",
+      "strength": "explicit_mandatory"
+     }
+    ],
+    "concepts": [],
+    "positioning": [],
+    "niches": [],
+    "techniques": [],
+    "supports": []
+   },
+   "proposal_requirements": {
+    "exhibition_formats": [],
+    "unpublished_preferred": false
+   },
+   "requisitos_explicitos": [
+    {
+     "fator": "formato",
+     "valor": "palco_e_exposicao_danca",
+     "strength": "explicit_mandatory",
+     "trecho": "\"inéditos e não inéditos, exposições relacionadas com a linguagem da dança (fotografia...\"; \"formato tradicional de palco\"",
+     "fonte": "https://www.culturarecife.com.br/public/documentos/edital_home_12_edital_festival_internacional_de_danca_do_recife_2026/Convocatoria%2029%20Festival%20Internacional%20de%20Danca%20do%20Recife-2026.pdf",
+     "status": "verificado"
+    },
+    {
+     "fator": "conceito",
+     "valor": [
+      "conceito_artistico_obra"
+     ],
+     "strength": "preference",
+     "trecho": "\"a) Conceito artístico: será avaliado o conceito artístico da obra inscrita, no que se propõe dentro do seu gênero, observando as técnicas, dramaturgia e a criatividade\"",
+     "fonte": "https://www.culturarecife.com.br/public/documentos/edital_home_12_edital_festival_internacional_de_danca_do_recife_2026/Convocatoria%2029%20Festival%20Internacional%20de%20Danca%20do%20Recife-2026.pdf",
+     "status": "verificado"
+    },
+    {
+     "fator": "tecnica",
+     "valor": [
+      "consistencia_tecnica_genero"
+     ],
+     "strength": "preference",
+     "trecho": "\"b) Procedimento artístico: será analisada a consistência técnica da obra, considerando o domínio das habilidades específicas relacionadas ao gênero\"",
+     "fonte": "https://www.culturarecife.com.br/public/documentos/edital_home_12_edital_festival_internacional_de_danca_do_recife_2026/Convocatoria%2029%20Festival%20Internacional%20de%20Danca%20do%20Recife-2026.pdf",
+     "status": "verificado"
+    },
+    {
+     "fator": "posicionamento",
+     "valor": [
+      "diversidade_corpos_genero_raca_territorio"
+     ],
+     "strength": "preference",
+     "trecho": "\"c) Aspectos Socioculturais: ... diversidade de corpos, gênero, raça e territorialidade\" (+2 pontos por autodeclaração, item 8.2)",
+     "fonte": "https://www.culturarecife.com.br/public/documentos/edital_home_12_edital_festival_internacional_de_danca_do_recife_2026/Convocatoria%2029%20Festival%20Internacional%20de%20Danca%20do%20Recife-2026.pdf",
+     "status": "verificado"
+    },
+    {
+     "fator": "trajetoria",
+     "valor": [
+      "historico_profissional"
+     ],
+     "strength": "preference",
+     "trecho": "\"d) Histórico profissional do Grupo ou Coletivo ou Artista: ... histórico e biografia, materiais publicados em mídias digitais\"",
+     "fonte": "https://www.culturarecife.com.br/public/documentos/edital_home_12_edital_festival_internacional_de_danca_do_recife_2026/Convocatoria%2029%20Festival%20Internacional%20de%20Danca%20do%20Recife-2026.pdf",
+     "status": "verificado"
+    },
+    {
+     "fator": "territorio",
+     "valor": "residencia_municipio",
+     "strength": "explicit_mandatory",
+     "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+     "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+     "status": "derivado"
+    }
+   ],
+   "resultado_status": "verificado",
+   "fontes": [
+    "https://www.culturarecife.com.br/public/documentos/resultado_home_7_resultados_da_29a_festival_internacional_de_danca_do_recife_2026/Resultado%20Final%20da%20Convocat%C3%B3ria%20do%2029o%20Festival%20Internacional%20de%20Dan%C3%A7a%20do%20Recife%20-2026.pdf",
+    "https://www.culturarecife.com.br/public/documentos/edital_home_12_edital_festival_internacional_de_danca_do_recife_2026/Convocatoria%2029%20Festival%20Internacional%20de%20Danca%20do%20Recife-2026.pdf"
+   ]
+  }
+ }
+]
