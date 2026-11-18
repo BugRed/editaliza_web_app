@@ -13,17 +13,16 @@
 
 <!-- kit:camadas -->
 - [x] prisma — não se aplica, motor sem banco (persistência é T5.5, depois da O3)
-- [ ] service — `src/server/ranking/`: elegibilidade, oito fatores, teto, confiança (funções puras). **Não começou:** espera a entrevista (rodada 1 abaixo)
+- [ ] service — `src/server/ranking/`: elegibilidade, oito fatores, teto, confiança (funções puras)
 - [x] controller — não se aplica, nada o chama ainda
 - [x] route — não se aplica
 - [x] ui — não se aplica; o ADR 0019 já consome `fatores[]` e a troca do motor do protótipo é outra feature
-- [x] teste — nesta etapa só os scripts Python de verificação do benchmark (`docs/search/v3/verify.py` e `experiments_v3.py`, reproduzidos); os testes do motor em TypeScript vêm depois da entrevista, com os 9 casos de teto e o corpus v3 como fixtures
-- [x] doc — spec do ArtistRank §29 e §30, `plano.md`, dívida, `PROGRESS.md` e a rodada 1 da entrevista (P6 a P13) escritas; regra em `docs/negocio/` só depois das respostas
+- [ ] teste — casos da spec §27.5 e os 14 editais de `docs/search/` como fixtures
+- [ ] doc — spec §28/§29 só se o código divergir; ADR se surgir decisão de arquitetura
 <!-- /kit:camadas -->
 
-**Próximo passo:** **começar pela entrevista** (skill `grill-regra-negocio`): a rodada 1, abaixo, já está escrita. Nenhuma
-linha de `*.service.ts` antes de o usuário responder e de a regra ser registrada em `docs/negocio/`. Depois, T5.1
-(elegibilidade) com teste primeiro. Antes de abrir a sessão, ler a spec do ArtistRank §28, §29 e §30.
+**Próximo passo:** rodar a skill `grill-regra-negocio` sobre os pontos abertos abaixo, antes de escrever qualquer
+`*.service.ts`; depois T5.1 (elegibilidade), com teste primeiro.
 
 ## Problema / motivação
 O motor do protótipo (`src/shared/lib/artistrank.ts`) tem sete fatores, renormaliza fator ausente e descarta as notas
@@ -65,21 +64,16 @@ precedência), §9.3.1, §9.3.2, §27.5 e §29.5. Não reescrevo a regra aqui.
 - [ ] `FAIL` em eliminatório bloqueia, e nota artística alta não compensa
 - [ ] Fator sem dado vale 0,5, sem renormalizar, e a cobertura sai à parte
 - [ ] Teto de 45 incide no score combinado; `UNKNOWN` não o ativa; o motivo sai no resultado
-- [ ] Os 9 casos de `docs/search/v3/data_v3/casos_elegibilidade_teto.json` passam (território FAIL e UNKNOWN, linguagem UNKNOWN sem teto, core FAIL e suporte que não casa core com teto 45, preferência sem teto)
-- [ ] Fotografia × Festival de Dança dá 45,0; o caso v0 = 67,0 reprova
-- [ ] Lista de linguagens é "qualquer uma": o ganhador do Multilinguagens PNAB 2026 não cai (na v2 ficava em 92º de 623), e a média das alternativas reprova
-- [ ] Rank 1 por empate é lido como empate: o teste afirma que a âncora **não fica abaixo de ninguém** e não promete destaque (AUC da v3 é 0,52)
+- [ ] Fotografia × Festival de Dança dá 45,0 (CORE/SUPPORT + teto); o caso v0 = 67,0 reprova
+- [ ] Renormalizar nulos (v0) reprova no Multilinguagens PNAB 2026 (ganhador 4º na v0, 1º na v4)
+- [ ] Nos 14 editais de `docs/search/`: ganhador no top 3 em 14/14 e no topo em 13/14; o Virado em 2º é o esperado
 - [ ] Alterar a confiança C não altera a ordem do ranking
-- [ ] Pesos, alpha e versão do algoritmo vêm de configuração versionada, não de literais no cálculo
-- [ ] Portfólio e artista são calculados separados, sem contar o mesmo fator duas vezes (ver P7)
+- [ ] Pesos e versão do algoritmo vêm de configuração versionada, não de literais no cálculo
 <!-- /kit:criterios -->
 
 ## Dívida / não exercitado
-- O motor de referência (`docs/search/v3/engine_v3.py`) é Python; este motor é TypeScript. A equivalência só se prova
-  rodando o mesmo corpus nos dois, e isso ainda não existe.
-- O benchmark não valida trajetória, viabilidade, conceito, técnica nem posicionamento: as notas empatam (AUC 0,52).
-  Os pesos e as heurísticas desses fatores são provisórios (P11).
-- O alpha não foi exercitado (3 de 52 artistas têm 3 ou mais obras).
+- Os números da spec (§27.5, §29) são do relatório; só aqui serão reproduzidos pela primeira vez.
+- Os perfis reais são mínimos e circulares (§29.3): o teste dos 14 editais protege contra regressão, não prova qualidade.
 
 ## Decisões da entrevista (2026-11-17)
 Respondidas pelo usuário na `grill-regra-negocio`. Falta a confirmação final do resumo e o registro em `docs/negocio/`.
@@ -92,114 +86,8 @@ Respondidas pelo usuário na `grill-regra-negocio`. Falta a confirmação final 
 - **Teto de 45:** só com requisito artístico `explicit_mandatory` em `FAIL`; campo vazio é `UNKNOWN` e não ativa;
   linguagem `core` obrigatória só casa com `core`; o resultado diz qual requisito, a evidência e a nota antes do teto.
 - **Fatores textuais:** fração dos itens exigidos que o perfil cobre, por igualdade normalizada, com a similaridade
-  injetada como função. O adaptador do Voyage e o A/B ficam para a feature seguinte. **Reaberto pela v3:** o motor de
-  referência usa correspondência graduada (ver P8).
-- **Benchmark v3:** pronto e reproduzido (`docs/search/v3/`, spec do ArtistRank §30). O resultado forte é de empate (AUC 0,52): serve de proteção contra regressão, não de prova de separação.
-
-## Entrevista de regra de negócio, rodada 1 (a fazer, primeiro)
-
-Contexto: a v3 do benchmark (spec do ArtistRank §30) trouxe um motor de referência em Python
-(`docs/search/v3/engine_v3.py`) e três achados que mudam o que já estava decidido. As perguntas abaixo são a **fronteira**:
-não dependem umas das outras. As que dependem de respostas daqui ficam na rodada 2 (no fim). Cada uma traz a minha
-recomendação; as decisões são do usuário.
-
-❓ **P6** — **Lista de linguagens do edital é "qualquer uma"**: um edital que aceita várias linguagens na mesma exigência
-(ex.: o Multilinguagens, com 14) deve pontuar pela **melhor** correspondência, não pela média. Com a média, um artista
-de circo caía para o 92º de 623 numa lista de 14 linguagens. O teto de 45 só dispara se **nenhuma** das alternativas
-casa. E se o edital exige linguagens diferentes em **exigências separadas** (uma de dança e outra de música)? Aí cada
-exigência conta como obrigatória por si.
-
-➡️ Sim: dentro de uma mesma exigência vale o máximo; exigências distintas valem todas. Sai da referência da v3 e da
-correção que ela fez no Multilinguagens.
-
----
-
-❓ **P7** — **Como separar artista e portfólio sem contar um fator duas vezes**: o motor de referência calcula
-`artist_score` com os **oito** fatores, incluindo o fator de obra (O), e depois soma `0,65·O`. A spec (§9.6) manda calcular
-`R_artista` e `R_obra` separados e combinar 0,35/0,65. Duas leituras:
-- (a) `R_artista` usa os fatores do perfil (L, C, T, P, H, G, V) e `R_portfólio` usa só os fatores da obra (L, C, T e
-  viabilidade, avaliados na **obra**); o fator O deixa de existir como fator à parte.
-- (b) Os dois usam os oito pesos 15/20/10/15/10/15/5/10, cada lado avaliando o que tem dado e deixando o resto nulo (0,5).
-
-Em (b) os fatores sem dado de cada lado empurram os dois para o meio e achatam o score; em (a) os pesos de cada grupo
-precisam ser redefinidos (somam menos de 100 por grupo) e isso é uma decisão nova.
-
-➡️ (a), com os pesos de cada grupo **escalados para somar 100 dentro do grupo sem renormalizar por dado ausente**
-(a escala é fixa, vem da configuração; dado ausente continua valendo 0,5). Mantém o 0,35/0,65 e o ADR 0019 (barras por
-grupo).
-
----
-
-❓ **P8** — **Correspondência graduada ou igualdade**: a referência dá nota 1,0 à linguagem igual, 0,6 a pai/filho
-(fotografia × artes visuais) e 0,3 a irmãs; para conceito dá 1,0 ao central, 0,6 ao secundário e 0,4 a um sinônimo
-parcial. Essas tabelas são da referência, **não** da taxonomia da O3. Na entrevista anterior (P5) decidimos igualdade
-normalizada. Mantém igualdade ou adota a graduada como configuração provisória, versionada, que a taxonomia da O3
-substitui?
-
-➡️ Graduada **só para linguagem** (pai/filho 0,6, irmãs 0,3), em tabela versionada e trocável, porque sem ela uma
-fotografia contra "artes visuais" daria zero e o teto de 45 dispararia por engano. Conceito, técnica e posicionamento
-ficam por igualdade normalizada até a O3 (sem tabela de sinônimos inventada).
-
----
-
-❓ **P9** — **O que pode ativar o teto de 45**: a spec (§9.3.1) cita linguagem núcleo, posicionamento e nicho
-obrigatórios. A referência também aplica o teto a **conceito** obrigatório. Quais tipos de requisito artístico
-obrigatório (`explicit_mandatory`) valem? Lembrando: campo vazio do artista é `UNKNOWN` e nunca ativa.
-
-➡️ Linguagem núcleo, posicionamento e nicho (como a spec). Conceito obrigatório **não** ativa o teto enquanto não houver
-taxonomia: igualdade de texto livre erraria demais e daria teto injusto. Entra na rodada da O3.
-
----
-
-❓ **P10** — **Território além do Recife**: a referência só conhece `city_recife`, `metro_recife` e `state_pe`. O produto
-tem `MUNICIPAL`, `METROPOLITANO`, `ESTADUAL` e `NACIONAL`. Território exigido pelo edital é **eliminatório** (FAIL) quando o
-artista está num nível menor que o exigido, e vazio é `UNKNOWN`. O nível `NACIONAL` do edital aceita qualquer artista?
-E "metropolitano" precisa saber a cidade (Olinda está na região metropolitana do Recife) ou basta o nível declarado?
-
-➡️ Hierarquia `MUNICIPAL < METROPOLITANO < ESTADUAL < NACIONAL` comparando o **nível declarado** com o exigido; `NACIONAL`
-no edital aceita todos. Cidade e UF só entram no motivo mostrado ao usuário, não na decisão. A decisão fina por cidade
-fica para a taxonomia geográfica da O3.
-
----
-
-❓ **P11** — **Trajetória e viabilidade: heurísticas da referência**: trajetória = `0,5·relevância + 0,3·fração
-verificada + 0,2·tempo (teto de 15 anos)`; viabilidade perde `0,25` por violação (sem equipe, documentação incompleta,
-sem obra pronta). São números **sem validação** (o benchmark empata nesses fatores). Entram como padrão provisório?
-
-➡️ Sim, como configuração versionada **marcada "provisória, sem validação"** no código e na doc, com teste só de
-comportamento (mais trajetória verificada não pode diminuir a nota; violação nunca aumenta). Não calibrar antes de haver
-variância nos dados (spec §30.4).
-
----
-
-❓ **P12** — **Como testar sem ter AUC**: a v3 prova que o ganhador **nunca fica abaixo de ninguém**, mas por empate. Os
-10 editais com não-ganhadores empatam as notas. Que testes valem como regressão?
-- (i) os 9 casos de teto/elegibilidade (valores exatos);
-- (ii) o caso Multilinguagens (qualquer uma);
-- (iii) "âncora não fica abaixo de nenhum concorrente" nos 10 editais, lido como **empate permitido**;
-- (iv) nenhuma meta de MRR, AUC ou Hit@1.
-
-➡️ (i), (ii) e (iii), sem (iv). O teste (iii) escreve no nome que rank 1 por empate **não** é prova de separação.
-
----
-
-❓ **P13** — **Quanto do corpus vira fixture**: o dataset completo (`dataset_v3_full.json`) tem cerca de 1,8 MB e 1.038
-candidatos. Rodar tudo em todo `yarn test` pesa. Opções: (a) fixtures pequenas versionadas (casos de teto, o
-Multilinguagens e dois editais pequenos); (b) o corpus inteiro em um script opcional fora do CI; (c) as duas.
-
-➡️ (c): fixtures pequenas no CI e o corpus inteiro por `yarn rank:corpus`, rodado antes de mexer em pesos ou regras.
-
----
-
-### Rodada 2 (depende das respostas acima; não perguntar antes)
-
-- **P14** (depende de P7): pesos de cada grupo (artista e portfólio) e como o ADR 0019 mostra os fatores quando o fator O
-  deixa de existir (as barras dependem de `fatores[]`).
-- **P15** (depende de P7 e P8): nota da obra: a referência usa `0,35·linguagem + 0,35·conceito + 0,20·viabilidade + 0,10·0,8`
-  (a constante 0,8 não tem origem). Adotar, trocar ou remover a constante?
-- **P16** (depende de P12 e P13): formato de saída do motor para o teste do corpus (entrada e resultado como JSON versionado).
-- **P17**: confirmar o resumo final da entrevista e registrar a regra em `docs/negocio/` com a skill
-  `documentar-regra-negocio`.
+  injetada como função. O adaptador do Voyage e o A/B ficam para a feature seguinte.
+- **Benchmark v3:** em andamento em outra sessão, a partir do prompt acima; as fixtures reais passam a ser as dele.
 
 ## Decisões em aberto
-- As perguntas P6 a P17 acima. As decisões da primeira entrevista (P1 a P5) seguem valendo, exceto onde a P8 reabre a P5.
+- Nenhuma de regra, além da confirmação final do resumo.
