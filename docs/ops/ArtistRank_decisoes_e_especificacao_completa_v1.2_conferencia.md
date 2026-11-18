@@ -2353,11 +2353,16 @@ resultados reais, mas só nos limites de §29.3. Ela não altera nenhuma regra d
 
 ## 30. Benchmark v3 — concorrentes reais que não ganharam (2026-11-16)
 
-**Fonte:** `docs/search/` — `relatorio_benchmark_v3.pdf`, `engine_v3.py` (motor de referência em Python),
-`dataset_v3.py`, `calibrate_v3.py`, `experiments_v3.py`, `verify.py`, `casos_elegibilidade_teto.json` e a planilha
-`registro_editais_ganhadores_reais_v3.xlsx`. Substitui a §29 como referência. **Nada foi reproduzido aqui:** faltam no
-repositório os JSON de artistas, candidatos, editais e rótulos da v3 que o `verify.py` lê, então os números abaixo são
-os do relatório.
+**Fonte:** `docs/search/v3/` — `relatorio_benchmark_v3.pdf`, `engine_v3.py` (motor de referência em Python),
+`dataset_v3.py`, `experiments_v3.py`, `calibrate_v3.py`, `verify.py`, `data_v3/` (artistas, candidatos, editais, rótulos,
+casos de elegibilidade e teto) e `results/`. Substitui a §29 como referência.
+
+**Reproduzido em 2026-11-17** com `cd docs/search/v3 && python3 -I verify.py` e `python3 -I experiments_v3.py`:
+`verify.py` passa (44 pares, 23 editais verificados e 6 pendentes, 1.038 candidatos, MRR 1,0 e Hit@1 1,0 em 10 editais) e
+`experiments_v3.py` regrava `results/benchmark_v3.json` **idêntico** ao entregue (AUC 0,510 em v0 e v2, 0,520 em v4).
+**Divergência:** o relatório diz que a discordância "melhor obra × média das 3 melhores" apareceu em 1 edital
+(Multilinguagens); o `benchmark_v3.json` traz `discordancia_melhor_media: []`, ou seja, **0**. Vale o dado, e o relatório
+está errado nesse ponto. A varredura do alpha cobre 3 editais (`alpha_editais`), mas as métricas reportam n = 2.
 
 ### 30.1 O que mudou da v2
 
@@ -2400,7 +2405,7 @@ para a posição 92 de 623. A mesma lógica vale para o teto: só dispara se **n
   fator neutro. Vale a §27.4: **não calibrar pesos** até haver variância nos dados.
 - **O alpha não foi exercitado de verdade:** a varredura em {0,0 · 0,4 · 0,6 · 0,8 · 1,0} saiu plana (MRR 1,0 nos cinco),
   porque só 3 artistas têm 3 a 6 obras (o mínimo pedido era 12) e a discordância "melhor obra × média das 3 melhores"
-  apareceu em 1 edital (o mínimo era 8). **Continua pendente.**
+  apareceu em **0** editais pelo próprio `benchmark_v3.json` (o relatório diz 1; o mínimo era 8). **Continua pendente.**
 - **Rubrica com pouca concordância:** o kappa ponderado entre os dois avaliadores é **0,20**. Os rótulos 0 a 3 ainda não
   servem de verdade de campo (§27.9: avaliadores independentes de verdade, não dois passes do mesmo modelo).
 - **Camada semântica:** TF-IDF sobre títulos separa em pools pequenos (AUC 1,0 no Solo do Outro e no Aprendiz em Cena) e

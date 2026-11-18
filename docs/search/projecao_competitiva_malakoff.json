@@ -1,0 +1,46 @@
+{
+ "ana_foto_memoria": {
+  "trajetoria": 3.2,
+  "qualidade_conceitual": 3.0,
+  "viabilidade": 4.0,
+  "originalidade_ineditismo": 2.8,
+  "clareza_apresentacao": 3.0,
+  "diversidade_acesso": 3.0,
+  "acessibilidade": 2.0,
+  "total": 21.0,
+  "compatibilidade_v4": 70.5
+ },
+ "marina_multimidia": {
+  "trajetoria": 3.8,
+  "qualidade_conceitual": 3.0,
+  "viabilidade": 4.0,
+  "originalidade_ineditismo": 2.8,
+  "clareza_apresentacao": 3.0,
+  "diversidade_acesso": 3.0,
+  "acessibilidade": 2.0,
+  "total": 21.6,
+  "compatibilidade_v4": 69.9
+ },
+ "beto_iniciante": {
+  "trajetoria": 0.5,
+  "qualidade_conceitual": 3.0,
+  "viabilidade": 3.0,
+  "originalidade_ineditismo": 2.4,
+  "clareza_apresentacao": 3.0,
+  "diversidade_acesso": 3.0,
+  "acessibilidade": 1.5,
+  "total": 16.4,
+  "compatibilidade_v4": 77.1
+ },
+ "mestre_bituca": {
+  "trajetoria": 1.6,
+  "qualidade_conceitual": 2.0,
+  "viabilidade": 3.0,
+  "originalidade_ineditismo": 2.4,
+  "clareza_apresentacao": 3.0,
+  "diversidade_acesso": 3.5,
+  "acessibilidade": 1.5,
+  "total": 17.0,
+  "compatibilidade_v4": 42.6
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "artist": "ana_foto_memoria",
+ "edital": "malakoff_observa4",
+ "eligibility": "ELIGIBLE",
+ "elig_fails": [],
+ "elig_unknowns": [],
+ "artist_score": 0.7787499999999999,
+ "portfolio_score": 0.665,
+ "final": 70.48125,
+ "final_raw": 70.48125,
+ "cap": null,
+ "coverage": 0.75,
+ "confidence": 91.19999999999999,
+ "factors": {
+  "L": 1.0,
+  "C": null,
+  "T": null,
+  "P": 1.0,
+  "H": 0.79,
+  "G": 1.0,
+  "V": 1.0,
+  "O": 0.665
+ }
+}
