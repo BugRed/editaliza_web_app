@@ -1,4 +1,4 @@
-import ThemeToggle from "@/app/components/shell/ThemeToggle";
+import ThemeToggle from "@/shared/components/molecules/ThemeToggle";
 
 // Login e cadastro não usam o AppShell, então o botão de tema mora aqui.
 export default function AuthLayout({ children }: Readonly<{ children: React.ReactNode }>) {

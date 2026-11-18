@@ -2,8 +2,8 @@
 
 import { use } from "react";
 import Link from "next/link";
-import AppShell from "@/app/components/shell/AppShell";
-import ProposerProfileView from "@/app/components/profile/ProposerProfileView";
+import AppShell from "@/shared/components/organisms/AppShell";
+import ProposerProfileView from "@/shared/components/organisms/ProposerProfileView";
 import { useEditals } from "@/app/hooks/useEditals";
 import { useSocialStore } from "@/app/hooks/useSocialStore";
 

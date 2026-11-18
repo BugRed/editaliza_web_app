@@ -1,6 +1,6 @@
 # ArtistRank --- Registro mestre de decisões e especificação do projeto
 
-> **Versão 1.2 — revisão empírica conferida (16/11/2026).** Esta edição incorpora o relatório *ArtistRank: Avaliação Empírica das Decisões*, baseado em 12 editais estruturados, 12 perfis hipotéticos e 144 pares artista–edital. As decisões originais continuam registradas, mas regras corrigidas por experimento passam a prevalecer. Hipóteses ainda não testadas estão identificadas como pendências. O benchmark não representa resultados de editais reais nem probabilidade de aprovação.
+> **Versão 1.2 — revisão empírica conferida (16/11/2026).** Esta edição incorpora o relatório *ArtistRank: Avaliação Empírica das Decisões*, baseado em 12 editais estruturados, 12 perfis hipotéticos e 144 pares artista–edital. As decisões originais continuam registradas, mas regras corrigidas por experimento passam a prevalecer. Hipóteses ainda não testadas estão identificadas como pendências. O benchmark não representa resultados de editais reais nem probabilidade de aprovação. **Atualização de 17/11/2026:** a §29 registra um segundo benchmark, com ganhadores reais de 14 editais de Recife, e os limites do que ele prova.
 
 > **Documento de consolidação:** reúne as decisões tomadas, propostas
 > técnicas discutidas, parâmetros iniciais, alternativas consideradas,
@@ -2154,7 +2154,7 @@ O benchmark é uma primeira referência de regressão, não prova de desempenho 
 | ID | Decisão avaliada | Veredito empírico | Regra para a especificação |
 |---|---|---|---|
 | D1 | Fórmula C como núcleo da pontuação | Refutada como compatibilidade; válida como confiança separada | Manter C apenas como qualidade dos dados. |
-| D2 | Pesos 15/20/10/15/10/15/5/10 | Válidos, mas ajuste fino tem efeito pequeno | Manter como padrão configurável; congelar calibração fina até haver dados reais. |
+| D2 | Pesos 15/20/10/15/10/15/5/10 | Válidos, mas ajuste fino tem efeito pequeno | Manter como padrão configurável; congelar calibração fina até haver dados reais. Reforçado pela §29.2: com ganhadores reais, nenhuma variação melhora. |
 | D3 | Elegibilidade antes do ranking | Confirmada e essencial | Preservar filtro eliminatório. |
 | D4 | Compatibilidade não é probabilidade de vitória | Confirmada | Separar score de compatibilidade e projeção nos critérios oficiais. |
 | D5 | Campo vazio não é proibição | Confirmada; renormalização inflaciona score | Dados desconhecidos recebem 0,5 neutro na v4; exibir cobertura. |
@@ -2262,3 +2262,83 @@ Para implementação, adotar esta ordem de precedência:
 10. Explicações, evidências, cobertura, proveniência e versão do algoritmo persistidas para auditoria.
 
 **Baseline recomendado:** motor v4 para regras de ausência de dados, com correção de linguagem e teto já introduzidas em v2/v3. A AUC da v4 (0,947) fica 0,002 abaixo da v3 (0,949), diferença pequena neste benchmark e sem evidência de regressão relevante. A v4 não melhora as métricas agregadas sobre v3, mas elimina a inflação por dados ausentes e mantém as demais métricas de ranking; por isso é a versão de referência mais completa para implementação. O teto de 45 deve ser aplicado ao score combinado artista/portfólio, conforme §9.3.1 e §15.
+
+------------------------------------------------------------------------
+
+## 29. Benchmark com ganhadores reais — v2.0 do relatório (2026-11-16)
+
+**Fonte:** `docs/search/` — `relatorio_benchmark_real_v2.pdf`, `benchmark_real.json`, `calibracao_real.json`,
+`ground_truth.json`, `editais_reais.json`, `artistas_reais.json`, `dataset_real.py` e a planilha
+`registro_editais_ganhadores_reais.xlsx`. Esta seção **substitui o aviso da v1.2** de que o benchmark não tinha
+resultados reais, mas só nos limites de §29.3. Ela não altera nenhuma regra da §28.
+
+### 29.1 O que foi medido
+
+- 20 editais catalogados (Recife, Olinda, Caruaru). **14 de Recife** têm ganhadores verificados em PDF oficial ou
+  imprensa e ancoram **26 pares** vencedor–edital (no máximo dois por edital; no fomento, os dois de maior valor).
+  Os 6 de Olinda e Caruaru têm só a URL do resultado: **pendentes**, nenhum nome inventado.
+- Aprovados além das âncoras ficam fora da disputa do próprio edital (4 casos em `ground_truth.json`), para não
+  gerar falso negativo.
+- Métrica: posição do melhor ganhador âncora entre 27 e 30 candidatos elegíveis, para cada um dos 14 editais.
+
+| Configuração | MRR | Hit@1 | Hit@3 | Rank médio |
+|---|---:|---:|---:|---:|
+| v0 — especificação literal (nulo = 0, renormalizando) | 0,911 | 85,7% (12/14) | 92,9% (13/14) | 1,29 |
+| v2 — teto por requisito explícito | 0,964 | 92,9% (13/14) | 100% | 1,07 |
+| v4 — nulos 0,5 + teto + papéis | 0,964 | 92,9% (13/14) | 100% | 1,07 |
+| v4 com pesos iguais | 0,964 | 92,9% (13/14) | 100% | 1,07 |
+
+### 29.2 O que isso confirma
+
+- **v4 (ou v2) acima de v0**, de novo com dados reais. A diferença vem de **um** edital: no Multilinguagens
+  (PNAB 2026) o ganhador cai para a 4ª posição na v0, por causa da renormalização, e volta à 1ª com o teto. Confirma
+  D5 e D6 (§27.3).
+- **Pesos 15/20/10/15/10/15/5/10 mantidos** (D2). A busca por coordenadas (multiplicadores 0,4 a 2,0, três
+  varreduras) não achou combinação melhor; o leave-one-out devolve os mesmos pesos em todas as 14 dobras, com MRR 1,0
+  em 13 delas. Nenhuma ação sobre os pesos.
+- **Único rank 2 residual:** Virado na Periferia (Hip-Hop). Um artista do pool com as duas linguagens do edital
+  (música e artes visuais) supera os ganhadores. É efeito da composição do pool, não dos pesos.
+
+> **Correção ao relatório.** O texto do PDF diz que a v0 "perde dois editais" para a v4. Em `benchmark_real.json`
+> só o Multilinguagens muda de posição (4 → 1); o Virado fica em 2 nas quatro configurações. O que vale é um edital.
+
+### 29.3 O que isso **não** prova
+
+1. **Circularidade da linguagem.** A linguagem de cada ganhador foi herdada do segmento do edital em que ele
+   ganhou, e o pool de concorrentes são os ganhadores dos outros editais. O fator linguagem (15%), a obra e o
+   território quase garantem o topo por construção. O resultado mostra que o motor **não estraga** um casamento
+   que já vem pronto; não mostra que ele separa bons de maus candidatos dentro de uma mesma linguagem.
+2. **Calibração sem informação.** MRR igual em baseline, calibrado e pesos iguais não diz que os pesos estão certos:
+   conceito, técnica, posicionamento, trajetória e viabilidade ficam neutros (0,5) para todos, então seu peso não
+   move a ordem. Vale a §27.4: **congelar o ajuste fino** até haver variância nesses fatores.
+3. **Pool sintético** (só ganhadores). Não há inscritos reprovados, então o benchmark não mede "ganhou" contra
+   "não ganhou". O corpus `multi_result` (834 inscrições rotuladas, `plano.md` §7.9) é o que mede isso.
+4. **Amostra pequena:** 14 editais, MRR com um edital valendo 7 pontos percentuais de Hit@1. Sem intervalo de confiança.
+5. **Resultados não reproduzidos no repo:** o motor e o script de calibração não vieram no pacote (§29.5).
+6. OBSERVA 3 é edital estadual (Fundarpe) sediado no Recife, mantido por ser o caso-documento da §8.
+
+### 29.4 Efeito nas pendências da §27
+
+- **D11** ("não há sinal de resultados"): continua refutada, agora com ganhadores reais, **porém** só para linguagem,
+  obra e território (§29.3).
+- **D12 / §27.9:** a pendência "substituir perfis hipotéticos por reais" avança só em parte: os perfis reais são
+  mínimos (título do projeto) e sem trajetória. Continuam abertas a rubrica com dois avaliadores, o A/B TF-IDF × Voyage
+  e a varredura de `alpha`.
+- **§27.10:** o item 1 (empacotar dados) está **cumprido para os dados** em `docs/search/`, e **aberto para o motor**.
+
+### 29.5 Uso na implementação (O4, motor puro)
+
+- Os 14 editais e 30 artistas de `docs/search/` viram **fixtures de regressão** do motor, ao lado dos casos da §27.5.
+  Critério sugerido: ganhador âncora no top 3 em 14/14 e no topo em 13/14 na v4; **o Virado em 2 é o valor esperado**.
+- Teste de comportamento a incluir: renormalizar nulos (v0) **tem** que reprovar no Multilinguagens.
+- Não codificar o MRR como meta de produto: ele mede a circularidade de §29.3.
+- Prioridade de dado para dar variância aos fatores neutros: **trajetória e posicionamento dos perfis** e
+  **estruturas de requisito dos editais**, antes de qualquer nova calibração.
+
+### 29.6 Próximos passos, em ordem de valor
+
+1. Capturar os 6 resultados de Olinda e Caruaru nas URLs de `ground_truth.json` (`pendentes`).
+2. Capturar as listas de habilitados para trocar o pool sintético pelos concorrentes reais.
+3. Enriquecer os perfis (trajetória, posicionamento) e as exigências estruturadas dos editais.
+4. Só então repetir a calibração, com leave-one-out (já implementado), e rever os pesos.
+5. Congelar a v4 como baseline de regressão, com `registro_editais_ganhadores_reais.xlsx` como fonte dos pares.

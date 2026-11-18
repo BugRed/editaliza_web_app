@@ -7,9 +7,9 @@ import { AlertTriangle, PlusCircle } from "lucide-react";
 import { IEdital } from "@/app/types/Edital";
 import { TagData } from "@/app/types/TagData";
 import { mensagemDeErro } from "@/app/lib/erros";
-import BodyCardFeed from "@/app/components/cardFeed/BodyCardFeed";
-import AppShell from "@/app/components/shell/AppShell";
-import AdSlot from "@/app/components/ads/AdSlot";
+import BodyCardFeed from "@/shared/components/organisms/BodyCardFeed";
+import AppShell from "@/shared/components/organisms/AppShell";
+import AdSlot from "@/shared/components/molecules/AdSlot";
 import { adPositions } from "@/app/lib/ads";
 import { useAuth } from "@/app/hooks/useAuth";
 import { useSocialStore } from "@/app/hooks/useSocialStore";
@@ -136,7 +136,7 @@ export default function FeedPage() {
                 <p>Publique um novo edital para alcançar artistas compatíveis na rede.</p>
               </div>
               <Link
-                href="/publicar-edital"
+                href="/organizacao/editais/novo"
                 className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-(--primary) text-white text-xs sm:text-sm font-bold hover:bg-(--primary-hover) transition-colors shrink-0"
               >
                 <PlusCircle size={16} />

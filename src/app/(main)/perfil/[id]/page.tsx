@@ -2,8 +2,8 @@
 
 import { use } from "react";
 import Link from "next/link";
-import AppShell from "@/app/components/shell/AppShell";
-import ProfileView from "@/app/components/profile/ProfileView";
+import AppShell from "@/shared/components/organisms/AppShell";
+import ProfileView from "@/shared/components/organisms/ProfileView";
 import { useSocialStore } from "@/app/hooks/useSocialStore";
 
 export default function OutroPerfilPage({

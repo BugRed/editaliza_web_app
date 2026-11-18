@@ -1,0 +1,585 @@
+[
+ {
+  "id": "sic2024_fic_audiovisual",
+  "title": "FIC/SIC 2024 — Audiovisual",
+  "municipio": "Recife",
+  "ano": null,
+  "description_text": "FIC/SIC 2024 — Audiovisual. Edital municipal real com resultado publicado.",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "cinema"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    },
+    {
+     "value": [
+      "audiovisual"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "fonte": "culturarecife.com.br resultado_home_28 (Projetos Aprovados 3ª fase)"
+ },
+ {
+  "id": "sic2024_fic_musica",
+  "title": "FIC/SIC 2024 — Música",
+  "municipio": "Recife",
+  "ano": null,
+  "description_text": "FIC/SIC 2024 — Música. Edital municipal real com resultado publicado.",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "musica"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "fonte": "culturarecife.com.br resultado_home_28 (Projetos Aprovados 3ª fase)"
+ },
+ {
+  "id": "sic2024_fic_cultura_popular",
+  "title": "FIC/SIC 2024 — Cultura Popular",
+  "municipio": "Recife",
+  "ano": null,
+  "description_text": "FIC/SIC 2024 — Cultura Popular. Edital municipal real com resultado publicado.",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "cultura_popular"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "fonte": "culturarecife.com.br resultado_home_28 (Projetos Aprovados 3ª fase)"
+ },
+ {
+  "id": "sic2024_fic_teatro",
+  "title": "FIC/SIC 2024 — Teatro",
+  "municipio": "Recife",
+  "ano": null,
+  "description_text": "FIC/SIC 2024 — Teatro. Edital municipal real com resultado publicado.",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "teatro"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "fonte": "culturarecife.com.br resultado_home_28 (Projetos Aprovados 3ª fase)"
+ },
+ {
+  "id": "sic2024_fic_artes_visuais",
+  "title": "FIC/SIC 2024 — Artes Visuais",
+  "municipio": "Recife",
+  "ano": null,
+  "description_text": "FIC/SIC 2024 — Artes Visuais. Edital municipal real com resultado publicado.",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "artes_visuais"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "fonte": "culturarecife.com.br resultado_home_28 (Projetos Aprovados 3ª fase)"
+ },
+ {
+  "id": "sic2024_fic_circo",
+  "title": "FIC/SIC 2024 — Circo",
+  "municipio": "Recife",
+  "ano": null,
+  "description_text": "FIC/SIC 2024 — Circo. Edital municipal real com resultado publicado.",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "circo"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "fonte": "culturarecife.com.br resultado_home_28 (Projetos Aprovados 3ª fase)"
+ },
+ {
+  "id": "sic2023_fic_integradas",
+  "title": "FIC/SIC 2023 — Artes Integradas e Arte e Tecnologia",
+  "municipio": "Recife",
+  "ano": null,
+  "description_text": "FIC/SIC 2023 — Artes Integradas e Arte e Tecnologia. Edital municipal real com resultado publicado.",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "multilinguagens"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    },
+    {
+     "value": [
+      "arte_digital"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "fonte": "culturarecife.com.br resultado_home_44 (Projetos Aprovados SIC 2023)"
+ },
+ {
+  "id": "multilinguagens_pnab2026",
+  "title": "Multilinguagens Recife Criativo — PNAB 2026",
+  "municipio": "Recife",
+  "ano": null,
+  "description_text": "Multilinguagens Recife Criativo — PNAB 2026. Edital municipal real com resultado publicado.",
+  "opportunity_type": "fomento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "cinema"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    },
+    {
+     "value": [
+      "musica"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    },
+    {
+     "value": [
+      "teatro"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    },
+    {
+     "value": [
+      "danca"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    },
+    {
+     "value": [
+      "circo"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    },
+    {
+     "value": [
+      "cultura_popular"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    },
+    {
+     "value": [
+      "artes_visuais"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    },
+    {
+     "value": [
+      "literatura"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    },
+    {
+     "value": [
+      "multilinguagens"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "fonte": "culturarecife.com.br resultado_home_13 (Resultado FINAL)"
+ },
+ {
+  "id": "virado_pnab2026_hiphop",
+  "title": "Recife Virado na Periferia — PNAB 2026 (Hip-Hop)",
+  "municipio": "Recife",
+  "ano": null,
+  "description_text": "Recife Virado na Periferia — PNAB 2026 (Hip-Hop). Edital municipal real com resultado publicado.",
+  "opportunity_type": "fomento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "musica"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    },
+    {
+     "value": [
+      "artes_visuais"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "fonte": "culturarecife.com.br resultado_home_11 (Resultado Preliminar com nota)"
+ },
+ {
+  "id": "solo_do_outro_2026",
+  "title": "O Solo do Outro 2026 — Fomento de Pesquisa em Dança",
+  "municipio": "Recife",
+  "ano": null,
+  "description_text": "O Solo do Outro 2026 — Fomento de Pesquisa em Dança. Edital municipal real com resultado publicado.",
+  "opportunity_type": "fomento_pesquisa",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "danca"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "fonte": "culturarecife.com.br resultado_home_2 (Resultado Preliminar, 1º selecionado)"
+ },
+ {
+  "id": "aprendiz_em_cena_2026",
+  "title": "O Aprendiz em Cena 2026 — Fomento de Pesquisa em Teatro",
+  "municipio": "Recife",
+  "ano": null,
+  "description_text": "O Aprendiz em Cena 2026 — Fomento de Pesquisa em Teatro. Edital municipal real com resultado publicado.",
+  "opportunity_type": "fomento_pesquisa",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "teatro"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "fonte": "culturarecife.com.br resultado_home_3 (Resultado Preliminar, 1º selecionado)"
+ },
+ {
+  "id": "bolsa_escola_frevo_2026",
+  "title": "Bolsa de Formação — Escola de Frevo 2026",
+  "municipio": "Recife",
+  "ano": null,
+  "description_text": "Bolsa de Formação — Escola de Frevo 2026. Edital municipal real com resultado publicado.",
+  "opportunity_type": "formacao",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "danca"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "fonte": "culturarecife.com.br resultado_home_8 (Resultado Final)"
+ },
+ {
+  "id": "observa3_malakoff_2025",
+  "title": "3º Edital OBSERVA — Torre Malakoff 2025 (ocupação expositiva)",
+  "municipio": "Recife",
+  "ano": null,
+  "description_text": "3º Edital OBSERVA — Torre Malakoff 2025 (ocupação expositiva). Edital municipal real com resultado publicado.",
+  "opportunity_type": "premiacao_ocupacao_expositiva",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "undeclared"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "artes_visuais"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [
+    "exhibition"
+   ],
+   "unpublished_preferred": false
+  },
+  "fonte": "TV Guararapes 17/06/2025 + Diário de Pernambuco (5 selecionados)"
+ },
+ {
+  "id": "fidr_2026",
+  "title": "29º Festival Internacional de Dança do Recife — Convocatória 2026",
+  "municipio": "Recife",
+  "ano": null,
+  "description_text": "29º Festival Internacional de Dança do Recife — Convocatória 2026. Edital municipal real com resultado publicado.",
+  "opportunity_type": "programacao_festival",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "danca"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "fonte": "culturarecife.com.br resultado_home_7 (Resultado Final pós-recursos, ordem de classificação)"
+ }
+]
