@@ -2429,7 +2429,9 @@ Estas escolhas não são regra de negócio decidida. Entram na entrevista do mot
 
 ### 30.6 Limitações e próximos passos
 
-1. 6 resultados de Olinda e Caruaru pendentes (portais inacessíveis ao ambiente que gerou o relatório; URLs registradas).
+1. 6 resultados de Olinda e Caruaru pendentes. **Tentados em 2026-11-17** (`docs/search/v3/captura_2026-11-17/LEIAME.md`):
+   só o Caruaru PNAB 001/2026 publica contemplados (47, capturados, sem candidatos que não ganharam); os outros cinco
+   trazem apenas habilitados ou análise documental, têm o resultado em pastas do Google Drive ou ainda não o publicaram.
 2. Corpus multi-obra e 6 editais com requisito além de linguagem (os PDFs do SIC e do Aprendiz estavam fora do ar): 3 de 12
    e 6 de 8 atingidos.
 3. Descrições completas de projetos e editais para a comparação TF-IDF × Voyage (§27.9).
