@@ -1,12 +1,6 @@
-"use client";
+import { redirect } from "next/navigation";
 
-import AppShell from "@/shared/components/organisms/AppShell";
-import EditalPublishForm from "@/shared/components/organisms/EditalPublishForm";
-
-export default function PublicarEditalPage() {
-  return (
-    <AppShell title="Publicar edital">
-      <EditalPublishForm />
-    </AppShell>
-  );
+// Endereço antigo: a publicação mora em /organizacao/editais/novo (mapa de telas, #13).
+export default function PublicarEditalRedirectPage() {
+  redirect("/organizacao/editais/novo");
 }

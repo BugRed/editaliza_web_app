@@ -24,7 +24,7 @@ function buildNavItems(pathname: string, isProposer: boolean, savedCount: number
   return [
     { href: "/", label: "Início", icon: Home, active: pathname === "/" },
     ...(isProposer
-      ? [{ href: "/publicar-edital", label: "Publicar edital", icon: PlusCircle, active: pathname.startsWith("/publicar-edital") }]
+      ? [{ href: "/organizacao/editais/novo", label: "Publicar edital", icon: PlusCircle, active: pathname.startsWith("/organizacao/editais/novo") }]
       : []),
     { href: "/salvos", label: "Salvos", icon: Bookmark, active: pathname.startsWith("/salvos"), count: savedCount },
     { href: "/perfil", label: "Perfil", icon: User, active: pathname === "/perfil" },

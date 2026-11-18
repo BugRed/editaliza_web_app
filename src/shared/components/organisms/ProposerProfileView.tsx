@@ -76,7 +76,7 @@ export default function ProposerProfileView({ proposer, editais, editaisLoading 
         {isOwnProfile && (
           <div className="flex flex-wrap gap-3 border-t border-(--border-subtle) pt-4">
             <Link
-              href="/publicar-edital"
+              href="/organizacao/editais/novo"
               className="inline-flex items-center gap-2 rounded-xl bg-(--primary) px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-(--primary-hover)"
             >
               <PlusCircle size={17} />
@@ -102,7 +102,12 @@ export default function ProposerProfileView({ proposer, editais, editaisLoading 
         ) : (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {published.map((edital) => (
-              <EditalGalleryCard key={edital.id} edital={edital} onOpen={onOpenEdital} />
+              <EditalGalleryCard
+                key={edital.id}
+                edital={edital}
+                onOpen={onOpenEdital}
+                candidatesHref={isOwnProfile ? `/organizacao/editais/${edital.id}/candidatos` : undefined}
+              />
             ))}
           </div>
         )}

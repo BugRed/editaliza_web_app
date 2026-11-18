@@ -70,6 +70,7 @@ export default function EditalPublishForm() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [createdTitle, setCreatedTitle] = useState("");
+  const [draftNotice, setDraftNotice] = useState(false);
 
   const patch = (changes: Partial<EditalDraft>) => setDraft((prev) => ({ ...prev, ...changes }));
 
@@ -86,6 +87,7 @@ export default function EditalPublishForm() {
     e.preventDefault();
     setError("");
     setCreatedTitle("");
+    setDraftNotice(false);
 
     const problem = checkEditalDraft(draft);
     if (problem) {
@@ -346,6 +348,13 @@ export default function EditalPublishForm() {
           >
             {submitting ? "Publicando edital..." : "Publicar edital"}
           </button>
+          <button
+            type="button"
+            onClick={() => setDraftNotice(true)}
+            className="px-4 py-2.5 rounded-xl border border-(--border-subtle) text-sm font-semibold text-(--foreground) hover:bg-(--surface-subtle) cursor-pointer"
+          >
+            Salvar rascunho
+          </button>
           <Link
             href="/"
             className="px-4 py-2.5 rounded-xl border border-(--border-subtle) text-sm font-semibold text-(--text-muted) hover:bg-(--surface-subtle)"
@@ -353,6 +362,11 @@ export default function EditalPublishForm() {
             Cancelar
           </Link>
         </div>
+        {draftNotice && (
+          <p role="status" className="text-sm text-(--text-muted)">
+            Rascunho mantido nesta tela. Prévia: ele some ao sair, porque ainda não há onde gravá-lo.
+          </p>
+        )}
       </form>
     </div>
   );

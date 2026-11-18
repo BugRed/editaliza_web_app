@@ -16,12 +16,12 @@
 - [x] service — não se aplica, sem regra de negócio; as telas novas usam dados fixos
 - [x] controller — não se aplica
 - [x] route — não se aplica; só páginas, nenhum route handler novo
-- [ ] ui — limpeza (fase 1, feita) e telas das ondas O2 a O5 (fase 2, a fazer)
-- [ ] teste — fase 1 e lotes O2, O3 e O4 cobertos (funções puras e organismos novos); telas da fase 2 ainda não
-- [ ] doc — `docs/ui/mapa-de-telas.md`, CHANGELOG e dívida
+- [x] ui — limpeza (fase 1) e as 11 telas das ondas O2 a O5 (fase 2)
+- [x] teste — funções puras, organismos e telas cobertos (353 testes) (funções puras e organismos novos); telas da fase 2 ainda não
+- [x] doc — `docs/ui/mapa-de-telas.md`, CHANGELOG e dívida
 <!-- /kit:camadas -->
 
-**Próximo passo:** fase 2, lote O5 (`/organizacao/editais/novo`, candidatos e rejeição com motivo). Lotes O2, O3 e O4 prontos. A fase 1 está feita, exceto a conferência em navegador real (celular, mídia, Open Graph).
+**Próximo passo:** `/revisar` e `/fechar`. As fases 1 e 2 estão prontas; falta conferir as telas em navegador (claro, escuro e celular). A fase 1 está feita, exceto a conferência em navegador real (celular, mídia, Open Graph).
 
 ## Problema / motivação
 O front do protótipo veio inteiro e funciona, mas deixou resíduos (página de teste, feed duplicado, cores literais,
@@ -73,7 +73,7 @@ Nenhuma nova. Ver [`docs/ui/mapa-de-telas.md`](../../ui/mapa-de-telas.md) e o AD
 - [ ] Sem `useSocialStore`: **não feito**, ver decisões tomadas sem diretriz
 - [x] Componentes em `src/shared/components/` por camada, e os imports `@/` atualizados
 - [x] `yarn lint`, `yarn test` e `yarn build` passam (280 testes)
-- [ ] Cada tela da fase 2 existe, tem estado vazio e de carregamento, e funciona em claro e escuro
+- [x] Cada tela da fase 2 existe e tem estado vazio e de carregamento. Claro e escuro usam só tokens, **mas não foram conferidos em navegador**
 <!-- /kit:criterios -->
 
 ## Dívida / não exercitado
@@ -89,6 +89,18 @@ Nenhuma nova. Ver [`docs/ui/mapa-de-telas.md`](../../ui/mapa-de-telas.md) e o AD
 - **Validação virou função pura testada** (`signup-validation`, `edital-draft`, `user-search`) em `src/shared/lib/`.
 - **Código morto removido:** cabeçalho, rodapé, `authForm.tsx` e `AllDatas`, que só a página `/teste` ou ninguém usava.
 - **Conferido por teste, lint, build e um `next start` local** (`/login` e `/cadastro` renderizam). Ainda sem conferência em navegador.
+
+## Decisões tomadas sem diretriz (fase 2)
+- **Todas as telas são prévia com dados fixos** e dizem isso num aviso: nada é gravado, enviado ou apagado.
+  Onde houve ação (exclusão, rejeição, publicação do admin), a tela afirma que nada mudou de verdade.
+- **Rotas:** `/perfil/privacidade`; `/organizacao/editais/novo` assume o lugar de `/publicar-edital`, que redireciona.
+- **Admin sem papel:** `/admin/editais` não confere papel, porque ainda não há papel na sessão (O2).
+- **Candidatos sem nota:** a organização vê elegibilidade e quem compartilhou o perfil, nunca a nota. Quem não
+  compartilhou só é contado.
+- **Sem porcentagem nova no feed:** o "por quê" reaproveita as barras do ADR 0019, sobre o motor do protótipo.
+- **Campo vazio é desconhecido:** onboarding e trajetória não têm campo obrigatório; estágio conta como experiência.
+- **`portfolioVisibility` opcional em `ArtistProfile`:** a página pública respeita PRIVATE, mas nenhuma tela grava a escolha ainda.
+- **Corrigido no caminho:** `durationMonths` lia a data em fuso local e errava um mês em fuso negativo; passou a usar UTC.
 
 ## Decisões em aberto
 - Nenhuma de regra de negócio.

@@ -7,6 +7,9 @@ Impacto externo por entrega; app não versiona build. Novo no topo.
 - **Removidos** a página `/teste` e o cabeçalho e rodapé antigos, que só ela usava.
 - **Imagens do protótipo de 7,3 MB para 0,8 MB**, no tamanho em que aparecem.
 - **Componentes em `src/shared/components/`** por camada (atoms, molecules, organisms).
+- **Telas novas (prévia, dados fixos):** privacidade e meus dados, detalhe do edital, admin de editais, onboarding,
+  trajetória, obras, "por quê" da nota, perfil público do artista, publicar edital da organização, candidatos e
+  rejeição com motivo. Nada é gravado ainda; cada tela avisa isso.
 - **Cadastro, configurações, publicar edital e menu lateral** quebrados em partes menores; os campos de formulário passam a ter a mesma aparência nas três telas (raio e peso do rótulo iguais).
 
 ## 2026-11-16 — onda O1 fechada

@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { Bookmark, ExternalLink, X } from "lucide-react";
 import { useSocialStore } from "@/app/hooks/useSocialStore";
 import { resolveExternalUrl } from "@/app/lib/edital-detail";
+import RejectEditalControl from "@/shared/components/molecules/RejectEditalControl";
 import EditalDetailBody from "@/shared/components/organisms/EditalDetailBody";
 
 export default function EditalSummaryModal() {
@@ -111,6 +112,7 @@ export default function EditalSummaryModal() {
           </button>
 
           <div className="flex items-center gap-2.5 ml-auto">
+            <RejectEditalControl />
             <Link
               href={`/editais/${edital.id}`}
               onClick={closeEditalModal}

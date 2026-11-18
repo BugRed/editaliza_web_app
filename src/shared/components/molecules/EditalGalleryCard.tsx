@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { BookOpen, CalendarDays } from "lucide-react";
 import type { IEdital } from "@/app/types/Edital";
 import { SafeDate } from "@/app/lib/utils/SafeDate";
@@ -8,9 +9,11 @@ const MAX_VISIBLE_TAGS = 3;
 interface EditalGalleryCardProps {
   edital: IEdital;
   onOpen: (edital: IEdital) => void;
+  /** Só o dono do edital recebe o atalho para os candidatos. */
+  candidatesHref?: string;
 }
 
-export default function EditalGalleryCard({ edital, onOpen }: EditalGalleryCardProps) {
+export default function EditalGalleryCard({ edital, onOpen, candidatesHref }: EditalGalleryCardProps) {
   const closed = isEditalClosed(edital);
   const tags = Array.isArray(edital.listTags) ? edital.listTags : [];
   const cover = edital.imgCoverUrl && !/exemplo\.com|placeholder/.test(edital.imgCoverUrl) ? edital.imgCoverUrl : "";
@@ -46,6 +49,11 @@ export default function EditalGalleryCard({ edital, onOpen }: EditalGalleryCardP
           <CalendarDays size={13} aria-hidden="true" />
           {edital.endDate ? `Até ${SafeDate(edital.endDate)}` : "Prazo não informado"}
         </p>
+        {candidatesHref && (
+          <Link href={candidatesHref} className="text-xs font-bold text-(--primary-fg) hover:underline">
+            Ver artistas compatíveis
+          </Link>
+        )}
         {tags.length > 0 && (
           <ul aria-label="Categorias" className="mt-auto flex flex-wrap gap-1.5 pt-1">
             {tags.slice(0, MAX_VISIBLE_TAGS).map((tag) => (

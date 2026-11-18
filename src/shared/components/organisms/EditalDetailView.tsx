@@ -1,8 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import { AlertTriangle, Bookmark, ExternalLink, Info } from "lucide-react";
 import { buildRequirementRows, resolveEditalSummary, resolveExternalUrl, type RequirementStrength } from "@/app/lib/edital-detail";
 import type { IEdital } from "@/app/types/Edital";
 import { isEditalClosed } from "@/shared/lib/edital-owner";
+import RejectEditalControl from "@/shared/components/molecules/RejectEditalControl";
 import EditalDetailBody from "@/shared/components/organisms/EditalDetailBody";
 
 interface EditalDetailViewProps {
@@ -104,6 +107,7 @@ export default function EditalDetailView({ edital, proposerName, proposerHref, s
           <Bookmark size={16} className={saved ? "fill-(--accent) text-(--accent-ink)" : ""} />
           <span>{saved ? "Salvo nos seus editais" : "Salvar edital"}</span>
         </button>
+        <RejectEditalControl />
         <Link href={`/editais/${edital.id}/porque`} className="text-sm font-semibold text-(--primary-fg) hover:underline">
           Por que essa nota?
         </Link>
