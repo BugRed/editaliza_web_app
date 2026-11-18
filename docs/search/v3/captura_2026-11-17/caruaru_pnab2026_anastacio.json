@@ -1,0 +1,393 @@
+{
+ "edital": "caruaru_pnab2026_anastacio",
+ "url": "https://mapacultural.caruaru.pe.gov.br/storage/anexoEditais/PNAB%20CICLO%202/lista_final_de_contemplados_pnab_2026_edital_001_anastacio_rodrigues_anexo_1790693383.pdf",
+ "sha256": "0804bd9badb5c4cff02df8a3cd92e0effd7e7c8fd33a193a06adb25f43eadc15",
+ "n_contemplados": 47,
+ "por_categoria": {
+  "A": 3,
+  "B": 3,
+  "C": 2,
+  "D": 7,
+  "E": 13,
+  "G": 9,
+  "H": 10
+ },
+ "contemplados": [
+  {
+   "categoria": "A",
+   "classificacao": 1,
+   "valor_reais": 45000.0,
+   "cpf_cnpj_publicado": "56.020.199/0001-74",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "“O CORONÉ CHEGOU! – RISADAS NA PRAÇA E HUMOR DE SEVERINO PEDRO DA SILVA - CORONÉ CORNÉLIO GRAÇA”"
+  },
+  {
+   "categoria": "A",
+   "classificacao": 2,
+   "valor_reais": 45000.0,
+   "cpf_cnpj_publicado": "XXX.219.984-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "7º FESTCINE ITAÚNA - FESTIVAL INTERNACIONAL DE PAULO HENRIQUE CONCEIÇÃO CINEMA DE ITAÚNA"
+  },
+  {
+   "categoria": "A",
+   "classificacao": 3,
+   "valor_reais": 45000.0,
+   "cpf_cnpj_publicado": "19.782.431/0001-85",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "FESTIVAL GATO MARACAJÁ DE WILLIAM SMITH FERREIRA GONÇALVES ARTES INTEGRADAS"
+  },
+  {
+   "categoria": "B",
+   "classificacao": 1,
+   "valor_reais": 40000.0,
+   "cpf_cnpj_publicado": "XXX.947.114-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "A CIDADE QUE NOS VÊ ( RETRATOS DA INVISIBILIDADE IZABELLA VIRGÍNIA ALVES DE SOUZA ARAUJO COTIDIANA)"
+  },
+  {
+   "categoria": "B",
+   "classificacao": 2,
+   "valor_reais": 40000.0,
+   "cpf_cnpj_publicado": "32.532.570/0001-19",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "“SOBRE CATARINA” ARARY MARROCOS BEZERRA PASCOAL"
+  },
+  {
+   "categoria": "B",
+   "classificacao": 3,
+   "valor_reais": 40000.0,
+   "cpf_cnpj_publicado": "XXX.880.884-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "O BEATO CONTRA O FOGO CORREDOR CAIO TULIO DUQUE"
+  },
+  {
+   "categoria": "C",
+   "classificacao": 1,
+   "valor_reais": 30000.0,
+   "cpf_cnpj_publicado": "38.597.595/0001-87",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "CARUARU CONECTADA - FORMAÇÃO, NEGÓCIOS E JULIANA ZUPPARDO MOREIRA CIRCULAÇÃO NAS ARTES CÊNICAS"
+  },
+  {
+   "categoria": "C",
+   "classificacao": 2,
+   "valor_reais": 30000.0,
+   "cpf_cnpj_publicado": "XXX.712.034-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "SÉRIE GUARDIÃS - EPISÓDIO ILZY GABRIELLE SOARES DA 1: O LEGADO DE ERNESTINA SILVA ANTÔNIA"
+  },
+  {
+   "categoria": "D",
+   "classificacao": 1,
+   "valor_reais": 15000.0,
+   "cpf_cnpj_publicado": "39.781.084/0001-83",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "GERMINAR: CURSO DE PRODUÇÃO 39.781.084 AMANDA SAMARA DO NASCIMENTO CULTURAL PARA PRESTES MULHERES"
+  },
+  {
+   "categoria": "D",
+   "classificacao": 2,
+   "valor_reais": 15000.0,
+   "cpf_cnpj_publicado": "XXX.843.654-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "ESTRELAS DO AGRESTE- LUCINEIA FERREIRA CHAGAS ENCONTRO DOS DESTAQUES JUNINOS"
+  },
+  {
+   "categoria": "D",
+   "classificacao": 3,
+   "valor_reais": 15000.0,
+   "cpf_cnpj_publicado": "XXX.052.624-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "CONTAÇÕES DE HISTÓRIAS PARA O RANUZIA VIEIRA DE MELO RACISMO DORMIR ETERNAMENTE"
+  },
+  {
+   "categoria": "D",
+   "classificacao": 4,
+   "valor_reais": 15000.0,
+   "cpf_cnpj_publicado": "XXX.394.164-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "“CLUBE DO CONTO DE CARUARU: ALYSON MONTEIRO BARBOSA FOMENTANDO A PALAVRA, TECENDO HISTÓRIAS”"
+  },
+  {
+   "categoria": "D",
+   "classificacao": 5,
+   "valor_reais": 15000.0,
+   "cpf_cnpj_publicado": "XXX.087.854-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "TUDO NO FORRÓ FICA MELHOR JÔNATAN ALEXANDRE CHAVES"
+  },
+  {
+   "categoria": "D",
+   "classificacao": 6,
+   "valor_reais": 15000.0,
+   "cpf_cnpj_publicado": "48.443.390/0001-09",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "DA TÉCNICA À CENA, PASSOS LUCA LEMOS CURSINO PARA UM TEATRO"
+  },
+  {
+   "categoria": "D",
+   "classificacao": 7,
+   "valor_reais": 15000.0,
+   "cpf_cnpj_publicado": "51.478.309/0001-22",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "ARARY MARROCOS –MEMÓRIA 51.478.309 SANDRA FERREIRA DE LIMA - CAROÁ VIVA DO TEATRO CARUARUENSE. EDITORA"
+  },
+  {
+   "categoria": "E",
+   "classificacao": 1,
+   "valor_reais": 10000.0,
+   "cpf_cnpj_publicado": "XXX.214.808-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "JUREMA SAGRADA: ENTRE TRONCOS E LUDVAL LIMA BRANDÃO RAÍZES."
+  },
+  {
+   "categoria": "E",
+   "classificacao": 2,
+   "valor_reais": 10000.0,
+   "cpf_cnpj_publicado": "48.098.298/0001-40",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "FORRÓ 360: OFICINAS DE DANÇA MAYARA RAFAELA DA SILVA NASCIMENTO"
+  },
+  {
+   "categoria": "E",
+   "classificacao": 3,
+   "valor_reais": 10000.0,
+   "cpf_cnpj_publicado": "48.191.798/0001-22",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "“SANFONA QUE CONTA HISTÓRIA” CPA STUDIO -48.191.798 JOSE CARLOS FERREIRA DOS SANTOS"
+  },
+  {
+   "categoria": "E",
+   "classificacao": 4,
+   "valor_reais": 10000.0,
+   "cpf_cnpj_publicado": "XXX.441.714-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "É – CANÇÃO E PROCESSO HERBERT SALGADO DE VASCONCELOS LUCENA"
+  },
+  {
+   "categoria": "E",
+   "classificacao": 5,
+   "valor_reais": 10000.0,
+   "cpf_cnpj_publicado": "20.416.324/0001-12",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "MATILDE E ALICE: UM OLHAR EM MARIA ALVES DA SILVA TORNO DAS MULHERES QUE ENVELHECEM EM ESTADO DE ABANDONO."
+  },
+  {
+   "categoria": "E",
+   "classificacao": 6,
+   "valor_reais": 10000.0,
+   "cpf_cnpj_publicado": "XXX.413.934-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "DESCOBRINDO A MÚSICA DANIEL MELO DE BRITO INSTRUMENTAL."
+  },
+  {
+   "categoria": "E",
+   "classificacao": 7,
+   "valor_reais": 10000.0,
+   "cpf_cnpj_publicado": "49.547.058-0001/49",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "OFICINA TEATRAL “O CORPO ORGÂNICO ENCONTRO CIA DE ARTES NO TEATRO FÍSICO”"
+  },
+  {
+   "categoria": "E",
+   "classificacao": 8,
+   "valor_reais": 10000.0,
+   "cpf_cnpj_publicado": "XXX.657.314-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "TEREZINHA CORAÇÃO DE BARRO CARMEM VALÉRIA SABÓIA - GRUPO DE TEATRO ARTE EM CENA"
+  },
+  {
+   "categoria": "E",
+   "classificacao": 9,
+   "valor_reais": 10000.0,
+   "cpf_cnpj_publicado": "XXX.695.654-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "LATÃO: PROCESSOS DE 57.729.674 HUMBERTO DIÓGENES BOTÃO CONSTRUÇÃO E QUEIMA DE CERÂMICA EM FORNO DE LATÃO"
+  },
+  {
+   "categoria": "E",
+   "classificacao": 10,
+   "valor_reais": 10000.0,
+   "cpf_cnpj_publicado": "XXX.135.624-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "FEIRA DE ARTESANATO CLEBSON CAMPOS ALCÂNTARA"
+  },
+  {
+   "categoria": "E",
+   "classificacao": 11,
+   "valor_reais": 10000.0,
+   "cpf_cnpj_publicado": "XXX.571.484-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "COLETIVO AGRESTE ROCK – LILIAN MIRELE DE OLIVEIRA BARROS COLETÂNEA AUTORAL"
+  },
+  {
+   "categoria": "E",
+   "classificacao": 12,
+   "valor_reais": 10000.0,
+   "cpf_cnpj_publicado": "XXX.035.014-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "EP NANNY MELLSO TUDO PODE EDIVANIA SILVA DE MELO MUDAR"
+  },
+  {
+   "categoria": "E",
+   "classificacao": 13,
+   "valor_reais": 10000.0,
+   "cpf_cnpj_publicado": "37.153.063/0001-98",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "CINE-CORPOGRAFIA ABS PRODUÇÕES LTDA"
+  },
+  {
+   "categoria": "G",
+   "classificacao": 1,
+   "valor_reais": 20831.42,
+   "cpf_cnpj_publicado": "XXX.070.594XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "MAPEAMENTO SONORO E VISUAL - RITMOS ANANDA CATARINA BARBOSA DE CARVALHO E CENÁRIOS DA FEIRA DE CARUARU"
+  },
+  {
+   "categoria": "G",
+   "classificacao": 2,
+   "valor_reais": 20831.42,
+   "cpf_cnpj_publicado": "XXX.204.904-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "OS PÁSSAROS DE LUIZ JOSÉ ANTÔNIO DA SILVA JUNIOR GONZAGA"
+  },
+  {
+   "categoria": "G",
+   "classificacao": 3,
+   "valor_reais": 20831.42,
+   "cpf_cnpj_publicado": "XXX.174.634-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "“VOZES DO AGRESTE: WEBCANAL JACILENE MOURA DE SOUZA LGBTQIAPN+ DE CARUARU”"
+  },
+  {
+   "categoria": "G",
+   "classificacao": 4,
+   "valor_reais": 20831.42,
+   "cpf_cnpj_publicado": "XXX.961.374-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "A MÚSICA COMO REDUÇÃO DE DANOS E DIOGO DE SOBRAL MELO FERRAMENTA TERAPÊUTICA. (SEGUNDA EDIÇÃO)"
+  },
+  {
+   "categoria": "G",
+   "classificacao": 5,
+   "valor_reais": 20831.42,
+   "cpf_cnpj_publicado": "XXX.845.574XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "DO SONHO AO PROJETO: CAMINHOS RIANA CLECIA DE OLIVEIRA LEITE PARA MATERIALIZAR IDEIAS CULTURAIS"
+  },
+  {
+   "categoria": "G",
+   "classificacao": 6,
+   "valor_reais": 20831.42,
+   "cpf_cnpj_publicado": "XXX.371.134-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "ELAS NO SET - INTRODUÇÃO AO WANESSA JULIANA DE LIMA GALVÃO PIMENTEL AUDIOVISUAL PARA MULHERES"
+  },
+  {
+   "categoria": "G",
+   "classificacao": 7,
+   "valor_reais": 20831.42,
+   "cpf_cnpj_publicado": "XXX.757.984-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "EMPRETAR RIZONIR DA SILVA SANTOS"
+  },
+  {
+   "categoria": "G",
+   "classificacao": 8,
+   "valor_reais": 20831.42,
+   "cpf_cnpj_publicado": "XXX.359.384-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "CONSTRUINDO NOSSAS LEANDRO MACHADO DA SILVA HISTÓRIAS"
+  },
+  {
+   "categoria": "G",
+   "classificacao": 9,
+   "valor_reais": 20831.42,
+   "cpf_cnpj_publicado": "XXX.481.524-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "MESTRES DO BARRO – AS FLÁVIO RENAN DE VASCONCELOS MÃOS QUE MOLDAM NOSSA TRADIÇÃO"
+  },
+  {
+   "categoria": "H",
+   "classificacao": 1,
+   "valor_reais": 7000.0,
+   "cpf_cnpj_publicado": "XXX.409.734-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "O RELICÁRIO DIGITAL: SALVAGUARDA E MEMÓRIA DAS BRÍGIDA AMANDA DE SOUZA GOMES MESTRAS DO BARRO"
+  },
+  {
+   "categoria": "H",
+   "classificacao": 2,
+   "valor_reais": 7000.0,
+   "cpf_cnpj_publicado": "XXX.801.744-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "AQUISIÇÃO DE EQUIPAMENTOS PARA PRODUÇÃO DANIELE CRISTINA SANTOS LEITE AUDIOVISUAL"
+  },
+  {
+   "categoria": "H",
+   "classificacao": 3,
+   "valor_reais": 7000.0,
+   "cpf_cnpj_publicado": "XXX.736.314-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "AQUISIÇÃO DE EQUIPAMENTO PARA ESTÚDIO - ESCOLA DE LUCAS DOS SANTOS SILVA ANIMAÇÃO."
+  },
+  {
+   "categoria": "H",
+   "classificacao": 4,
+   "valor_reais": 7000.0,
+   "cpf_cnpj_publicado": "XXX.879.398-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "SOM DE TERREIRO - ESTRUTURA DE SONORIZAÇÃO PARA CHRISTIANE MENDES DIFUSÃO DA MÚSICA AFRO-BRASILEIRA"
+  },
+  {
+   "categoria": "H",
+   "classificacao": 5,
+   "valor_reais": 7000.0,
+   "cpf_cnpj_publicado": "XXX.851.414-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "ENQUADRA – OFICINAS DE PRODUÇÃO VISUAL MARIA CAMILLA FERREIRA SILVA"
+  },
+  {
+   "categoria": "H",
+   "classificacao": 6,
+   "valor_reais": 7000.0,
+   "cpf_cnpj_publicado": "XXX.028.094-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "BATIDAS DO AGRESTE JOSÉ MANOEL DA SILVA FILHO"
+  },
+  {
+   "categoria": "H",
+   "classificacao": 7,
+   "valor_reais": 7000.0,
+   "cpf_cnpj_publicado": "XXX.947.834-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "PÍFANO EM MOVIMENTO: QUALIFICAÇÃO DA OFICINA E VITÓRIA MARYELLEN BATISTA SANTOS LUTHIERIA DE VITÓRIA DO PIFE. CATEGORIA I"
+  },
+  {
+   "categoria": "H",
+   "classificacao": 1,
+   "valor_reais": 15000.0,
+   "cpf_cnpj_publicado": "XXX.816.944-XX",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "MUSEU DA PARTEIRA MARIA JOSÉ SILVA"
+  },
+  {
+   "categoria": "H",
+   "classificacao": 2,
+   "valor_reais": 15000.0,
+   "cpf_cnpj_publicado": "10.339.178/0001-15",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "RITMOS QUE TRANSFORMAM: FORMAÇÃO EM PERCUSSÃO ASSOCIAÇÃO CARUARUENSE E METAIS DE DESENVOLVIMENTO EDUCACIONAL, SOCIAL E CULTURAL -ACADESC"
+  },
+  {
+   "categoria": "H",
+   "classificacao": 3,
+   "valor_reais": 15000.0,
+   "cpf_cnpj_publicado": "61.426.076/0001-78",
+   "resultado": "HABILITADO/CONTEMPLADO",
+   "texto_publicado": "PALCO RENOVADO ESPAÇO NERISVALDO ALVES Caruaru, 29 de Setembro de 2026. Fundação de Cultura de Caruaru Hérlon de Figueiredo Cavalcanti - Presidente"
+  }
+ ]
+}

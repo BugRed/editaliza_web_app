@@ -1,0 +1,62 @@
+{
+ "malakoff_observa4": {
+  "mean": 56.0,
+  "std": 13.1,
+  "pct_above_70": 16.7
+ },
+ "spa_2026": {
+  "mean": 51.9,
+  "std": 12.2,
+  "pct_above_70": 11.1
+ },
+ "festival_danca_2026": {
+  "mean": 42.6,
+  "std": 16.5,
+  "pct_above_70": 8.3
+ },
+ "virado_periferia_2026": {
+  "mean": 51.5,
+  "std": 16.6,
+  "pct_above_70": 20.0
+ },
+ "letra_e_voz_2026": {
+  "mean": 43.4,
+  "std": 12.2,
+  "pct_above_70": 8.3
+ },
+ "aprendiz_em_cena_2026": {
+  "mean": 43.6,
+  "std": 16.2,
+  "pct_above_70": 12.5
+ },
+ "solo_do_outro_2026": {
+  "mean": 41.0,
+  "std": 16.0,
+  "pct_above_70": 12.5
+ },
+ "mostra_circo_2026": {
+  "mean": 43.7,
+  "std": 16.3,
+  "pct_above_70": 8.3
+ },
+ "sao_joao_2026": {
+  "mean": 39.8,
+  "std": 12.5,
+  "pct_above_70": 8.3
+ },
+ "fic_2025": {
+  "mean": 62.3,
+  "std": 3.7,
+  "pct_above_70": 0.0
+ },
+ "joel_datz": {
+  "mean": 52.8,
+  "std": 13.0,
+  "pct_above_70": 8.3
+ },
+ "formacao_tecnica_2026": {
+  "mean": 60.3,
+  "std": 6.1,
+  "pct_above_70": 11.1
+ }
+}

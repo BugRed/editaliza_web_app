@@ -1,0 +1,242 @@
+{
+ "ana_foto_memoria": [
+  {
+   "edital": "malakoff_observa4",
+   "score": 70.5,
+   "elig": "ELIGIBLE",
+   "label": 3
+  },
+  {
+   "edital": "spa_2026",
+   "score": 63.2,
+   "elig": "ELIGIBLE",
+   "label": 3
+  },
+  {
+   "edital": "joel_datz",
+   "score": 60.0,
+   "elig": "ELIGIBLE",
+   "label": 2
+  }
+ ],
+ "mestre_bituca": [
+  {
+   "edital": "sao_joao_2026",
+   "score": 72.8,
+   "elig": "ELIGIBLE",
+   "label": 3
+  },
+  {
+   "edital": "joel_datz",
+   "score": 65.0,
+   "elig": "ELIGIBLE",
+   "label": 2
+  },
+  {
+   "edital": "malakoff_observa4",
+   "score": 42.6,
+   "elig": "PENDING",
+   "label": 1
+  }
+ ],
+ "dj_grafite": [
+  {
+   "edital": "virado_periferia_2026",
+   "score": 69.3,
+   "elig": "ELIGIBLE",
+   "label": 3
+  },
+  {
+   "edital": "fic_2025",
+   "score": 59.1,
+   "elig": "PENDING",
+   "label": 2
+  },
+  {
+   "edital": "malakoff_observa4",
+   "score": 58.1,
+   "elig": "PENDING",
+   "label": 2
+  }
+ ],
+ "cia_duo_cenico": [
+  {
+   "edital": "aprendiz_em_cena_2026",
+   "score": 84.3,
+   "elig": "ELIGIBLE",
+   "label": 3
+  },
+  {
+   "edital": "fic_2025",
+   "score": 66.5,
+   "elig": "ELIGIBLE",
+   "label": 3
+  },
+  {
+   "edital": "festival_danca_2026",
+   "score": 64.4,
+   "elig": "ELIGIBLE",
+   "label": 1
+  }
+ ],
+ "lucia_faro": [
+  {
+   "edital": "festival_danca_2026",
+   "score": 79.5,
+   "elig": "ELIGIBLE",
+   "label": 3
+  },
+  {
+   "edital": "solo_do_outro_2026",
+   "score": 78.5,
+   "elig": "ELIGIBLE",
+   "label": 3
+  },
+  {
+   "edital": "fic_2025",
+   "score": 63.2,
+   "elig": "ELIGIBLE",
+   "label": 2
+  }
+ ],
+ "theo_palhaco": [
+  {
+   "edital": "mostra_circo_2026",
+   "score": 82.5,
+   "elig": "ELIGIBLE",
+   "label": 3
+  },
+  {
+   "edital": "formacao_tecnica_2026",
+   "score": 63.1,
+   "elig": "PENDING",
+   "label": 2
+  },
+  {
+   "edital": "fic_2025",
+   "score": 61.0,
+   "elig": "PENDING",
+   "label": 2
+  }
+ ],
+ "rosa_cordel": [
+  {
+   "edital": "letra_e_voz_2026",
+   "score": 74.4,
+   "elig": "ELIGIBLE",
+   "label": 3
+  },
+  {
+   "edital": "malakoff_observa4",
+   "score": 68.9,
+   "elig": "ELIGIBLE",
+   "label": 2
+  },
+  {
+   "edital": "joel_datz",
+   "score": 66.3,
+   "elig": "ELIGIBLE",
+   "label": 2
+  }
+ ],
+ "vinicius_doc": [
+  {
+   "edital": "virado_periferia_2026",
+   "score": 71.2,
+   "elig": "ELIGIBLE",
+   "label": 3
+  },
+  {
+   "edital": "fic_2025",
+   "score": 66.0,
+   "elig": "ELIGIBLE",
+   "label": 2
+  },
+  {
+   "edital": "formacao_tecnica_2026",
+   "score": 65.1,
+   "elig": "ELIGIBLE",
+   "label": 1
+  }
+ ],
+ "marina_multimidia": [
+  {
+   "edital": "malakoff_observa4",
+   "score": 69.9,
+   "elig": "ELIGIBLE",
+   "label": 3
+  },
+  {
+   "edital": "spa_2026",
+   "score": 63.5,
+   "elig": "ELIGIBLE",
+   "label": 3
+  },
+  {
+   "edital": "fic_2025",
+   "score": 59.3,
+   "elig": "ELIGIBLE",
+   "label": 2
+  }
+ ],
+ "seu_ze_artesao": [
+  {
+   "edital": "joel_datz",
+   "score": 76.5,
+   "elig": "ELIGIBLE",
+   "label": 3
+  },
+  {
+   "edital": "sao_joao_2026",
+   "score": 45.0,
+   "elig": "ELIGIBLE",
+   "label": 1
+  },
+  {
+   "edital": "malakoff_observa4",
+   "score": 42.8,
+   "elig": "PENDING",
+   "label": 1
+  }
+ ],
+ "paula_formadora": [
+  {
+   "edital": "formacao_tecnica_2026",
+   "score": 72.7,
+   "elig": "ELIGIBLE",
+   "label": 3
+  },
+  {
+   "edital": "fic_2025",
+   "score": 68.5,
+   "elig": "ELIGIBLE",
+   "label": 2
+  },
+  {
+   "edital": "malakoff_observa4",
+   "score": 66.3,
+   "elig": "ELIGIBLE",
+   "label": 1
+  }
+ ],
+ "beto_iniciante": [
+  {
+   "edital": "malakoff_observa4",
+   "score": 77.1,
+   "elig": "PENDING",
+   "label": 1
+  },
+  {
+   "edital": "spa_2026",
+   "score": 70.5,
+   "elig": "PENDING",
+   "label": 1
+  },
+  {
+   "edital": "fic_2025",
+   "score": 59.7,
+   "elig": "PENDING",
+   "label": 1
+  }
+ ]
+}
