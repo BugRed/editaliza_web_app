@@ -1,6 +1,6 @@
 # Benchmark com ganhadores reais no ArtistRank
 
-**Status:** em-desenvolvimento
+**Status:** entregue
 **Responsabilidade:** ranking
 **Branch:** docs/doc-01/benchmark-real-artistrank
 **Autor:** BugRed · **Data:** 2026-11-17
@@ -18,11 +18,10 @@
 - [x] route — não se aplica
 - [x] ui — não se aplica
 - [x] teste — não se aplica; os casos viram testes na O4 (T5.6), esta branch só os especifica
-- [ ] doc — spec do ArtistRank (§29), `plano.md` (D25, T5.6, §7.5, §7.9) e `docs/search/` versionado
+- [x] doc — spec do ArtistRank (§29 e §30), `plano.md` (D25, T5.6, §7.5), dívida e `docs/search/` (v2 e v3) versionados
 <!-- /kit:camadas -->
 
-**Próximo passo:** commitar a doc; depois abrir a feature do motor puro da O4 (T5.1–T5.4, T5.6) já com os
-casos reais de `docs/search/` como fixtures de regressão.
+**Próximo passo:** nenhum nesta feature. A entrevista de regra de negócio do motor é a primeira tarefa da feature `feature/api-01/artistrank-motor-puro` (spec `0002`), já com as perguntas escritas.
 
 ## Problema / motivação
 A spec do ArtistRank (§27) foi validada só com perfis hipotéticos e rótulos de um avaliador. O usuário montou
@@ -54,17 +53,18 @@ Nenhuma regra nova. As regras vigentes seguem a §28 da spec; esta branch só co
 ## Critérios de aceite
 
 <!-- kit:criterios -->
-- [ ] §29 da spec traz as métricas por configuração e a ressalva de circularidade, com links para `docs/search/`
-- [ ] A discrepância "v0 perde dois editais" do relatório está corrigida na §29 (os dados mostram um)
-- [ ] `plano.md` não diz mais que o pacote do benchmark está fora do repo e aponta o que ainda falta (o motor)
-- [ ] A dívida registra: circularidade, pool sintético, motor ausente do pacote, dados pessoais e o MRR sem poder de calibração
-- [ ] Nenhum número é repetido em dois lugares: os demais documentos linkam a §29
+- [x] §29 e §30 da spec trazem as métricas por configuração e as ressalvas (circularidade na v2; empate e AUC 0,52 na v3), com links para `docs/search/`
+- [x] As discrepâncias dos relatórios estão corrigidas: "v0 perde dois editais" (v2, os dados mostram um) e "1 edital de discordância melhor × média" (v3, o JSON mostra 0)
+- [x] `plano.md` não diz mais que o pacote do benchmark está fora do repo: aponta `docs/search/v3/` e o motor de referência em Python
+- [x] A dívida registra: empate e AUC 0,52, itens 4.5 e 4.6 incompletos, nomes reais no repo e a captura parcial dos pendentes
+- [x] Os números vivem na spec do ArtistRank (§29 e §30); os demais documentos linkam
 <!-- /kit:criterios -->
 
 ## Dívida / não exercitado
-- Os resultados **não foram reproduzidos aqui**: o repo tem os dados e o gerador (`dataset_real.py`), mas não o motor
-  nem o script de calibração. Os números são os do relatório e do `benchmark_real.json`.
-- Os perfis herdam a linguagem do próprio edital em que o artista ganhou; ver §29.3 da spec.
+- **v3 reproduzida** (`verify.py` e `experiments_v3.py` em `docs/search/v3/`, idêntico ao entregue). A v2 não foi reproduzida: o repo não tem o motor dela.
+- Os perfis da v2 herdavam a linguagem do edital (§29.3); a v3 corrigiu isso, mas o resultado é de empate (§30.4).
+- `docs/search/` mistura arquivos da v1.1 e da v2 sem pasta; só a v3 está organizada (`docs/search/v3/`).
+- Itens 4.5 (descrição dos editais) e 4.6 (várias obras por artista) da v3 seguem incompletos.
 
 ## Decisões em aberto
 - Nenhuma de regra de negócio. Escolhas tomadas sem diretriz estão no resumo final da sessão.
