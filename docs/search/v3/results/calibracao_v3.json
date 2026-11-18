@@ -1,0 +1,115 @@
+{
+ "train": [
+  "sic2024_fic_audiovisual",
+  "sic2024_fic_cultura_popular",
+  "sic2024_fic_teatro",
+  "sic2024_fic_artes_visuais",
+  "sic2024_fic_circo",
+  "sic2024_fic_danca",
+  "sic2024_fic_artesanato",
+  "sic2024_fic_patrimonio",
+  "sic2024_mic_audiovisual",
+  "sic2024_mic_teatro",
+  "sic2023_fic_integradas",
+  "sic2023_fic_fotografia",
+  "solo_do_outro_2026",
+  "observa3_malakoff_2025",
+  "fidr_2026"
+ ],
+ "test": [
+  "sic2024_fic_musica",
+  "sic2024_fic_literatura",
+  "sic2024_fic_fotografia",
+  "sic2024_fic_moda",
+  "multilinguagens_pnab2026",
+  "virado_pnab2026_hiphop",
+  "aprendiz_em_cena_2026",
+  "bolsa_escola_frevo_2026"
+ ],
+ "baseline_mrr_train": 1.0,
+ "baseline_mrr_test": 1.0,
+ "calibrado_mrr_train": 1.0,
+ "trace": [],
+ "pesos_calibrados_pct": {
+  "L": 15.0,
+  "C": 20.0,
+  "T": 10.0,
+  "P": 15.0,
+  "H": 10.0,
+  "O": 15.0,
+  "G": 5.0,
+  "V": 10.0
+ },
+ "teste_mrr_calibrado": 1.0,
+ "loo": [
+  {
+   "edital": "sic2024_fic_teatro",
+   "mrr": 1.0,
+   "pesos": {
+    "L": 15.0,
+    "C": 20.0,
+    "T": 10.0,
+    "P": 15.0,
+    "H": 10.0,
+    "O": 15.0,
+    "G": 5.0,
+    "V": 10.0
+   }
+  },
+  {
+   "edital": "sic2024_fic_danca",
+   "mrr": 1.0,
+   "pesos": {
+    "L": 15.0,
+    "C": 20.0,
+    "T": 10.0,
+    "P": 15.0,
+    "H": 10.0,
+    "O": 15.0,
+    "G": 5.0,
+    "V": 10.0
+   }
+  },
+  {
+   "edital": "solo_do_outro_2026",
+   "mrr": 1.0,
+   "pesos": {
+    "L": 15.0,
+    "C": 20.0,
+    "T": 10.0,
+    "P": 15.0,
+    "H": 10.0,
+    "O": 15.0,
+    "G": 5.0,
+    "V": 10.0
+   }
+  },
+  {
+   "edital": "fidr_2026",
+   "mrr": 1.0,
+   "pesos": {
+    "L": 15.0,
+    "C": 20.0,
+    "T": 10.0,
+    "P": 15.0,
+    "H": 10.0,
+    "O": 15.0,
+    "G": 5.0,
+    "V": 10.0
+   }
+  }
+ ],
+ "loo_mean": 1.0,
+ "diagnostico_auc_tfidf": {
+  "sic2024_fic_musica": 0.143,
+  "sic2024_fic_teatro": 0.675,
+  "sic2024_fic_danca": 0.4,
+  "sic2024_fic_literatura": 0.222,
+  "multilinguagens_pnab2026": 0.517,
+  "virado_pnab2026_hiphop": 0.623,
+  "solo_do_outro_2026": 1.0,
+  "aprendiz_em_cena_2026": 1.0,
+  "bolsa_escola_frevo_2026": 0.5,
+  "fidr_2026": 0.558
+ }
+}

@@ -1,0 +1,1215 @@
+[
+ {
+  "id": "ana_foto_memoria",
+  "name": "Ana Cardoso",
+  "resume": "Fotógrafa que investiga memória, patrimônio e transformação urbana do Recife antigo através de séries fotográficas em preto e branco. 12 anos de atuação.",
+  "languages_main": [
+   "fotografia"
+  ],
+  "languages_secondary": [
+   "artes_visuais"
+  ],
+  "positioning": [
+   "documental",
+   "contemporanea"
+  ],
+  "niches": [],
+  "territory": "city_recife",
+  "concepts": {
+   "central": [
+    "memoria",
+    "patrimonio",
+    "cidade"
+   ],
+   "secondary": [
+    "identidade",
+    "trabalho"
+   ]
+  },
+  "trajectory": [
+   {
+    "type": "exposicao_individual",
+    "title": "Recife que resta",
+    "year": 2023,
+    "comprovacao": "verified",
+    "relevancia_area": "artes_visuais"
+   },
+   {
+    "type": "exposicao_coletiva",
+    "title": "Coletiva SESC Arts",
+    "year": 2022,
+    "comprovacao": "verified",
+    "relevancia_area": "artes_visuais"
+   },
+   {
+    "type": "residencia",
+    "title": "Residência artística Fotografia PE",
+    "year": 2021,
+    "comprovacao": "partial",
+    "relevancia_area": "artes_visuais"
+   },
+   {
+    "type": "publicacao",
+    "title": "Livro fotográfico autoeditado",
+    "year": 2024,
+    "comprovacao": "verified",
+    "relevancia_area": "artes_visuais"
+   },
+   {
+    "type": "estagio",
+    "title": "Estágio em produção cultural",
+    "year": 2019,
+    "comprovacao": "verified",
+    "relevancia_area": "producao"
+   }
+  ],
+  "years_active": 12,
+  "artworks": [
+   {
+    "title": "Série Bairro do Recife",
+    "language": "fotografia",
+    "techniques": [
+     "fotografia_analogica"
+    ],
+    "supports": [
+     "papel_fine_art"
+    ],
+    "materials": [],
+    "scale": "medio",
+    "concepts": [
+     "memoria",
+     "patrimonio"
+    ],
+    "availability": "obras_prontas"
+   },
+   {
+    "title": "Série Casarões",
+    "language": "fotografia",
+    "techniques": [
+     "fotografia_digital"
+    ],
+    "supports": [
+     "papel_fine_art"
+    ],
+    "materials": [],
+    "scale": "grande",
+    "concepts": [
+     "memoria",
+     "cidade"
+    ],
+    "availability": "obras_prontas"
+   },
+   {
+    "title": "Instalação fotográfica Pontes",
+    "language": "instalacao",
+    "techniques": [
+     "fotografia_digital",
+     "impressao_grande_formato"
+    ],
+    "supports": [
+     "papel",
+     "parede"
+    ],
+    "materials": [],
+    "scale": "grande",
+    "concepts": [
+     "cidade",
+     "pertencimento"
+    ],
+    "availability": "producao_parcial"
+   }
+  ],
+  "availability": {
+   "viagem": true,
+   "equipe": false,
+   "grande_instalacao": true,
+   "documentacao_completa": true,
+   "obra_nova": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.92,
+   "qualidade_evidencias": 0.85,
+   "atualidade": 0.9,
+   "confianca_extracao": 1.0
+  }
+ },
+ {
+  "id": "mestre_bituca",
+  "name": "Mestre Bituca",
+  "resume": "Mestre de cultura popular pernambucana, lidera grupo de maracatu de baque solto e trabalha com confecção de indumentárias e arte popular. 35 anos de atuação.",
+  "languages_main": [
+   "cultura_popular",
+   "musica"
+  ],
+  "languages_secondary": [
+   "artesanato"
+  ],
+  "positioning": [
+   "popular",
+   "comunitaria"
+  ],
+  "niches": [
+   "maracatu",
+   "junino",
+   "pifano"
+  ],
+  "territory": "metro_recife",
+  "concepts": {
+   "central": [
+    "cultura_popular",
+    "ancestralidade",
+    "territorio"
+   ],
+   "secondary": [
+    "religiosidade",
+    "pertencimento"
+   ]
+  },
+  "trajectory": [
+   {
+    "type": "reconhecimento",
+    "title": "Prêmio de cultura popular regional",
+    "year": 2020,
+    "comprovacao": "verified",
+    "relevancia_area": "cultura_popular"
+   },
+   {
+    "type": "circulacao",
+    "title": "Apresentações em festivais de cultura popular",
+    "year": 2022,
+    "comprovacao": "partial",
+    "relevancia_area": "cultura_popular"
+   },
+   {
+    "type": "docencia",
+    "title": "Oficinas de maracatu em escolas",
+    "year": 2023,
+    "comprovacao": "declared",
+    "relevancia_area": "cultura_popular"
+   }
+  ],
+  "years_active": 35,
+  "artworks": [
+   {
+    "title": "Grupo Maracatu Baque Solto",
+    "language": "cultura_popular",
+    "techniques": [
+     "toada",
+     "performance_cpopular"
+    ],
+    "supports": [
+     "palco"
+    ],
+    "materials": [],
+    "scale": "grande",
+    "concepts": [
+     "cultura_popular",
+     "ancestralidade"
+    ],
+    "availability": "obra_pronta"
+   },
+   {
+    "title": "Indumentárias artesanais",
+    "language": "artesanato",
+    "techniques": [
+     "bordado",
+     "costura_manual"
+    ],
+    "supports": [
+     "tecido"
+    ],
+    "materials": [
+     "tecido",
+     "paetês"
+    ],
+    "scale": "medio",
+    "concepts": [
+     "cultura_popular",
+     "trabalho"
+    ],
+    "availability": "obras_prontas"
+   }
+  ],
+  "availability": {
+   "viagem": true,
+   "equipe": true,
+   "grande_instalacao": false,
+   "documentacao_completa": false,
+   "obra_nova": false
+  },
+  "coverage": {
+   "campos_preenchidos": 0.6,
+   "qualidade_evidencias": 0.45,
+   "atualidade": 0.7,
+   "confianca_extracao": 0.85
+  }
+ },
+ {
+  "id": "dj_grafite",
+  "name": "DJ Grafitte",
+  "resume": "Grafiteiro e MC de bairro periférico do Recife, trabalha graffiti de intervenção urbana e música hip-hop com temática de periferia. 6 anos de atuação.",
+  "languages_main": [
+   "artes_urbanas",
+   "musica"
+  ],
+  "languages_secondary": [
+   "artes_visuais"
+  ],
+  "positioning": [
+   "periferica",
+   "urbana",
+   "politica"
+  ],
+  "niches": [
+   "hip_hop",
+   "cultura_periferica"
+  ],
+  "territory": "city_recife",
+  "concepts": {
+   "central": [
+    "territorio",
+    "politica",
+    "pertencimento"
+   ],
+   "secondary": [
+    "trabalho",
+    "violencia"
+   ]
+  },
+  "trajectory": [
+   {
+    "type": "exposicao_coletiva",
+    "title": "Coletiva graffiti periférico",
+    "year": 2024,
+    "comprovacao": "partial",
+    "relevancia_area": "artes_visuais"
+   },
+   {
+    "type": "circulacao",
+    "title": "Battle de MC regional",
+    "year": 2023,
+    "comprovacao": "declared",
+    "relevancia_area": "musica"
+   }
+  ],
+  "years_active": 6,
+  "artworks": [
+   {
+    "title": "Murais Afogados",
+    "language": "artes_urbanas",
+    "techniques": [
+     "graffiti",
+     "spray"
+    ],
+    "supports": [
+     "parede_externa"
+    ],
+    "materials": [
+     "tinta_spray"
+    ],
+    "scale": "monumental",
+    "concepts": [
+     "territorio",
+     "politica"
+    ],
+    "availability": "obra_inedita"
+   },
+   {
+    "title": "EP Periferia Viva",
+    "language": "musica",
+    "techniques": [
+     "rap",
+     "producao_musical"
+    ],
+    "supports": [
+     "meio_digital"
+    ],
+    "materials": [],
+    "scale": "pequeno",
+    "concepts": [
+     "territorio",
+     "trabalho"
+    ],
+    "availability": "obra_pronta"
+   }
+  ],
+  "availability": {
+   "viagem": true,
+   "equipe": false,
+   "grande_instalacao": true,
+   "documentacao_completa": false,
+   "obra_nova": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.35,
+   "atualidade": 0.85,
+   "confianca_extracao": 0.8
+  }
+ },
+ {
+  "id": "cia_duo_cenico",
+  "name": "Cia Duo Cênico",
+  "resume": "Companhia de teatro de grupo com pesquisa de linguagem cênica e processos de criação coletiva. 15 anos de atuação no Recife.",
+  "languages_main": [
+   "teatro"
+  ],
+  "languages_secondary": [
+   "performance"
+  ],
+  "positioning": [
+   "experimental",
+   "contemporanea",
+   "pesquisa_artistica"
+  ],
+  "niches": [],
+  "territory": "city_recife",
+  "concepts": {
+   "central": [
+    "corpo",
+    "politica",
+    "contemporaneidade"
+   ],
+   "secondary": [
+    "memoria",
+    "violencia"
+   ]
+  },
+  "trajectory": [
+   {
+    "type": "exposicao_individual",
+    "title": "Espetáculo A Turba (temporadas)",
+    "year": 2023,
+    "comprovacao": "verified",
+    "relevancia_area": "teatro"
+   },
+   {
+    "type": "pesquisa",
+    "title": "Laboratório de dramaturgia",
+    "year": 2022,
+    "comprovacao": "verified",
+    "relevancia_area": "teatro"
+   },
+   {
+    "type": "reconhecimento",
+    "title": "Prêmio estadual de teatro",
+    "year": 2021,
+    "comprovacao": "verified",
+    "relevancia_area": "teatro"
+   },
+   {
+    "type": "circulacao",
+    "title": "Festival Recife do Teatro Nacional",
+    "year": 2025,
+    "comprovacao": "verified",
+    "relevancia_area": "teatro"
+   }
+  ],
+  "years_active": 15,
+  "artworks": [
+   {
+    "title": "Espetáculo A Turba",
+    "language": "teatro",
+    "techniques": [
+     "criacao_coletiva",
+     "encenacao"
+    ],
+    "supports": [
+     "palco"
+    ],
+    "materials": [],
+    "scale": "medio",
+    "concepts": [
+     "politica",
+     "corpo"
+    ],
+    "availability": "obra_pronta"
+   },
+   {
+    "title": "Processo Laboratório Fala",
+    "language": "teatro",
+    "techniques": [
+     "pesquisa_cenica"
+    ],
+    "supports": [
+     "sala_processo"
+    ],
+    "materials": [],
+    "scale": "pequeno",
+    "concepts": [
+     "contemporaneidade",
+     "memoria"
+    ],
+    "availability": "obra_inedita"
+   }
+  ],
+  "availability": {
+   "viagem": true,
+   "equipe": true,
+   "grande_instalacao": false,
+   "documentacao_completa": true,
+   "obra_nova": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.88,
+   "qualidade_evidencias": 0.8,
+   "atualidade": 0.9,
+   "confianca_extracao": 1.0
+  }
+ },
+ {
+  "id": "lucia_faro",
+  "name": "Lúcia Faro",
+  "resume": "Bailarina e coreógrafa, pesquisa o diálogo entre frevo e dança contemporânea. 10 anos de atuação.",
+  "languages_main": [
+   "danca"
+  ],
+  "languages_secondary": [
+   "performance"
+  ],
+  "positioning": [
+   "contemporanea",
+   "experimental",
+   "popular"
+  ],
+  "niches": [
+   "frevo"
+  ],
+  "territory": "city_recife",
+  "concepts": {
+   "central": [
+    "corpo",
+    "identidade",
+    "cultura_popular"
+   ],
+   "secondary": [
+    "afetividade",
+    "cidade"
+   ]
+  },
+  "trajectory": [
+   {
+    "type": "exposicao_individual",
+    "title": "Solo Frevo Nu",
+    "year": 2023,
+    "comprovacao": "verified",
+    "relevancia_area": "danca"
+   },
+   {
+    "type": "residencia",
+    "title": "Residência coreográfica",
+    "year": 2022,
+    "comprovacao": "verified",
+    "relevancia_area": "danca"
+   },
+   {
+    "type": "circulacao",
+    "title": "Festival de Dança do Recife",
+    "year": 2024,
+    "comprovacao": "verified",
+    "relevancia_area": "danca"
+   }
+  ],
+  "years_active": 10,
+  "artworks": [
+   {
+    "title": "Solo Frevo Nu",
+    "language": "danca",
+    "techniques": [
+     "danca_contemporanea",
+     "frevo_passo"
+    ],
+    "supports": [
+     "palco"
+    ],
+    "materials": [],
+    "scale": "pequeno",
+    "concepts": [
+     "corpo",
+     "cultura_popular"
+    ],
+    "availability": "obra_pronta"
+   },
+   {
+    "title": "Videodança Umbigada",
+    "language": "videodanca",
+    "techniques": [
+     "filmagem",
+     "coreografia"
+    ],
+    "supports": [
+     "meio_digital"
+    ],
+    "materials": [],
+    "scale": "pequeno",
+    "concepts": [
+     "corpo",
+     "cidade"
+    ],
+    "availability": "obra_pronta"
+   }
+  ],
+  "availability": {
+   "viagem": true,
+   "equipe": false,
+   "grande_instalacao": false,
+   "documentacao_completa": true,
+   "obra_nova": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.85,
+   "qualidade_evidencias": 0.78,
+   "atualidade": 0.9,
+   "confianca_extracao": 1.0
+  }
+ },
+ {
+  "id": "theo_palhaco",
+  "name": "Théo Palhaço",
+  "resume": "Cirqueiro de rua, trabalha com malabarismo, palhaçaria e intervenções urbanas em coletivo. 8 anos de atuação.",
+  "languages_main": [
+   "circo"
+  ],
+  "languages_secondary": [
+   "performance"
+  ],
+  "positioning": [
+   "popular",
+   "comunitaria",
+   "experimental"
+  ],
+  "niches": [],
+  "territory": "city_recife",
+  "concepts": {
+   "central": [
+    "cidade",
+    "afetividade"
+   ],
+   "secondary": [
+    "contemporaneidade"
+   ]
+  },
+  "trajectory": [
+   {
+    "type": "circulacao",
+    "title": "Intervenções em praças",
+    "year": 2024,
+    "comprovacao": "partial",
+    "relevancia_area": "circo"
+   },
+   {
+    "type": "exposicao_coletiva",
+    "title": "Mostra circense coletiva",
+    "year": 2022,
+    "comprovacao": "declared",
+    "relevancia_area": "circo"
+   }
+  ],
+  "years_active": 8,
+  "artworks": [
+   {
+    "title": "Número Rua Viva",
+    "language": "circo",
+    "techniques": [
+     "palhacaria",
+     "malabares"
+    ],
+    "supports": [
+     "rua"
+    ],
+    "materials": [],
+    "scale": "pequeno",
+    "concepts": [
+     "cidade",
+     "afetividade"
+    ],
+    "availability": "obra_pronta"
+   }
+  ],
+  "availability": {
+   "viagem": true,
+   "equipe": true,
+   "grande_instalacao": false,
+   "documentacao_completa": false,
+   "obra_nova": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.5,
+   "qualidade_evidencias": 0.3,
+   "atualidade": 0.8,
+   "confianca_extracao": 0.8
+  }
+ },
+ {
+  "id": "rosa_cordel",
+  "name": "Rosa Cordel",
+  "resume": "Cordelista e xilogravurista, publica cordéis e realiza contação de histórias em escolas e feiras. 20 anos de atuação.",
+  "languages_main": [
+   "literatura"
+  ],
+  "languages_secondary": [
+   "artes_visuais",
+   "cultura_popular"
+  ],
+  "positioning": [
+   "popular",
+   "comunitaria"
+  ],
+  "niches": [
+   "cordel"
+  ],
+  "territory": "metro_recife",
+  "concepts": {
+   "central": [
+    "memoria",
+    "cultura_popular",
+    "afetividade"
+   ],
+   "secondary": [
+    "religiosidade",
+    "politica"
+   ]
+  },
+  "trajectory": [
+   {
+    "type": "publicacao",
+    "title": "10 folhetos publicados",
+    "year": 2024,
+    "comprovacao": "verified",
+    "relevancia_area": "literatura"
+   },
+   {
+    "type": "docencia",
+    "title": "Oficinas de cordel em escolas",
+    "year": 2023,
+    "comprovacao": "partial",
+    "relevancia_area": "literatura"
+   },
+   {
+    "type": "reconhecimento",
+    "title": "Prêmio municipal de literatura de cordel",
+    "year": 2019,
+    "comprovacao": "verified",
+    "relevancia_area": "literatura"
+   }
+  ],
+  "years_active": 20,
+  "artworks": [
+   {
+    "title": "Folheto História do Mangue",
+    "language": "literatura",
+    "techniques": [
+     "verso_cordel"
+    ],
+    "supports": [
+     "papel"
+    ],
+    "materials": [],
+    "scale": "pequeno",
+    "concepts": [
+     "memoria",
+     "cidade"
+    ],
+    "availability": "obra_pronta"
+   },
+   {
+    "title": "Xilogravuras Sertão Mar",
+    "language": "artes_visuais",
+    "techniques": [
+     "xilogravura"
+    ],
+    "supports": [
+     "papel"
+    ],
+    "materials": [
+     "madeira",
+     "tinta"
+    ],
+    "scale": "medio",
+    "concepts": [
+     "cultura_popular",
+     "afetividade"
+    ],
+    "availability": "obras_prontas"
+   }
+  ],
+  "availability": {
+   "viagem": true,
+   "equipe": false,
+   "grande_instalacao": false,
+   "documentacao_completa": true,
+   "obra_nova": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.8,
+   "qualidade_evidencias": 0.7,
+   "atualidade": 0.85,
+   "confianca_extracao": 0.95
+  }
+ },
+ {
+  "id": "vinicius_doc",
+  "name": "Vinícius Doc",
+  "resume": "Documentarista audiovisual, filma histórias e territórios das comunidades do Recife. 9 anos de atuação.",
+  "languages_main": [
+   "audiovisual"
+  ],
+  "languages_secondary": [],
+  "positioning": [
+   "documental",
+   "comunitaria",
+   "periferica"
+  ],
+  "niches": [
+   "cultura_periferica"
+  ],
+  "territory": "city_recife",
+  "concepts": {
+   "central": [
+    "territorio",
+    "memoria",
+    "trabalho"
+   ],
+   "secondary": [
+    "politica",
+    "pertencimento"
+   ]
+  },
+  "trajectory": [
+   {
+    "type": "circulacao",
+    "title": "Documentário em mostra regional",
+    "year": 2024,
+    "comprovacao": "verified",
+    "relevancia_area": "audiovisual"
+   },
+   {
+    "type": "reconhecimento",
+    "title": "Menção honrosa festival",
+    "year": 2021,
+    "comprovacao": "verified",
+    "relevancia_area": "audiovisual"
+   }
+  ],
+  "years_active": 9,
+  "artworks": [
+   {
+    "title": "Documentário Aterro",
+    "language": "audiovisual",
+    "techniques": [
+     "documentario"
+    ],
+    "supports": [
+     "meio_digital"
+    ],
+    "materials": [],
+    "scale": "medio",
+    "concepts": [
+     "territorio",
+     "trabalho"
+    ],
+    "availability": "obra_pronta"
+   },
+   {
+    "title": "Série web Comunidades",
+    "language": "audiovisual",
+    "techniques": [
+     "video"
+    ],
+    "supports": [
+     "meio_digital"
+    ],
+    "materials": [],
+    "scale": "medio",
+    "concepts": [
+     "memoria",
+     "pertencimento"
+    ],
+    "availability": "obra_pronta"
+   }
+  ],
+  "availability": {
+   "viagem": true,
+   "equipe": true,
+   "grande_instalacao": false,
+   "documentacao_completa": true,
+   "obra_nova": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.82,
+   "qualidade_evidencias": 0.72,
+   "atualidade": 0.88,
+   "confianca_extracao": 1.0
+  }
+ },
+ {
+  "id": "marina_multimidia",
+  "name": "Marina Multimídia",
+  "resume": "Artista visual multimídia, cria instalações com vídeo, projeção e sensores sobre relações entre cidade, tecnologia e memória. 11 anos de atuação.",
+  "languages_main": [
+   "instalacao",
+   "videoarte"
+  ],
+  "languages_secondary": [
+   "artes_visuais",
+   "artes_digitais"
+  ],
+  "positioning": [
+   "contemporanea",
+   "experimental",
+   "pesquisa_artistica"
+  ],
+  "niches": [],
+  "territory": "city_recife",
+  "concepts": {
+   "central": [
+    "tecnologia",
+    "cidade",
+    "memoria"
+   ],
+   "secondary": [
+    "corpo",
+    "contemporaneidade"
+   ]
+  },
+  "trajectory": [
+   {
+    "type": "exposicao_individual",
+    "title": "Instalação Sinal Aberto",
+    "year": 2023,
+    "comprovacao": "verified",
+    "relevancia_area": "artes_visuais"
+   },
+   {
+    "type": "residencia",
+    "title": "Residência de arte e tecnologia",
+    "year": 2022,
+    "comprovacao": "verified",
+    "relevancia_area": "artes_visuais"
+   },
+   {
+    "type": "reconhecimento",
+    "title": "Seleção em festival de arte digital",
+    "year": 2024,
+    "comprovacao": "verified",
+    "relevancia_area": "artes_visuais"
+   }
+  ],
+  "years_active": 11,
+  "artworks": [
+   {
+    "title": "Instalação Sinal Aberto",
+    "language": "instalacao",
+    "techniques": [
+     "projecao",
+     "videoarte",
+     "sensores"
+    ],
+    "supports": [
+     "ambiente_galeria"
+    ],
+    "materials": [
+     "equipamento_video",
+     "estrutura_metal"
+    ],
+    "scale": "grande",
+    "concepts": [
+     "tecnologia",
+     "cidade"
+    ],
+    "availability": "producao_parcial"
+   },
+   {
+    "title": "Videoarte Ruído Branco",
+    "language": "videoarte",
+    "techniques": [
+     "videoarte"
+    ],
+    "supports": [
+     "meio_digital",
+     "monitor"
+    ],
+    "materials": [],
+    "scale": "pequeno",
+    "concepts": [
+     "memoria",
+     "tecnologia"
+    ],
+    "availability": "obras_prontas"
+   }
+  ],
+  "availability": {
+   "viagem": true,
+   "equipe": true,
+   "grande_instalacao": true,
+   "documentacao_completa": true,
+   "obra_nova": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.9,
+   "qualidade_evidencias": 0.82,
+   "atualidade": 0.92,
+   "confianca_extracao": 1.0
+  }
+ },
+ {
+  "id": "seu_ze_artesao",
+  "name": "Seu Zé Artesão",
+  "resume": "Artesão mestre tradicional, trabalha cerâmica e madeira com motivos de cultura popular. 40 anos de atuação.",
+  "languages_main": [
+   "artesanato"
+  ],
+  "languages_secondary": [
+   "cultura_popular"
+  ],
+  "positioning": [
+   "popular"
+  ],
+  "niches": [
+   "artesanato_tradicional"
+  ],
+  "territory": "metro_recife",
+  "concepts": {
+   "central": [
+    "cultura_popular",
+    "ancestralidade"
+   ],
+   "secondary": [
+    "memoria",
+    "religiosidade"
+   ]
+  },
+  "trajectory": [
+   {
+    "type": "reconhecimento",
+    "title": "Mestre de cultura tradicional reconhecido",
+    "year": 2018,
+    "comprovacao": "verified",
+    "relevancia_area": "artesanato"
+   },
+   {
+    "type": "circulacao",
+    "title": "Feiras de artesanato",
+    "year": 2023,
+    "comprovacao": "declared",
+    "relevancia_area": "artesanato"
+   }
+  ],
+  "years_active": 40,
+  "artworks": [
+   {
+    "title": "Cerâmica Cavalos Marinhos",
+    "language": "artesanato",
+    "techniques": [
+     "ceramica_cozida"
+    ],
+    "supports": [
+     "argila"
+    ],
+    "materials": [
+     "argila",
+     "pintura_natural"
+    ],
+    "scale": "pequeno",
+    "concepts": [
+     "cultura_popular",
+     "ancestralidade"
+    ],
+    "availability": "obras_prontas"
+   },
+   {
+    "title": "Esculturas madeira Boi",
+    "language": "artesanato",
+    "techniques": [
+     "escultura_madeira"
+    ],
+    "supports": [
+     "madeira"
+    ],
+    "materials": [
+     "madeira"
+    ],
+    "scale": "medio",
+    "concepts": [
+     "cultura_popular",
+     "memoria"
+    ],
+    "availability": "obras_prontas"
+   }
+  ],
+  "availability": {
+   "viagem": false,
+   "equipe": false,
+   "grande_instalacao": false,
+   "documentacao_completa": false,
+   "obra_nova": false
+  },
+  "coverage": {
+   "campos_preenchidos": 0.5,
+   "qualidade_evidencias": 0.4,
+   "atualidade": 0.6,
+   "confianca_extracao": 0.75
+  }
+ },
+ {
+  "id": "paula_formadora",
+  "name": "Paula Formadora",
+  "resume": "Artista educadora, coordena oficinas de artes e mediação cultural em territórios escolares e comunitários. 14 anos de atuação.",
+  "languages_main": [
+   "artes_visuais"
+  ],
+  "languages_secondary": [
+   "teatro",
+   "literatura"
+  ],
+  "positioning": [
+   "arte_educacao",
+   "comunitaria"
+  ],
+  "niches": [],
+  "territory": "city_recife",
+  "concepts": {
+   "central": [
+    "pertencimento",
+    "identidade"
+   ],
+   "secondary": [
+    "cidade",
+    "afetividade"
+   ]
+  },
+  "trajectory": [
+   {
+    "type": "docencia",
+    "title": "Coordenação de oficinas culturais",
+    "year": 2024,
+    "comprovacao": "verified",
+    "relevancia_area": "arte_educacao"
+   },
+   {
+    "type": "producao_mediacao",
+    "title": "Mediação em museu",
+    "year": 2022,
+    "comprovacao": "verified",
+    "relevancia_area": "arte_educacao"
+   },
+   {
+    "type": "formacao",
+    "title": "Especialização em arte-educação",
+    "year": 2019,
+    "comprovacao": "verified",
+    "relevancia_area": "arte_educacao"
+   }
+  ],
+  "years_active": 14,
+  "artworks": [
+   {
+    "title": "Projeto Oficina Território",
+    "language": "artes_visuais",
+    "techniques": [
+     "oficina",
+     "mediação"
+    ],
+    "supports": [
+     "espaco_comunitario"
+    ],
+    "materials": [],
+    "scale": "medio",
+    "concepts": [
+     "pertencimento",
+     "identidade"
+    ],
+    "availability": "projeto_novo"
+   }
+  ],
+  "availability": {
+   "viagem": true,
+   "equipe": true,
+   "grande_instalacao": false,
+   "documentacao_completa": true,
+   "obra_nova": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.85,
+   "qualidade_evidencias": 0.75,
+   "atualidade": 0.9,
+   "confianca_extracao": 1.0
+  }
+ },
+ {
+  "id": "beto_iniciante",
+  "name": "Beto Iniciante",
+  "resume": "Ilustrador digital jovem, faz zines e ilustrações sobre cotidiano urbano. 2 anos de atuação.",
+  "languages_main": [
+   "artes_visuais"
+  ],
+  "languages_secondary": [
+   "literatura"
+  ],
+  "positioning": [
+   "contemporanea",
+   "urbana"
+  ],
+  "niches": [],
+  "territory": "city_recife",
+  "concepts": {
+   "central": [
+    "cidade",
+    "afetividade"
+   ],
+   "secondary": [
+    "identidade"
+   ]
+  },
+  "trajectory": [
+   {
+    "type": "exposicao_coletiva",
+    "title": "Mostra coletiva de zines",
+    "year": 2025,
+    "comprovacao": "declared",
+    "relevancia_area": "artes_visuais"
+   },
+   {
+    "type": "publicacao",
+    "title": "2 zines autoeditados",
+    "year": 2024,
+    "comprovacao": "declared",
+    "relevancia_area": "literatura"
+   }
+  ],
+  "years_active": 2,
+  "artworks": [
+   {
+    "title": "Zine Cidade Pausada",
+    "language": "artes_visuais",
+    "techniques": [
+     "ilustracao_digital"
+    ],
+    "supports": [
+     "papel",
+     "meio_digital"
+    ],
+    "materials": [],
+    "scale": "pequeno",
+    "concepts": [
+     "cidade",
+     "afetividade"
+    ],
+    "availability": "obras_prontas"
+   }
+  ],
+  "availability": {
+   "viagem": true,
+   "equipe": false,
+   "grande_instalacao": false,
+   "documentacao_completa": false,
+   "obra_nova": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.45,
+   "qualidade_evidencias": 0.25,
+   "atualidade": 0.95,
+   "confianca_extracao": 0.8
+  }
+ }
+]

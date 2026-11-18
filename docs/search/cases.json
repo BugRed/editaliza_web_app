@@ -1,0 +1,184 @@
+[
+ {
+  "artist": "ana_foto_memoria",
+  "edital": "malakoff_observa4",
+  "label": 3,
+  "eligibility": "ELIGIBLE",
+  "elig_fails": [],
+  "final_v0": 74.6625,
+  "factors": {
+   "L": 1.0,
+   "C": null,
+   "T": null,
+   "P": 1.0,
+   "H": 0.79,
+   "G": 1.0,
+   "V": 1.0,
+   "O": 0.665
+  }
+ },
+ {
+  "artist": "ana_foto_memoria",
+  "edital": "festival_danca_2026",
+  "label": 1,
+  "eligibility": "ELIGIBLE",
+  "elig_fails": [],
+  "final_v0": 49.105555555555554,
+  "factors": {
+   "L": 0.125,
+   "C": 0.467,
+   "T": null,
+   "P": 0.5,
+   "H": 0.79,
+   "G": 1.0,
+   "V": 1.0,
+   "O": 0.427
+  }
+ },
+ {
+  "artist": "ana_foto_memoria",
+  "edital": "spa_2026",
+  "label": 3,
+  "eligibility": "ELIGIBLE",
+  "elig_fails": [],
+  "final_v0": 64.25833333333334,
+  "factors": {
+   "L": 1.0,
+   "C": 0.5,
+   "T": null,
+   "P": 0.25,
+   "H": 0.79,
+   "G": 1.0,
+   "V": 1.0,
+   "O": 0.597
+  }
+ },
+ {
+  "artist": "mestre_bituca",
+  "edital": "fic_2025",
+  "label": 0,
+  "eligibility": "INELIGIBLE",
+  "elig_fails": [
+   "territory"
+  ],
+  "final_v0": 59.26363636363635,
+  "factors": {
+   "L": 0.25,
+   "C": null,
+   "T": null,
+   "P": null,
+   "H": 0.617,
+   "G": 0.2,
+   "V": 0.75,
+   "O": 0.695
+  }
+ },
+ {
+  "artist": "mestre_bituca",
+  "edital": "sao_joao_2026",
+  "label": 3,
+  "eligibility": "ELIGIBLE",
+  "elig_fails": [],
+  "final_v0": 74.5,
+  "factors": {
+   "L": 0.667,
+   "C": 0.867,
+   "T": null,
+   "P": 1.0,
+   "H": 0.617,
+   "G": 1.0,
+   "V": 0.75,
+   "O": 0.677
+  }
+ },
+ {
+  "artist": "marina_multimidia",
+  "edital": "malakoff_observa4",
+  "label": 3,
+  "eligibility": "ELIGIBLE",
+  "elig_fails": [],
+  "final_v0": 74.28583333333333,
+  "factors": {
+   "L": 1.0,
+   "C": null,
+   "T": null,
+   "P": 1.0,
+   "H": 0.947,
+   "G": 1.0,
+   "V": 1.0,
+   "O": 0.649
+  }
+ },
+ {
+  "artist": "dj_grafite",
+  "edital": "virado_periferia_2026",
+  "label": 3,
+  "eligibility": "ELIGIBLE",
+  "elig_fails": [],
+  "final_v0": 69.95714285714286,
+  "factors": {
+   "L": 0.286,
+   "C": 0.9,
+   "T": null,
+   "P": 0.5,
+   "H": 0.305,
+   "G": 1.0,
+   "V": 0.5,
+   "O": 0.828
+  }
+ },
+ {
+  "artist": "seu_ze_artesao",
+  "edital": "joel_datz",
+  "label": 3,
+  "eligibility": "ELIGIBLE",
+  "elig_fails": [],
+  "final_v0": 76.9675925925926,
+  "factors": {
+   "L": 0.5,
+   "C": 0.533,
+   "T": null,
+   "P": 0.5,
+   "H": 0.675,
+   "G": 1.0,
+   "V": 0.75,
+   "O": 0.84
+  }
+ },
+ {
+  "artist": "cia_duo_cenico",
+  "edital": "aprendiz_em_cena_2026",
+  "label": 3,
+  "eligibility": "ELIGIBLE",
+  "elig_fails": [],
+  "final_v0": 86.91666666666666,
+  "factors": {
+   "L": 1.0,
+   "C": 0.9,
+   "T": null,
+   "P": 1.0,
+   "H": 1.0,
+   "G": 1.0,
+   "V": 1.0,
+   "O": 0.765
+  }
+ },
+ {
+  "artist": "beto_iniciante",
+  "edital": "malakoff_observa4",
+  "label": 1,
+  "eligibility": "PENDING",
+  "elig_fails": [],
+  "final_v0": 80.23333333333333,
+  "factors": {
+   "L": 1.0,
+   "C": null,
+   "T": null,
+   "P": 1.0,
+   "H": 0.124,
+   "G": 1.0,
+   "V": 0.75,
+   "O": 0.805
+  }
+ }
+]

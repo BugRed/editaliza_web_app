@@ -1,0 +1,1098 @@
+[
+ {
+  "id": "malakoff_observa4",
+  "title": "OBSERVA 4 — Premiação para ocupação de pautas expositivas (Torre Malakoff)",
+  "organizer": "SECULT-PE / FUNDARPE — Torre Malakoff",
+  "city": "Recife",
+  "state": "PE",
+  "opportunity_type": "premiacao_ocupacao_expositiva",
+  "data_provenance": "documented (MD seção 8 + mensagem do usuário; conferir PDF oficial)",
+  "eligibility": [
+   {
+    "type": "age_min",
+    "value": 18,
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "territory",
+    "value": "state_pe",
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "min_activity_years",
+    "value": 1,
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "person_type",
+    "value": [
+     "pf",
+     "pj",
+     "coletivo"
+    ],
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "docs",
+    "value": [
+     "portfolio",
+     "proposal",
+     "trajectory_docs"
+    ],
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "artes_visuais"
+     ],
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "techniques": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "supports": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "concepts": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "positioning": [
+    {
+     "value": [
+      "contemporanea"
+     ],
+     "strength": "preference"
+    }
+   ],
+   "niches": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ]
+  },
+  "proposal_requirements": {
+   "unpublished_preferred": true,
+   "exhibition_formats": [
+    "individual_exhibition",
+    "collective_exhibition"
+   ],
+   "space": "galpao expositivo historico, 2 pavimentos",
+   "value_proposal_fit": "preference"
+  },
+  "criteria_documented": [
+   {
+    "name": "trajetoria_artistica",
+    "max": 4
+   },
+   {
+    "name": "qualidade_conceitual",
+    "max": 4
+   },
+   {
+    "name": "viabilidade_tecnica_espaco",
+    "max": 4
+   },
+   {
+    "name": "originalidade_ineditismo",
+    "max": 4
+   },
+   {
+    "name": "clareza_apresentacao",
+    "max": 4
+   },
+   {
+    "name": "diversidade_acesso",
+    "max": 4
+   },
+   {
+    "name": "acessibilidade",
+    "max": 2
+   }
+  ],
+  "criteria_total_points": 26,
+  "awards": {
+   "individual": 15000,
+   "coletivo": 15000,
+   "selected": 5
+  },
+  "status": "closed",
+  "description_text": "Premiação para ocupação de pautas expositivas do Observatório Cultural Torre Malakoff. Aceita linguagens, suportes, técnicas e processos contemporâneos em artes visuais. Avalia trajetória artística, qualidade artística e consistência conceitual, viabilidade técnica e adequação ao espaço, originalidade e ineditismo, clareza e organização da apresentação, diversidade, inclusão e ampliação de acesso, e acessibilidade ao público."
+ },
+ {
+  "id": "spa_2026",
+  "title": "SPA — Semana de Artes Visuais do Recife 2026",
+  "organizer": "Prefeitura do Recife / Fundação de Cultura",
+  "city": "Recife",
+  "state": "PE",
+  "opportunity_type": "programacao_festival",
+  "data_provenance": "documented em parte (existência e inscrições 16/03–06/04/2026 confirmadas publicamente); requisitos representativos",
+  "eligibility": [
+   {
+    "type": "age_min",
+    "value": 18,
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "docs",
+    "value": [
+     "portfolio",
+     "proposal"
+    ],
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "artes_visuais"
+     ],
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "techniques": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "supports": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "concepts": [
+    {
+     "value": [
+      "contemporaneidade",
+      "cidade",
+      "corpo",
+      "identidade"
+     ],
+     "strength": "preference"
+    }
+   ],
+   "positioning": [
+    {
+     "value": [
+      "contemporanea",
+      "experimental",
+      "periferica",
+      "urbana"
+     ],
+     "strength": "preference"
+    }
+   ],
+   "niches": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ]
+  },
+  "proposal_requirements": {
+   "unpublished_preferred": true,
+   "exhibition_formats": [
+    "individual_exhibition",
+    "exposicao_coletiva",
+    "atividade_aberta"
+   ],
+   "value_proposal_fit": "preference"
+  },
+  "criteria_documented": null,
+  "status": "closed",
+  "description_text": "Semana de Artes Visuais do Recife: produção contemporânea em artes visuais com diversidade de técnicas, suportes, corpos, gênero e raça, estimulando atividades em diferentes RPAs do Recife. Exposições, ocupações, ações educativas e trabalhos experimentais."
+ },
+ {
+  "id": "festival_danca_2026",
+  "title": "29º Festival Internacional de Dança do Recife 2026",
+  "organizer": "Prefeitura do Recife / Fundação de Cultura",
+  "city": "Recife",
+  "state": "PE",
+  "opportunity_type": "programacao_festival",
+  "data_provenance": "documented em parte (existência e inscrições 28/05–22/06/2026 confirmadas publicamente); requisitos representativos",
+  "eligibility": [
+   {
+    "type": "age_min",
+    "value": 18,
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "territory",
+    "value": "state_pe",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "danca",
+      "performance"
+     ],
+     "strength": "explicit_mandatory",
+     "role": "core"
+    },
+    {
+     "value": [
+      "videodanca",
+      "fotografia"
+     ],
+     "strength": "explicit_mandatory",
+     "role": "support"
+    }
+   ],
+   "techniques": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "supports": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "concepts": [
+    {
+     "value": [
+      "corpo",
+      "contemporaneidade",
+      "cidade"
+     ],
+     "strength": "preference"
+    }
+   ],
+   "positioning": [
+    {
+     "value": [
+      "contemporanea",
+      "experimental"
+     ],
+     "strength": "preference"
+    }
+   ],
+   "niches": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ]
+  },
+  "proposal_requirements": {
+   "unpublished_preferred": false,
+   "exhibition_formats": [
+    "espetaculo_palco",
+    "intervencao_urbana",
+    "videodanca_mostra"
+   ],
+   "value_proposal_fit": "undeclared"
+  },
+  "criteria_documented": null,
+  "status": "closed",
+  "description_text": "Festival Internacional de Dança do Recife: espetáculos de dança, videodança, fotografia de dança e performance, com programação em palcos e espaços urbanos do Recife."
+ },
+ {
+  "id": "virado_periferia_2026",
+  "title": "Recife Virado na Periferia — PNAB 2026",
+  "organizer": "Prefeitura do Recife / PNAB",
+  "city": "Recife",
+  "state": "PE",
+  "opportunity_type": "fomento_projetos",
+  "data_provenance": "documented em parte (edital e erratas públicos no portal Cultura Recife); requisitos representativos",
+  "eligibility": [
+   {
+    "type": "age_min",
+    "value": 18,
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "self_declared",
+    "value": "agente_periferia",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "musica",
+      "danca",
+      "teatro",
+      "literatura",
+      "audiovisual",
+      "artes_urbanas",
+      "cultura_popular"
+     ],
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "techniques": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "supports": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "concepts": [
+    {
+     "value": [
+      "territorio",
+      "politica",
+      "trabalho",
+      "pertencimento"
+     ],
+     "strength": "preference"
+    }
+   ],
+   "positioning": [
+    {
+     "value": [
+      "periferica",
+      "comunitaria",
+      "urbana",
+      "popular"
+     ],
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "niches": [
+    {
+     "value": [
+      "hip_hop",
+      "cultura_periferica"
+     ],
+     "strength": "explicit_mandatory"
+    }
+   ]
+  },
+  "proposal_requirements": {
+   "unpublished_preferred": false,
+   "exhibition_formats": [
+    "projeto_cultural_comunidade"
+   ],
+   "value_proposal_fit": "preference"
+  },
+  "criteria_documented": null,
+  "status": "closed",
+  "description_text": "Fomento a projetos culturais de hip-hop, dança, literatura, audiovisual e artes urbanas da periferia do Recife. Prioriza agentes culturais que atuam nas comunidades e RPAs, com projetos voltados ao território e ao público periférico."
+ },
+ {
+  "id": "letra_e_voz_2026",
+  "title": "A Letra e a Voz 2026",
+  "organizer": "Prefeitura do Recife / Fundação de Cultura",
+  "city": "Recife",
+  "state": "PE",
+  "opportunity_type": "programacao_festival",
+  "data_provenance": "reconstructed (item listado no levantamento de 30 editais; requisitos representativos)",
+  "eligibility": [
+   {
+    "type": "age_min",
+    "value": 18,
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "territory",
+    "value": "state_pe",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "literatura",
+      "contacao_historia"
+     ],
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "techniques": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "supports": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "concepts": [
+    {
+     "value": [
+      "memoria",
+      "cidade",
+      "afetividade"
+     ],
+     "strength": "preference"
+    }
+   ],
+   "positioning": [
+    {
+     "value": [
+      "popular",
+      "contemporanea"
+     ],
+     "strength": "preference"
+    }
+   ],
+   "niches": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ]
+  },
+  "proposal_requirements": {
+   "unpublished_preferred": false,
+   "exhibition_formats": [
+    "palestra",
+    "saraus",
+    "contacao",
+    "debate"
+   ],
+   "value_proposal_fit": "undeclared"
+  },
+  "criteria_documented": null,
+  "status": "closed",
+  "description_text": "Festival literário com debates, saraus, contação de histórias e apresentações de escritores e mediadores de leitura."
+ },
+ {
+  "id": "aprendiz_em_cena_2026",
+  "title": "Fomento de Pesquisa em Teatro — O Aprendiz em Cena 2026",
+  "organizer": "Prefeitura do Recife / Fundação de Cultura",
+  "city": "Recife",
+  "state": "PE",
+  "opportunity_type": "fomento_pesquisa",
+  "data_provenance": "reconstructed (item listado no levantamento de 30 editais; requisitos representativos)",
+  "eligibility": [
+   {
+    "type": "age_min",
+    "value": 18,
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "min_activity_years",
+    "value": 3,
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "teatro"
+     ],
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "techniques": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "supports": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "concepts": [
+    {
+     "value": [
+      "corpo",
+      "politica",
+      "memoria",
+      "contemporaneidade"
+     ],
+     "strength": "preference"
+    }
+   ],
+   "positioning": [
+    {
+     "value": [
+      "experimental",
+      "contemporanea",
+      "pesquisa_artistica"
+     ],
+     "strength": "preference"
+    }
+   ],
+   "niches": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ]
+  },
+  "proposal_requirements": {
+   "unpublished_preferred": true,
+   "exhibition_formats": [
+    "processo_pesquisa_criacao"
+   ],
+   "value_proposal_fit": "preference"
+  },
+  "criteria_documented": null,
+  "status": "closed",
+  "description_text": "Fomento a processos de pesquisa e criação teatral, com foco em desenvolvimento de trabalho cênico inédito e consistência conceitual da pesquisa."
+ },
+ {
+  "id": "solo_do_outro_2026",
+  "title": "Fomento de Pesquisa em Dança — O Solo do Outro 2026",
+  "organizer": "Prefeitura do Recife / Fundação de Cultura",
+  "city": "Recife",
+  "state": "PE",
+  "opportunity_type": "fomento_pesquisa",
+  "data_provenance": "reconstructed (item listado no levantamento de 30 editais; requisitos representativos)",
+  "eligibility": [
+   {
+    "type": "age_min",
+    "value": 18,
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "min_activity_years",
+    "value": 3,
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "danca"
+     ],
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "techniques": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "supports": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "concepts": [
+    {
+     "value": [
+      "corpo",
+      "identidade",
+      "afetividade"
+     ],
+     "strength": "preference"
+    }
+   ],
+   "positioning": [
+    {
+     "value": [
+      "experimental",
+      "contemporanea",
+      "pesquisa_artistica"
+     ],
+     "strength": "preference"
+    }
+   ],
+   "niches": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ]
+  },
+  "proposal_requirements": {
+   "unpublished_preferred": true,
+   "exhibition_formats": [
+    "processo_pesquisa_criacao"
+   ],
+   "value_proposal_fit": "preference"
+  },
+  "criteria_documented": null,
+  "status": "closed",
+  "description_text": "Fomento a pesquisa em dança com foco em trabalho solo e diálogo com a obra de outros criadores, valorizando pesquisa de movimento e consistência conceitual."
+ },
+ {
+  "id": "mostra_circo_2026",
+  "title": "15ª Mostra de Circo do Recife 2026",
+  "organizer": "Prefeitura do Recife / Fundação de Cultura",
+  "city": "Recife",
+  "state": "PE",
+  "opportunity_type": "programacao_festival",
+  "data_provenance": "reconstructed (item listado no levantamento de 30 editais; requisitos representativos)",
+  "eligibility": [
+   {
+    "type": "age_min",
+    "value": 18,
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "territory",
+    "value": "state_pe",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "circo",
+      "performance"
+     ],
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "techniques": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "supports": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "concepts": [
+    {
+     "value": [
+      "cidade",
+      "afetividade",
+      "contemporaneidade"
+     ],
+     "strength": "preference"
+    }
+   ],
+   "positioning": [
+    {
+     "value": [
+      "contemporanea",
+      "popular",
+      "experimental"
+     ],
+     "strength": "preference"
+    }
+   ],
+   "niches": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ]
+  },
+  "proposal_requirements": {
+   "unpublished_preferred": false,
+   "exhibition_formats": [
+    "espetaculo_palco",
+    "intervencao_urbana"
+   ],
+   "value_proposal_fit": "undeclared"
+  },
+  "criteria_documented": null,
+  "status": "closed",
+  "description_text": "Mostra de espetáculos e intervenções circenses, com palco e lona em espaços públicos, valorizando linguagens contemporâneas e tradicionais do circo."
+ },
+ {
+  "id": "sao_joao_2026",
+  "title": "Edital São João 2026",
+  "organizer": "Prefeitura do Recife / Fundação de Cultura",
+  "city": "Recife",
+  "state": "PE",
+  "opportunity_type": "programacao_festival",
+  "data_provenance": "reconstructed (item listado no levantamento de 30 editais; requisitos representativos)",
+  "eligibility": [
+   {
+    "type": "age_min",
+    "value": 18,
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "territory",
+    "value": "state_pe",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "cultura_popular",
+      "musica",
+      "danca"
+     ],
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "techniques": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "supports": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "concepts": [
+    {
+     "value": [
+      "cultura_popular",
+      "pertencimento",
+      "territorio"
+     ],
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "positioning": [
+    {
+     "value": [
+      "popular"
+     ],
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "niches": [
+    {
+     "value": [
+      "junino",
+      "pifano",
+      "maracatu",
+      "coco",
+      "quadrilha"
+     ],
+     "strength": "explicit_mandatory"
+    }
+   ]
+  },
+  "proposal_requirements": {
+   "unpublished_preferred": false,
+   "exhibition_formats": [
+    "palco_festival"
+   ],
+   "value_proposal_fit": "undeclared"
+  },
+  "criteria_documented": null,
+  "status": "closed",
+  "description_text": "Programação junina com grupos e artistas de cultura popular pernambucana: quadrilhas, forró, maracatu, coco, pífano e manifestações juninas."
+ },
+ {
+  "id": "fic_2025",
+  "title": "Fundo de Incentivo à Cultura — FIC 2025",
+  "organizer": "Prefeitura do Recife",
+  "city": "Recife",
+  "state": "PE",
+  "opportunity_type": "financiamento_projetos",
+  "data_provenance": "documented em parte (mecanismo público conhecido); requisitos representativos",
+  "eligibility": [
+   {
+    "type": "age_min",
+    "value": 18,
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "person_type",
+    "value": [
+     "pf",
+     "pj"
+    ],
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "docs",
+    "value": [
+     "proposal",
+     "orcamento",
+     "cronograma"
+    ],
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "artes_visuais",
+      "musica",
+      "teatro",
+      "danca",
+      "literatura",
+      "audiovisual",
+      "circo",
+      "cultura_popular"
+     ],
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "techniques": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "supports": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "concepts": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "positioning": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "niches": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ]
+  },
+  "proposal_requirements": {
+   "unpublished_preferred": true,
+   "exhibition_formats": [
+    "projeto_cultural"
+   ],
+   "value_proposal_fit": "preference"
+  },
+  "criteria_documented": null,
+  "status": "closed",
+  "description_text": "Fundo municipal de incentivo à produção cultural independente em múltiplas linguagens, avaliando mérito, viabilidade de execução, adequação orçamentária e impacto cultural no Recife."
+ },
+ {
+  "id": "joel_datz",
+  "title": "Edital Joel Datz de Aquisição de Obras e Apresentações",
+  "organizer": "Prefeitura do Recife",
+  "city": "Recife",
+  "state": "PE",
+  "opportunity_type": "aquisicao_obras",
+  "data_provenance": "reconstructed (item listado no levantamento de 30 editais; requisitos representativos)",
+  "eligibility": [
+   {
+    "type": "age_min",
+    "value": 18,
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "territory",
+    "value": "state_pe",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "artes_visuais",
+      "artesanato"
+     ],
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "techniques": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "supports": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "concepts": [
+    {
+     "value": [
+      "cultura_popular",
+      "memoria",
+      "territorio"
+     ],
+     "strength": "preference"
+    }
+   ],
+   "positioning": [
+    {
+     "value": [
+      "popular",
+      "contemporanea"
+     ],
+     "strength": "preference"
+    }
+   ],
+   "niches": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ]
+  },
+  "proposal_requirements": {
+   "unpublished_preferred": false,
+   "exhibition_formats": [
+    "aquisicao_obra",
+    "apresentacao"
+   ],
+   "value_proposal_fit": "undeclared"
+  },
+  "criteria_documented": null,
+  "status": "closed",
+  "description_text": "Aquisição de obras de artes visuais e artesanato e apresentações artísticas para acervo e programação pública municipal."
+ },
+ {
+  "id": "formacao_tecnica_2026",
+  "title": "Recife de Formação Técnica — PNAB 2026",
+  "organizer": "Prefeitura do Recife / PNAB",
+  "city": "Recife",
+  "state": "PE",
+  "opportunity_type": "formacao",
+  "data_provenance": "reconstructed (item listado no levantamento de 30 editais; requisitos representativos)",
+  "eligibility": [
+   {
+    "type": "age_min",
+    "value": 18,
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "min_activity_years",
+    "value": 2,
+    "strength": "explicit_mandatory"
+   },
+   {
+    "type": "docs",
+    "value": [
+     "plano_pedagogico",
+     "proposal"
+    ],
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "artes_visuais",
+      "musica",
+      "teatro",
+      "danca",
+      "literatura",
+      "audiovisual",
+      "circo",
+      "cultura_popular"
+     ],
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "techniques": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "supports": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "concepts": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ],
+   "positioning": [
+    {
+     "value": [
+      "arte_educacao",
+      "comunitaria",
+      "popular"
+     ],
+     "strength": "preference"
+    }
+   ],
+   "niches": [
+    {
+     "value": [],
+     "strength": "undeclared"
+    }
+   ]
+  },
+  "proposal_requirements": {
+   "unpublished_preferred": false,
+   "exhibition_formats": [
+    "curso_oficina"
+   ],
+   "value_proposal_fit": "preference"
+  },
+  "criteria_documented": null,
+  "status": "closed",
+  "description_text": "Qualificação e formação cultural: cursos e oficinas ministrados por agentes culturais com experiência em mediação, ensino de arte e formação de comunidades."
+ }
+]

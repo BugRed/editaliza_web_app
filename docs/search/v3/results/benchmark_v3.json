@@ -1,0 +1,702 @@
+{
+ "configs": {
+  "v0_especificacao_literal": {
+   "mrr": 1.0,
+   "hit1": 1.0,
+   "hit3": 1.0,
+   "mean_rank": 1.0,
+   "rows": [
+    {
+     "edital": "sic2024_fic_musica",
+     "rank": 1,
+     "n": 6,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "sic2024_fic_teatro",
+     "rank": 1,
+     "n": 6,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "sic2024_fic_danca",
+     "rank": 1,
+     "n": 7,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "sic2024_fic_literatura",
+     "rank": 1,
+     "n": 5,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "multilinguagens_pnab2026",
+     "rank": 1,
+     "n": 623,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "virado_pnab2026_hiphop",
+     "rank": 1,
+     "n": 21,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "solo_do_outro_2026",
+     "rank": 1,
+     "n": 3,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "aprendiz_em_cena_2026",
+     "rank": 1,
+     "n": 5,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "bolsa_escola_frevo_2026",
+     "rank": 1,
+     "n": 11,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "fidr_2026",
+     "rank": 1,
+     "n": 54,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    }
+   ],
+   "auc_medio": 0.509951690821256,
+   "ndcg5_medio": 0.961653275912214,
+   "n_editais_auc": 7,
+   "dentro_linguagem": {
+    "sic2024_fic_musica": {
+     "n_same_lang_comps": 4,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "sic2024_fic_teatro": {
+     "n_same_lang_comps": 4,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "sic2024_fic_danca": {
+     "n_same_lang_comps": 5,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "sic2024_fic_literatura": {
+     "n_same_lang_comps": 3,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "multilinguagens_pnab2026": {
+     "n_same_lang_comps": 612,
+     "share_beaten": 0.004901960784313725,
+     "anchors_above": true
+    },
+    "solo_do_outro_2026": {
+     "n_same_lang_comps": 2,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "aprendiz_em_cena_2026": {
+     "n_same_lang_comps": 4,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "bolsa_escola_frevo_2026": {
+     "n_same_lang_comps": 9,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "fidr_2026": {
+     "n_same_lang_comps": 52,
+     "share_beaten": 1.0,
+     "anchors_above": true
+    }
+   },
+   "dl_completo": 9,
+   "dl_editais": 9
+  },
+  "v2_teto": {
+   "mrr": 1.0,
+   "hit1": 1.0,
+   "hit3": 1.0,
+   "mean_rank": 1.0,
+   "rows": [
+    {
+     "edital": "sic2024_fic_musica",
+     "rank": 1,
+     "n": 6,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "sic2024_fic_teatro",
+     "rank": 1,
+     "n": 6,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "sic2024_fic_danca",
+     "rank": 1,
+     "n": 7,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "sic2024_fic_literatura",
+     "rank": 1,
+     "n": 5,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "multilinguagens_pnab2026",
+     "rank": 1,
+     "n": 623,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "virado_pnab2026_hiphop",
+     "rank": 1,
+     "n": 21,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "solo_do_outro_2026",
+     "rank": 1,
+     "n": 3,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "aprendiz_em_cena_2026",
+     "rank": 1,
+     "n": 5,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "bolsa_escola_frevo_2026",
+     "rank": 1,
+     "n": 11,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "fidr_2026",
+     "rank": 1,
+     "n": 54,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    }
+   ],
+   "auc_medio": 0.509951690821256,
+   "ndcg5_medio": 0.961653275912214,
+   "n_editais_auc": 7,
+   "dentro_linguagem": {
+    "sic2024_fic_musica": {
+     "n_same_lang_comps": 4,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "sic2024_fic_teatro": {
+     "n_same_lang_comps": 4,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "sic2024_fic_danca": {
+     "n_same_lang_comps": 5,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "sic2024_fic_literatura": {
+     "n_same_lang_comps": 3,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "multilinguagens_pnab2026": {
+     "n_same_lang_comps": 612,
+     "share_beaten": 0.004901960784313725,
+     "anchors_above": true
+    },
+    "solo_do_outro_2026": {
+     "n_same_lang_comps": 2,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "aprendiz_em_cena_2026": {
+     "n_same_lang_comps": 4,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "bolsa_escola_frevo_2026": {
+     "n_same_lang_comps": 9,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "fidr_2026": {
+     "n_same_lang_comps": 52,
+     "share_beaten": 1.0,
+     "anchors_above": true
+    }
+   },
+   "dl_completo": 9,
+   "dl_editais": 9
+  },
+  "v4_neutros_teto_papeis": {
+   "mrr": 1.0,
+   "hit1": 1.0,
+   "hit3": 1.0,
+   "mean_rank": 1.0,
+   "rows": [
+    {
+     "edital": "sic2024_fic_musica",
+     "rank": 1,
+     "n": 6,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "sic2024_fic_teatro",
+     "rank": 1,
+     "n": 6,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "sic2024_fic_danca",
+     "rank": 1,
+     "n": 7,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "sic2024_fic_literatura",
+     "rank": 1,
+     "n": 5,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "multilinguagens_pnab2026",
+     "rank": 1,
+     "n": 623,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "virado_pnab2026_hiphop",
+     "rank": 1,
+     "n": 21,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "solo_do_outro_2026",
+     "rank": 1,
+     "n": 3,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "aprendiz_em_cena_2026",
+     "rank": 1,
+     "n": 5,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "bolsa_escola_frevo_2026",
+     "rank": 1,
+     "n": 11,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "fidr_2026",
+     "rank": 1,
+     "n": 54,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    }
+   ],
+   "auc_medio": 0.5198765028513312,
+   "ndcg5_medio": 0.9617971124509254,
+   "n_editais_auc": 7,
+   "dentro_linguagem": {
+    "sic2024_fic_musica": {
+     "n_same_lang_comps": 4,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "sic2024_fic_teatro": {
+     "n_same_lang_comps": 4,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "sic2024_fic_danca": {
+     "n_same_lang_comps": 5,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "sic2024_fic_literatura": {
+     "n_same_lang_comps": 3,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "multilinguagens_pnab2026": {
+     "n_same_lang_comps": 612,
+     "share_beaten": 0.004901960784313725,
+     "anchors_above": true
+    },
+    "solo_do_outro_2026": {
+     "n_same_lang_comps": 2,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "aprendiz_em_cena_2026": {
+     "n_same_lang_comps": 4,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "bolsa_escola_frevo_2026": {
+     "n_same_lang_comps": 9,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "fidr_2026": {
+     "n_same_lang_comps": 52,
+     "share_beaten": 1.0,
+     "anchors_above": true
+    }
+   },
+   "dl_completo": 9,
+   "dl_editais": 9
+  },
+  "v4_pesos_iguais": {
+   "mrr": 1.0,
+   "hit1": 1.0,
+   "hit3": 1.0,
+   "mean_rank": 1.0,
+   "rows": [
+    {
+     "edital": "sic2024_fic_musica",
+     "rank": 1,
+     "n": 6,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "sic2024_fic_teatro",
+     "rank": 1,
+     "n": 6,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "sic2024_fic_danca",
+     "rank": 1,
+     "n": 7,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "sic2024_fic_literatura",
+     "rank": 1,
+     "n": 5,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "multilinguagens_pnab2026",
+     "rank": 1,
+     "n": 623,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "virado_pnab2026_hiphop",
+     "rank": 1,
+     "n": 21,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "solo_do_outro_2026",
+     "rank": 1,
+     "n": 3,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "aprendiz_em_cena_2026",
+     "rank": 1,
+     "n": 5,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "bolsa_escola_frevo_2026",
+     "rank": 1,
+     "n": 11,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    },
+    {
+     "edital": "fidr_2026",
+     "rank": 1,
+     "n": 54,
+     "rr": 1.0,
+     "hit1": true,
+     "hit3": true
+    }
+   ],
+   "auc_medio": 0.5198765028513312,
+   "ndcg5_medio": 0.9617971124509254,
+   "n_editais_auc": 7,
+   "dentro_linguagem": {
+    "sic2024_fic_musica": {
+     "n_same_lang_comps": 4,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "sic2024_fic_teatro": {
+     "n_same_lang_comps": 4,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "sic2024_fic_danca": {
+     "n_same_lang_comps": 5,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "sic2024_fic_literatura": {
+     "n_same_lang_comps": 3,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "multilinguagens_pnab2026": {
+     "n_same_lang_comps": 612,
+     "share_beaten": 0.004901960784313725,
+     "anchors_above": true
+    },
+    "solo_do_outro_2026": {
+     "n_same_lang_comps": 2,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "aprendiz_em_cena_2026": {
+     "n_same_lang_comps": 4,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "bolsa_escola_frevo_2026": {
+     "n_same_lang_comps": 9,
+     "share_beaten": 0.0,
+     "anchors_above": true
+    },
+    "fidr_2026": {
+     "n_same_lang_comps": 52,
+     "share_beaten": 1.0,
+     "anchors_above": true
+    }
+   },
+   "dl_completo": 9,
+   "dl_editais": 9
+  }
+ },
+ "bootstrap_ci_v4": {
+  "mrr": [
+   1.0,
+   1.0
+  ],
+  "hit1": [
+   1.0,
+   1.0
+  ],
+  "hit3": [
+   1.0,
+   1.0
+  ]
+ },
+ "alpha_sweep": {
+  "0.0": {
+   "mrr": 1.0,
+   "hit1": 1.0,
+   "hit3": 1.0,
+   "n": 2
+  },
+  "0.4": {
+   "mrr": 1.0,
+   "hit1": 1.0,
+   "hit3": 1.0,
+   "n": 2
+  },
+  "0.6": {
+   "mrr": 1.0,
+   "hit1": 1.0,
+   "hit3": 1.0,
+   "n": 2
+  },
+  "0.8": {
+   "mrr": 1.0,
+   "hit1": 1.0,
+   "hit3": 1.0,
+   "n": 2
+  },
+  "1.0": {
+   "mrr": 1.0,
+   "hit1": 1.0,
+   "hit3": 1.0,
+   "n": 2
+  }
+ },
+ "separacao_aprovados": {
+  "sic2024_fic_audiovisual": {
+   "rank_ancora": 1,
+   "n_avaliados": 10
+  },
+  "sic2024_fic_musica": {
+   "rank_ancora": 1,
+   "n_avaliados": 14
+  },
+  "sic2024_fic_cultura_popular": {
+   "rank_ancora": 1,
+   "n_avaliados": 16
+  },
+  "sic2024_fic_teatro": {
+   "rank_ancora": 1,
+   "n_avaliados": 10
+  },
+  "sic2024_fic_artes_visuais": {
+   "rank_ancora": 1,
+   "n_avaliados": 8
+  },
+  "sic2024_fic_circo": {
+   "rank_ancora": 1,
+   "n_avaliados": 9
+  },
+  "sic2024_fic_danca": {
+   "rank_ancora": 1,
+   "n_avaliados": 7
+  },
+  "sic2024_fic_artesanato": {
+   "rank_ancora": 1,
+   "n_avaliados": 10
+  },
+  "sic2024_fic_literatura": {
+   "rank_ancora": 1,
+   "n_avaliados": 9
+  },
+  "sic2024_fic_fotografia": {
+   "rank_ancora": 1,
+   "n_avaliados": 7
+  },
+  "sic2024_fic_moda": {
+   "rank_ancora": 1,
+   "n_avaliados": 7
+  },
+  "sic2024_mic_audiovisual": {
+   "rank_ancora": 5,
+   "n_avaliados": 6
+  },
+  "sic2024_mic_teatro": {
+   "rank_ancora": 1,
+   "n_avaliados": 4
+  },
+  "sic2023_fic_integradas": {
+   "rank_ancora": 1,
+   "n_avaliados": 6
+  },
+  "sic2023_fic_fotografia": {
+   "rank_ancora": 1,
+   "n_avaliados": 11
+  },
+  "multilinguagens_pnab2026": {
+   "rank_ancora": 1,
+   "n_avaliados": 151
+  },
+  "virado_pnab2026_hiphop": {
+   "rank_ancora": 1,
+   "n_avaliados": 27
+  },
+  "bolsa_escola_frevo_2026": {
+   "rank_ancora": 1,
+   "n_avaliados": 10
+  }
+ },
+ "alpha_editais": [
+  "sic2024_fic_cultura_popular",
+  "multilinguagens_pnab2026",
+  "fidr_2026"
+ ],
+ "discordancia_melhor_media": [],
+ "multi_ids": [
+  "icaro_galvao",
+  "priscila_pereira",
+  "roberto_carlos_sousa"
+ ],
+ "multi2_ids": [
+  "maracatu_porto_rico",
+  "luciana_borre",
+  "maria_emilia_gomes",
+  "marcos_castro_paz",
+  "nacao_encanto_pina"
+ ]
+}

@@ -1,0 +1,1300 @@
+[
+ {
+  "id": "sic2024_fic_audiovisual",
+  "title": "FIC/SIC 2024 — Audiovisual",
+  "municipio": "Recife",
+  "ano": 2024,
+  "description_text": "Seleção de projetos culturais de produção independente na linguagem audiovisual (Fundo de Incentivo à Cultura).",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "cinema",
+      "audiovisual"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/Aprovados%20na%203a%20fase%20-%20AUDIOVISUAL.pdf"
+  ]
+ },
+ {
+  "id": "sic2024_fic_musica",
+  "title": "FIC/SIC 2024 — Música",
+  "municipio": "Recife",
+  "ano": 2024,
+  "description_text": "Seleção de projetos culturais de produção independente na linguagem música (FIC).",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "musica"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+  ]
+ },
+ {
+  "id": "sic2024_fic_cultura_popular",
+  "title": "FIC/SIC 2024 — Cultura Popular",
+  "municipio": "Recife",
+  "ano": 2024,
+  "description_text": "Seleção de projetos de cultura popular (FIC).",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "cultura_popular"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+  ]
+ },
+ {
+  "id": "sic2024_fic_teatro",
+  "title": "FIC/SIC 2024 — Teatro",
+  "municipio": "Recife",
+  "ano": 2024,
+  "description_text": "Seleção de projetos de teatro (FIC).",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "teatro"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+  ]
+ },
+ {
+  "id": "sic2024_fic_artes_visuais",
+  "title": "FIC/SIC 2024 — Artes Visuais",
+  "municipio": "Recife",
+  "ano": 2024,
+  "description_text": "Seleção de projetos de artes visuais (FIC).",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "artes_visuais"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+  ]
+ },
+ {
+  "id": "sic2024_fic_circo",
+  "title": "FIC/SIC 2024 — Circo",
+  "municipio": "Recife",
+  "ano": 2024,
+  "description_text": "Seleção de projetos de circo (FIC).",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "circo"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+  ]
+ },
+ {
+  "id": "sic2024_fic_danca",
+  "title": "FIC/SIC 2024 — Dança",
+  "municipio": "Recife",
+  "ano": 2024,
+  "description_text": "Seleção de projetos de dança (FIC).",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "danca"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+  ]
+ },
+ {
+  "id": "sic2024_fic_artesanato",
+  "title": "FIC/SIC 2024 — Artesanato",
+  "municipio": "Recife",
+  "ano": 2024,
+  "description_text": "Seleção de projetos de artesanato (FIC).",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "artesanato"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+  ]
+ },
+ {
+  "id": "sic2024_fic_literatura",
+  "title": "FIC/SIC 2024 — Literatura",
+  "municipio": "Recife",
+  "ano": 2024,
+  "description_text": "Seleção de projetos de literatura (FIC).",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "literatura"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+  ]
+ },
+ {
+  "id": "sic2024_fic_fotografia",
+  "title": "FIC/SIC 2024 — Fotografia",
+  "municipio": "Recife",
+  "ano": 2024,
+  "description_text": "Seleção de projetos de fotografia (FIC).",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "fotografia"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+  ]
+ },
+ {
+  "id": "sic2024_fic_moda",
+  "title": "FIC/SIC 2024 — Design e Moda",
+  "municipio": "Recife",
+  "ano": 2024,
+  "description_text": "Seleção de projetos de design e moda (FIC).",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "moda"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+  ]
+ },
+ {
+  "id": "sic2024_fic_patrimonio",
+  "title": "FIC/SIC 2024 — Patrimônio Cultural e Museologia",
+  "municipio": "Recife",
+  "ano": 2024,
+  "description_text": "Seleção de projetos de patrimônio cultural e museologia (FIC).",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "patrimonio_cultural"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+  ]
+ },
+ {
+  "id": "sic2024_mic_audiovisual",
+  "title": "MIC/SIC 2024 — Audiovisual",
+  "municipio": "Recife",
+  "ano": 2024,
+  "description_text": "Seleção de projetos audiovisuais (Mecenato de Incentivo à Cultura).",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "cinema",
+      "audiovisual"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/Aprovados%20na%203a%20fase%20-%20AUDIOVISUAL.pdf"
+  ]
+ },
+ {
+  "id": "sic2024_mic_teatro",
+  "title": "MIC/SIC 2024 — Teatro",
+  "municipio": "Recife",
+  "ano": 2024,
+  "description_text": "Seleção de projetos de teatro (Mecenato de Incentivo à Cultura).",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "teatro"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+  ]
+ },
+ {
+  "id": "sic2023_fic_integradas",
+  "title": "FIC/SIC 2023 — Artes Integradas e Arte e Tecnologia",
+  "municipio": "Recife",
+  "ano": 2023,
+  "description_text": "Seleção de projetos de artes culturais integradas e arte e tecnologia (FIC 2023).",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "multilinguagens",
+      "arte_digital"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_44_edital_sic_2023_fic_mic/PROJETOS%20APROVADOS%20%28APOS%203%C2%AAFASE%29%20-%20RESULTADO%20FINAL%20-%20SIC%202023%20%28FIC%20E%20MIC%29.pdf"
+  ]
+ },
+ {
+  "id": "sic2023_fic_fotografia",
+  "title": "FIC/SIC 2023 — Fotografia",
+  "municipio": "Recife",
+  "ano": 2023,
+  "description_text": "Seleção de projetos de fotografia (FIC 2023).",
+  "opportunity_type": "financiamento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "fotografia"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_44_edital_sic_2023_fic_mic/PROJETOS%20APROVADOS%20%28APOS%203%C2%AAFASE%29%20-%20RESULTADO%20FINAL%20-%20SIC%202023%20%28FIC%20E%20MIC%29.pdf"
+  ]
+ },
+ {
+  "id": "multilinguagens_pnab2026",
+  "title": "Multilinguagens Recife Criativo — PNAB 2026",
+  "municipio": "Recife",
+  "ano": 2026,
+  "description_text": "Fomento multilinguagens da PNAB (Recife Criativo, Lei Paulo Gustavo), com faixas de valor e reserva de aprovação por linguagem.",
+  "opportunity_type": "fomento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "cinema",
+      "musica",
+      "teatro",
+      "danca",
+      "circo",
+      "cultura_popular",
+      "artes_visuais",
+      "literatura",
+      "multilinguagens",
+      "moda",
+      "fotografia",
+      "artesanato",
+      "patrimonio_cultural",
+      "gastronomia"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "linguagem_reserva",
+    "valor": "reserva_por_linguagem_e_cotas",
+    "strength": "explicit_mandatory",
+    "trecho": "\"g) Publicação resultado preliminar dos projetos selecionados (considerando a análise artística, as cotas e a reserva de aprovação por linguagem)\"",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/edital_home_19_cultura_viva_pnab_2026/ERRATA%202%20-%20EDITAIS%20PNAB%202026.pdf",
+    "status": "verificado"
+   },
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   },
+   {
+    "fator": "escala",
+    "valor": {
+     "trecho": "\"FAIXA 1: ATÉ R$ 20.000,00\" (coluna do resultado oficial)",
+     "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_13_multilinguagem_recife_criativo_pnab_2026/Multilinguagem_Recife_Criativo_PNAB_Resultado_FINAL.pdf"
+    },
+    "strength": "explicit_mandatory",
+    "trecho": "\"FAIXA 1: ATÉ R$ 20.000,00\" (coluna do resultado oficial)",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_13_multilinguagem_recife_criativo_pnab_2026/Multilinguagem_Recife_Criativo_PNAB_Resultado_FINAL.pdf",
+    "status": "verificado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_13_multilinguagem_recife_criativo_pnab_2026/Multilinguagem_Recife_Criativo_PNAB_Resultado_FINAL.pdf",
+   "https://www.culturarecife.com.br/public/documentos/edital_home_19_cultura_viva_pnab_2026/ERRATA%202%20-%20EDITAIS%20PNAB%202026.pdf"
+  ]
+ },
+ {
+  "id": "virado_pnab2026_hiphop",
+  "title": "Recife Virado na Periferia — PNAB 2026 (Cultura Hip-Hop)",
+  "municipio": "Recife",
+  "ano": 2026,
+  "description_text": "Fomento da PNAB para cultura hip-hop na periferia do Recife, com cotas e distribuição por grupo/linguagem.",
+  "opportunity_type": "fomento_projetos",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "musica",
+      "artes_visuais",
+      "danca"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "territorio",
+    "valor": "periferia_recife",
+    "strength": "preference",
+    "trecho": "\"O resultado aqui apresentado leva em consideração, além das notas de cada projeto, a distribuição dos recursos por Grupo/Li[nguagem]\"; autodeclarações publicadas no resultado",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_11_recife_virado_na_periferia_pnab_2026/Virado_Periferia_HipHop_PNAB_Resultado_Preliminar.pdf",
+    "status": "verificado"
+   },
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   },
+   {
+    "fator": "escala",
+    "valor": {
+     "trecho": "\"FAIXA 1: ATÉ R$ 20.000,00\" (coluna do resultado oficial)",
+     "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_11_recife_virado_na_periferia_pnab_2026/Virado_Periferia_HipHop_PNAB_Resultado_Preliminar.pdf"
+    },
+    "strength": "explicit_mandatory",
+    "trecho": "\"FAIXA 1: ATÉ R$ 20.000,00\" (coluna do resultado oficial)",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_11_recife_virado_na_periferia_pnab_2026/Virado_Periferia_HipHop_PNAB_Resultado_Preliminar.pdf",
+    "status": "verificado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_11_recife_virado_na_periferia_pnab_2026/Virado_Periferia_HipHop_PNAB_Resultado_Preliminar.pdf",
+   "https://www.culturarecife.com.br/public/documentos/edital_home_19_cultura_viva_pnab_2026/ERRATA%202%20-%20EDITAIS%20PNAB%202026.pdf"
+  ]
+ },
+ {
+  "id": "solo_do_outro_2026",
+  "title": "O Solo do Outro 2026 — Fomento de Pesquisa em Dança",
+  "municipio": "Recife",
+  "ano": 2026,
+  "description_text": "Fomento de pesquisa em dança a partir do diálogo com poetas e autoras negras de Pernambuco.",
+  "opportunity_type": "fomento_pesquisa",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "danca"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "conceito",
+    "valor": "dialogo_obras_autoras_negras_pe",
+    "strength": "explicit_mandatory",
+    "trecho": "\"escolher outra autora, desde que a obra escolhida estabeleça um diálogo direto com produções de poetas e autoras negras do estado de Pernambuco, conforme descrito no item 1.2, sob pena de inabilitação\"",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/edital_home_6_edital_de_fomento_de_pesquisa_em_danca_o_solo_do_outro_2026/Edital%20de%20Fomento%20de%20Pesquisa%20em%20Dan%C3%A7a%20O%20SOLO%20DO%20OUTRO%202026.pdf",
+    "status": "verificado"
+   },
+   {
+    "fator": "tecnica",
+    "valor": "traducao_corporal",
+    "strength": "preference",
+    "trecho": "\"O projeto poderá se constituir a partir da aproximação, da reinterpretação e da tradução corporal dos textos, poéticas e contextos dessas autoras\"",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/edital_home_6_edital_de_fomento_de_pesquisa_em_danca_o_solo_do_outro_2026/Edital%20de%20Fomento%20de%20Pesquisa%20em%20Dan%C3%A7a%20O%20SOLO%20DO%20OUTRO%202026.pdf",
+    "status": "verificado"
+   },
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_2_resultado_edital_de_fomento_o_solo_do_outro_2026/Resultado%20Preliminar%20dos%20Projetos%20Habilitados%20do%20Edital%20O%20Solo%20do%20Outro%202026.pdf",
+   "https://www.culturarecife.com.br/public/documentos/edital_home_6_edital_de_fomento_de_pesquisa_em_danca_o_solo_do_outro_2026/Edital%20de%20Fomento%20de%20Pesquisa%20em%20Dan%C3%A7a%20O%20SOLO%20DO%20OUTRO%202026.pdf"
+  ]
+ },
+ {
+  "id": "aprendiz_em_cena_2026",
+  "title": "O Aprendiz em Cena 2026 — Fomento de Pesquisa em Teatro",
+  "municipio": "Recife",
+  "ano": 2026,
+  "description_text": "Fomento de pesquisa em teatro (comissão de análise artística por edital de credenciamento de pareceristas).",
+  "opportunity_type": "fomento_pesquisa",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "teatro"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_3_resultados_edital_de_fomento_o_aprendiz_em_cena_2026/Resultado%20Preliminar%20dos%20Projetos%20Habilitados%20do%20Edital%20O%20Aprendiz%20em%20Cena%202026.pdf"
+  ]
+ },
+ {
+  "id": "bolsa_escola_frevo_2026",
+  "title": "Bolsa de Formação — Escola de Frevo 2026 (30 anos)",
+  "municipio": "Recife",
+  "ano": 2026,
+  "description_text": "Bolsa de formação ligada ao projeto de pesquisa-criação em dança 'Frevo como Metodologia Contemporânea'.",
+  "opportunity_type": "formacao",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "danca"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "tecnica",
+    "valor": "frevo_passo",
+    "strength": "explicit_mandatory",
+    "trecho": "\"integrar o projeto de pesquisa-criação em dança 'Frevo como Metodologia Contemporânea', que deverá compor a programação do 29º Festival Internacional\"",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/edital_home_5_edital_interno_de_bolsas_escola_de_frevo/EDITAL%20INTERNO%20DE%20BOLSAS%20%E2%80%93%20ESCOLA%20DE%20FREVO.pdf",
+    "status": "verificado"
+   },
+   {
+    "fator": "conceito",
+    "valor": [
+     "tradio_contemporaneidade"
+    ],
+    "strength": "preference",
+    "trecho": "\"articulando tradição e contemporaneidade, e promovendo o frevo como linguagem\"",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/edital_home_5_edital_interno_de_bolsas_escola_de_frevo/EDITAL%20INTERNO%20DE%20BOLSAS%20%E2%80%93%20ESCOLA%20DE%20FREVO.pdf",
+    "status": "verificado"
+   },
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_8_resultados_edital_interno_bolsas_escola_de_frevo/Resultado%20Final%20dos%20Habilitados%20e%20Selecionados%20do%20Edital%20Interno%20de%20Bolsas%20-%20Escola%20de%20Frevo.pdf",
+   "https://www.culturarecife.com.br/public/documentos/edital_home_5_edital_interno_de_bolsas_escola_de_frevo/EDITAL%20INTERNO%20DE%20BOLSAS%20%E2%80%93%20ESCOLA%20DE%20FREVO.pdf"
+  ]
+ },
+ {
+  "id": "observa3_malakoff_2025",
+  "title": "3º Edital OBSERVA — Torre Malakoff 2025 (ocupação expositiva)",
+  "municipio": "Recife",
+  "ano": 2025,
+  "description_text": "Ocupação expositiva do Observatório Cultural Torre Malakoff (Fundarpe) com artes visuais.",
+  "opportunity_type": "premiacao_ocupacao_expositiva",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "artes_visuais"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "formato",
+    "valor": "exposicao",
+    "strength": "explicit_mandatory",
+    "trecho": "\"Com entrada gratuita, a mostra ocupará o térreo e o primeiro andar do equipamento cultural gerido pela Fundação do Patrimônio Histórico e Artístico de Pernambuco (Fundarpe)\"",
+    "fonte": "https://www.tvguararapes.com.br/entretenimento/2025/06/17/exposicao-observa-3-ocupa-torre-malakoff-com-obras-de-cinco-artistas-visuais.html",
+    "status": "verificado"
+   },
+   {
+    "fator": "conceito",
+    "valor": [
+     "identidade",
+     "territorio",
+     "afetividade"
+    ],
+    "strength": "preference",
+    "trecho": "\"No primeiro andar, quatro exposições distintas dialogam com temas como identidade, território e afetividade\"",
+    "fonte": "https://www.tvguararapes.com.br/entretenimento/2025/06/17/exposicao-observa-3-ocupa-torre-malakoff-com-obras-de-cinco-artistas-visuais.html",
+    "status": "verificado"
+   },
+   {
+    "fator": "territorio",
+    "valor": "state_pe",
+    "strength": "preference",
+    "trecho": "\"A iniciativa busca valorizar a produção artística contemporânea em Pernambuco\"",
+    "fonte": "https://www.tvguararapes.com.br/entretenimento/2025/06/17/exposicao-observa-3-ocupa-torre-malakoff-com-obras-de-cinco-artistas-visuais.html",
+    "status": "verificado"
+   },
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.tvguararapes.com.br/entretenimento/2025/06/17/exposicao-observa-3-ocupa-torre-malakoff-com-obras-de-cinco-artistas-visuais.html"
+  ]
+ },
+ {
+  "id": "fidr_2026",
+  "title": "29º Festival Internacional de Dança do Recife — Convocatória 2026",
+  "municipio": "Recife",
+  "ano": 2026,
+  "description_text": "Convocatória do 29º FIDR: espetáculos, mostras e oficinas relacionadas à linguagem da dança.",
+  "opportunity_type": "programacao_festival",
+  "eligibility": [
+   {
+    "type": "territory",
+    "value": "city_recife",
+    "strength": "explicit_mandatory"
+   }
+  ],
+  "artistic_requirements": {
+   "languages": [
+    {
+     "value": [
+      "danca"
+     ],
+     "role": "core",
+     "strength": "explicit_mandatory"
+    }
+   ],
+   "concepts": [],
+   "positioning": [],
+   "niches": [],
+   "techniques": [],
+   "supports": []
+  },
+  "proposal_requirements": {
+   "exhibition_formats": [],
+   "unpublished_preferred": false
+  },
+  "requisitos_explicitos": [
+   {
+    "fator": "formato",
+    "valor": "palco_e_exposicao_danca",
+    "strength": "explicit_mandatory",
+    "trecho": "\"inéditos e não inéditos, exposições relacionadas com a linguagem da dança (fotografia...\"; \"formato tradicional de palco\"",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/edital_home_12_edital_festival_internacional_de_danca_do_recife_2026/Convocatoria%2029%20Festival%20Internacional%20de%20Danca%20do%20Recife-2026.pdf",
+    "status": "verificado"
+   },
+   {
+    "fator": "conceito",
+    "valor": [
+     "conceito_artistico_obra"
+    ],
+    "strength": "preference",
+    "trecho": "\"a) Conceito artístico: será avaliado o conceito artístico da obra inscrita, no que se propõe dentro do seu gênero, observando as técnicas, dramaturgia e a criatividade\"",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/edital_home_12_edital_festival_internacional_de_danca_do_recife_2026/Convocatoria%2029%20Festival%20Internacional%20de%20Danca%20do%20Recife-2026.pdf",
+    "status": "verificado"
+   },
+   {
+    "fator": "tecnica",
+    "valor": [
+     "consistencia_tecnica_genero"
+    ],
+    "strength": "preference",
+    "trecho": "\"b) Procedimento artístico: será analisada a consistência técnica da obra, considerando o domínio das habilidades específicas relacionadas ao gênero\"",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/edital_home_12_edital_festival_internacional_de_danca_do_recife_2026/Convocatoria%2029%20Festival%20Internacional%20de%20Danca%20do%20Recife-2026.pdf",
+    "status": "verificado"
+   },
+   {
+    "fator": "posicionamento",
+    "valor": [
+     "diversidade_corpos_genero_raca_territorio"
+    ],
+    "strength": "preference",
+    "trecho": "\"c) Aspectos Socioculturais: ... diversidade de corpos, gênero, raça e territorialidade\" (+2 pontos por autodeclaração, item 8.2)",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/edital_home_12_edital_festival_internacional_de_danca_do_recife_2026/Convocatoria%2029%20Festival%20Internacional%20de%20Danca%20do%20Recife-2026.pdf",
+    "status": "verificado"
+   },
+   {
+    "fator": "trajetoria",
+    "valor": [
+     "historico_profissional"
+    ],
+    "strength": "preference",
+    "trecho": "\"d) Histórico profissional do Grupo ou Coletivo ou Artista: ... histórico e biografia, materiais publicados em mídias digitais\"",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/edital_home_12_edital_festival_internacional_de_danca_do_recife_2026/Convocatoria%2029%20Festival%20Internacional%20de%20Danca%20do%20Recife-2026.pdf",
+    "status": "verificado"
+   },
+   {
+    "fator": "territorio",
+    "valor": "residencia_municipio",
+    "strength": "explicit_mandatory",
+    "trecho": "\"possuam residência ou sede no Município do Recife, com comprovação\"",
+    "fonte": "Edital FIC/SIC 2025 (texto capturado; exigência do Sistema de Incentivo à Cultura aplicada às edições municipais)",
+    "status": "derivado"
+   }
+  ],
+  "resultado_status": "verificado",
+  "fontes": [
+   "https://www.culturarecife.com.br/public/documentos/resultado_home_7_resultados_da_29a_festival_internacional_de_danca_do_recife_2026/Resultado%20Final%20da%20Convocat%C3%B3ria%20do%2029o%20Festival%20Internacional%20de%20Dan%C3%A7a%20do%20Recife%20-2026.pdf",
+   "https://www.culturarecife.com.br/public/documentos/edital_home_12_edital_festival_internacional_de_danca_do_recife_2026/Convocatoria%2029%20Festival%20Internacional%20de%20Danca%20do%20Recife-2026.pdf"
+  ]
+ }
+]

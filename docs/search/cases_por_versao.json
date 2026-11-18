@@ -1,0 +1,318 @@
+[
+ {
+  "artist": "ana_foto_memoria",
+  "edital": "malakoff_observa4",
+  "label": 3,
+  "scores": {
+   "v0": 74.7,
+   "v2": 74.7,
+   "v3": 74.7,
+   "v4": 70.5
+  },
+  "eligibility": "ELIGIBLE",
+  "fails": [],
+  "unknowns": [],
+  "factors": {
+   "L": 1.0,
+   "C": null,
+   "T": null,
+   "P": 1.0,
+   "H": 0.79,
+   "G": 1.0,
+   "V": 1.0,
+   "O": 0.665
+  },
+  "confidence": 91.2,
+  "coverage": 0.75
+ },
+ {
+  "artist": "ana_foto_memoria",
+  "edital": "festival_danca_2026",
+  "label": 1,
+  "scores": {
+   "v0": 67.0,
+   "v2": 67.0,
+   "v3": 45.0,
+   "v4": 45.0
+  },
+  "eligibility": "ELIGIBLE",
+  "fails": [],
+  "unknowns": [],
+  "factors": {
+   "L": 0.25,
+   "C": 0.467,
+   "T": null,
+   "P": 0.5,
+   "H": 0.79,
+   "G": 1.0,
+   "V": 1.0,
+   "O": 0.761
+  },
+  "confidence": 91.2,
+  "coverage": 0.88
+ },
+ {
+  "artist": "ana_foto_memoria",
+  "edital": "spa_2026",
+  "label": 3,
+  "scores": {
+   "v0": 64.3,
+   "v2": 64.3,
+   "v3": 64.3,
+   "v4": 63.2
+  },
+  "eligibility": "ELIGIBLE",
+  "fails": [],
+  "unknowns": [],
+  "factors": {
+   "L": 1.0,
+   "C": 0.5,
+   "T": null,
+   "P": 0.25,
+   "H": 0.79,
+   "G": 1.0,
+   "V": 1.0,
+   "O": 0.597
+  },
+  "confidence": 91.2,
+  "coverage": 0.88
+ },
+ {
+  "artist": "beto_iniciante",
+  "edital": "malakoff_observa4",
+  "label": 1,
+  "scores": {
+   "v0": 80.2,
+   "v2": 80.2,
+   "v3": 80.2,
+   "v4": 77.1
+  },
+  "eligibility": "PENDING",
+  "fails": [],
+  "unknowns": [
+   "docs"
+  ],
+  "factors": {
+   "L": 1.0,
+   "C": null,
+   "T": null,
+   "P": 1.0,
+   "H": 0.124,
+   "G": 1.0,
+   "V": 0.75,
+   "O": 0.805
+  },
+  "confidence": 53.5,
+  "coverage": 0.75
+ },
+ {
+  "artist": "mestre_bituca",
+  "edital": "malakoff_observa4",
+  "label": 1,
+  "scores": {
+   "v0": 40.7,
+   "v2": 40.7,
+   "v3": 40.7,
+   "v4": 42.6
+  },
+  "eligibility": "PENDING",
+  "fails": [],
+  "unknowns": [
+   "docs"
+  ],
+  "factors": {
+   "L": 0.0,
+   "C": null,
+   "T": null,
+   "P": 0.0,
+   "H": 0.395,
+   "G": 0.8,
+   "V": 0.75,
+   "O": 0.455
+  },
+  "confidence": 62.0,
+  "coverage": 0.75
+ },
+ {
+  "artist": "mestre_bituca",
+  "edital": "sao_joao_2026",
+  "label": 3,
+  "scores": {
+   "v0": 74.5,
+   "v2": 74.5,
+   "v3": 74.5,
+   "v4": 72.8
+  },
+  "eligibility": "ELIGIBLE",
+  "fails": [],
+  "unknowns": [],
+  "factors": {
+   "L": 0.667,
+   "C": 0.867,
+   "T": null,
+   "P": 1.0,
+   "H": 0.617,
+   "G": 1.0,
+   "V": 0.75,
+   "O": 0.677
+  },
+  "confidence": 62.0,
+  "coverage": 0.88
+ },
+ {
+  "artist": "marina_multimidia",
+  "edital": "malakoff_observa4",
+  "label": 3,
+  "scores": {
+   "v0": 74.3,
+   "v2": 74.3,
+   "v3": 74.3,
+   "v4": 69.9
+  },
+  "eligibility": "ELIGIBLE",
+  "fails": [],
+  "unknowns": [],
+  "factors": {
+   "L": 1.0,
+   "C": null,
+   "T": null,
+   "P": 1.0,
+   "H": 0.947,
+   "G": 1.0,
+   "V": 1.0,
+   "O": 0.649
+  },
+  "confidence": 89.9,
+  "coverage": 0.75
+ },
+ {
+  "artist": "dj_grafite",
+  "edital": "virado_periferia_2026",
+  "label": 3,
+  "scores": {
+   "v0": 70.0,
+   "v2": 70.0,
+   "v3": 70.0,
+   "v4": 69.3
+  },
+  "eligibility": "ELIGIBLE",
+  "fails": [],
+  "unknowns": [],
+  "factors": {
+   "L": 0.286,
+   "C": 0.9,
+   "T": null,
+   "P": 0.5,
+   "H": 0.305,
+   "G": 1.0,
+   "V": 0.5,
+   "O": 0.828
+  },
+  "confidence": 58.5,
+  "coverage": 0.88
+ },
+ {
+  "artist": "seu_ze_artesao",
+  "edital": "joel_datz",
+  "label": 3,
+  "scores": {
+   "v0": 77.0,
+   "v2": 77.0,
+   "v3": 77.0,
+   "v4": 76.5
+  },
+  "eligibility": "ELIGIBLE",
+  "fails": [],
+  "unknowns": [],
+  "factors": {
+   "L": 0.5,
+   "C": 0.533,
+   "T": null,
+   "P": 0.5,
+   "H": 0.675,
+   "G": 1.0,
+   "V": 0.75,
+   "O": 0.84
+  },
+  "confidence": 53.5,
+  "coverage": 0.88
+ },
+ {
+  "artist": "cia_duo_cenico",
+  "edital": "aprendiz_em_cena_2026",
+  "label": 3,
+  "scores": {
+   "v0": 86.9,
+   "v2": 86.9,
+   "v3": 86.9,
+   "v4": 84.3
+  },
+  "eligibility": "ELIGIBLE",
+  "fails": [],
+  "unknowns": [],
+  "factors": {
+   "L": 1.0,
+   "C": 0.9,
+   "T": null,
+   "P": 1.0,
+   "H": 1.0,
+   "G": 1.0,
+   "V": 1.0,
+   "O": 0.765
+  },
+  "confidence": 88.3,
+  "coverage": 0.88
+ },
+ {
+  "artist": "rosa_cordel",
+  "edital": "letra_e_voz_2026",
+  "label": 3,
+  "scores": {
+   "v0": 75.9,
+   "v2": 75.9,
+   "v3": 75.9,
+   "v4": 74.4
+  },
+  "eligibility": "ELIGIBLE",
+  "fails": [],
+  "unknowns": [],
+  "factors": {
+   "L": 0.8,
+   "C": 0.667,
+   "T": null,
+   "P": 0.5,
+   "H": 0.833,
+   "G": 1.0,
+   "V": 1.0,
+   "O": 0.77
+  },
+  "confidence": 80.7,
+  "coverage": 0.88
+ },
+ {
+  "artist": "theo_palhaco",
+  "edital": "mostra_circo_2026",
+  "label": 3,
+  "scores": {
+   "v0": 84.3,
+   "v2": 84.3,
+   "v3": 84.3,
+   "v4": 82.5
+  },
+  "eligibility": "ELIGIBLE",
+  "fails": [],
+  "unknowns": [],
+  "factors": {
+   "L": 1.0,
+   "C": 0.867,
+   "T": null,
+   "P": 0.667,
+   "H": 0.332,
+   "G": 1.0,
+   "V": 0.75,
+   "O": 0.91
+  },
+  "confidence": 54.5,
+  "coverage": 0.88
+ }
+]
