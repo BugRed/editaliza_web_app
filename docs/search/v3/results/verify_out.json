@@ -1,0 +1,33 @@
+{
+ "ok": [
+  "âncoras ≤ 2 por edital e com fonte+projeto — 44 pares travados",
+  "todo edital tem status de resultado e fonte — 23 verificados + 6 pendentes",
+  "ids únicos entre artistas e candidatos — 1090 ids",
+  "todo candidato tem situacao — 1038 candidatos",
+  "fonte de âncora aponta para documento/imprensa — 0 sem referência",
+  "números do relatório = recalculados — recalc={'mrr': 1.0, 'hit1': 1.0, 'n_editais': 10}; diffs=[]"
+ ],
+ "fail": [],
+ "recalc": {
+  "mrr": 1.0,
+  "hit1": 1.0,
+  "n_editais": 10,
+  "pares_ancora": 44,
+  "n_candidatos": 1038,
+  "n_artistas": 52,
+  "n_editais_verificados": 23,
+  "n_pendentes": 6
+ },
+ "sizes": {
+  "editais_verificados": 23,
+  "min_editais": 20,
+  "pares_ancora": 44,
+  "candidatos_nao_ganhadores": 759,
+  "artistas_multi_obra_3": 3,
+  "min_multi_obra": 12,
+  "casos_teto": 9,
+  "min_casos": 8,
+  "editais_com_req_allem_linguagem": 6,
+  "min_reqs": 8
+ }
+}

@@ -1,0 +1,2669 @@
+[
+ {
+  "id": "leao_producoes",
+  "nome": "Leão Produções Artísticas LTDA",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Audiovisual, resultado final 3ª fase (maior valor FIC R$ 179.600).",
+  "languages_main": [
+   "cinema"
+  ],
+  "languages_secondary": [
+   "animacao"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "ANIMAGE - 15º FESTIVAL INTERNACIONAL DE ANIMAÇÃO DE PERNAMBUCO",
+    "language": "cinema",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Festival internacional de animação de Pernambuco (15ª edição).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/Aprovados%20na%203a%20fase%20-%20AUDIOVISUAL.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.45,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Audiovisual, resultado final 3ª fase (maior valor FIC R$ 179.600)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/Aprovados%20na%203a%20fase%20-%20AUDIOVISUAL.pdf",
+  "posicao_na_selecao": "1º maior valor entre os aprovados (R$ 179.600,00)"
+ },
+ {
+  "id": "palas_alves",
+  "nome": "Palas Camila Lustosa Cavalcanti Alves",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Audiovisual, resultado final 3ª fase (2º maior valor FIC R$ 105.100).",
+  "languages_main": [
+   "cinema"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "infancia"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "MOSTRA CINE RUA INFANTIL: ANO 3",
+    "language": "cinema",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Mostra de cinema de rua para infância, ano 3.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/Aprovados%20na%203a%20fase%20-%20AUDIOVISUAL.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.45,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Audiovisual, resultado final 3ª fase (2º maior valor FIC R$ 105.100)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/Aprovados%20na%203a%20fase%20-%20AUDIOVISUAL.pdf",
+  "posicao_na_selecao": "2º maior valor entre os aprovados (R$ 105.100,00)"
+ },
+ {
+  "id": "jaqueline_brandao",
+  "nome": "Jaqueline Cristina Macedo Brandão",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 MIC Audiovisual, resultado final 3ª fase (R$ 500.000,00).",
+  "languages_main": [
+   "cinema"
+  ],
+  "languages_secondary": [
+   "documentario"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "cidade",
+    "violencia"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "OS GUERREIROS DA RUA - O FILME",
+    "language": "documentario",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Longa sobre os 'guerreiros da rua' — cinema e cidade.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/Aprovados%20na%203a%20fase%20-%20AUDIOVISUAL.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.5,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 MIC Audiovisual, resultado final 3ª fase (R$ 500.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/Aprovados%20na%203a%20fase%20-%20AUDIOVISUAL.pdf",
+  "posicao_na_selecao": "1º maior valor entre os aprovados MIC (R$ 500.000,00)"
+ },
+ {
+  "id": "diego_lopes",
+  "nome": "Diego Fernandes Gomes Lopes",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 MIC Audiovisual, resultado final 3ª fase (R$ 500.000,00).",
+  "languages_main": [
+   "cinema"
+  ],
+  "languages_secondary": [
+   "documentario"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "memoria",
+    "patrimonio"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "OS PIONEIROS DA AVIAÇÃO",
+    "language": "documentario",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Documentário histórico sobre os pioneiros da aviação.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/Aprovados%20na%203a%20fase%20-%20AUDIOVISUAL.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.5,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 MIC Audiovisual, resultado final 3ª fase (R$ 500.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/Aprovados%20na%203a%20fase%20-%20AUDIOVISUAL.pdf",
+  "posicao_na_selecao": "2º maior valor entre os aprovados MIC (R$ 500.000,00)"
+ },
+ {
+  "id": "inst_ricardo_brenand",
+  "nome": "Instituto Ricardo Brennand",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Música (R$ 165.000,00).",
+  "languages_main": [
+   "musica"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "patrimonio"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "FESTIVAL ACORDES PARA O MUSEU",
+    "language": "musica",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Festival de música no museu.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.4,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Música (R$ 165.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "1º maior valor entre os aprovados (R$ 165.000,00)"
+ },
+ {
+  "id": "mr_plot",
+  "nome": "Mr. Plot Produções",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Música (R$ 165.000,00).",
+  "languages_main": [
+   "musica"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "CIRCULAÇÃO SHOW DO BITA - CRESCER E APRENDER",
+    "language": "musica",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Circulação de show infantil 'Show do Bita'.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.4,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Música (R$ 165.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "2º maior valor entre os aprovados (R$ 165.000,00)"
+ },
+ {
+  "id": "maracatu_porto_rico",
+  "nome": "Nação do Maracatu Porto Rico",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Cultura Popular (R$ 130.000,00).",
+  "languages_main": [
+   "cultura_popular"
+  ],
+  "languages_secondary": [
+   "musica"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "cultura_popular",
+    "ancestralidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "MARACATU PORTO RICO SINFÔNICO",
+    "language": "cultura_popular",
+    "techniques": [
+     "percussao"
+    ],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Encontro do maracatu com formação sinfônica.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   },
+   {
+    "title": "APRESENTAÇÕES DA NAÇÃO DO MARACATU PORTO RICO (REPERTÓRIO TRADICIONAL)",
+    "language": "cultura_popular",
+    "techniques": [
+     "percussao"
+    ],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "obras_prontas",
+    "descricao": "Repertório tradicional do maracatu Porto Rico (nação com atividade contínua; fontes: resultados do corpus).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Cultura Popular (R$ 130.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "1º maior valor entre os aprovados (R$ 130.000,00)"
+ },
+ {
+  "id": "alzenide_simoes",
+  "nome": "Alzenide Prazeres Simões",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Cultura Popular (R$ 110.000,00).",
+  "languages_main": [
+   "cultura_popular"
+  ],
+  "languages_secondary": [
+   "artes_visuais"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "cultura_popular",
+    "identidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "MARACATU – ANTROPOLOGIA VISUAL",
+    "language": "cultura_popular",
+    "techniques": [
+     "percussao",
+     "fotografia"
+    ],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Pesquisa visual antropológica sobre o maracatu.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Cultura Popular (R$ 110.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "2º maior valor entre os aprovados (R$ 110.000,00)"
+ },
+ {
+  "id": "edivane_aguiar",
+  "nome": "Edivane Batista Tavares Aguiar",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Teatro (R$ 100.000,00).",
+  "languages_main": [
+   "teatro"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "22.º FESTIVAL DE TEATRO PARA CRIANÇAS DE PERNAMBUCO",
+    "language": "teatro",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Festival de teatro para crianças.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.4,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Teatro (R$ 100.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "1º maior valor entre os aprovados FIC (R$ 100.000,00)"
+ },
+ {
+  "id": "o_poste_solucoes",
+  "nome": "O Poste Soluções Luminosas LTDA - ME",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Teatro (R$ 96.839,00).",
+  "languages_main": [
+   "teatro"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_resultado",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "OCUPAÇÃO ESPAÇO O POSTE",
+    "language": "teatro",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Ocupação do espaço cultural O Poste.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.4,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Teatro (R$ 96.839,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "2º maior valor entre os aprovados FIC (R$ 96.839,00)"
+ },
+ {
+  "id": "junior_artes_belo",
+  "nome": "Junior Artes e Produções (J.A. Taveira Belo)",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 MIC Teatro (R$ 150.000,00).",
+  "languages_main": [
+   "teatro"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "religiosidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "OS AMBULANTES DE DEUS",
+    "language": "teatro",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Espetáculo teatral 'Os Ambulantes de Deus'.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.45,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 MIC Teatro (R$ 150.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "1º maior valor entre os aprovados MIC (R$ 150.000,00)"
+ },
+ {
+  "id": "ruy_machado",
+  "nome": "Ruy Machado Aguiar Junior",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 MIC Teatro (R$ 79.990,00).",
+  "languages_main": [
+   "teatro"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "CLARICE LISPECTOR PARA CRIANÇAS",
+    "language": "teatro",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Adaptação teatral de Clarice Lispector para crianças.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.45,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 MIC Teatro (R$ 79.990,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "2º maior valor entre os aprovados MIC (R$ 79.990,00)"
+ },
+ {
+  "id": "marcelo_buarque",
+  "nome": "Marcelo Victor Silva Buarque",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Artes Visuais (R$ 63.000,00).",
+  "languages_main": [
+   "artes_visuais"
+  ],
+  "languages_secondary": [
+   "pintura"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "trabalho",
+    "cidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "PÃO E TINTA - COR E COMÉRCIO",
+    "language": "artes_visuais",
+    "techniques": [
+     "pintura"
+    ],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Série pictórica sobre cor e comércio.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.5,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Artes Visuais (R$ 63.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "1º maior valor entre os aprovados (R$ 63.000,00)"
+ },
+ {
+  "id": "julio_vasconcelos",
+  "nome": "Julio Cesar Bacelar de Vasconcelos",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Artes Visuais (R$ 62.998,00).",
+  "languages_main": [
+   "artes_visuais"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_resultado",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "O SONHO E O RISO",
+    "language": "artes_visuais",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Obra visual 'O sonho e o risco'.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.4,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Artes Visuais (R$ 62.998,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "2º maior valor entre os aprovados (R$ 62.998,00)"
+ },
+ {
+  "id": "maria_fatima_pontes",
+  "nome": "Maria de Fátima Pontes",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Circo (R$ 59.750,00).",
+  "languages_main": [
+   "circo"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "I FESTIVAL VIRADES NUM MÓI DE CUENTRO - FAZENDO CIRCO EM RECIFE COMO RESISTÊNCIA!",
+    "language": "circo",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Festival de circo como resistência.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.4,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Circo (R$ 59.750,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "1º maior valor entre os aprovados (R$ 59.750,00)"
+ },
+ {
+  "id": "luiza_fontes",
+  "nome": "Luíza Santa Cruz Fontes",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Circo (R$ 54.000,00).",
+  "languages_main": [
+   "circo"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "A BOBA: UMA JORNADA",
+    "language": "circo",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Espetáculo de circo 'A boba: uma jornada'.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.4,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Circo (R$ 54.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "2º maior valor entre os aprovados (R$ 54.000,00)"
+ },
+ {
+  "id": "walderlane_justino",
+  "nome": "Walderlane Cardoso Justino",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Dança (R$ 60.000,00).",
+  "languages_main": [
+   "danca"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "NOSSOS CORPOS, TERRITÓRIOS DOS NOSSOS ENTRES: FASE TERRA",
+    "language": "danca",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Coreografia sobre corpos e territórios — fase terra.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.45,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Dança (R$ 60.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "1º maior valor entre os aprovados (R$ 60.000,00)"
+ },
+ {
+  "id": "assoc_artistas_integrados",
+  "nome": "Associação Cultural de Artistas Integrados",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Dança (R$ 60.000,00).",
+  "languages_main": [
+   "danca"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "FESTIVAL CENA CUMPLICIDADES",
+    "language": "danca",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Festival de dança Cena Cumplicidades.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.4,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Dança (R$ 60.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "2º maior valor entre os aprovados (R$ 60.000,00)"
+ },
+ {
+  "id": "cleonice_cardoso",
+  "nome": "Cleonice Rodrigues Cardoso",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Artesanato (R$ 60.000,00).",
+  "languages_main": [
+   "artesanato"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "REDE ASTRALIZE DE ARTESÃS - EXPANSÃO E CONSOLIDAÇÃO",
+    "language": "artesanato",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Rede de artesãs Astralize: expansão e consolidação.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.4,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Artesanato (R$ 60.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "1º maior valor entre os aprovados (R$ 60.000,00)"
+ },
+ {
+  "id": "rosecleia_salvador",
+  "nome": "Rosecleia de Souza Salvador",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Artesanato (R$ 48.000,00).",
+  "languages_main": [
+   "artesanato"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "ancestralidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "1ª FEIRA MULTIÉTNICA DE ARTESANATO INDÍGENA DO RECIFE",
+    "language": "artesanato",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Feira multiétnica de artesanato indígena.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.45,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Artesanato (R$ 48.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "2º maior valor entre os aprovados (R$ 48.000,00)"
+ },
+ {
+  "id": "raiza_milfont",
+  "nome": "Raiza Hanna Saraiva Milfont",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Literatura (R$ 48.000,00).",
+  "languages_main": [
+   "literatura"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "genero"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "PRÊMIO CLARICE LISPECTOR PARA AUTORAS PERNAMBUCANAS",
+    "language": "literatura",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Prêmio literário para autoras pernambucanas.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.45,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Literatura (R$ 48.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "1º maior valor entre os aprovados (R$ 48.000,00)"
+ },
+ {
+  "id": "gabriel_santana",
+  "nome": "Gabriel Lopes de Santana",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Literatura (R$ 48.000,00).",
+  "languages_main": [
+   "literatura"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "NAS DOBRAS DO LIVRO",
+    "language": "literatura",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Projeto literário 'Nas dobras do livro'.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.4,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Literatura (R$ 48.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "2º maior valor entre os aprovados (R$ 48.000,00)"
+ },
+ {
+  "id": "ventana_filmes",
+  "nome": "Ventana Filmes LTDA ME",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Fotografia (R$ 49.000,00).",
+  "languages_main": [
+   "fotografia"
+  ],
+  "languages_secondary": [
+   "cinema"
+  ],
+  "linguagem_origem": "evidencia_resultado",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "genero"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "PODE ME CHAMAR DE FEMINISTA - RECIFE",
+    "language": "fotografia",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Projeto fotográfico/audiovisual 'Pode me chamar de feminista — Recife'.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.45,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Fotografia (R$ 49.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "1º maior valor entre os aprovados (R$ 49.000,00)"
+ },
+ {
+  "id": "vitor_lima",
+  "nome": "Vitor Jose Pessoa de Lima",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Fotografia (R$ 48.000,00).",
+  "languages_main": [
+   "fotografia"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_resultado",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "Z-1",
+    "language": "fotografia",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Projeto fotográfico 'Z-1'.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.35,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Fotografia (R$ 48.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "2º maior valor entre os aprovados (R$ 48.000,00)"
+ },
+ {
+  "id": "juliana_araujo_silva",
+  "nome": "Juliana Araujo e Silva",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Design e Moda (R$ 48.000,00).",
+  "languages_main": [
+   "moda"
+  ],
+  "languages_secondary": [
+   "artes_visuais"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "cultura_popular"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "TINGIDO A SETE ERVAS: MODA AUTORAL COM CORES DOS MERCADOS DO RECIFE",
+    "language": "moda",
+    "techniques": [
+     "tingimento"
+    ],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Moda autoral com tingimento natural e cores dos mercados do Recife.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.5,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Design e Moda (R$ 48.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "1º maior valor entre os aprovados (R$ 48.000,00)"
+ },
+ {
+  "id": "natalia_borges",
+  "nome": "Natalia Ester Prado Borges",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Design e Moda (R$ 48.000,00).",
+  "languages_main": [
+   "moda"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "COSTURANDO OS ODSS NO COMPAZ",
+    "language": "moda",
+    "techniques": [
+     "costura"
+    ],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Costura e objetivos de desenvolvimento sustentável no Compaz.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.45,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Design e Moda (R$ 48.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "2º maior valor entre os aprovados (R$ 48.000,00)"
+ },
+ {
+  "id": "weldjane_araujo",
+  "nome": "Weldjane Mary Régis de Araújo",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Patrimônio Cultural e Museologia (R$ 89.940,00).",
+  "languages_main": [
+   "patrimonio_cultural"
+  ],
+  "languages_secondary": [
+   "artes_visuais"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "memoria"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "RECIFE EM TRAMA (GNOMON CULTURAL)",
+    "language": "patrimonio_cultural",
+    "techniques": [
+     "textil"
+    ],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Pesquisa do patrimônio têxtil do Recife.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.5,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Patrimônio Cultural e Museologia (R$ 89.940,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "1º maior valor entre os aprovados (R$ 89.940,00)"
+ },
+ {
+  "id": "jose_rommel_silva",
+  "nome": "José Rommel Bezerra da Silva",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2024 FIC Patrimônio Cultural e Museologia (R$ 88.240,00).",
+  "languages_main": [
+   "patrimonio_cultural"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "RECONHECER PARA PRESERVAR - CICLO FORMATIVO EM EDUCAÇÃO PATRIMONIAL DO RECIFE",
+    "language": "patrimonio_cultural",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Ciclo formativo em educação patrimonial.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.5,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2024 FIC Patrimônio Cultural e Museologia (R$ 88.240,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/PROJETOS-APROVADOS-E-INABILITADOS-APOS-3-FASE-EXCETO-AUDIOVISUAL-RESULTADO-FINAL-SIC-2024-FIC-E-MIC.pdf",
+  "posicao_na_selecao": "2º maior valor entre os aprovados (R$ 88.240,00)"
+ },
+ {
+  "id": "jessica_miranda",
+  "nome": "Jessica Evelyn Claudino Lobo de Miranda",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2023 FIC Artes Integradas e Arte e Tecnologia (R$ 64.000,00).",
+  "languages_main": [
+   "multilinguagens"
+  ],
+  "languages_secondary": [
+   "arte_digital"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "contemporaneidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "PARA ADIAR O FIM DO MUNDO (ENCONTROS DE IDEIAS)",
+    "language": "arte_digital",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Encontros de ideias 'Para adiar o fim do mundo'.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_44_edital_sic_2023_fic_mic/PROJETOS%20APROVADOS%20%28APOS%203%C2%AAFASE%29%20-%20RESULTADO%20FINAL%20-%20SIC%202023%20%28FIC%20E%20MIC%29.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.45,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2023 FIC Artes Integradas e Arte e Tecnologia (R$ 64.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_44_edital_sic_2023_fic_mic/PROJETOS%20APROVADOS%20%28APOS%203%C2%AAFASE%29%20-%20RESULTADO%20FINAL%20-%20SIC%202023%20%28FIC%20E%20MIC%29.pdf",
+  "posicao_na_selecao": "1º maior valor entre os aprovados (R$ 64.000,00)"
+ },
+ {
+  "id": "valeria_fagundes",
+  "nome": "Valeria Pereira Fagundes",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2023 FIC Artes Integradas e Arte e Tecnologia (R$ 48.000,00).",
+  "languages_main": [
+   "musica"
+  ],
+  "languages_secondary": [
+   "artes_visuais"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "memoria"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "ROCK PERNAMBUCANO EM 50 CAPAS",
+    "language": "musica",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "História do rock pernambucano por 50 capas de disco.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_44_edital_sic_2023_fic_mic/PROJETOS%20APROVADOS%20%28APOS%203%C2%AAFASE%29%20-%20RESULTADO%20FINAL%20-%20SIC%202023%20%28FIC%20E%20MIC%29.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2023 FIC Artes Integradas e Arte e Tecnologia (R$ 48.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_44_edital_sic_2023_fic_mic/PROJETOS%20APROVADOS%20%28APOS%203%C2%AAFASE%29%20-%20RESULTADO%20FINAL%20-%20SIC%202023%20%28FIC%20E%20MIC%29.pdf",
+  "posicao_na_selecao": "2º maior valor entre os aprovados (R$ 48.000,00)"
+ },
+ {
+  "id": "simone_ferreira",
+  "nome": "Simone Ferreira",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2023 FIC Fotografia (R$ 48.000,00).",
+  "languages_main": [
+   "fotografia"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "memoria"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "BRINCANTES DA BURRINHA NAS MARGENS DO ATLÂNTICO NEGRO: ÁFRICA-BRASIL EM MOVIMENTO",
+    "language": "fotografia",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Ensaio fotográfico sobre brincantes da Burrinha e o Atlântico negro.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_44_edital_sic_2023_fic_mic/PROJETOS%20APROVADOS%20%28APOS%203%C2%AAFASE%29%20-%20RESULTADO%20FINAL%20-%20SIC%202023%20%28FIC%20E%20MIC%29.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.5,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2023 FIC Fotografia (R$ 48.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_44_edital_sic_2023_fic_mic/PROJETOS%20APROVADOS%20%28APOS%203%C2%AAFASE%29%20-%20RESULTADO%20FINAL%20-%20SIC%202023%20%28FIC%20E%20MIC%29.pdf",
+  "posicao_na_selecao": "1º maior valor entre os aprovados (R$ 48.000,00)"
+ },
+ {
+  "id": "clareana_aroxa",
+  "nome": "Clareana Arôxa",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2023 FIC Fotografia (R$ 48.000,00).",
+  "languages_main": [
+   "fotografia"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "patrimonio"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "DIGITALIZAÇÃO ALÉM DOS BAOBÁS",
+    "language": "fotografia",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Digitalização de acervos fotográficos.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_44_edital_sic_2023_fic_mic/PROJETOS%20APROVADOS%20%28APOS%203%C2%AAFASE%29%20-%20RESULTADO%20FINAL%20-%20SIC%202023%20%28FIC%20E%20MIC%29.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.4,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2023 FIC Fotografia (R$ 48.000,00)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_44_edital_sic_2023_fic_mic/PROJETOS%20APROVADOS%20%28APOS%203%C2%AAFASE%29%20-%20RESULTADO%20FINAL%20-%20SIC%202023%20%28FIC%20E%20MIC%29.pdf",
+  "posicao_na_selecao": "2º maior valor entre os aprovados (R$ 48.000,00)"
+ },
+ {
+  "id": "robsmar_silva",
+  "nome": "Robsmar da Silva (Mostra DNA Afro)",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: SIC 2023 FIC Artes Integradas e Arte e Tecnologia (R$ 40.000,00).",
+  "languages_main": [
+   "cultura_popular"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "memoria",
+    "ancestralidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "MOSTRA DNA AFRO",
+    "language": "cultura_popular",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Mostra DNA Afro.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_44_edital_sic_2023_fic_mic/PROJETOS%20APROVADOS%20%28APOS%203%C2%AAFASE%29%20-%20RESULTADO%20FINAL%20-%20SIC%202023%20%28FIC%20E%20MIC%29.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.4,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "SIC 2023 FIC Artes Integradas e Arte e Tecnologia (R$ 40.000,00)"
+ },
+ {
+  "id": "joao_fernando_silva",
+  "nome": "João Fernando Dias da Silva",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: Multilinguagens Recife Criativo PNAB 2026 (nota 10,0000).",
+  "languages_main": [
+   "circo"
+  ],
+  "languages_secondary": [
+   "performance"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "genero",
+    "sexualidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "MOSTRA QUEER DE ARTES PERFORMATIVAS - MAIS DO QUE LETRAS, PESSOAS! MAIS QUE ORGULHO, LUTA!",
+    "language": "circo",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Mostra queer de artes performativas.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_13_multilinguagem_recife_criativo_pnab_2026/Multilinguagem_Recife_Criativo_PNAB_Resultado_FINAL.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.95,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "Multilinguagens Recife Criativo PNAB 2026 (nota 10,0000)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_13_multilinguagem_recife_criativo_pnab_2026/Multilinguagem_Recife_Criativo_PNAB_Resultado_FINAL.pdf",
+  "posicao_na_selecao": "1º selecionado (nota 10,0000)"
+ },
+ {
+  "id": "joao_lucas_cavalcanti",
+  "nome": "João Lucas de Sá Leitão Cavalcanti",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: Multilinguagens Recife Criativo PNAB 2026 (nota 9,9500).",
+  "languages_main": [
+   "circo"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "APRESENTAÇÕES NOVE TENTATIVAS DE NÃO SUCUMBIR",
+    "language": "circo",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Apresentações circenses 'Nove tentativas de não sucumbir'.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_13_multilinguagem_recife_criativo_pnab_2026/Multilinguagem_Recife_Criativo_PNAB_Resultado_FINAL.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.5,
+   "qualidade_evidencias": 0.95,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "Multilinguagens Recife Criativo PNAB 2026 (nota 9,9500)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_13_multilinguagem_recife_criativo_pnab_2026/Multilinguagem_Recife_Criativo_PNAB_Resultado_FINAL.pdf",
+  "posicao_na_selecao": "2º selecionado (nota 9,9500)"
+ },
+ {
+  "id": "kananda_silva",
+  "nome": "Kananda Maria Correia da Silva",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: Virado na Periferia PNAB 2026, resultado preliminar (nota 8,5500).",
+  "languages_main": [
+   "musica"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_resultado",
+  "positioning": [
+   "comunitaria"
+  ],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "genero",
+    "cidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "1º ENCONTRO MUNICIPAL DE FORMAÇÃO DA FRENTE DE MULHERES NO HIP HOP - RECIFE",
+    "language": "musica",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Encontro de formação da frente de mulheres no hip hop.",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_11_recife_virado_na_periferia_pnab_2026/Virado_Periferia_HipHop_PNAB_Resultado_Preliminar.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.95,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "Virado na Periferia PNAB 2026, resultado preliminar (nota 8,5500)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_11_recife_virado_na_periferia_pnab_2026/Virado_Periferia_HipHop_PNAB_Resultado_Preliminar.pdf",
+  "posicao_na_selecao": "1º selecionado (nota 8,5500)"
+ },
+ {
+  "id": "rarynne_barros",
+  "nome": "Rarynne Francynne de Jesus Profiro Barros",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: Virado na Periferia PNAB 2026, resultado preliminar (nota 8,2333).",
+  "languages_main": [
+   "musica"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_resultado",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "cidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "CIDADE SONORA",
+    "language": "musica",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Projeto de rap 'Cidade Sonora' (linguagem declarada: RAP).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_11_recife_virado_na_periferia_pnab_2026/Virado_Periferia_HipHop_PNAB_Resultado_Preliminar.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.5,
+   "qualidade_evidencias": 0.95,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "Virado na Periferia PNAB 2026, resultado preliminar (nota 8,2333)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_11_recife_virado_na_periferia_pnab_2026/Virado_Periferia_HipHop_PNAB_Resultado_Preliminar.pdf",
+  "posicao_na_selecao": "2º selecionado (nota 8,2333)"
+ },
+ {
+  "id": "claudemilson_souza",
+  "nome": "Claudemilson Soares de Souza",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: O Solo do Outro 2026, resultado preliminar (1º selecionado).",
+  "languages_main": [
+   "danca"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "CARREGO",
+    "language": "danca",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Pesquisa-criação em dança 'Carrego' (1º selecionado).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_2_resultado_edital_de_fomento_o_solo_do_outro_2026/Resultado%20Preliminar%20dos%20Projetos%20Habilitados%20do%20Edital%20O%20Solo%20do%20Outro%202026.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.45,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "O Solo do Outro 2026, resultado preliminar (1º selecionado)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_2_resultado_edital_de_fomento_o_solo_do_outro_2026/Resultado%20Preliminar%20dos%20Projetos%20Habilitados%20do%20Edital%20O%20Solo%20do%20Outro%202026.pdf",
+  "posicao_na_selecao": "1º selecionado"
+ },
+ {
+  "id": "maria_pepe",
+  "nome": "Maria Eduarda Sousa Pepe",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: O Aprendiz em Cena 2026, resultado preliminar (1º selecionado).",
+  "languages_main": [
+   "teatro"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "sexualidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "ORGIA",
+    "language": "teatro",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Pesquisa em teatro 'Orgia' (1º selecionado).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_3_resultados_edital_de_fomento_o_aprendiz_em_cena_2026/Resultado%20Preliminar%20dos%20Projetos%20Habilitados%20do%20Edital%20O%20Aprendiz%20em%20Cena%202026.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.45,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "O Aprendiz em Cena 2026, resultado preliminar (1º selecionado)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_3_resultados_edital_de_fomento_o_aprendiz_em_cena_2026/Resultado%20Preliminar%20dos%20Projetos%20Habilitados%20do%20Edital%20O%20Aprendiz%20em%20Cena%202026.pdf",
+  "posicao_na_selecao": "1º selecionado"
+ },
+ {
+  "id": "shermison_silva",
+  "nome": "Shermison Henrique da Silva",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: Bolsa de Formação Escola de Frevo 2026 (1º selecionado).",
+  "languages_main": [
+   "danca"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "patrimonio",
+    "cultura_popular"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "BOLSA DE FORMAÇÃO ESCOLA DE FREVO — PESQUISA-CRIAÇÃO: FREVO COMO METODOLOGIA CONTEMPORÂNEA",
+    "language": "danca",
+    "techniques": [
+     "frevo_passo"
+    ],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Pesquisa-criação: frevo como metodologia contemporânea (1º selecionado).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_8_resultados_edital_interno_bolsas_escola_de_frevo/Resultado%20Final%20dos%20Habilitados%20e%20Selecionados%20do%20Edital%20Interno%20de%20Bolsas%20-%20Escola%20de%20Frevo.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.5,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "Bolsa de Formação Escola de Frevo 2026 (1º selecionado)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_8_resultados_edital_interno_bolsas_escola_de_frevo/Resultado%20Final%20dos%20Habilitados%20e%20Selecionados%20do%20Edital%20Interno%20de%20Bolsas%20-%20Escola%20de%20Frevo.pdf",
+  "posicao_na_selecao": "1º selecionado (ordem de classificação)"
+ },
+ {
+  "id": "amanda_colaco",
+  "nome": "Amanda Carolina Colaço",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: Bolsa de Formação Escola de Frevo 2026 (2ª selecionada).",
+  "languages_main": [
+   "danca"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "patrimonio"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "BOLSA DE FORMAÇÃO ESCOLA DE FREVO — PESQUISA-CRIAÇÃO EM DANÇA",
+    "language": "danca",
+    "techniques": [
+     "frevo_passo"
+    ],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Pesquisa-criação em dança frevo (2ª selecionada).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_8_resultados_edital_interno_bolsas_escola_de_frevo/Resultado%20Final%20dos%20Habilitados%20e%20Selecionados%20do%20Edital%20Interno%20de%20Bolsas%20-%20Escola%20de%20Frevo.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.5,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "Bolsa de Formação Escola de Frevo 2026 (2ª selecionada)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_8_resultados_edital_interno_bolsas_escola_de_frevo/Resultado%20Final%20dos%20Habilitados%20e%20Selecionados%20do%20Edital%20Interno%20de%20Bolsas%20-%20Escola%20de%20Frevo.pdf",
+  "posicao_na_selecao": "2º selecionado (ordem de classificação)"
+ },
+ {
+  "id": "ana_neves",
+  "nome": "Ana Neves",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: OBSERVA 3 — Torre Malakoff 2025 (selecionada; TV Guararapes, 17/06/2025 (exposição Observa 3 — cinco artistas visuais selecionados por edital)).",
+  "languages_main": [
+   "artes_visuais"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "memoria",
+    "territorio"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "TROPICAL TRÓPICO: AQUI TUDO DERRETE",
+    "language": "artes_visuais",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "obras_prontas",
+    "descricao": "Primeira exposição individual, oito obras inéditas que entrelaçam memória e deslocamento no contexto do Sul Global.",
+    "fonte": "https://www.tvguararapes.com.br/entretenimento/2025/06/17/exposicao-observa-3-ocupa-torre-malakoff-com-obras-de-cinco-artistas-visuais.html"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.75,
+   "qualidade_evidencias": 0.8,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {
+   "primeira_exposicao_individual": true,
+   "fonte": "TV Guararapes, 17/06/2025 (exposição Observa 3 — cinco artistas visuais selecionados por edital)"
+  },
+  "fonte": "OBSERVA 3 — Torre Malakoff 2025 (selecionada; TV Guararapes, 17/06/2025 (exposição Observa 3 — cinco artistas visuais selecionados por edital))",
+  "fonte_url": "https://www.tvguararapes.com.br/entretenimento/2025/06/17/exposicao-observa-3-ocupa-torre-malakoff-com-obras-de-cinco-artistas-visuais.html",
+  "posicao_na_selecao": "selecionada (ocupação do térreo/1º andar; ordem de citação na imprensa)"
+ },
+ {
+  "id": "geoneide_brandao",
+  "nome": "Geoneide Brandão",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: OBSERVA 3 — Torre Malakoff 2025 (selecionado; TV Guararapes, 17/06/2025 (exposição Observa 3 — cinco artistas visuais selecionados por edital)).",
+  "languages_main": [
+   "artes_visuais"
+  ],
+  "languages_secondary": [
+   "pintura"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "genero",
+    "sexualidade",
+    "identidade",
+    "afetividade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "ENTRE NÓS TODO O INDIZÍVEL SE FAZ PRESENTE",
+    "language": "pintura",
+    "techniques": [
+     "pintura"
+    ],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "obras_prontas",
+    "descricao": "Pinturas sobre afetos e vivências dissidentes; identidade de gênero e sexualidade em perspectiva não-binária; pesquisa iniciada em 2020.",
+    "fonte": "https://www.tvguararapes.com.br/entretenimento/2025/06/17/exposicao-observa-3-ocupa-torre-malakoff-com-obras-de-cinco-artistas-visuais.html"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.85,
+   "qualidade_evidencias": 0.8,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {
+   "pesquisa_iniciada": 2020,
+   "fonte": "TV Guararapes, 17/06/2025 (exposição Observa 3 — cinco artistas visuais selecionados por edital)"
+  },
+  "fonte": "OBSERVA 3 — Torre Malakoff 2025 (selecionado; TV Guararapes, 17/06/2025 (exposição Observa 3 — cinco artistas visuais selecionados por edital))",
+  "fonte_url": "https://www.tvguararapes.com.br/entretenimento/2025/06/17/exposicao-observa-3-ocupa-torre-malakoff-com-obras-de-cinco-artistas-visuais.html",
+  "posicao_na_selecao": "selecionado (ocupação do térreo/1º andar; ordem de citação na imprensa)"
+ },
+ {
+  "id": "icaro_galvao",
+  "nome": "Ícaro Galvão",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: OBSERVA 3 — Torre Malakoff 2025 (selecionado; TV Guararapes, 17/06/2025 (exposição Observa 3 — cinco artistas visuais selecionados por edital)).",
+  "languages_main": [
+   "artes_visuais"
+  ],
+  "languages_secondary": [
+   "fotografia"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "memoria",
+    "natureza"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 10,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "ENCONTROS MONUMENTAIS",
+    "language": "fotografia",
+    "techniques": [
+     "fotografia_analogica",
+     "video",
+     "instalacao"
+    ],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "obras_prontas",
+    "descricao": "Nove obras — entre elas um vídeo e peças em grandes formatos — em cianotipia colorida com infusões de vegetais; paisagem, memória e percepção.",
+    "fonte": "https://www.tvguararapes.com.br/entretenimento/2025/06/17/exposicao-observa-3-ocupa-torre-malakoff-com-obras-de-cinco-artistas-visuais.html"
+   },
+   {
+    "title": "CIANOTIPIAS DE FORMAÇÕES ROSOSAS",
+    "language": "fotografia",
+    "techniques": [
+     "fotografia_analogica"
+    ],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "obras_prontas",
+    "descricao": "Série em cianotipia colorida artesanalmente com infusões de vegetais (parte da pesquisa exibida no Observa 3).",
+    "fonte": "https://www.tvguararapes.com.br/entretenimento/2025/06/17/exposicao-observa-3-ocupa-torre-malakoff-com-obras-de-cinco-artistas-visuais.html"
+   },
+   {
+    "title": "ATIVIDADES EDUCATIVAS — OFICINAS E VISITAS MEDIADAS",
+    "language": "fotografia",
+    "techniques": [
+     "instalacao"
+    ],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "obras_prontas",
+    "descricao": "Programa educativo da ocupação: oficinas e visitas mediadas.",
+    "fonte": "https://www.tvguararapes.com.br/entretenimento/2025/06/17/exposicao-observa-3-ocupa-torre-malakoff-com-obras-de-cinco-artistas-visuais.html"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.85,
+   "qualidade_evidencias": 0.8,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "OBSERVA 3 — Torre Malakoff 2025 (selecionado; TV Guararapes, 17/06/2025 (exposição Observa 3 — cinco artistas visuais selecionados por edital))"
+ },
+ {
+  "id": "luciana_borre",
+  "nome": "Luciana Borre",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: OBSERVA 3 — Torre Malakoff 2025 (selecionada; TV Guararapes, 17/06/2025 (exposição Observa 3 — cinco artistas visuais selecionados por edital)).",
+  "languages_main": [
+   "artes_visuais"
+  ],
+  "languages_secondary": [
+   "multilinguagens"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "afetividade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 12,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "?TODA VEZ QUE ME PERCO DE MIM?",
+    "language": "multilinguagens",
+    "techniques": [
+     "bordado",
+     "gravura",
+     "videoarte",
+     "instalacao"
+    ],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "obras_prontas",
+    "descricao": "Série com bordados, tapeçarias, gravuras, vídeo-arte e instalações; autoconhecimento e arte têxtil.",
+    "fonte": "https://www.tvguararapes.com.br/entretenimento/2025/06/17/exposicao-observa-3-ocupa-torre-malakoff-com-obras-de-cinco-artistas-visuais.html"
+   },
+   {
+    "title": "BORDANDO AFETOS NA FORMAÇÃO DOCENTE (LIVRO)",
+    "language": "multilinguagens",
+    "techniques": [
+     "bordado"
+    ],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "obras_prontas",
+    "descricao": "Livro de autoria da artista que inspirou a mostra.",
+    "fonte": "https://www.tvguararapes.com.br/entretenimento/2025/06/17/exposicao-observa-3-ocupa-torre-malakoff-com-obras-de-cinco-artistas-visuais.html"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.85,
+   "qualidade_evidencias": 0.8,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "OBSERVA 3 — Torre Malakoff 2025 (selecionada; TV Guararapes, 17/06/2025 (exposição Observa 3 — cinco artistas visuais selecionados por edital))"
+ },
+ {
+  "id": "paulo_oliveira",
+  "nome": "Paulo Oliveira Quacula",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: OBSERVA 3 — Torre Malakoff 2025 (selecionado; TV Guararapes, 17/06/2025 (exposição Observa 3 — cinco artistas visuais selecionados por edital)).",
+  "languages_main": [
+   "artes_visuais"
+  ],
+  "languages_secondary": [
+   "escultura"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "ancestralidade",
+    "natureza"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 30,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "ACERVO ESCULTÓRICO EM MADEIRAS NATURAIS",
+    "language": "escultura",
+    "techniques": [
+     "escultura",
+     "madeira"
+    ],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "obras_prontas",
+    "descricao": "Acervo escultórico a partir de madeiras naturais não extraídas; trajetória marcada por deslocamentos, mar e ancestralidade.",
+    "fonte": "https://www.tvguararapes.com.br/entretenimento/2025/06/17/exposicao-observa-3-ocupa-torre-malakoff-com-obras-de-cinco-artistas-visuais.html"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.8,
+   "qualidade_evidencias": 0.8,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {
+   "anos_atuacao_publicados": 30,
+   "natural_de": "Moreno (RMR)",
+   "fonte": "TV Guararapes, 17/06/2025 (exposição Observa 3 — cinco artistas visuais selecionados por edital)"
+  },
+  "fonte": "OBSERVA 3 — Torre Malakoff 2025 (selecionado; TV Guararapes, 17/06/2025 (exposição Observa 3 — cinco artistas visuais selecionados por edital))"
+ },
+ {
+  "id": "maria_emilia_gomes",
+  "nome": "Maria Emília da Cruz Gomes",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: 29º FIDR 2026 (resultado final pós-recursos, ordem de classificação).",
+  "languages_main": [
+   "danca"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "COLIBRI",
+    "language": "danca",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "obras_prontas",
+    "descricao": "Espetáculo de dança 'Colibri' (1ª classificada na habilitação).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_7_resultados_da_29a_festival_internacional_de_danca_do_recife_2026/Resultado%20Final%20da%20Convocat%C3%B3ria%20do%2029o%20Festival%20Internacional%20de%20Dan%C3%A7a%20do%20Recife%20-2026.pdf"
+   },
+   {
+    "title": "A[MAR]KALUNGA",
+    "language": "danca",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "obras_prontas",
+    "descricao": "Espetáculo de dança 'A[mar]kalunga' (4ª classificada).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_7_resultados_da_29a_festival_internacional_de_danca_do_recife_2026/Resultado%20Final%20da%20Convocat%C3%B3ria%20do%2029o%20Festival%20Internacional%20de%20Dan%C3%A7a%20do%20Recife%20-2026.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.6,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "29º FIDR 2026 (resultado final pós-recursos, ordem de classificação)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_7_resultados_da_29a_festival_internacional_de_danca_do_recife_2026/Resultado%20Final%20da%20Convocat%C3%B3ria%20do%2029o%20Festival%20Internacional%20de%20Dan%C3%A7a%20do%20Recife%20-2026.pdf",
+  "posicao_na_selecao": "1ª classificada na habilitação final pós-recursos"
+ },
+ {
+  "id": "roberto_macedo",
+  "nome": "Roberto Alexandre Macedo",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: 29º FIDR 2026 (resultado final pós-recursos).",
+  "languages_main": [
+   "danca"
+  ],
+  "languages_secondary": [],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "cidade"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "O DONO DA RUA",
+    "language": "danca",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "obras_prontas",
+    "descricao": "Espetáculo de dança 'O dono da rua' (2º classificado).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_7_resultados_da_29a_festival_internacional_de_danca_do_recife_2026/Resultado%20Final%20da%20Convocat%C3%B3ria%20do%2029o%20Festival%20Internacional%20de%20Dan%C3%A7a%20do%20Recife%20-2026.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.5,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "29º FIDR 2026 (resultado final pós-recursos)",
+  "fonte_url": "https://www.culturarecife.com.br/public/documentos/resultado_home_7_resultados_da_29a_festival_internacional_de_danca_do_recife_2026/Resultado%20Final%20da%20Convocat%C3%B3ria%20do%2029o%20Festival%20Internacional%20de%20Dan%C3%A7a%20do%20Recife%20-2026.pdf",
+  "posicao_na_selecao": "2º classificado na habilitação final pós-recursos"
+ },
+ {
+  "id": "priscila_pereira",
+  "nome": "Priscila do Nascimento Pereira",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: Multilinguagens PNAB 2026 (2 suplências) + SIC 2024 FIC Audiovisual (aprovado, R$ 101.700).",
+  "languages_main": [
+   "cinema"
+  ],
+  "languages_secondary": [
+   "audiovisual"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "RASURA",
+    "language": "audiovisual",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Projeto audiovisual 'Rasura' (suplente no Multilinguagens).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_13_multilinguagem_recife_criativo_pnab_2026/Multilinguagem_Recife_Criativo_PNAB_Resultado_FINAL.pdf"
+   },
+   {
+    "title": "O CONCEITO DO AMOR – UM BREGA MUSICAL",
+    "language": "audiovisual",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Projeto audiovisual 'O conceito do amor — um brega musical' (suplente no Multilinguagens).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_13_multilinguagem_recife_criativo_pnab_2026/Multilinguagem_Recife_Criativo_PNAB_Resultado_FINAL.pdf"
+   },
+   {
+    "title": "CHÁ DE CALCINHA",
+    "language": "audiovisual",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Projeto audiovisual 'Chá de Calcinha' (aprovado no FIC/SIC 2024 Audiovisual, R$ 101.700,00).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_28_editais_do_sic_2024_fic_e_mic/Aprovados%20na%203a%20fase%20-%20AUDIOVISUAL.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "Multilinguagens PNAB 2026 (2 suplências) + SIC 2024 FIC Audiovisual (aprovado, R$ 101.700)"
+ },
+ {
+  "id": "roberto_carlos_sousa",
+  "nome": "Roberto Carlos Gomes de Sousa",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: 29º FIDR 2026 (2 habilitações) + Multilinguagens PNAB 2026 (1 suplência).",
+  "languages_main": [
+   "danca"
+  ],
+  "languages_secondary": [
+   "cultura_popular"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "TERREIRO TRAJETÓRIA",
+    "language": "danca",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "obras_prontas",
+    "descricao": "Espetáculo de dança 'Terreiro Trajetória' (habilitado no 29º FIDR).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_7_resultados_da_29a_festival_internacional_de_danca_do_recife_2026/Resultado%20Final%20da%20Convocat%C3%B3ria%20do%2029o%20Festival%20Internacional%20de%20Dan%C3%A7a%20do%20Recife%20-2026.pdf"
+   },
+   {
+    "title": "PISADAS",
+    "language": "danca",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "obras_prontas",
+    "descricao": "Espetáculo de dança 'Pisadas' (habilitado no 29º FIDR).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_7_resultados_da_29a_festival_internacional_de_danca_do_recife_2026/Resultado%20Final%20da%20Convocat%C3%B3ria%20do%2029o%20Festival%20Internacional%20de%20Dan%C3%A7a%20do%20Recife%20-2026.pdf"
+   },
+   {
+    "title": "PLAY NA CULTURA POPULAR - PORTAL RC10 2027",
+    "language": "cultura_popular",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Projeto de cultura popular 'Play na Cultura Popular — Portal RC10 2027' (suplente no Multilinguagens).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_13_multilinguagem_recife_criativo_pnab_2026/Multilinguagem_Recife_Criativo_PNAB_Resultado_FINAL.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.55,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "29º FIDR 2026 (2 habilitações) + Multilinguagens PNAB 2026 (1 suplência)"
+ },
+ {
+  "id": "marcos_castro_paz",
+  "nome": "Marcos Castro da Paz Junior",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: Multilinguagens PNAB 2026 (2 suplências).",
+  "languages_main": [
+   "cinema"
+  ],
+  "languages_secondary": [
+   "audiovisual"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "O QUE NOS FALTA!?",
+    "language": "audiovisual",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Projeto audiovisual 'O que nos falta!?' (suplente no Multilinguagens).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_13_multilinguagem_recife_criativo_pnab_2026/Multilinguagem_Recife_Criativo_PNAB_Resultado_FINAL.pdf"
+   },
+   {
+    "title": "O DESEJO DE CATIRINA (CURTA-METRAGEM)",
+    "language": "audiovisual",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Curta-metragem 'O desejo de Catirina' (suplente no Multilinguagens).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_13_multilinguagem_recife_criativo_pnab_2026/Multilinguagem_Recife_Criativo_PNAB_Resultado_FINAL.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.5,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "Multilinguagens PNAB 2026 (2 suplências)"
+ },
+ {
+  "id": "nacao_encanto_pina",
+  "nome": "Nação do Maracatu Encanto do Pina",
+  "resume": "Proponente contemplado(a) em edital municipal. Fonte: Multilinguagens PNAB 2026 (2 suplências).",
+  "languages_main": [
+   "cultura_popular"
+  ],
+  "languages_secondary": [
+   "literatura"
+  ],
+  "linguagem_origem": "evidencia_propria",
+  "positioning": [],
+  "niches": [],
+  "concepts": {
+   "central": [
+    "cultura_popular"
+   ],
+   "secondary": []
+  },
+  "territory": "city_recife",
+  "years_active": 0,
+  "trajectory": [],
+  "artworks": [
+   {
+    "title": "RUFA O BAQUE ENCANTADO: OFICINAS DA NAÇÃO DO MARACATU ENCANTO DO PINA",
+    "language": "cultura_popular",
+    "techniques": [
+     "percussao"
+    ],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Oficinas do maracatu Encanto do Pina (suplente no Multilinguagens).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_13_multilinguagem_recife_criativo_pnab_2026/Multilinguagem_Recife_Criativo_PNAB_Resultado_FINAL.pdf"
+   },
+   {
+    "title": "POESIA EM MOVIMENTO: O FAZER LITERÁRIO FEMININO EM PERNAMBUCO",
+    "language": "literatura",
+    "techniques": [],
+    "supports": [],
+    "concepts": [],
+    "scale": "medio",
+    "availability": "projeto_novo",
+    "descricao": "Projeto literário 'Poesia em movimento' (suplente no Multilinguagens).",
+    "fonte": "https://www.culturarecife.com.br/public/documentos/resultado_home_13_multilinguagem_recife_criativo_pnab_2026/Multilinguagem_Recife_Criativo_PNAB_Resultado_FINAL.pdf"
+   }
+  ],
+  "availability": {
+   "equipe": false,
+   "documentacao_completa": true
+  },
+  "coverage": {
+   "campos_preenchidos": 0.5,
+   "qualidade_evidencias": 0.9,
+   "atualidade": 1.0,
+   "confianca_extracao": 0.95
+  },
+  "contexto_trajetoria": {},
+  "fonte": "Multilinguagens PNAB 2026 (2 suplências)"
+ }
+]

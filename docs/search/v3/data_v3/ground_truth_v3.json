@@ -1,0 +1,507 @@
+{
+ "anchors": {
+  "sic2024_fic_audiovisual": [
+   "leao_producoes",
+   "palas_alves"
+  ],
+  "sic2024_fic_musica": [
+   "inst_ricardo_brenand",
+   "mr_plot"
+  ],
+  "sic2024_fic_cultura_popular": [
+   "maracatu_porto_rico",
+   "alzenide_simoes"
+  ],
+  "sic2024_fic_teatro": [
+   "edivane_aguiar",
+   "o_poste_solucoes"
+  ],
+  "sic2024_fic_artes_visuais": [
+   "marcelo_buarque",
+   "julio_vasconcelos"
+  ],
+  "sic2024_fic_circo": [
+   "maria_fatima_pontes",
+   "luiza_fontes"
+  ],
+  "sic2024_fic_danca": [
+   "walderlane_justino",
+   "assoc_artistas_integrados"
+  ],
+  "sic2024_fic_artesanato": [
+   "cleonice_cardoso",
+   "rosecleia_salvador"
+  ],
+  "sic2024_fic_literatura": [
+   "raiza_milfont",
+   "gabriel_santana"
+  ],
+  "sic2024_fic_fotografia": [
+   "ventana_filmes",
+   "vitor_lima"
+  ],
+  "sic2024_fic_moda": [
+   "juliana_araujo_silva",
+   "natalia_borges"
+  ],
+  "sic2024_fic_patrimonio": [
+   "weldjane_araujo",
+   "jose_rommel_silva"
+  ],
+  "sic2024_mic_audiovisual": [
+   "jaqueline_brandao",
+   "diego_lopes"
+  ],
+  "sic2024_mic_teatro": [
+   "junior_artes_belo",
+   "ruy_machado"
+  ],
+  "sic2023_fic_integradas": [
+   "jessica_miranda",
+   "valeria_fagundes"
+  ],
+  "sic2023_fic_fotografia": [
+   "simone_ferreira",
+   "clareana_aroxa"
+  ],
+  "multilinguagens_pnab2026": [
+   "joao_fernando_silva",
+   "joao_lucas_cavalcanti"
+  ],
+  "virado_pnab2026_hiphop": [
+   "kananda_silva",
+   "rarynne_barros"
+  ],
+  "solo_do_outro_2026": [
+   "claudemilson_souza"
+  ],
+  "aprendiz_em_cena_2026": [
+   "maria_pepe"
+  ],
+  "bolsa_escola_frevo_2026": [
+   "shermison_silva",
+   "amanda_colaco"
+  ],
+  "observa3_malakoff_2025": [
+   "ana_neves",
+   "geoneide_brandao"
+  ],
+  "fidr_2026": [
+   "maria_emilia_gomes",
+   "roberto_macedo"
+  ]
+ },
+ "excluded": {
+  "sic2023_fic_integradas": [
+   "robsmar_silva"
+  ],
+  "observa3_malakoff_2025": [
+   "icaro_galvao",
+   "luciana_borre",
+   "paulo_oliveira"
+  ]
+ },
+ "aprovados_adicionais": {
+  "sic2024_fic_audiovisual": [
+   "cand_20250260516",
+   "cand_20250260924",
+   "cand_20250259890",
+   "cand_20250159623",
+   "cand_20250260112",
+   "cand_20250260704",
+   "cand_20250260551",
+   "cand_20250260641"
+  ],
+  "sic2024_mic_audiovisual": [
+   "cand_20250260017",
+   "cand_20250260002",
+   "cand_20250259933",
+   "cand_20250260798"
+  ],
+  "sic2024_fic_artesanato": [
+   "cand_20250260446",
+   "cand_20250259827",
+   "cand_20250259922",
+   "cand_20250159574",
+   "cand_20250260006",
+   "cand_20250260882",
+   "cand_20250260665",
+   "cand_20250260937"
+  ],
+  "sic2024_fic_musica": [
+   "cand_20250260194",
+   "cand_20250260847",
+   "cand_20250260807",
+   "cand_20250260021",
+   "cand_20250260689",
+   "cand_20250260506",
+   "cand_20250260630",
+   "cand_20250260245",
+   "cand_20250260725",
+   "cand_20250260036",
+   "cand_20250260100",
+   "cand_20250260824"
+  ],
+  "sic2024_fic_artes_visuais": [
+   "cand_20250259891",
+   "cand_20250259726",
+   "cand_20250159711",
+   "cand_20250260529",
+   "cand_20250260527",
+   "cand_20250159570",
+   "cand_20250260566"
+  ],
+  "sic2024_fic_circo": [
+   "cand_20250259763",
+   "cand_20250259884",
+   "cand_20250259798",
+   "cand_20250260606",
+   "cand_20250260340",
+   "cand_20250159687",
+   "cand_20250260507"
+  ],
+  "sic2024_fic_cultura_popular": [
+   "cand_20250260276",
+   "cand_20250260578",
+   "cand_20250260530",
+   "cand_20250159691",
+   "cand_20250159612",
+   "cand_20250260724",
+   "cand_20250259729",
+   "cand_20250260018",
+   "cand_20250259828",
+   "cand_20250259899",
+   "cand_20250260873",
+   "cand_20250259901",
+   "cand_20250260251",
+   "cand_20250260088"
+  ],
+  "sic2024_fic_danca": [
+   "cand_20250159594",
+   "cand_20250260830",
+   "cand_20250260097",
+   "cand_20250260479",
+   "cand_20250259782"
+  ],
+  "sic2024_fic_moda": [
+   "cand_20250260257",
+   "cand_20250260870",
+   "cand_20250259818",
+   "cand_20250260368",
+   "cand_20250260645"
+  ],
+  "sic2024_fic_fotografia": [
+   "cand_20250259883",
+   "cand_20250259874",
+   "cand_20250260785",
+   "cand_20250260504",
+   "cand_20250260377"
+  ],
+  "sic2024_fic_literatura": [
+   "cand_20250260025",
+   "cand_20250259994",
+   "cand_20250260617",
+   "cand_20250260732",
+   "cand_20250260380",
+   "cand_20250259751",
+   "cand_20250260161"
+  ],
+  "sic2024_fic_teatro": [
+   "cand_20250260215",
+   "cand_20250260458",
+   "cand_20250260193",
+   "cand_20250260727",
+   "cand_20250260212",
+   "cand_20250260737",
+   "cand_20250260122",
+   "cand_20250260872"
+  ],
+  "sic2024_mic_teatro": [
+   "cand_20250259879",
+   "cand_20250260557"
+  ],
+  "sic2023_fic_integradas": [
+   "cand_20240350856",
+   "cand_20240351157",
+   "cand_20240351621",
+   "cand_20240351290"
+  ],
+  "sic2023_fic_fotografia": [
+   "cand_20240350973",
+   "cand_20240350571",
+   "cand_20240351251",
+   "cand_20240351318",
+   "cand_20240249734",
+   "cand_20240350025",
+   "cand_20240349952",
+   "cand_20240350225",
+   "cand_20240350361"
+  ],
+  "multilinguagens_pnab2026": [
+   "cand_20260367300",
+   "cand_20260368061",
+   "cand_20260368637",
+   "cand_20260367258",
+   "cand_20260367895",
+   "cand_20260367524",
+   "cand_20260368778",
+   "cand_20260367913",
+   "cand_20260367862",
+   "cand_20260368132",
+   "cand_20260368926",
+   "cand_20260368918",
+   "cand_20260368562",
+   "cand_20260368136",
+   "cand_20260368333",
+   "cand_20260367864",
+   "cand_20260367717",
+   "cand_20260367731",
+   "cand_20260368844",
+   "cand_20260367990",
+   "cand_20260368938",
+   "cand_20260368625",
+   "cand_20260368963",
+   "cand_20260368885",
+   "cand_20260367363",
+   "cand_20260368644",
+   "cand_20260367105",
+   "cand_20260368051",
+   "cand_20260368720",
+   "cand_20260368488",
+   "cand_20260368154",
+   "cand_20260367074",
+   "cand_20260368610",
+   "cand_20260368013",
+   "cand_20260368923",
+   "cand_20260368758",
+   "cand_20260367540",
+   "cand_20260368620",
+   "cand_20260368787",
+   "cand_20260367584",
+   "cand_20260368442",
+   "cand_20260368042",
+   "cand_20260368002",
+   "cand_20260368729",
+   "cand_20260367413",
+   "cand_20260368955",
+   "cand_20260367421",
+   "cand_20260368193",
+   "cand_20260368300",
+   "cand_20260367971",
+   "cand_20260368672",
+   "cand_20260368824",
+   "cand_20260367759",
+   "cand_20260368277",
+   "cand_20260367460",
+   "cand_20260368762",
+   "cand_20260368489",
+   "cand_20260368342",
+   "cand_20260368009",
+   "cand_20260367568",
+   "cand_20260367963",
+   "cand_20260368587",
+   "cand_20260367550",
+   "cand_20260368196",
+   "cand_20260367872",
+   "cand_20260367907",
+   "cand_20260368055",
+   "cand_20260367687",
+   "cand_20260367313",
+   "cand_20260368425",
+   "cand_20260367226",
+   "cand_20260367078",
+   "cand_20260367821",
+   "cand_20260368076",
+   "cand_20260368290",
+   "cand_20260368957",
+   "cand_20260367777",
+   "cand_20260368893",
+   "cand_20260367967",
+   "cand_20260368563",
+   "cand_20260368028",
+   "cand_20260368785",
+   "cand_20260367575",
+   "cand_20260368750",
+   "cand_20260367711",
+   "cand_20260367505",
+   "cand_20260368764",
+   "cand_20260368216",
+   "cand_20260368015",
+   "cand_20260368368",
+   "cand_20260367517",
+   "cand_20260368684",
+   "cand_20260367796",
+   "cand_20260368345",
+   "cand_20260367735",
+   "cand_20260367181",
+   "cand_20260367260",
+   "cand_20260367278",
+   "cand_20260367285",
+   "cand_20260367589",
+   "cand_20260367792",
+   "cand_20260368597",
+   "cand_20260368777",
+   "cand_20260368841",
+   "cand_20260367204",
+   "cand_20260367690",
+   "cand_20260367347",
+   "cand_20260367883",
+   "cand_20260368080",
+   "cand_20260368866",
+   "cand_20260367390",
+   "cand_20260368084",
+   "cand_20260367201",
+   "cand_20260367903",
+   "cand_20260369000",
+   "cand_20260367627",
+   "cand_20260367456",
+   "cand_20260367123",
+   "cand_20260367726",
+   "cand_20260368052",
+   "cand_20260367417",
+   "cand_20260367569",
+   "cand_20260367831",
+   "cand_20260367846",
+   "cand_20260368814",
+   "cand_20260367287",
+   "cand_20260367810",
+   "cand_20260368608",
+   "cand_20260367560",
+   "cand_20260367534",
+   "cand_20260367776",
+   "cand_20260368671",
+   "cand_20260367678",
+   "cand_20260367510",
+   "cand_20260368716",
+   "cand_20260367275",
+   "cand_20260367623",
+   "cand_20260367837",
+   "cand_20260367871",
+   "cand_20260368078",
+   "cand_20260368126",
+   "cand_20260368138",
+   "cand_20260368175",
+   "cand_20260368815",
+   "cand_20260368152",
+   "cand_20260368109",
+   "cand_20260367479",
+   "cand_20260367893",
+   "cand_20260368983"
+  ],
+  "virado_pnab2026_hiphop": [
+   "cand_20260367620",
+   "cand_20260368864",
+   "cand_20260368612",
+   "cand_20260367750",
+   "cand_20260367549",
+   "cand_20260367251",
+   "cand_20260368653",
+   "cand_20260368422",
+   "cand_20260368892",
+   "cand_20260368754",
+   "cand_20260367811",
+   "cand_20260367856",
+   "cand_20260368497",
+   "cand_20260367931",
+   "cand_20260368943",
+   "cand_20260368151",
+   "cand_20260368236",
+   "cand_20260367558",
+   "cand_20260368722",
+   "cand_20260367734",
+   "cand_20260368265",
+   "cand_20260368370",
+   "cand_20260367878",
+   "cand_20260367819",
+   "cand_20260367912"
+  ],
+  "bolsa_escola_frevo_2026": [
+   "cand_eduarda_lemos_coutinho",
+   "cand_maria_victoria_alvares_maia",
+   "cand_gabriele_giovanna_lima_de_frei",
+   "cand_blandon_aravanis_da_silva",
+   "cand_leticia_eloa_dos_santos_giles",
+   "cand_oswaldo_henrique_alves",
+   "cand_pedro_guilherme_ferreira_chave",
+   "cand_rita_de_cassia_monteiro"
+  ],
+  "fidr_2026": []
+ },
+ "candidatos": {},
+ "pendentes": [
+  {
+   "id": "caruaru_sao_joao_2025_musica",
+   "titulo": "Edital de Chamamento São João 2025 — Música",
+   "municipio": "Caruaru",
+   "fonte": "mapacultural.caruaru.pe.gov.br (LISTA DE HABILITADOS — 51 páginas)",
+   "url": "https://mapacultural.caruaru.pe.gov.br/storage/anexoEditais/EDITAL%20DE%20CHAMAMENTO%20S%C3%83O%20JO%C3%83O%202025/LISTA%20DE%20HABILITADOS%20DO%20EDITAL%20DE%20MUSICA%20-%20S%C3%83O%20JO%C3%83O%202025.pdf",
+   "status": "resultado identificado; portal inacessível pelo sandbox"
+  },
+  {
+   "id": "caruaru_sao_joao_2025_linguagens",
+   "titulo": "Edital de Chamamento São João 2025 — Demais Linguagens",
+   "municipio": "Caruaru",
+   "fonte": "mapacultural.caruaru.pe.gov.br (LISTA DE HABILITADOS)",
+   "url": "https://mapacultural.caruaru.pe.gov.br/storage/anexoEditais/EDITAL%20DE%20CHAMAMENTO%20S%C3%83O%20JO%C3%83O%202025/LISTA%20DE%20HABILITADOS%20DO%20EDITAL%20DEMAIS%20LINGUAGENS%20-%20S%C3%83O%20JO%C3%83O%202025.pdf",
+   "status": "resultado identificado; portal inacessível pelo sandbox"
+  },
+  {
+   "id": "caruaru_pnab2026_anastacio",
+   "titulo": "PNAB nº 001/2026 — Edital Anastácio Rodrigues",
+   "municipio": "Caruaru",
+   "fonte": "mapacultural.caruaru.pe.gov.br (lista final de contemplados)",
+   "url": "https://mapacultural.caruaru.pe.gov.br/storage/anexoEditais/PNAB%20CICLO%202/lista_final_de_contemplados_pnab_2026_edital_001_anastacio_rodrigues_anexo_1790693383.pdf",
+   "status": "lista final publicada; portal inacessível pelo sandbox"
+  },
+  {
+   "id": "caruaru_pnab2024_criativo",
+   "titulo": "PNAB nº 001/2024 — Caruaru Criativo (resultado do mérito)",
+   "municipio": "Caruaru",
+   "fonte": "mapacultural.caruaru.pe.gov.br + Scribd (RELACAO-EDITAL-1)",
+   "url": "https://mapacultural.caruaru.pe.gov.br/storage/anexoEditais/PNAB/RESULTADO%20DOCUMENTAL%20EDITAL%2001.pdf",
+   "status": "resultado publicado; portal inacessível pelo sandbox"
+  },
+  {
+   "id": "olinda_premiacao_001_2026",
+   "titulo": "Edital de Premiação Cultural nº 001/2026 — PNAB Olinda",
+   "municipio": "Olinda",
+   "fonte": "comunicação oficial da Prefeitura de Olinda (resultado preliminar de análise)",
+   "url": "https://olinda.pe.gov.br/pagina/cultura",
+   "status": "resultado preliminar publicado; portal inacessível pelo sandbox"
+  },
+  {
+   "id": "olinda_pontos_cultura_004_2026",
+   "titulo": "Chamamento nº 004/2026 — Premiação de Pontos de Cultura (PNAB Olinda)",
+   "municipio": "Olinda",
+   "fonte": "PNCP — compra 2026/494 do CNPJ 10.404.184/0001-09 (edital com anexos baixado)",
+   "url": "https://pncp.gov.br/pncp-api/v1/orgaos/10404184000109/compras/2026/494/arquivos/1",
+   "status": "edital completo capturado; resultado ainda não publicado no PNCP"
+  }
+ ],
+ "split_treino_teste": {
+  "sic2024_fic_audiovisual": "treino",
+  "sic2024_fic_musica": "teste",
+  "sic2024_fic_cultura_popular": "treino",
+  "sic2024_fic_teatro": "treino",
+  "sic2024_fic_artes_visuais": "treino",
+  "sic2024_fic_circo": "treino",
+  "sic2024_fic_danca": "treino",
+  "sic2024_fic_artesanato": "treino",
+  "sic2024_fic_literatura": "teste",
+  "sic2024_fic_fotografia": "teste",
+  "sic2024_fic_moda": "teste",
+  "sic2024_fic_patrimonio": "treino",
+  "sic2024_mic_audiovisual": "treino",
+  "sic2024_mic_teatro": "treino",
+  "sic2023_fic_integradas": "treino",
+  "sic2023_fic_fotografia": "treino",
+  "multilinguagens_pnab2026": "teste",
+  "virado_pnab2026_hiphop": "teste",
+  "solo_do_outro_2026": "treino",
+  "aprendiz_em_cena_2026": "teste",
+  "bolsa_escola_frevo_2026": "teste",
+  "observa3_malakoff_2025": "treino",
+  "fidr_2026": "treino"
+ },
+ "nota_split": "Split pré-registrado por hash md5(id)%3==0 antes de qualquer execução de métrica."
+}
