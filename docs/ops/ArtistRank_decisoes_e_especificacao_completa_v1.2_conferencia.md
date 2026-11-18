@@ -2272,6 +2272,12 @@ Para implementação, adotar esta ordem de precedência:
 `registro_editais_ganhadores_reais.xlsx`. Esta seção **substitui o aviso da v1.2** de que o benchmark não tinha
 resultados reais, mas só nos limites de §29.3. Ela não altera nenhuma regra da §28.
 
+> **Atualização de 17/11/2026 (v3, §30).** Dois pontos desta seção foram superados. (1) A v2 tratava a lista de
+> linguagens aceitas de um edital como todas-obrigatórias; a causa de o Multilinguagens cair na v0 não era só a
+> renormalização, e a semântica correta é "qualquer uma" (§30.2). (2) A v2 pôs os projetos Guerreiros e Pioneiros
+> (R$ 500 mil) na seção FIC; eles são do MIC, e a v3 reatribuiu essas âncoras. Os números de §29.1 valem como
+> histórico da v2, não como referência de regressão: a referência é a §30.
+
 ### 29.1 O que foi medido
 
 - 20 editais catalogados (Recife, Olinda, Caruaru). **14 de Recife** têm ganhadores verificados em PDF oficial ou
@@ -2342,3 +2348,85 @@ resultados reais, mas só nos limites de §29.3. Ela não altera nenhuma regra d
 3. Enriquecer os perfis (trajetória, posicionamento) e as exigências estruturadas dos editais.
 4. Só então repetir a calibração, com leave-one-out (já implementado), e rever os pesos.
 5. Congelar a v4 como baseline de regressão, com `registro_editais_ganhadores_reais.xlsx` como fonte dos pares.
+
+------------------------------------------------------------------------
+
+## 30. Benchmark v3 — concorrentes reais que não ganharam (2026-11-16)
+
+**Fonte:** `docs/search/` — `relatorio_benchmark_v3.pdf`, `engine_v3.py` (motor de referência em Python),
+`dataset_v3.py`, `calibrate_v3.py`, `experiments_v3.py`, `verify.py`, `casos_elegibilidade_teto.json` e a planilha
+`registro_editais_ganhadores_reais_v3.xlsx`. Substitui a §29 como referência. **Nada foi reproduzido aqui:** faltam no
+repositório os JSON de artistas, candidatos, editais e rótulos da v3 que o `verify.py` lê, então os números abaixo são
+os do relatório.
+
+### 30.1 O que mudou da v2
+
+- **Corpus:** 29 editais catalogados (23 com resultado verificado, 6 de Olinda e Caruaru ainda pendentes), 44 âncoras
+  (no máximo 2 por edital) e **759 candidatos reais que não ganharam** (suplentes, desclassificados, habilitados), cada
+  um com situação e fonte. O Multilinguagens PNAB 2026 traz 836 inscrições rotuladas (155 selecionadas, 639 suplentes,
+  42 desclassificadas).
+- **Linguagem com origem declarada** (`evidencia_propria`, `evidencia_resultado` ou edital, este último só como último
+  recurso): fim da circularidade da §29.3, ponto 1. Há 10 artistas multilinguagem e 110 pares fora da linguagem com rótulo 0.
+- **9 casos de elegibilidade e teto** executados, todos passando (`casos_elegibilidade_teto.json`); os de pessoa
+  jurídica, formação e tempo mínimo são **regras de teste** para provar a mecânica, não requisitos reais dos editais.
+- **Split treino/teste registrado antes das métricas** (15 editais de treino, 8 de teste, por hash do id).
+
+### 30.2 Regra nova, achada pelo benchmark: lista de linguagens é "qualquer uma"
+
+Dentro de uma mesma exigência, as linguagens listadas são **alternativas aceitas**: a nota é a **melhor** correspondência
+(máximo), não a média. Com a média, um circo numa lista de 14 linguagens aceitas derrubou o ganhador do Multilinguagens
+para a posição 92 de 623. A mesma lógica vale para o teto: só dispara se **nenhuma** das alternativas casa.
+
+> **Pendente de confirmação.** Esta regra altera a interpretação do edital e vai para a entrevista de regra de negócio
+> do motor (`docs/features/ranking/0002-artistrank-motor-puro.md`) antes de entrar no código.
+
+### 30.3 Resultados (10 editais com não-ganhadores publicados)
+
+| Configuração | MRR | Hit@1 | Hit@3 | AUC | NDCG@5 |
+|---|---:|---:|---:|---:|---:|
+| v0 (nulo = 0, sem teto) | 1,000 | 10/10 | 10/10 | 0,510 | 0,962 |
+| v2 (teto) | 1,000 | 10/10 | 10/10 | 0,510 | 0,962 |
+| v4 (nulo 0,5 + teto + papéis) | 1,000 | 10/10 | 10/10 | 0,520 | 0,962 |
+| v4 com pesos iguais | 1,000 | 10/10 | 10/10 | 0,520 | 0,962 |
+
+### 30.4 Leitura correta: o resultado forte é de empate
+
+- **Rank 1 é por empate.** A âncora fica empatada com centenas de candidatos e conta como primeira; por isso o MRR é 1,0
+  e o intervalo de confiança degenera em [1,0; 1,0]. O motor **não coloca o ganhador abaixo de ninguém**, mas também
+  **não o destaca**: a AUC contra os rótulos é **0,52**, equivalente ao acaso.
+- **Causa:** os resultados oficiais publicam nome, título, valor e situação, não portfólio, trajetória nem a resposta de
+  cada candidato aos requisitos. Com esses perfis qualquer pontuação razoável empata.
+- **Os pesos continuam sem se mover** (trace vazio; no teste o MRR calibrado é igual ao baseline), agora por empate, não por
+  fator neutro. Vale a §27.4: **não calibrar pesos** até haver variância nos dados.
+- **O alpha não foi exercitado de verdade:** a varredura em {0,0 · 0,4 · 0,6 · 0,8 · 1,0} saiu plana (MRR 1,0 nos cinco),
+  porque só 3 artistas têm 3 a 6 obras (o mínimo pedido era 12) e a discordância "melhor obra × média das 3 melhores"
+  apareceu em 1 edital (o mínimo era 8). **Continua pendente.**
+- **Rubrica com pouca concordância:** o kappa ponderado entre os dois avaliadores é **0,20**. Os rótulos 0 a 3 ainda não
+  servem de verdade de campo (§27.9: avaliadores independentes de verdade, não dois passes do mesmo modelo).
+- **Camada semântica:** TF-IDF sobre títulos separa em pools pequenos (AUC 1,0 no Solo do Outro e no Aprendiz em Cena) e
+  não nos grandes (0,52 no Multilinguagens). É a pista de que o próximo ganho vem de **descrições completas e embeddings**,
+  não de ajuste de pesos.
+- **Contexto de trajetória (4.7, descritivo, fora do score):** no Multilinguagens, 48% dos selecionados e 39% dos
+  suplentes se declaram pessoas negras; no Virado, 74% e 68%; PcD, 5% e 0%. Só o que os resultados publicam, sem inferir.
+
+### 30.5 Ressalvas sobre o motor de referência (`engine_v3.py`)
+
+- **O portfólio entra duas vezes.** `rank_artist_edital` calcula `artist_score` ponderando os oito fatores, **incluindo o
+  fator O**, e depois soma `0,65 · O`. A spec (§9.6) separa `R_artista` (fatores do artista) de `R_portfólio` (obras). O
+  motor novo não deve copiar isso sem decisão.
+- **O fator de obra tem pesos próprios fixos** (`0,35·linguagem + 0,35·conceito + 0,20·viabilidade + 0,10·0,8`) que não
+  estão na spec.
+- **Correspondência graduada de linguagem** (exata 1,0; pai ou filho 0,6; irmãs 0,3) e de conceito (central 1,0, secundário
+  0,6, sinônimo parcial 0,4) usam tabelas que não são a taxonomia da O3.
+- **Viabilidade e trajetória usam heurísticas** (penalidade de 0,25 por violação; mistura 0,5/0,3/0,2).
+
+Estas escolhas não são regra de negócio decidida. Entram na entrevista do motor, uma a uma.
+
+### 30.6 Limitações e próximos passos
+
+1. 6 resultados de Olinda e Caruaru pendentes (portais inacessíveis ao ambiente que gerou o relatório; URLs registradas).
+2. Corpus multi-obra e 6 editais com requisito além de linguagem (os PDFs do SIC e do Aprendiz estavam fora do ar): 3 de 12
+   e 6 de 8 atingidos.
+3. Descrições completas de projetos e editais para a comparação TF-IDF × Voyage (§27.9).
+4. Avaliadores humanos independentes e kappa decente.
+5. Só depois disso, calibrar pesos, `alpha` e limiares.
