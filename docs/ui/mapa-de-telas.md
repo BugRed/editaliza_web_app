@@ -1,6 +1,6 @@
 # Mapa de telas e fluxo (O1)
 
-**Status:** vigente como plano de ondas · front do `editaliza_prot` já no repo (ver abaixo) · **Spec:** [`0002-articulacao-design-o1`](../features/ui/0002-articulacao-design-o1.md)
+**Status:** todas as telas O2 a O5 existem como prévia com dados fixos (2026-11-17); vigente como plano de ondas · front do `editaliza_prot` já no repo (ver abaixo) · **Spec:** [`0002-articulacao-design-o1`](../features/ui/0002-articulacao-design-o1.md)
 **Fontes:** [`plano.md`](../../plano.md) §10 (telas) e §11 (protótipo `editaliza_prot`).
 
 Este documento fixa **quais telas existem, quem as vê, como se ligam e em que ordem entram**.
@@ -34,18 +34,18 @@ Coluna "Protótipo" aponta o molde em `editaliza_prot` (referência de UX, nunca
 | 1 | Login | `/login` | visitante | O2 | `(auth)/login` | erro de credencial, carregando |
 | 2 | Cadastro + consentimento LGPD | `/cadastro` | visitante | O2 | `(auth)/cadastro` | erro de campo, consentimento não marcado |
 | 3 | Feed | `/feed` | artist | O3 | `(main)/feed` | vazio, carregando, poucos resultados |
-| 4 | Detalhe do edital + resumo em linguagem simples | `/editais/[id]` | artist | O3 | `EditalSummaryModal` (vira página) | resumo indisponível, edital encerrado |
+| 4 | Detalhe do edital + resumo em linguagem simples | `/editais/[id]` (prévia pronta; o modal segue e leva a ela) | artist | O3 | `EditalSummaryModal` (vira página) | resumo indisponível, edital encerrado |
 | 5 | Salvos | `/salvos` | artist | O3 | `(main)/salvos` | vazio |
-| 6 | Perfil e privacidade (exportar, excluir, visibilidade) | `/perfil` | artist | O2 | `(main)/perfil` | confirmação de exclusão |
-| 7 | Admin: edital (PDF, revisão, status) | `/admin/editais` | admin | O3 | sem molde | processando, falha de extração |
-| 8 | Onboarding do artista (multi-etapas) | `/onboarding` | artist | O4 | `configuracoes` (parte) | etapa pulada, campo "desconhecido" |
-| 9 | Trajetória | `/perfil/trajetoria` | artist | O4 | `configuracoes` (parte) | sem comprovação |
-| 10 | Obras | `/perfil/obras` | artist | O4 | `configuracoes` (parte) | sem obras |
-| 11 | "Por quê" da nota | `/editais/[id]/porque` | artist | O4 | sem molde | dado faltante |
-| 12 | Perfil público do artista | `/artistas/[id]` | todos autenticados | O4 | `perfil/[id]` | portfólio oculto |
-| 13 | Organização: publicar edital | `/organizacao/editais/novo` | organization | O5 | `publicar-edital` | rascunho, erro de requisito |
-| 14 | Organização: candidatos | `/organizacao/editais/[id]/candidatos` | organization | O5 | sem molde | sem candidatos |
-| 15 | Rejeição com motivo | modal no feed e no detalhe | artist | O5 | sem molde | — |
+| 6 | Perfil e privacidade (exportar, excluir, visibilidade) | `/perfil` e `/perfil/privacidade` (prévia pronta, dados fixos) | artist | O2 | `(main)/perfil` | confirmação de exclusão |
+| 7 | Admin: edital (PDF, revisão, status) | `/admin/editais` (prévia pronta, dados fixos, sem checar papel ainda) | admin | O3 | sem molde | processando, falha de extração |
+| 8 | Onboarding do artista (multi-etapas) | `/onboarding` (prévia pronta) | artist | O4 | `configuracoes` (parte) | etapa pulada, campo "desconhecido" |
+| 9 | Trajetória | `/perfil/trajetoria` (prévia pronta) | artist | O4 | `configuracoes` (parte) | sem comprovação |
+| 10 | Obras | `/perfil/obras` (prévia pronta, reusa o gerenciador de obras) | artist | O4 | `configuracoes` (parte) | sem obras |
+| 11 | "Por quê" da nota | `/editais/[id]/porque` (prévia pronta, sobre o motor do protótipo) | artist | O4 | sem molde | dado faltante |
+| 12 | Perfil público do artista | `/artistas/[id]` (prévia pronta) | todos autenticados | O4 | `perfil/[id]` | portfólio oculto |
+| 13 | Organização: publicar edital | `/organizacao/editais/novo` (prévia pronta; `/publicar-edital` redireciona para ela) | organization | O5 | `publicar-edital` | rascunho, erro de requisito |
+| 14 | Organização: candidatos | `/organizacao/editais/[id]/candidatos` (prévia pronta, dados fixos) | organization | O5 | sem molde | sem candidatos |
+| 15 | Rejeição com motivo | modal no resumo do edital e na página de detalhe (prévia pronta) | artist | O5 | sem molde | — |
 
 Regras que valem em todas:
 
