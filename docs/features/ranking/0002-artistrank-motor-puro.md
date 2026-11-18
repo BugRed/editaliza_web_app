@@ -13,12 +13,12 @@
 
 <!-- kit:camadas -->
 - [x] prisma — não se aplica, motor sem banco (persistência é T5.5, depois da O3)
-- [ ] service — `src/server/ranking/`: elegibilidade, oito fatores, teto, confiança (funções puras)
+- [ ] service — `src/server/ranking/`: elegibilidade, oito fatores, teto, confiança (funções puras). **Não começou:** espera a entrevista (rodada 1 abaixo)
 - [x] controller — não se aplica, nada o chama ainda
 - [x] route — não se aplica
 - [x] ui — não se aplica; o ADR 0019 já consome `fatores[]` e a troca do motor do protótipo é outra feature
-- [ ] teste — casos da spec §27.5 e os 14 editais de `docs/search/` como fixtures
-- [ ] doc — spec §28/§29 só se o código divergir; ADR se surgir decisão de arquitetura
+- [x] teste — nesta etapa só os scripts Python de verificação do benchmark (`docs/search/v3/verify.py` e `experiments_v3.py`, reproduzidos); os testes do motor em TypeScript vêm depois da entrevista, com os 9 casos de teto e o corpus v3 como fixtures
+- [x] doc — spec do ArtistRank §29 e §30, `plano.md`, dívida, `PROGRESS.md` e a rodada 1 da entrevista (P6 a P13) escritas; regra em `docs/negocio/` só depois das respostas
 <!-- /kit:camadas -->
 
 **Próximo passo:** **começar pela entrevista** (skill `grill-regra-negocio`): a rodada 1, abaixo, já está escrita. Nenhuma
